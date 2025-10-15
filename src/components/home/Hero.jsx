@@ -2,7 +2,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
-import herobanner from "@/public/images/hero-banner.jpg";
+import herobanner from "@/public/assets/hero-banner.jpg";
 import Image from 'next/image'; // 👈 Import Next.js Image component
 import { ArrowDown } from 'lucide-react';
 const Hero = () => {

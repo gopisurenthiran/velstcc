@@ -3,18 +3,18 @@ import React from 'react';
 import Image from 'next/image'; // 👈 IMPORT THE IMAGE COMPONENT
 
 // Assuming these paths are correct and lead to files in your /public directory
-import icon1 from "@/public/images/icons/Block.png";
-import icon2 from "@/public/images/icons/Line 469.png";
-import icon3 from "@/public/images/icons/Map pin.png";
-import icon4 from "@/public/images/icons/Capa_1.png";
+import icon1 from "@/public/assets/icons/Block.png";
+import icon2 from "@/public/assets/icons/Line 469.png";
+import icon3 from "@/public/assets/icons/Map pin.png";
+import icon4 from "@/public/assets/icons/Capa_1.png";
 
 
 // Data structure for the statistics
 const statsData = [
   // 🚀 FIX 1: Pass the imported image object DIRECTLY, not wrapped in extra braces
   { value: '4', label: 'Number of Blocks', icon: icon1 },
-  { value: '3.5 L sq. ft.', label: 'Total Space', icon: icon2 },
-  { value: '50 ft', label: 'Ceiling Height', icon: icon3 },
+  { value: '3.5 L sq. ft.', label: 'Total Space', icon: icon3 },
+  { value: '50 ft', label: 'Ceiling Height', icon: icon2 },
   { value: '6000+', label: 'Car Parkings', icon: icon4 },
 ];
 
@@ -27,7 +27,7 @@ const StatItem = ({ value, label, icon }) => (
       <Image
         src={icon} // The 'icon' prop is now the imported image object
         alt={label} // Use the label for accessibility
-      
+         
         // className="w-10 h-10" // Optional: You can also use Tailwind for size
         priority // Icons are important, load them eagerly
       />
@@ -39,7 +39,7 @@ const StatItem = ({ value, label, icon }) => (
     </div>
     
     {/* Label */}
-    <p className="text-sm text-gray-600 font-medium whitespace-nowrap">
+    <p className="text-sm text-gray-600 font-medium whitespace-nowrap font-primary mt-5">
       {label}
     </p>
   </div>

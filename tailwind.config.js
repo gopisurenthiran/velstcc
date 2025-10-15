@@ -7,19 +7,21 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // Your existing foundersgrotesk font
-        founders: ["var(--font-foundersgrotesk)"], 
-        
-        // 🚀 FIX: Added Baskervville font mapping
-        baskervville: ["var(--font-Baskervville)", "serif"], 
+        // Primary font (for headings)
+        primary: ["var(--font-foundersgrotesk)", "sans-serif"],
+        // Secondary font (for body)
+        secondary: ["var(--font-Baskervville)", "serif"],
+      },
+      colors: {
+        // Primary color for font
+        primary: "#2D3091",
+        // Secondary color for font
+        secondary: "#000000",
       },
       spacing: {
-        // Adds a new utility: gap-18 (4.5rem = 72px)
         '18': '4.5rem', 
-        // Adds a new utility: gap-30 (7.5rem = 120px)
         '30': '7.5rem',
-        // Adds a new utility: gap-huge (10rem = 160px)
-        'huge': '10rem', 
+        'huge': '10rem',
       },
     },
   },
