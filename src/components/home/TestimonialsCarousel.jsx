@@ -76,12 +76,12 @@ export default function TestimonialsCarousel() {
         {/* Header */}
         <div className="flex items-start justify-between gap-6 mb-8">
           <div className="max-w-2xl">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
+            <h2 className="text-4xl md:text-4xl text-gray-900 font-secondary">
               Testimonial
             </h2>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mt-4 font-primary text-lg">
               Vels Trade & Convention Centre is located in the heart of Chennai,
-              offering seamless accessibility from the city's key business and
+              offering <br /> seamless accessibility from the city's key business and
               cultural hubs.
             </p>
           </div>

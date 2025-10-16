@@ -95,7 +95,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <Gettingtovels />
                 <Events />
                 <Facilities />
-                <Facilities />
+               
                 <TestimonialsCarousel />
                 <HoverExpandCarousel />
                 <Faqs />

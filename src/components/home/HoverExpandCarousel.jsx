@@ -4,46 +4,18 @@ import Image from "next/image";
 
 /* ------------ slides ------------ */
 const slides = [
-  {
-    title: "Marina Beach",
-    description:
-      "The world’s second-longest urban beach stretching along Chennai’s coastline. A broad blend of golden sands, lively waves, and vibrant local life—the city’s spirit and serenity.",
-    src: "/assets/dis-img-1.png",
-  },
-  {
-    title: "Central",
-    description:
-      "Iconic red-brick landmark—gateway to the city’s journeys and daily rhythm.",
-    src: "/assets/dis-img-2.png",
-  },
-  {
-    title: "LIC",
-    description:
-      "A mid-century modern silhouette anchoring Chennai’s skyline with timeless poise.",
-    src: "/assets/dis-img-3.png",
-  },
-  {
-    title: "Parrys Corner",
-    description:
-      "Historic trading hub blending colonial charm with Chennai’s commercial pulse.",
-    src: "/assets/dis-img-2.png",
-  },
-  {
-    title: "Napier Bridge",
-    description:
-      "The glowing white waves of Napier Bridge—an icon that lights up Chennai’s nights.",
-    src: "/assets/dis-img-3.png",
-  },
+  { title: "Marina Beach",  description: "The world’s second-longest urban beach stretching along Chennai’s coastline. A broad blend of golden sands, lively waves, and vibrant local life—the city’s spirit and serenity.", src: "/assets/dis-img-1.png" },
+  { title: "Central",       description: "Iconic red-brick landmark—gateway to the city’s journeys and daily rhythm.", src: "/assets/dis-img-2.png" },
+  { title: "LIC",           description: "A mid-century modern silhouette anchoring Chennai’s skyline with timeless poise.", src: "/assets/dis-img-3.png" },
+  { title: "Parrys Corner", description: "Historic trading hub blending colonial charm with Chennai’s commercial pulse.", src: "/assets/dis-img-2.png" },
 ];
 
 export default function HoverExpandCarousel() {
   const [active, setActive] = useState(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [index, setIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const carouselRef = useRef(null);
 
-  /* ---------- detect mobile & resize ---------- */
+  /* detect mobile */
   useEffect(() => {
     const recheck = () => setIsMobile(window.innerWidth < 768);
     recheck();
@@ -51,43 +23,15 @@ export default function HoverExpandCarousel() {
     return () => window.removeEventListener("resize", recheck);
   }, []);
 
-  /* ---------- tap toggle (mobile) ---------- */
+  /* tap toggle (mobile) */
   const toggle = (i) => {
     if (!isMobile) return;
     setActive((prev) => (prev === i ? null : i));
   };
 
-  /* ---------- auto-slide logic ---------- */
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const interval = setInterval(() => {
-      if (isHovered) return; // pause on hover
-      const total = slides.length;
-      const nextIndex = (index + 1) % total;
-      setIndex(nextIndex);
-
-      const item = carousel.children[nextIndex];
-      if (item) {
-        item.scrollIntoView({
-          behavior: "smooth",
-          inline: "start",
-          block: "nearest",
-        });
-      }
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [index, isHovered]);
-
   return (
-    <section
-      className="py-16 container mx-auto px-6 md:px-10 bg-white"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* ---------- heading ---------- */}
+    <section className="py-16 container mx-auto px-6 md:px-10 bg-white overflow-x-hidden">
+      {/* heading */}
       <div className="mb-8 max-w-2xl">
         <h2 className="text-[28px] sm:text-[34px] font-semibold tracking-tight">
           Discover <span className="text-primary">Singara Chennai</span>
@@ -99,21 +43,19 @@ export default function HoverExpandCarousel() {
         </p>
       </div>
 
-      {/* ---------- carousel ---------- */}
+      {/* carousel */}
       <div
         ref={carouselRef}
-        className="carousel flex gap-5 overflow-x-auto scroll-smooth md:overflow-visible md:flex-nowrap"
+        className="carousel flex gap-5 overflow-x-auto md:overflow-hidden scroll-smooth"
         role="list"
       >
         {slides.map((s, i) => (
           <div
             key={i}
             onClick={() => toggle(i)}
-            className={`relative group flex-shrink-0 basis-[60%] md:basis-[250px] overflow-hidden transition-all duration-500 cursor-pointer ${
-              active === i ? "active" : ""
-            }`}
+            className={`relative group flex-shrink-0 basis-[60%] md:basis-[250px] overflow-hidden transition-all duration-500 cursor-pointer ${active === i ? "active" : ""}`}
           >
-            <div className="relative h-[400px] w-[250px] overflow-hidden shadow-md">
+            <div className="relative h-[400px] w-[250px] md:w-full overflow-hidden shadow-md">
               <Image
                 src={s.src}
                 alt={s.title}
@@ -149,41 +91,29 @@ export default function HoverExpandCarousel() {
         ))}
       </div>
 
-      {/* ---------- desktop hover expand (250px → 500px) ---------- */}
+      {/* desktop hover expand */}
       <style jsx>{`
         @media (min-width: 768px) {
           .carousel {
             display: flex;
           }
-
-          /* Default card size */
+          /* default card size */
           .carousel > div {
-            flex-basis: 250px;
+            flex: 0 0 250px;
           }
-
-          /* Slight shrink for siblings */
+          /* shrink siblings on hover */
           .carousel:hover > div {
             flex-basis: 230px;
             transition: all 0.5s ease;
           }
-
-          /* Hovered card expands big */
+          /* hovered card grows */
           .carousel:hover > div:hover {
             flex-basis: 500px;
             transform: translateY(-6px);
           }
-
-          /* Sync inner width with flex-basis */
-          .carousel:hover > div:hover > div {
-            width: 500px;
-          }
-
-          .carousel:hover > div:not(:hover) > div {
-            width: 230px;
-          }
-
-          /* Fixed height */
+          /* inner fills flex item */
           .carousel > div > div {
+            width: 100%;
             height: 400px;
           }
         }
