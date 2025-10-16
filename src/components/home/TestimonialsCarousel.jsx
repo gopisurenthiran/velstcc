@@ -136,10 +136,11 @@ export default function TestimonialsCarousel() {
 
                     {/* Left: Text */}
                     <div className="md:w-2/3 w-full p-6 flex flex-col justify-between">
-                      <p className="text-gray-700 leading-relaxed">{t.quote}</p>
+                      <p className="text-gray-700 leading-relaxed text-2xl font-primary">{t.quote}</p>
                       <div className="mt-6">
-                        <h4 className="font-medium text-gray-900">{t.name}</h4>
-                        <p className="font-semibold text-black">{t.role}</p>
+                        <h4 className="font-medium text-gray-900 font-secondary">{t.name}</h4>
+                        <p className="font-semibold text-black font-primary text-lg">{t.role}</p>
+                         <span className="block w-24 h-px bg-primary mb-5" aria-hidden />
                       </div>
                     </div>
                   </article>

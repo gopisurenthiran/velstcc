@@ -94,8 +94,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <DesignedOccasion />
                 <Gettingtovels />
                 <Events />
-                <Facilities />
-               
+                <Facilities />            
                 <TestimonialsCarousel />
                 <HoverExpandCarousel />
                 <Faqs />

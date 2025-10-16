@@ -33,12 +33,12 @@ export default function HoverExpandCarousel() {
     <section className="py-16 container mx-auto px-6 md:px-10 bg-white overflow-x-hidden">
       {/* heading */}
       <div className="mb-8 max-w-2xl">
-        <h2 className="text-[28px] sm:text-[34px] font-semibold tracking-tight">
-          Discover <span className="text-primary">Singara Chennai</span>
+        <h2 className="text-[28px] sm:text-[34px] font-semibold tracking-tight font-secondary">
+          Discover Singara Chennai
         </h2>
-        <p className="mt-2 text-[14px] leading-6 text-black/70">
+        <p className="mt-2 text-lg text-black/70 font-primary">
           A city where tradition meets innovation. A vibrant mosaic of culture,
-          commerce, and creativity; forever the heartbeat of South India’s pride
+          commerce, and creativity. Forever the heartbeat of South India’s pride
           and progress.
         </p>
       </div>
@@ -66,7 +66,7 @@ export default function HoverExpandCarousel() {
               />
 
               {/* title */}
-              <div className="absolute left-4 top-3 z-20 text-white text-lg font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+              <div className="absolute left-4 top-3 z-20 text-white text-xl font-semibold font-secondary mt-4">
                 {s.title}
               </div>
 
@@ -81,10 +81,8 @@ export default function HoverExpandCarousel() {
                     : "opacity-0 translate-y-3 md:group-hover:opacity-100 md:group-hover:translate-y-0"
                 }`}
               >
-                <p className="text-sm leading-relaxed">{s.description}</p>
-                <button className="mt-3 inline-flex bg-primary px-3 py-2 text-sm font-medium shadow hover:brightness-95">
-                  Explore
-                </button>
+                <p className="text-lg leading-relaxed font-primary">{s.description}</p>
+               
               </div>
             </div>
           </div>
