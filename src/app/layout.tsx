@@ -20,6 +20,8 @@ import Gettingtovels from "../components/home/Gettingtovels";
 import Events from "../components/home/Events";
 import Facilities from "../components/home/Facilities";
 import Faqs from "../components/home/Faqs";
+import HoverExpandCarousel from "../components/home/HoverExpandCarousel";
+import TestimonialsCarousel from "../components/home/TestimonialsCarousel";
 
 // Define the root canonical path here
 const canonicalPath = '/'; 
@@ -93,6 +95,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <Gettingtovels />
                 <Events />
                 <Facilities />
+                <Facilities />
+                <TestimonialsCarousel />
+                <HoverExpandCarousel />
                 <Faqs />
                 {/* Main content area (This is where app/page.jsx or any other page component renders) */}
                 <main className="">{children}</main>
