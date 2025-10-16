@@ -32,7 +32,7 @@ const Hero = () => {
       />
          <button 
         onClick={handleClick}
-        className="absolute bottom-6 z-30 p-3 rounded-full border-2 border-white text-white hover:bg-white hover:text-black transition duration-300 animate-bounce focus:outline-none"
+        className="absolute bottom-6 z-30 p-3 rounded-full border-2 border-white text-white hover:bg-white hover:text-black transition duration-300 animate-bounce focus:outline-none" href="#target-section"
         aria-label="Scroll down to next section"
       >
         {/* You can use a custom SVG or an icon library */}

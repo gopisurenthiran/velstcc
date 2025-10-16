@@ -2,6 +2,25 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
+import { motion } from "framer-motion";
+
+const easing = [0.22, 1, 0.36, 1];
+
+const container = {
+  hidden: { opacity: 0, y: 8 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { ease: easing, duration: 0.5, staggerChildren: 0.08, when: "beforeChildren" },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { ease: easing, duration: 0.55 } },
+};
+
+
 /* ================== DATA ================== */
 /* Put your real icon files here */
 const statsData = [
@@ -26,28 +45,36 @@ const tabData = [
   {
     id: "trade",
     title: "Trade Fairs & Exhibitions",
-    imageSrc: "/images/trade-fair.jpg",
+   imageSrc: "/assets/wedding.png",
     content:
       "Host regional and international trade shows with ease. Our expansive, pillar-free space is designed for high foot traffic and massive installations, offering full logistics support and custom booth arrangements.",
-    stats: [
-      { iconSrc: "/assets/icons/expo.svg",    value: "3.5 L sq ft", label: "Exhibition Space" },
-      { iconSrc: "/assets/icons/height.svg",  value: "50 ft",       label: "Ceiling Height" },
-      { iconSrc: "/assets/icons/parking.svg", value: "6000+",       label: "Parking" },
+   stats: [
+      { iconSrc: "/assets/icon-1.png",  value: "5",           label: "Grand Halls" },
+      { iconSrc: "/assets/icon-2.png",  value: "25,000 sq", label: "Space" },
+      { iconSrc: "/assets/icon-3.png",  value: "20,000",       label: "Guests" },
     ],
   },
   {
     id: "corporate",
     title: "Corporate Conferences & Expos",
-    imageSrc: "/images/corporate.jpg",
+    imageSrc: "/assets/wedding.png",
     content: "Dedicated spaces for large-scale corporate events and product launches...",
-    stats: [],
+    stats: [
+      { iconSrc: "/assets/icon-1.png",  value: "5",           label: "Grand Halls" },
+      { iconSrc: "/assets/icon-2.png",  value: "25,000 sq", label: "Space" },
+      { iconSrc: "/assets/icon-3.png",  value: "20,000",       label: "Guests" },
+    ],
   },
   {
     id: "public",
     title: "Public Gatherings",
-    imageSrc: "/images/public-gathering.jpg",
+     imageSrc: "/assets/wedding.png",
     content: "Ideal for political rallies, concerts, and community events with massive capacity...",
-    stats: [],
+     stats: [
+      { iconSrc: "/assets/icon-1.png",  value: "5",           label: "Grand Halls" },
+      { iconSrc: "/assets/icon-2.png",  value: "25,000 sq", label: "Space" },
+      { iconSrc: "/assets/icon-3.png",  value: "20,000",       label: "Guests" },
+    ],
   },
 ];
 
@@ -108,7 +135,7 @@ const DesignedOccasion = () => {
                 className={[
                   "relative px-4 py-3 text-base md:text-lg font-medium transition-all duration-300",
                   isActive ? "text-primary" : "text-secondary hover:text-primary",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded",
+                  
                 ].join(" ")}
               >
                 {tab.title}
@@ -174,35 +201,53 @@ const DesignedOccasion = () => {
           </button>
         </div>
       </div>
-  <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-center">
-    {/* Title */}
-    <h2 className="font-secondary text-[28px] font-secondary leading-tight md:text-[40px] md:leading-[1.15] text-black">
-      Let’s Talk About Your Events
-    </h2>
-
-    {/* Subtext */}
-    <div className="mt-5 md:mt-6 space-y-2">
-      <p className="font-founders text-[14px] font-secondary md:text-[16px] text-black/70">
-        Let there be no confusion in finding the best place for your event.
-      </p>
-      <p className="font-founders text-[14px] font-secondary md:text-[16px] text-black/70">
-        Reach out to us and we will help you with quality and clarity.
-      </p>
-    </div>
-
-    {/* CTA: Direct Call */}
-    <div className="mt-8 md:mt-10">
-      <a
-        href="tel:+917708922599" /* 👈 change to your number */
-        aria-label="Call us now to enquire"
-        className="inline-flex items-center justify-center font-primary bg-primary px-6 md:px-8 py-3 text-white font-medium tracking-wide shadow-[0_1px_0_rgba(0,0,0,0.08)] hover:opacity-95 active:translate-y-px transition"
+   <motion.div
+      className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-center"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.35 }}
+    >
+      {/* Title */}
+      <motion.h2
+        className="font-secondary text-[28px] leading-tight md:text-[40px] md:leading-[1.15] text-black"
+        variants={item}
       >
-        ENQUIRE NOW
-      </a>
+        Let’s Talk About Your Events
+      </motion.h2>
 
-     
-    </div>
-  </div>
+      
+
+      {/* Subtext */}
+      <div className="mt-5 md:mt-6 space-y-2">
+        <motion.p
+          className="font-founders text-[14px] md:text-[16px] text-black/70"
+          variants={item}
+        >
+          Let there be no confusion in finding the best place for your event.
+        </motion.p>
+        <motion.p
+          className="font-founders text-[14px] md:text-[16px] text-black/70"
+          variants={item}
+        >
+          Reach out to us and we will help you with quality and clarity.
+        </motion.p>
+      </div>
+
+      {/* CTA: Direct Call */}
+      <motion.div className="mt-8 md:mt-10" variants={item}>
+        <motion.a
+          href="tel:+917708922599"
+          aria-label="Call us now to enquire"
+          className="inline-flex items-center justify-center bg-primary px-6 md:px-8 py-3 text-white font-medium tracking-wide hover:opacity-95 active:translate-y-px transition"
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ ease: easing, duration: 0.15 }}
+        >
+          ENQUIRE NOW
+        </motion.a>
+      </motion.div>
+    </motion.div>
     </section>
   );
 };

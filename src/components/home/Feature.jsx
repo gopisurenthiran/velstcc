@@ -20,7 +20,7 @@ const Feature = () => {
   };
 
   return (
-    <section className="relative flex items-center justify-center   text-white overflow-hidden">
+    <section className="relative flex items-center justify-center   text-white overflow-hidden" id="target-section">
         <div className="flex flex-col md:flex-row max-w-7xl mx-auto py-4 px-4 gap-8">
         
         {/* Left Section: Uses flex-1 to take equal space */}
