@@ -19,8 +19,8 @@ export default function GettingToVels() {
         <h2 className="font-secondary text-[28px] md:text-[40px] leading-tight text-black">
           Getting to VELS
         </h2>
-        <p className="mt-3 max-w-3xl text-[15px] md:text-[16px] text-black/70 font-founders">
-          Vels Trade & Convention Centre is located in the heart of Chennai, offering
+        <p className="mt-3 max-w-3xl text-[15px] md:text-lg text-black/70 font-primary">
+          Vels Trade & Convention Centre is located in the heart of Chennai, offering<br />
           seamless accessibility from the city’s key business and cultural hubs.
         </p>
 
@@ -56,10 +56,10 @@ export default function GettingToVels() {
                     loading="lazy"
                   />
                   <div className="leading-tight">
-                    <div className="font-founders font-semibold text-[16px] md:text-[18px] text-black">
+                    <div className="font-primary font-semibold text-[16px] md:text-[18px] text-black">
                       {it.title}
                     </div>
-                    <div className="font-founders text-[12.5px] md:text-[14px] text-black/70">
+                    <div className="font-primary text-[12.5px] md:text-lg text-black/70">
                       {it.sub}
                     </div>
                   </div>

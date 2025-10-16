@@ -17,6 +17,9 @@ import StatsGrid from "../components/home/StatsGrid";
 import designedoccasion from "../components/home/DesignedOccasion";
 import DesignedOccasion from "../components/home/DesignedOccasion";
 import Gettingtovels from "../components/home/Gettingtovels";
+import Events from "../components/home/Events";
+import Facilities from "../components/home/Facilities";
+import Faqs from "../components/home/Faqs";
 
 // Define the root canonical path here
 const canonicalPath = '/'; 
@@ -88,8 +91,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <StatsGrid />
                 <DesignedOccasion />
                 <Gettingtovels />
+                <Events />
+                <Facilities />
+                <Faqs />
                 {/* Main content area (This is where app/page.jsx or any other page component renders) */}
-                <main className="min-h-screen">{children}</main>
+                <main className="">{children}</main>
                 
                 <Footer />
             </body>
