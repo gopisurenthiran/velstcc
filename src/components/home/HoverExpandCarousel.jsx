@@ -30,7 +30,7 @@ export default function HoverExpandCarousel() {
   };
 
   return (
-    <section className="py-16 container mx-auto px-6 md:px-10 bg-white overflow-x-hidden">
+    <section className="py-16 mx-auto max-w-6xl container mx-auto px-6 md:px-10 bg-white overflow-x-hidden">
       {/* heading */}
       <div className="mb-8 max-w-2xl">
         <h2 className="text-[28px] sm:text-[34px] font-semibold tracking-tight font-secondary">

@@ -1,49 +1,33 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-/* --- ICONS --- */
+/* Icons */
 const MenuIcon = (props) => (
-  <svg
-    {...props}
-    xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="4" x2="20" y1="6" y2="6" />
     <line x1="4" x2="20" y1="12" y2="12" />
     <line x1="4" x2="20" y1="18" y2="18" />
   </svg>
 );
-
 const CloseIcon = (props) => (
-  <svg
-    {...props}
-    xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 6 6 18" />
     <path d="M6 6 18 18" />
   </svg>
 );
 
-/* --- MAIN NAVBAR --- */
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const [scrolled, setScrolled] = useState(false);
+  const toggleMenu = () => setIsOpen((v) => !v);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 6);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const navItems = [
     { href: "/designed", label: "Designed For Every Occasion" },
@@ -54,9 +38,15 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="bg-white shadow-sm w-full">
+    <header
+      className={[
+        "sticky top-0 z-50 w-full",
+        "bg-white/95 supports-[backdrop-filter]:bg-white/80 backdrop-blur",
+        scrolled ? "shadow-sm border-b border-black/5" : "",
+      ].join(" ")}
+    >
       <div className="max-w-7xl mx-auto flex item-auto justify-center relative py-4 px-6">
-        {/* ✅ CENTERED NAVIGATION TEXT */}
+        {/* centered nav */}
         <nav className="flex flex-wrap justify-center text-sm md:text-[15px] font-foundersgrotesk text-black/70 gap-12 text-center">
           {navItems.map((item, i) => (
             <Link
@@ -69,21 +59,17 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* ✅ RIGHT ALIGNED MENU ICON */}
+        {/* right hamburger */}
         <button
           onClick={toggleMenu}
           aria-label="Toggle menu"
           className="absolute right-6 flex flex-col justify-center items-center gap-[4px] w-8 h-8 rounded-md hover:bg-[#2A1C79]/5 transition"
         >
-          {isOpen ? (
-            <CloseIcon className="text-[#2A1C79]" />
-          ) : (
-            <MenuIcon className="text-[#2A1C79]" />
-          )}
+          {isOpen ? <CloseIcon className="text-[#2A1C79]" /> : <MenuIcon className="text-[#2A1C79]" />}
         </button>
       </div>
 
-      {/* ✅ MOBILE MENU DROPDOWN */}
+      {/* mobile dropdown */}
       {isOpen && (
         <div className="md:hidden border-t border-gray-100 bg-white">
           <div className="flex flex-col items-center space-y-2 py-3">

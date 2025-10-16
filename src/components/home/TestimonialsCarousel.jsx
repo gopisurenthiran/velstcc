@@ -71,7 +71,7 @@ export default function TestimonialsCarousel() {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="mx-auto max-w-6xl px-4 py-16">
       <div className="container mx-auto px-6 md:px-10">
         {/* Header */}
         <div className="flex items-start justify-between gap-6 mb-8">
