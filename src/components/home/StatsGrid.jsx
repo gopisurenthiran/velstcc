@@ -4,10 +4,10 @@ import React from "react";
 import Image from "next/image";
 
 // ✅ Import your icons (these will keep their original pixel size)
-import icon1 from "@/public/assets/icons/Block.png";
-import icon2 from "@/public/assets/icons/arrow.png";
-import icon3 from "@/public/assets/icons/Map pin.png";
-import icon4 from "@/public/assets/icons/Capa_1.png";
+import icon1 from "@/public/assets/icons/block.svg";
+import icon2 from "@/public/assets/icons/arrow.svg";
+import icon3 from "@/public/assets/icons/location.svg";
+import icon4 from "@/public/assets/icons/car.svg";
 
 // ✅ Stat data
 const statsData = [
@@ -46,9 +46,9 @@ const StatItem = ({ value, label, icon }) => (
 
 export default function StatsGrid() {
   return (
-    <section className="py-14 md:py-20 bg-white border-t border-gray-100">
+    <section className="py-14 md:py-20 bg-white ">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 text-center">
           {statsData.map((stat, i) => (
             <StatItem key={i} {...stat} />
           ))}

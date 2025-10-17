@@ -108,7 +108,7 @@ export default function Navbar() {
     >
      <div className="max-w-8xl mx-auto relative flex items-center justify-center py-4 px-6">
   {/* Centered desktop nav */}
-  <nav className="hidden md:flex justify-between w-full max-w-5xl text-sm md:text-[15px] font-primary text-black/70 text-center">
+  <nav className="hidden md:flex justify-between w-full max-w-8xl text-sm md:text-[16px] font-primary text-black/70 text-center">
     {navItems.map((item, i) => (
       <Link
         key={i}

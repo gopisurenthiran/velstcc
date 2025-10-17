@@ -72,7 +72,7 @@ export default function EventsExact() {
                     {/* image */}
                     <div
                       className={[
-                        "relative aspect-[4/3] overflow-hidden rounded-lg shadow-md transition-all duration-500 ease-out",
+                        "relative aspect-[4/3] overflow-hidden shadow-md transition-all duration-500 ease-out",
                         isActive ? "opacity-100 grayscale-0" : "opacity-40 grayscale contrast-75",
                       ].join(" ")}
                     >
@@ -110,7 +110,7 @@ export default function EventsExact() {
                         {ev.date}
                       </p>
  
-                      <div className={`mt-2 h-px w-32 ${isActive ? "bg-black/20" : "bg-black/10"}`} />
+                      <div className={`mt-2 h-px w-32 ${isActive ? "bg-primary" : "bg-primary"}`} />
  
                       <div className="mt-5 flex items-center">
                         <a
@@ -127,19 +127,7 @@ export default function EventsExact() {
                           EXPLORE MORE
                         </a>
  
-                        {/* → arrow only strong when active */}
-                        <button
-                          onClick={next}
-                          aria-label="Next"
-                          className={[
-                            "ml-6 inline-flex h-9 w-9 items-center justify-center rounded-full border transition",
-                            isActive
-                              ? "border-black/20 text-black hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-black/20"
-                              : "border-black/10 text-black/30 opacity-40 pointer-events-none",
-                          ].join(" ")}
-                        >
-                          <ArrowRight />
-                        </button>
+                   
                       </div>
                     </div>
                   </div>
@@ -154,14 +142,14 @@ export default function EventsExact() {
           <button
             onClick={prev}
             aria-label="Previous"
-            className="pointer-events-auto ml-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white/80 backdrop-blur hover:bg-white focus:outline-none focus:ring-2 focus:ring-black/20"
+            className="pointer-events-auto ml-1 inline-flex h-9 w-9 items-center justify-center text-primary"
           >
            <ArrowLeft />
           </button>
           <button
             onClick={next}
             aria-label="Next"
-            className="pointer-events-auto mr-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white/80 backdrop-blur hover:bg-white focus:outline-none focus:ring-2 focus:ring-black/20"
+            className="pointer-events-auto mr-1 inline-flex h-9 w-9 items-center justify-center text-primary"
           >
             <ArrowRight />
           </button>

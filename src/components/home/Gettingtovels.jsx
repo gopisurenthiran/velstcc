@@ -4,11 +4,11 @@ import Image from "next/image";
 
 /* Replace with your real files (kept as examples) */
 const ITEMS = [
-  { icon: "/assets/plane.png",  title: "4KM",  sub: "from the airport" },
-  { icon: "/assets/plane.png",  title: "4KM",  sub: "from the upcoming new parandur airport" },
-  { icon: "/assets/train.png",    title: "4KM",  sub: "from the upcoming new thirumazhisai metro" },
-  { icon: "/assets/bus.png",      title: "MTC Buses to VELS City", sub: "Monday – Sunday, from 6 AM – 9 PM" },
-  { icon: "/assets/car.png",  title: "Seamlessly navigable",   sub: "on all map apps" },
+  { icon: "/assets/plane.svg",  title: "4KM",  sub: "from the airport" },
+  { icon: "/assets/plane.svg",  title: "4KM",  sub: "from the upcoming new parandur airport" },
+  { icon: "/assets/train.svg",    title: "4KM",  sub: "from the upcoming new thirumazhisai metro" },
+  { icon: "/assets/bus.svg",      title: "MTC Buses to VELS City", sub: "Monday – Sunday, from 6 AM – 9 PM" },
+  { icon: "/assets/car.svg",  title: "Seamlessly navigable",   sub: "on all map apps" },
 ];
 
 export default function GettingToVels() {

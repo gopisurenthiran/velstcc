@@ -37,9 +37,9 @@ const tabData = [
     content:
       "From intimate ceremonies to grand celebrations, our venue transforms into the perfect setting for unforgettable memories. Expect décor, premium hospitality, and seamless arrangements for your special day.",
     stats: [
-      { iconSrc: "/assets/icon-1.png",  value: "5",           label: "Grand Halls" },
-      { iconSrc: "/assets/icon-2.png",  value: "25,000 sq", label: "Space" },
-      { iconSrc: "/assets/icon-3.png",  value: "20,000",       label: "Guests" },
+      { iconSrc: "/assets/icon-1.svg",  value: "5",           label: "Grand Halls" },
+      { iconSrc: "/assets/icon-2.svg",  value: "25,000 sq", label: "Space" },
+      { iconSrc: "/assets/icon-3.svg",  value: "20,000",       label: "Guests" },
     ],
   },
   {
@@ -49,9 +49,9 @@ const tabData = [
     content:
       "Host regional and international trade shows with ease. Our expansive, pillar-free space is designed for high foot traffic and massive installations, offering full logistics support and custom booth arrangements.",
    stats: [
-      { iconSrc: "/assets/icon-1.png",  value: "5",           label: "Grand Halls" },
-      { iconSrc: "/assets/icon-2.png",  value: "25,000 sq", label: "Space" },
-      { iconSrc: "/assets/icon-3.png",  value: "20,000",       label: "Guests" },
+      { iconSrc: "/assets/icon-1.svg",  value: "5",           label: "Grand Halls" },
+      { iconSrc: "/assets/icon-2.svg",  value: "25,000 sq", label: "Space" },
+      { iconSrc: "/assets/icon-3.svg",  value: "20,000",       label: "Guests" },
     ],
   },
   {
@@ -60,9 +60,9 @@ const tabData = [
     imageSrc: "/assets/wedding.png",
     content: "Dedicated spaces for large-scale corporate events and product launches...",
     stats: [
-      { iconSrc: "/assets/icon-1.png",  value: "5",           label: "Grand Halls" },
-      { iconSrc: "/assets/icon-2.png",  value: "25,000 sq", label: "Space" },
-      { iconSrc: "/assets/icon-3.png",  value: "20,000",       label: "Guests" },
+      { iconSrc: "/assets/icon-1.svg",  value: "5",           label: "Grand Halls" },
+      { iconSrc: "/assets/icon-2.svg",  value: "25,000 sq", label: "Space" },
+      { iconSrc: "/assets/icon-3.svg",  value: "20,000",       label: "Guests" },
     ],
   },
   {
@@ -71,9 +71,9 @@ const tabData = [
      imageSrc: "/assets/wedding.png",
     content: "Ideal for political rallies, concerts, and community events with massive capacity...",
      stats: [
-      { iconSrc: "/assets/icon-1.png",  value: "5",           label: "Grand Halls" },
-      { iconSrc: "/assets/icon-2.png",  value: "25,000 sq", label: "Space" },
-      { iconSrc: "/assets/icon-3.png",  value: "20,000",       label: "Guests" },
+      { iconSrc: "/assets/icon-1.svg",  value: "5",           label: "Grand Halls" },
+      { iconSrc: "/assets/icon-2.svg",  value: "25,000 sq", label: "Space" },
+      { iconSrc: "/assets/icon-3.svg",  value: "20,000",       label: "Guests" },
     ],
   },
 ];

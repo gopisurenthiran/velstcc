@@ -56,7 +56,7 @@ export default function TestimonialsCarousel() {
         "Impeccable coordination and premium amenities. Our conference ran flawlessly from start to finish.",
       name: "V. Lakshmi",
       role: "Conference Chair",
-      image: "/assets/Testimonials-img-1.png",
+      image: "/assets/boy.png",
       color: "bg-[#D64545]",
     },
     {
@@ -65,7 +65,7 @@ export default function TestimonialsCarousel() {
         "Spacious halls, great lighting, and excellent staff support. Highly recommended for large events.",
       name: "Rahul Iyer",
       role: "Producer",
-      image: "/assets/Testimonials-img-2.png",
+      image: "/assets/girl.png",
       color: "bg-[#F5B942]",
     },
   ];
@@ -129,7 +129,7 @@ export default function TestimonialsCarousel() {
                         alt={t.name}
                         width={320}
                         height={320}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full"
                         priority={t.id === 1}
                       />
                     </div>
