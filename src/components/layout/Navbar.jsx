@@ -106,57 +106,62 @@ export default function Navbar() {
         scrolled ? "shadow-sm border-b border-black/5" : "",
       ].join(" ")}
     >
-      <div className="max-w-7xl mx-auto relative flex items-center justify-center py-4 px-6">
-        {/* Centered desktop nav */}
-        <nav className="hidden md:flex flex-wrap justify-center text-sm md:text-[15px] font-foundersgrotesk text-black/70 gap-12 text-center">
-          {navItems.map((item, i) => (
-            <Link
-              key={i}
-              href={item.href}
-              className="hover:text-[#2A1C79] transition-colors duration-200"
-            >
-              {item.label}
-            </Link>
+     <div className="max-w-8xl mx-auto relative flex items-center justify-center py-4 px-6">
+  {/* Centered desktop nav */}
+  <nav className="hidden md:flex justify-between w-full max-w-5xl text-sm md:text-[15px] font-primary text-black/70 text-center">
+    {navItems.map((item, i) => (
+      <Link
+        key={i}
+        href={item.href}
+        className="flex-1 hover:text-[#2A1C79] transition-colors duration-200"
+      >
+        {item.label}
+      </Link>
+    ))}
+  </nav>
+
+  {/* Hamburger */}
+  <div className="absolute right-6 top-1/2 -translate-y-1/2 z-[60]">
+    <button
+      ref={buttonRef}
+      onClick={toggleMenu}
+      aria-label="Toggle menu"
+      aria-expanded={isOpen}
+      className="flex items-center justify-center w-9 h-9 rounded-md hover:bg-[#2A1C79]/5 transition"
+    >
+      {isOpen ? (
+        <CloseIcon className="text-[#2A1C79]" />
+      ) : (
+        <MenuIcon className="text-[#2A1C79]" />
+      )}
+    </button>
+
+    {/* Desktop Quick Dropdown */}
+    {!isMobile && isOpen && (
+      <nav
+        id="desktop-quick-dropdown"
+        role="menu"
+        className="absolute right-0 mt-3 min-w-[200px] rounded-md border border-black/10 bg-white shadow-lg overflow-hidden"
+      >
+        <ul className="py-1 text-sm text-black/80">
+          {quickItems.map((q, i) => (
+            <li key={i}>
+              <Link
+                href={q.href}
+                className="block px-4 py-2 hover:bg-black/5"
+                role="menuitem"
+                onClick={closeMenu}
+              >
+                {q.label}
+              </Link>
+            </li>
           ))}
-        </nav>
+        </ul>
+      </nav>
+    )}
+  </div>
+</div>
 
-        {/* Hamburger */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 z-[60]">
-          <button
-            ref={buttonRef}
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-            className="flex items-center justify-center w-9 h-9 rounded-md hover:bg-[#2A1C79]/5 transition"
-          >
-            {isOpen ? <CloseIcon className="text-[#2A1C79]" /> : <MenuIcon className="text-[#2A1C79]" />}
-          </button>
-
-          {/* DESKTOP quick dropdown (About/Services/Contact) */}
-          {!isMobile && isOpen && (
-            <nav
-              id="desktop-quick-dropdown"
-              role="menu"
-              className="absolute right-0 mt-3 min-w-[200px] rounded-md border border-black/10 bg-white shadow-lg overflow-hidden"
-            >
-              <ul className="py-1 text-sm text-black/80">
-                {quickItems.map((q, i) => (
-                  <li key={i}>
-                    <Link
-                      href={q.href}
-                      className="block px-4 py-2 hover:bg-black/5"
-                      role="menuitem"
-                      onClick={closeMenu}
-                    >
-                      {q.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          )}
-        </div>
-      </div>
 
       {/* MOBILE: overlay + right-side drawer */}
       {isMobile && isOpen && (

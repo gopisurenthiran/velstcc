@@ -20,7 +20,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full h-[600px] flex items-center justify-center text-white overflow-hidden min-h-screen">
+    <section className="relative w-full  flex items-center justify-center text-white overflow-hidden min-h-screen">
         <Image
         src={herobanner} // 👈 Adjust path to your image
         alt="Vels Trade and Convenience Center Grand Entrance"

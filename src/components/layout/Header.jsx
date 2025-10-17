@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import velsLogo from "@/public/assets/logo.png";
+import velsLogo from "@/public/assets/vels-logo.svg";
 export default function Header() {
     return (
         <header className="w-full bg-white shadow-sm">
