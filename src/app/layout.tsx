@@ -9,19 +9,7 @@ import localFont from "next/font/local";
 import CanonicalLink from '../components/layout/CanonicalLink'; // Assuming this component exists
 
 // 🚨 NOTE: These imports should ideally be in app/page.jsx
-import Hero from "../components/home/Hero";
-import Feature from "../components/home/Feature";
 
-import StatsGrid from "../components/home/StatsGrid";
-
-import designedoccasion from "../components/home/DesignedOccasion";
-import DesignedOccasion from "../components/home/DesignedOccasion";
-import Gettingtovels from "../components/home/Gettingtovels";
-import Events from "../components/home/Events";
-import Facilities from "../components/home/Facilities";
-import Faqs from "../components/home/Faqs";
-import HoverExpandCarousel from "../components/home/HoverExpandCarousel";
-import TestimonialsCarousel from "../components/home/TestimonialsCarousel";
 
 // Define the root canonical path here
 const canonicalPath = '/'; 
@@ -84,20 +72,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
             {/* 🚀 FIX: Changed 'bg-white-100' to the correct Tailwind class 'bg-white' */}
             <body className="bg-white text-gray-900 font-sans">
                 
-                <Header />
+               <Header />
                 <Navbar />
-                
-                {/* Components rendered globally (will appear on ALL pages) */}
-                <Hero />
-                <Feature />
-                <StatsGrid />
-                <DesignedOccasion />
-                <Gettingtovels />
-                <Events />
-                <Facilities />            
-                <TestimonialsCarousel />
-                <HoverExpandCarousel />
-                <Faqs />
                 {/* Main content area (This is where app/page.jsx or any other page component renders) */}
                 <main className="">{children}</main>
                 
