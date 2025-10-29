@@ -23,13 +23,9 @@ const Feature = () => {
     <section className="relative flex items-center justify-center   text-white overflow-hidden" id="target-section">
         <div className="flex flex-col md:flex-row max-w-7xl mx-auto py-4 px-4 gap-8">
         
-        {/* Left Section: Uses flex-1 to take equal space */}
+        
        <div className="flex-1 p-8  rounded-lg overflow-hidden">
-    {/* The image needs specific props and classes to fill the container:
-        1. fill={true} (or layout="fill" in older Next.js) for max size control.
-        2. object-cover or object-contain to control cropping/scaling.
-        3. A wrapper div with defined height is needed if you use 'fill'. 
-    */}
+ 
     
     <div className="relative w-full h-full min-h-[300px] md:min-h-[400px]">
                 <Image
