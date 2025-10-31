@@ -40,7 +40,7 @@ export default function Navbar() {
   const theatre = { href: "/theatre", label: "VELS Theatre" };
   const filmCity = [
     { href: "/film-city-indoor", label: "VELS Film City Indoor" },
-    { href: "/film-city-outdoor", label: "VELS Film City Outdoor" },
+    { href: "outdoor", label: "VELS Film City Outdoor" },
   ];
 
   const quickItems = [
