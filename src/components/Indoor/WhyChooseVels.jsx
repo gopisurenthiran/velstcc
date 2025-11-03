@@ -31,28 +31,28 @@ const PrevArrow = ({ onClick }) => (
 /* ----------  Slide Data ---------- */
 const slides = [
   {
-    title: "Expansive & Adaptable Spaces ",
+    title: "Soundproofed for Storytelling",
     description:
-      "From grand outdoor sets to versatile indoor studios, our 75-acre campus offers endless possibilities for film, television, and commercial shoots.",
+      "Our state-of-the-art soundproof studios let directors capture emotion without interruption, where silence enhances every shot.",
     image: "/assets/why-1.png",
   },
   {
-    title: "World-Class Production Infrastructure ",
+    title: "Lighting that Paints Emotions",
     description:
-      "Equipped with advanced lighting, acoustics, and soundproof studios, VELS Film City ensures a seamless filmmaking experience, from script to screen. ",
+      "Equipped with adjustable grid lighting and cinematic illumination setups, our indoor spaces bring every frame to life with unmatched visual clarity.",
     image: "/assets/why-2.png",
   },
   {
-    title: "Skilled Technical & Creative Talent",
+    title: "Scalable Sets. Seamless Transitions. ",
     description:
-      "Backed by VELS University’s media and film departments, our trained professionals provide expertise in cinematography, set design, editing, and post-production. ",
+      "From courtroom dramas to cosmic adventures, transform any space within hours. Flexible architecture enables quick set builds and smooth production flow.",
     image: "/assets/why-3.png",
   },
   {
-    title: "Seamless Connectivity & Support ",
+    title: "Controlled Climate. Continuous Creativity.",
     description:
-      "Strategically located with easy access to airports, highways, and luxury accommodations, VELS Film City ensures convenience and continuity at every stage of production. ",
-    image: "/assets/why-2.png",
+      "Advanced temperature control and ventilation systems ensure comfort for long shooting hours, so creativity never breaks a sweat.",
+    image: "/assets/indian-2.png",
   },
 ];
 
@@ -116,11 +116,11 @@ export default function WhyChooseVels() {
         {/* ---------- Heading ---------- */}
         <div className="text-left mb-10">
           <h2 className="text-3xl font-semibold text-black font-secondary">
-            Why Choose Vels Film City?
+            Spaces that Bring Scripts to Life 
           </h2>
           <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"></div>
           <p className="text-gray-600 mt-2 text-sm md:text-base font-primary">
-          Where imagination meets infrastructure, and every frame finds its canvas. VELS Film City brings together scale, skill, and sophistication, designed for filmmakers who dream beyond limits. 
+          At Vels Film City, every indoor set is crafted to capture imagination and deliver perfection. Designed for scale, precision, and storytelling excellence, these are the spaces where cinema finds its rhythm. 
           </p>
         </div>
 
@@ -187,13 +187,13 @@ export default function WhyChooseVels() {
       </div>
         <div className="max-w-4xl mx-auto text-center px-4 py-20">
     <h2 className="text-2xl md:text-3xl font-semibold text-black mb-3 font-secondary">
-      Plan Your Next Outdoor Shoot 
+      Plan Your Indoor Shoot
     </h2>
 
 
     <p className="text-gray-600 text-sm md:text-base mb-6 font-primary">
      
-Schedule your shoot effortlessly, from power and dining to logistics, everything you need is right here. 
+Planning a shoot? Check availability or schedule a recce.
     </p>
 
     <button className="bg-[#1E2A78] text-white text-xs font-primary font-semibold px-5 py-2 rounded">

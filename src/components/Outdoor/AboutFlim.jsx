@@ -6,44 +6,48 @@ import { useEffect, useRef, useState } from "react";
 
 const ROTATE_MS = 4000; // autoplay speed (ms)
 
+// If you don't have separate images yet, all can point to the same file.
+// Make sure files are under /public/
 const facilities = [
   {
     title: "Restaurants",
     desc:
-      "On-site and nearby restaurants offering diverse cuisines for cast, crew, and guests.",
+      "Choose from on-site and nearby restaurants serving a diverse range of cuisines — perfect for cast, crew, and guests.",
     image: "/assets/facilities.png",
   },
   {
     title: "ATM Facility",
-    desc: "On-premises cash withdrawal and banking services.",
+    desc:
+      "Enjoy on-premises access to cash withdrawal and essential banking services.",
     image: "/assets/facilities.png",
   },
   {
     title: "Makeup Rooms",
     desc:
-      "Spacious, fully lit rooms with mirrors, dressing stations, and storage for costumes and accessories.",
+      "Spacious, fully equipped rooms with mirrors, dressing stations, and dedicated storage for costumes and accessories.",
     image: "/assets/facilities.png",
   },
   {
     title: "Cafeterias and Food Court",
     desc:
-      "Dining spaces serving freshly prepared meals, snacks, and beverages for varied tastes and dietary needs.",
+      "Relax and recharge at our dining spaces offering freshly prepared meals, snacks, and beverages to suit every palate.",
     image: "/assets/facilities.png",
   },
   {
     title: "Lavatories",
-    desc: "Clean, well-maintained sanitary blocks for male and female staff.",
+    desc:
+      "Clean, well-maintained sanitary facilities for both male and female staff, ensuring hygiene and comfort throughout your shoot.",
     image: "/assets/facilities.png",
   },
 ];
 
-export default function Facilities() {
+export default function AboutFlim() {
   const [active, setActive] = useState(0);
   const [imgReady, setImgReady] = useState(true); // ✅ show first image immediately
   const [paused, setPaused] = useState(false);
-  const timerRef = useRef(null);
+  const timerRef = useRef(null); // ✅ JS-safe
 
-  // autoplay (unchanged design)
+  // autoplay
   useEffect(() => {
     if (paused) return;
     if (timerRef.current) clearInterval(timerRef.current);
@@ -63,11 +67,12 @@ export default function Facilities() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="mb-10">
-        <h2 className="text-5xl tracking-tight text-black font-secondary">
-          All About Vel Conventional
+        <h2 className="text-3xl tracking-tight text-black font-secondary">
+          Vels Film City: Where Vision Finds Space&nbsp;
         </h2>
+        <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"></div>
         <p className="mt-5 text-black/70 font-primary text-2xl">
-          Everything our guests need.
+          Where every detail is designed for comfort, convenience, and creativity.&nbsp;
         </p>
       </div>
 
@@ -81,7 +86,7 @@ export default function Facilities() {
                 key={item.title}
                 onClick={() => {
                   setActive(i);
-                  setImgReady(false); // fade when user clicks
+                  setImgReady(false); // trigger fade when clicking
                 }}
                 className={[
                   "text-left rounded-md p-5 transition",
@@ -108,7 +113,7 @@ export default function Facilities() {
             <div className="relative aspect-[4/3] w-full">
               <Image
                 key={active} // force fade per change
-                src={facilities[active].image || "/assets/facilities.png"}
+                src={facilities[active].image || "/assets/facilities.png"} // fallback to single image
                 alt={facilities[active].title}
                 fill
                 className={[
@@ -116,7 +121,7 @@ export default function Facilities() {
                   imgReady ? "opacity-100" : "opacity-0",
                 ].join(" ")}
                 priority
-                onLoadingComplete={() => setImgReady(true)} // ✅ reveal as soon as it’s ready
+                onLoadingComplete={() => setImgReady(true)} // ✅ reveal when ready
               />
             </div>
           </div>

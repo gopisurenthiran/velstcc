@@ -39,7 +39,7 @@ export default function Navbar() {
   // Megamenu content
   const theatre = { href: "/theatre", label: "VELS Theatre" };
   const filmCity = [
-    { href: "/film-city-indoor", label: "VELS Film City Indoor" },
+    { href: "indoor", label: "VELS Film City Indoor" },
     { href: "outdoor", label: "VELS Film City Outdoor" },
   ];
 

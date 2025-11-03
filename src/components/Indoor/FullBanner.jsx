@@ -31,8 +31,8 @@ const PrevArrow = ({ onClick }) => (
 /* ---------- Slides Data ---------- */
 const slides = [
   {
-    title: "Outdoor",
-    subtitle: "Crafted for creators who demand perfection, rain or shine",
+    title: "Indoor Studios ",
+    subtitle: "Every detail designed to make your indoor shoot effortless and extraordinary ",
     image: "/assets/360.png",
   },
   {

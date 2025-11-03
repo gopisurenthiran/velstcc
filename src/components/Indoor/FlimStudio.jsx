@@ -28,11 +28,11 @@ const PrevArrow = ({ onClick }) => (
 
 // Studio logos
 const studios = [
-  { img: "/assets/flim-1.png", alt: "Bhavana Studios" },
-  { img: "/assets/flim-2.png", alt: "Lyca Productions" },
-  { img: "/assets/flim-3.png", alt: "Z Studios" },
-  { img: "/assets/flim-2.png", alt: "Sun Pictures" },
-  { img: "/assets/flim-1.png", alt: "Rajkamal Films" },
+  { img: "/assets/biggboss-1.png", alt: "Bhavana Studios" },
+  { img: "/assets/biggboss-2.png", alt: "Lyca Productions" },
+  { img: "/assets/biggboss-3.png", alt: "Z Studios" },
+  { img: "/assets/biggboss-2.png", alt: "Sun Pictures" },
+  { img: "/assets/biggboss-1.png", alt: "Rajkamal Films" },
 ];
 
 export default function FilmStudio() {
@@ -63,11 +63,11 @@ export default function FilmStudio() {
     <section className="py-16 bg-white text-center relative">
       {/* Section title */}
       <h2 className="text-2xl md:text-3xl font-semibold font-secondary text-black">
-       India’s Premier Destination for Filmmakers 
+      Frames that Captivate Millions
       </h2>
       <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4 mx-auto"></div>
       <p className="text-gray-600 text-sm md:text-base font-primary mt-2">
-      Every frame finds its moment, from serials to reality shows and Grand Premiers 
+      From captivating dramas to reality sensations, our stages have set the scene for stories that resonate nationwide.
       </p>
 
       {/* Slider */}

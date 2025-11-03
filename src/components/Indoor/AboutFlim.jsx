@@ -6,50 +6,54 @@ import { useEffect, useRef, useState } from "react";
 
 const ROTATE_MS = 4000; // autoplay speed (ms)
 
+// If you don't have separate images yet, all can point to the same file.
+// Make sure files are under /public/
 const facilities = [
   {
     title: "Restaurants",
     desc:
-      "On-site and nearby restaurants offering diverse cuisines for cast, crew, and guests.",
+      "From gourmet spreads to quick bites, our on-site and nearby restaurants cater to every palate, ensuring your cast, crew, and guests stay fueled through every frame.",
     image: "/assets/facilities.png",
   },
   {
     title: "ATM Facility",
-    desc: "On-premises cash withdrawal and banking services.",
+    desc:
+      "Convenient on-premise banking access for seamless transactions and cash withdrawals, because every production runs best when essentials are effortless.",
     image: "/assets/facilities.png",
   },
   {
     title: "Makeup Rooms",
     desc:
-      "Spacious, fully lit rooms with mirrors, dressing stations, and storage for costumes and accessories.",
+      "Spacious, well-lit, and thoughtfully designed rooms equipped with mirrors, dressing stations, and storage for costumes and accessories, where transformation begins before the camera rolls.",
     image: "/assets/facilities.png",
   },
   {
     title: "Cafeterias and Food Court",
     desc:
-      "Dining spaces serving freshly prepared meals, snacks, and beverages for varied tastes and dietary needs.",
+      "Vibrant dining spaces serving freshly prepared meals, snacks, and beverages to suit diverse tastes and dietary preferences, a perfect pause between scenes.",
     image: "/assets/facilities.png",
   },
   {
     title: "Lavatories",
-    desc: "Clean, well-maintained sanitary blocks for male and female staff.",
+    desc:
+      "Hygienic, well-maintained, and thoughtfully located sanitary facilities for male and female staff, ensuring comfort behind the scenes matches the brilliance on screen.",
     image: "/assets/facilities.png",
   },
 ];
 
-export default function Facilities() {
+export default function AboutFlim() {
   const [active, setActive] = useState(0);
   const [imgReady, setImgReady] = useState(true); // ✅ show first image immediately
   const [paused, setPaused] = useState(false);
-  const timerRef = useRef(null);
+  const timerRef = useRef(null); // ✅ JS-safe
 
-  // autoplay (unchanged design)
+  // autoplay
   useEffect(() => {
     if (paused) return;
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setActive((i) => (i + 1) % facilities.length);
-      setImgReady(false); // fade next image in
+      setImgReady(false); // fade-in next image
     }, ROTATE_MS);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -63,11 +67,12 @@ export default function Facilities() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="mb-10">
-        <h2 className="text-5xl tracking-tight text-black font-secondary">
-          All About Vel Conventional
+        <h2 className="text-3xl tracking-tight text-black font-secondary">
+          Vels Film City: Where Vision Finds Space
         </h2>
+        <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"></div>
         <p className="mt-5 text-black/70 font-primary text-2xl">
-          Everything our guests need.
+          Everything your crew needs, perfectly within reach.
         </p>
       </div>
 
@@ -81,7 +86,7 @@ export default function Facilities() {
                 key={item.title}
                 onClick={() => {
                   setActive(i);
-                  setImgReady(false); // fade when user clicks
+                  setImgReady(false); // trigger fade for clicked item
                 }}
                 className={[
                   "text-left rounded-md p-5 transition",
@@ -91,9 +96,7 @@ export default function Facilities() {
                 ].join(" ")}
                 aria-current={isActive ? "true" : undefined}
               >
-                <h3 className="font-secondary text-xl  text-black">
-                  {item.title}
-                </h3>
+                <h3 className="font-secondary text-xl text-black">{item.title}</h3>
                 <p className="mt-2 text-md leading-relaxed text-black/70 font-primary">
                   {item.desc}
                 </p>
@@ -108,15 +111,15 @@ export default function Facilities() {
             <div className="relative aspect-[4/3] w-full">
               <Image
                 key={active} // force fade per change
-                src={facilities[active].image || "/assets/facilities.png"}
+                src={facilities[active].image || "/assets/facilities.png"} // fallback to single image
                 alt={facilities[active].title}
                 fill
                 className={[
-                  " transition-opacity duration-500",
+                  "transition-opacity duration-500",
                   imgReady ? "opacity-100" : "opacity-0",
                 ].join(" ")}
                 priority
-                onLoadingComplete={() => setImgReady(true)} // ✅ reveal as soon as it’s ready
+                onLoadingComplete={() => setImgReady(true)} // ✅ reveal when ready
               />
             </div>
           </div>
