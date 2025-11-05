@@ -33,12 +33,12 @@ const features = [
 export default function SpecialFeatures() {
   return (
     <section className="py-16 bg-white">
-      <div className=" mb-10">
-        <h2 className="text-2xl md:text-4xl font-secondary  text-gray-900 px-10">
+      <div className="max-w-6xl mx-auto mb-10">
+        <h2 className="  text-2xl md:text-4xl font-secondary  text-gray-900 px-10">
            The Vels Signature 
         </h2>
         <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4 ml-10"></div>
-      </div>
+      </div>  
 
       <div
         className="

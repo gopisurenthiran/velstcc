@@ -74,7 +74,7 @@ export default function VisionMission() {
         </div>
       </div>
     </section>
-    <div className="w-full bg-[#F9F9F9] py-24 px-6 md:px-16 lg:px-24">
+    <div className="max-w-7xl mx-auto w-full bg-[#F9F9F9] py-24 px-6 md:px-16 lg:px-24">
       <div className="max-w-8xl mx-auto">
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-secondary text-black mb-4">

@@ -41,8 +41,8 @@ export default function AwardsSection() {
   const gold = "#CAA04C";
 
   return (
-    <section className="bg-white py-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 lg:px-12 relative">
+    <section className="max-w-6xl mx-auto bg-white py-20 overflow-hidden">
+      <div className=" px-6 lg:px-12 relative">
         {/* Title & Arrows */}
         <div className="flex justify-between items-center mb-12">
           <div>

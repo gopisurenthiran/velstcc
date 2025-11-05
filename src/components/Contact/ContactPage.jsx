@@ -164,7 +164,7 @@ export default function ContactTabs() {
       </section>
 
       {/* Event Enquiry Section */}
-      <section className="max-w-3xl mx-auto px-4 pb-20">
+      <section className="max-w-3xl mx-auto px-4 pb-10">
         <h2 className="text-2xl font-semibold font-secondary mb-2">
           Event Enquiry
         </h2>
