@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion"; // ✅ Added for animation
 
 // ✅ Import your icons
 import icon1 from "@/public/assets/icons/block.svg";
@@ -16,11 +17,25 @@ const statsData = [
   { value: "4K | Dolby", label: "4K Ultra-HD, Dolby Atmos", icon: icon4 },
 ];
 
-// ✅ Reusable stat item
-const StatItem = ({ value, label, icon }) => (
-  <div className="flex flex-col items-center justify-center text-center px-4">
+// ✅ Reusable stat item with animation
+const StatItem = ({ value, label, icon, index }) => (
+  <motion.div
+    className="flex flex-col items-center justify-center text-center px-4"
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{
+      duration: 0.6,
+      ease: "easeOut",
+      delay: index * 0.15, // subtle stagger for each item
+    }}
+    viewport={{ once: true }}
+  >
     {/* Icon */}
-    <div className="mb-3 flex justify-center">
+    <motion.div
+      className="mb-3 flex justify-center"
+      whileHover={{ scale: 1.1 }}
+      transition={{ type: "spring", stiffness: 200 }}
+    >
       <Image
         src={icon}
         alt={label}
@@ -28,7 +43,7 @@ const StatItem = ({ value, label, icon }) => (
         priority
         className="inline-block w-10 h-10 object-contain"
       />
-    </div>
+    </motion.div>
 
     {/* Value */}
     <div className="text-xl md:text-2xl font-semibold text-black leading-snug">
@@ -39,19 +54,25 @@ const StatItem = ({ value, label, icon }) => (
     <p className="mt-1 text-base md:text-lg text-black/80 font-medium font-primary">
       {label}
     </p>
-  </div>
+  </motion.div>
 );
 
 export default function Stats() {
   return (
-    <section className="py-14 md:py-20 bg-white">
+    <motion.section
+      className="py-14 md:py-20 bg-white"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 text-center gap-y-10 md:gap-y-0">
           {statsData.map((stat, i) => (
-            <StatItem key={i} {...stat} />
+            <StatItem key={i} {...stat} index={i} />
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

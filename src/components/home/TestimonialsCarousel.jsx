@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { motion } from "framer-motion";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -81,16 +82,22 @@ export default function TestimonialsCarousel() {
       <div className="container mx-auto px-6 md:px-10">
         {/* Header */}
         <div className="mb-8 flex items-start justify-between gap-6">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-4xl text-gray-900 font-secondary">
-              Testimonial
-            </h2>
-            <p className="mt-4 text-lg text-gray-600 font-primary">
-              Vels Trade & Convention Centre is located in the heart of Chennai,
-              offering <br /> seamless accessibility from the city's key business and
-              cultural hubs.
-            </p>
-          </div>
+         <motion.div
+  className="max-w-2xl"
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true }} // animation plays only once when in view
+>
+  <h2 className="text-4xl md:text-4xl text-gray-900 font-secondary">
+    Testimonial
+  </h2>
+  <p className="mt-4 text-lg text-gray-600 font-primary">
+    Vels Trade & Convention Centre is located in the heart of Chennai,
+    offering <br /> seamless accessibility from the city's key business and
+    cultural hubs.
+  </p>
+</motion.div>
 
           {/* Arrow controls (top-right) */}
           <div className="mt-2 flex items-center gap-2">
@@ -127,7 +134,7 @@ export default function TestimonialsCarousel() {
                     shrink-0
                   "
                 >
-                  <article className="group flex h-full flex-col items-stretch overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition hover:shadow-md md:flex-row-reverse">
+                  <article className="group flex h-full flex-col items-stretch overflow-hidden  border border-gray-200 bg-white shadow-sm transition hover:shadow-md md:flex-row-reverse">
                     {/* Right: Image on accent color (kept simple; add t.color if desired) */}
                     <div className="grid w-full place-items-center md:w-1/3">
                       <Image
@@ -135,7 +142,7 @@ export default function TestimonialsCarousel() {
                         alt={t.name}
                         width={320}
                         height={320}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full"
                         priority={t.id === 1}
                       />
                     </div>

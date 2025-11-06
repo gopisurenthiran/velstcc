@@ -1,13 +1,11 @@
-// app/components/Facilities.jsx
 "use client";
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ROTATE_MS = 4000; // autoplay speed (ms)
 
-// If you don't have separate images yet, all can point to the same file.
-// Make sure files are under /public/
 const facilities = [
   {
     title: "Restaurants",
@@ -43,22 +41,36 @@ const facilities = [
 
 export default function AboutFlim() {
   const [active, setActive] = useState(0);
-  const [imgReady, setImgReady] = useState(true); // ✅ show first image immediately
+  const [imgReady, setImgReady] = useState(true);
   const [paused, setPaused] = useState(false);
-  const timerRef = useRef(null); // ✅ JS-safe
+  const timerRef = useRef(null);
 
-  // autoplay
+  // Autoplay logic
   useEffect(() => {
     if (paused) return;
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setActive((i) => (i + 1) % facilities.length);
-      setImgReady(false); // fade next image in
+      setImgReady(false);
     }, ROTATE_MS);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
+    return () => clearInterval(timerRef.current);
   }, [paused]);
+
+  /* ---------- Animation Variants ---------- */
+  const fadeUp = {
+    hidden: { opacity: 0, y: 25 },
+    show: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] },
+    }),
+  };
+
+  const fadeImage = {
+    hidden: { opacity: 0, scale: 1.03 },
+    show: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
+    exit: { opacity: 0, scale: 1.02, transition: { duration: 0.5 } },
+  };
 
   return (
     <section
@@ -66,28 +78,66 @@ export default function AboutFlim() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="mb-10">
-        <h2 className="text-3xl tracking-tight text-black font-secondary">
-          Vels Film City: Where Vision Finds Space&nbsp;
-        </h2>
-        <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"></div>
-        <p className="mt-5 text-black/70 font-primary text-2xl">
-          Where every detail is designed for comfort, convenience, and creativity.&nbsp;
-        </p>
-      </div>
+      {/* Heading Section */}
+      <motion.div
+        className="mb-10"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: {},
+          show: { transition: { staggerChildren: 0.15 } },
+        }}
+      >
+        <motion.h2
+          className="text-3xl tracking-tight text-black font-secondary"
+          variants={fadeUp}
+          custom={0}
+        >
+          Vels Film City: Where Vision Finds Space
+        </motion.h2>
+
+        <motion.div
+          className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          style={{ transformOrigin: "left" }}
+          viewport={{ once: true }}
+        ></motion.div>
+
+        <motion.p
+          className="mt-5 text-black/70 font-primary text-2xl"
+          variants={fadeUp}
+          custom={1}
+        >
+          Where every detail is designed for comfort, convenience, and creativity.
+        </motion.p>
+      </motion.div>
 
       <div className="grid items-start gap-10 md:grid-cols-2">
-        {/* LEFT LIST */}
-        <div className="flex flex-col gap-4">
+        {/* LEFT LIST with staggered animation */}
+        <motion.div
+          className="flex flex-col gap-4"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.1 } },
+          }}
+        >
           {facilities.map((item, i) => {
             const isActive = i === active;
             return (
-              <button
+              <motion.button
                 key={item.title}
                 onClick={() => {
                   setActive(i);
-                  setImgReady(false); // trigger fade when clicking
+                  setImgReady(false);
                 }}
+                variants={fadeUp}
+                custom={i}
                 className={[
                   "text-left rounded-md p-5 transition",
                   isActive
@@ -96,33 +146,38 @@ export default function AboutFlim() {
                 ].join(" ")}
                 aria-current={isActive ? "true" : undefined}
               >
-                <h3 className="font-secondary text-xl  text-black">
-                  {item.title}
-                </h3>
+                <h3 className="font-secondary text-xl text-black">{item.title}</h3>
                 <p className="mt-2 text-md leading-relaxed text-black/70 font-primary">
                   {item.desc}
                 </p>
-              </button>
+              </motion.button>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* RIGHT IMAGE */}
+        {/* RIGHT IMAGE with animation */}
         <div className="relative">
           <div className="relative overflow-hidden">
             <div className="relative aspect-[4/3] w-full">
-              <Image
-                key={active} // force fade per change
-                src={facilities[active].image || "/assets/facilities.png"} // fallback to single image
-                alt={facilities[active].title}
-                fill
-                className={[
-                  " transition-opacity duration-500",
-                  imgReady ? "opacity-100" : "opacity-0",
-                ].join(" ")}
-                priority
-                onLoadingComplete={() => setImgReady(true)} // ✅ reveal when ready
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  variants={fadeImage}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={facilities[active].image || "/assets/facilities.png"}
+                    alt={facilities[active].title}
+                    fill
+                    className="object-cover"
+                    priority
+                    onLoadingComplete={() => setImgReady(true)}
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

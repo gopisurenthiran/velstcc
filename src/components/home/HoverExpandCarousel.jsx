@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 /* ------------ slides ------------ */
 const slides = [
@@ -32,7 +33,13 @@ export default function HoverExpandCarousel() {
   return (
     <section className="py-16 mx-auto max-w-6xl container mx-auto px-6 md:px-10 bg-white overflow-x-hidden">
       {/* heading */}
-      <div className="mb-8 max-w-2xl">
+         <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="mb-8 max-w-2xl"
+      >
         <h2 className="text-[28px] sm:text-[34px] font-semibold tracking-tight font-secondary">
           Discover Singara Chennai
         </h2>
@@ -41,7 +48,7 @@ export default function HoverExpandCarousel() {
           commerce, and creativity. Forever the heartbeat of South India’s pride
           and progress.
         </p>
-      </div>
+      </motion.div>
 
       {/* carousel */}
       <div

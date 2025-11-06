@@ -20,7 +20,7 @@ export default function EventsExact() {
   // Autoplay plugin instance so we can pause/resume on hover
   const autoplay = useRef(
     Autoplay({
-      delay: 3500,               // auto-slide every 3.5s
+      delay: 1500,               // auto-slide every 3.5s
       stopOnInteraction: false,  // keep playing after arrows/drag
       playOnInit: true
     })

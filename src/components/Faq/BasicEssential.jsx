@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // ✅ added for animation
 
 export default function TabsSection() {
   const [activeTab, setActiveTab] = useState("trade");
@@ -11,7 +12,13 @@ export default function TabsSection() {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto bg-white text-[#111] px-6 md:px-20 py-16 font-sans">
+    <motion.div
+      className="max-w-5xl mx-auto bg-white text-[#111] px-6 md:px-20 py-16 font-sans"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
       {/* Tabs Header */}
       <div className="flex gap-10 mb-12">
         {tabs.map((tab) => (
@@ -32,16 +39,26 @@ export default function TabsSection() {
         ))}
       </div>
 
-      {/* Tab Content */}
-      {activeTab === "trade" && <TradeConventionContent />}
-      {activeTab === "film" && <FilmCityContent />}
-      {activeTab === "theatres" && <TheatreContent />}
-    </div>
+      {/* Tab Content — with smooth fade transition */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4 }}
+        >
+          {activeTab === "trade" && <TradeConventionContent />}
+          {activeTab === "film" && <FilmCityContent />}
+          {activeTab === "theatres" && <TheatreContent />}
+        </motion.div>
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
 /* -----------------------------------------------------
-   TAB 1: Trade & Convention Centre Content (FAQ style)
+   TAB 1: Trade & Convention Centre Content
 ----------------------------------------------------- */
 function TradeConventionContent() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -72,12 +89,26 @@ function TradeConventionContent() {
 
   return (
     <div>
-      <h1 className="text-[32px] font-secondary mb-4">Basics & Essentials</h1>
+      <motion.h1
+        className="text-[32px] font-secondary mb-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Basics & Essentials
+      </motion.h1>
       <div className="h-[1px] bg-[#2D3091] w-[120px] mb-6"></div>
 
       <div className="max-w-3xl">
         {faqs.map((faq, i) => (
-          <div key={i} className="border-t border-gray-300 py-4">
+          <motion.div
+            key={i}
+            className="border-t border-gray-300 py-4"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: i * 0.05 }}
+            viewport={{ once: true }}
+          >
             <button
               onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
               className={`w-full text-left text-lg font-primary mb-5 leading-snug ${
@@ -86,12 +117,21 @@ function TradeConventionContent() {
             >
               {faq.question}
             </button>
-            {openIndex === i && (
-              <p className="mt-3 text-md font-primary text-gray-600 leading-relaxed">
-                {faq.answer}
-              </p>
-            )}
-          </div>
+
+            <AnimatePresence>
+              {openIndex === i && (
+                <motion.p
+                  className="mt-3 text-md font-primary text-gray-600 leading-relaxed"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {faq.answer}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -119,12 +159,26 @@ function FilmCityContent() {
 
   return (
     <div>
-      <h1 className="text-[32px] font-secondary mb-4">Vels Film City</h1>
-      <div className="h-[1px] bg-[##2D3091] w-[120px] mb-6"></div>
+      <motion.h1
+        className="text-[32px] font-secondary mb-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Vels Film City
+      </motion.h1>
+      <div className="h-[1px] bg-[#2D3091] w-[120px] mb-6"></div>
 
       <div className="max-w-3xl">
         {faqs.map((faq, i) => (
-          <div key={i} className="border-t border-gray-300 py-4">
+          <motion.div
+            key={i}
+            className="border-t border-gray-300 py-4"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: i * 0.05 }}
+            viewport={{ once: true }}
+          >
             <button
               onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
               className={`w-full text-left text-lg font-primary mb-5 leading-snug ${
@@ -133,12 +187,21 @@ function FilmCityContent() {
             >
               {faq.question}
             </button>
-            {openIndex === i && (
-              <p className="mt-3 text-md font-primary text-gray-600 leading-relaxed">
-                {faq.answer}
-              </p>
-            )}
-          </div>
+
+            <AnimatePresence>
+              {openIndex === i && (
+                <motion.p
+                  className="mt-3 text-md font-primary text-gray-600 leading-relaxed"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {faq.answer}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -166,12 +229,26 @@ function TheatreContent() {
 
   return (
     <div>
-      <h1 className="text-[32px] font-secondary mb-4">Vels Theatres</h1>
+      <motion.h1
+        className="text-[32px] font-secondary mb-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Vels Theatres
+      </motion.h1>
       <div className="h-[1px] bg-[#2D3091] w-[120px] mb-6"></div>
 
       <div className="max-w-3xl">
         {faqs.map((faq, i) => (
-          <div key={i} className="border-t border-gray-300 py-4">
+          <motion.div
+            key={i}
+            className="border-t border-gray-300 py-4"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: i * 0.05 }}
+            viewport={{ once: true }}
+          >
             <button
               onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
               className={`w-full text-left text-lg font-primary mb-5 leading-snug ${
@@ -180,12 +257,21 @@ function TheatreContent() {
             >
               {faq.question}
             </button>
-            {openIndex === i && (
-              <p className="mt-3 text-md font-primary text-gray-600 leading-relaxed">
-                {faq.answer}
-              </p>
-            )}
-          </div>
+
+            <AnimatePresence>
+              {openIndex === i && (
+                <motion.p
+                  className="mt-3 text-md font-primary text-gray-600 leading-relaxed"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {faq.answer}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </motion.div>
         ))}
       </div>
     </div>

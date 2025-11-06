@@ -6,11 +6,12 @@ import VelsTheatreSection from "../../components/Theatre/VelsTheatreSection";
 import Concession from "../../components/Theatre/Concession";
 import Gettingtovels from "../../components/home/Gettingtovels";
 import Faqs from "../../components/home/Faqs";
+import HeroSection from "../../components/Theatre/HeroSection";
 
 export default function theatre() {
   return (
     <>
-        <Hero />
+        <HeroSection />
         <VelsTheatreSection />
         <Stats />
         <Theatre360 />

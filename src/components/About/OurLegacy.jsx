@@ -3,8 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import featuredbanner from "@/public/assets/featurted_image.png";
+import { motion } from "framer-motion"; // ✅ Add this
 
-const Feature = () => {
+const OurLegacy = () => {
   const handleClick = (e) => {
     e.preventDefault();
     const targetElement = document.getElementById("target-section");
@@ -22,8 +23,15 @@ const Feature = () => {
       id="target-section"
     >
       <div className="flex flex-col md:flex-row max-w-7xl mx-auto py-4 px-4 gap-8">
-        {/* Left Section */}
-        <div className="flex-1 p-8 rounded-lg overflow-hidden">
+
+        {/* Left Section (Image) */}
+        <motion.div
+          className="flex-1 p-8 rounded-lg overflow-hidden"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <div className="relative w-full h-full min-h-[300px] md:min-h-[400px]">
             <Image
               src={featuredbanner}
@@ -33,10 +41,16 @@ const Feature = () => {
               priority
             />
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right Section - Vertically Centered */}
-        <div className="flex-1 flex flex-col justify-center p-8 bg-black-50 rounded-lg">
+        {/* Right Section (Text) */}
+        <motion.div
+          className="flex-1 flex flex-col justify-center p-8 bg-black-50 rounded-lg"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <div>
             <h2 className="text-3xl font-secondary font-semibold text-black mb-2">
               Our Legacy
@@ -52,10 +66,11 @@ const Feature = () => {
               alike.
             </p>
           </div>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );
 };
 
-export default Feature;
+export default OurLegacy;

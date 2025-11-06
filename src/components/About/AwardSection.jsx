@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules"; // ✅ Added Autoplay module
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -25,24 +25,23 @@ export default function AwardsSection() {
       desc: "Awarded for innovation, craftsmanship, and visual storytelling excellence.",
       img: awardImg,
     },
-        {
+    {
       title: "Lorem ipsum dolor sit amet",
       desc: "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       img: awardImg,
     },
-     {
+    {
       title: "Award of Excellence",
       desc: "Recognizing outstanding achievement and creative contribution in filmmaking and production.",
       img: awardImg,
     },
   ];
 
-  // brand-y soft gold
   const gold = "#CAA04C";
 
   return (
     <section className="max-w-6xl mx-auto bg-white py-20 overflow-hidden">
-      <div className=" px-6 lg:px-12 relative">
+      <div className="px-6 lg:px-12 relative">
         {/* Title & Arrows */}
         <div className="flex justify-between items-center mb-12">
           <div>
@@ -59,22 +58,28 @@ export default function AwardsSection() {
             </button>
             <button
               aria-label="Next"
-              className="swiper-button-next-custom cursor-pointer w-20 h-20 flex items-center justify-center  text-primary transition"
+              className="swiper-button-next-custom cursor-pointer w-20 h-20 flex items-center justify-center text-primary transition"
             >
               <span className="text-3xl">→</span>
             </button>
           </div>
         </div>
 
-        {/* Slider */}
+        {/* Slider with Autoplay */}
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]} // ✅ added Autoplay
           spaceBetween={50}
           slidesPerView={1}
           navigation={{
             prevEl: ".swiper-button-prev-custom",
             nextEl: ".swiper-button-next-custom",
           }}
+          autoplay={{
+            delay: 3000, // ⏱️ time between slides (in ms)
+            disableOnInteraction: false, // continues autoplay after manual swipe
+          }}
+          loop={true} // ✅ enable infinite loop
+          speed={800} // smooth transition speed
           breakpoints={{
             768: { slidesPerView: 1.4, spaceBetween: 60 },
             1024: { slidesPerView: 2, spaceBetween: 70 },
@@ -85,32 +90,15 @@ export default function AwardsSection() {
             <SwiperSlide key={i} className="!overflow-visible">
               {/* Slide Card */}
               <div
-                className={`
-                  relative flex items-center
-                  bg-white
-                  border
-                  shadow-sm
-                  pl-[5rem] pr-[3rem] py-[4rem]
-                  transition-all duration-300
-                  hover:shadow-md
-                  after:content-[''] after:absolute after:inset-0
-                  after:translate-x-2 after:translate-y-2
-                  after:rounded-md after:-z-10
-                `}
+                className={`relative flex items-center bg-white border shadow-sm pl-[5rem] pr-[3rem] py-[4rem] transition-all duration-300 hover:shadow-md after:content-[''] after:absolute after:inset-0 after:translate-x-2 after:translate-y-2 after:rounded-md after:-z-10`}
                 style={{
-                  // gold border & faint gold after-layer
                   borderColor: gold,
                   boxShadow:
                     "0 10px 20px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.04)",
                 }}
               >
                 {/* Left overlapping tile */}
-                <div
-                  className="
-                    absolute left-0 -translate-x-1/2
-                    w-28 h-28
-                    grid place-items-center
-                  ">
+                <div className="absolute left-0 -translate-x-1/2 w-28 h-28 grid place-items-center">
                   <Image
                     src={item.img}
                     alt="Award"
@@ -130,7 +118,7 @@ export default function AwardsSection() {
                   <p className="text-md font-primary text-gray-600 leading-relaxed max-w-[520px]">
                     {item.desc}
                   </p>
-                </div>               
+                </div>
               </div>
             </SwiperSlide>
           ))}

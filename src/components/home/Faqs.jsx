@@ -1,9 +1,9 @@
-// app/components/Faqs.jsx
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion"; // ✅ add this
 
-const accent = "text-[#2A1C79]"; // your purple/indigo
+const accent = "text-[#2A1C79]";
 
 const faqs = [
   {
@@ -16,10 +16,16 @@ const faqs = [
 ];
 
 export default function Faqs() {
-  const [open, setOpen] = useState(0); // first open
+  const [open, setOpen] = useState(0);
 
   return (
-    <section className="mx-auto max-w-4xl px-4 py-4">
+    <motion.section
+      className="mx-auto max-w-4xl px-4 py-4"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true }} // play animation only once
+    >
       {/* Title */}
       <h2 className="text-center font-secondary text-4xl tracking-tight">
         FAQs
@@ -31,7 +37,14 @@ export default function Faqs() {
           const id = `faq-${i}`;
           const panel = `faq-panel-${i}`;
           return (
-            <div key={id} className="py-4">
+            <motion.div
+              key={id}
+              className="py-4"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }} // slight stagger per FAQ
+              viewport={{ once: true }}
+            >
               <button
                 type="button"
                 aria-expanded={isOpen}
@@ -65,14 +78,10 @@ export default function Faqs() {
                   </p>
                 </div>
               </div>
-
-              {/* Divider line under each item (except last will come from container divide-y) */}
-            </div>
+            </motion.div>
           );
         })}
       </div>
-     
-    </section>
-    
+    </motion.section>
   );
 }

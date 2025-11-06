@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
-// ✅ Import your icons
 import icon1 from "@/public/assets/icons/block.svg";
 import icon2 from "@/public/assets/icons/arrow.svg";
 import icon3 from "@/public/assets/icons/location.svg";
@@ -16,9 +16,23 @@ const statsData = [
   { value: "1", label: "Only film city in Tamil Nadu (unique status)", icon: icon4 },
 ];
 
+// ✅ Animation Variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 25 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
 // ✅ Reusable stat item
-const StatItem = ({ value, label, icon }) => (
-  <div className="flex flex-col items-center justify-center text-center px-4">
+const StatItem = ({ value, label, icon, index }) => (
+  <motion.div
+    className="flex flex-col items-center justify-center text-center px-4"
+    custom={index}
+    variants={fadeUp}
+  >
     {/* Icon */}
     <div className="mb-3 flex justify-center">
       <Image
@@ -35,23 +49,34 @@ const StatItem = ({ value, label, icon }) => (
       {value}
     </div>
 
-    {/* Label (equal height) */}
+    {/* Label */}
     <p className="mt-4 text-base md:text-md text-black/80 font-light font-primary min-h-[48px] flex items-center justify-center">
       {label}
     </p>
-  </div>
+  </motion.div>
 );
 
 export default function Stats() {
   return (
     <section className="py-14 md:py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <motion.div
+        className="max-w-6xl mx-auto px-6"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: { staggerChildren: 0.15 },
+          },
+        }}
+      >
         <div className="grid grid-cols-2 md:grid-cols-4 text-center gap-y-10 md:gap-y-0">
           {statsData.map((stat, i) => (
-            <StatItem key={i} {...stat} />
+            <StatItem key={i} {...stat} index={i} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

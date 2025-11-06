@@ -6,6 +6,7 @@ import StatsGrid from "../components/home/StatsGrid";
 import designedoccasion from "../components/home/DesignedOccasion";
 import DesignedOccasion from "../components/home/DesignedOccasion";
 import Gettingtovels from "../components/home/Gettingtovels";
+import ReelView from "../components/home/ReelView";
 import Events from "../components/home/Events";
 import Facilities from "../components/home/Facilities";
 import Faqs from "../components/home/Faqs";
@@ -23,6 +24,7 @@ export default function Home() {
                 <StatsGrid />
                 <DesignedOccasion />
                 <Gettingtovels />
+                <ReelView />
                 <Events />
                 <Facilities />            
                 <TestimonialsCarousel />

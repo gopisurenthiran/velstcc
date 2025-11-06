@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
+import { motion } from "framer-motion";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -76,8 +78,8 @@ export default function WhyChooseVels() {
 
   // Guard for first render
   const safeWidth = Math.max(wrapWidth, 320);
-  const sideW = Math.round(safeWidth * 0.25);   // col-3
-  const activeW = Math.round(safeWidth * 0.5);  // col-6
+  const sideW = Math.round(safeWidth * 0.25); // col-3
+  const activeW = Math.round(safeWidth * 0.5); // col-6
 
   const settings = {
     dots: false,
@@ -114,15 +116,46 @@ export default function WhyChooseVels() {
     <section className="py-16 bg-[#F5F5F5] relative">
       <div className="max-w-6xl mx-auto px-6">
         {/* ---------- Heading ---------- */}
-        <div className="text-left mb-10">
-          <h2 className="text-3xl font-semibold text-black font-secondary">
-            Spaces that Bring Scripts to Life 
-          </h2>
-          <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"></div>
-          <p className="text-gray-600 mt-2 text-sm md:text-base font-primary">
-          At Vels Film City, every indoor set is crafted to capture imagination and deliver perfection. Designed for scale, precision, and storytelling excellence, these are the spaces where cinema finds its rhythm. 
-          </p>
-        </div>
+
+        <motion.div
+          className="text-left mb-10"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            className="text-3xl font-semibold text-black font-secondary"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            Spaces that Bring Scripts to Life
+          </motion.h2>
+
+          <motion.div
+            className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            viewport={{ once: true }}
+            style={{ transformOrigin: "left" }}
+          ></motion.div>
+
+          <motion.p
+            className="text-gray-600 mt-2 text-sm md:text-base font-primary"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            At Vels Film City, every indoor set is crafted to capture
+            imagination and deliver perfection. Designed for scale, precision,
+            and storytelling excellence, these are the spaces where cinema finds
+            its rhythm.
+          </motion.p>
+        </motion.div>
 
         {/* ---------- Slider ---------- */}
         <div className="relative" ref={wrapRef}>
@@ -185,21 +218,45 @@ export default function WhyChooseVels() {
           </Slider>
         </div>
       </div>
-        <div className="max-w-4xl mx-auto text-center px-4 py-20">
-    <h2 className="text-2xl md:text-3xl font-semibold text-black mb-3 font-secondary">
-      Plan Your Indoor Shoot
-    </h2>
+      <motion.div
+  className="max-w-4xl mx-auto text-center px-4 py-20"
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  viewport={{ once: true }}
+>
+  <motion.h2
+    className="text-2xl md:text-3xl font-semibold text-black mb-3 font-secondary"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+    viewport={{ once: true }}
+  >
+    Plan Your Indoor Shoot
+  </motion.h2>
 
+  <motion.p
+    className="text-gray-600 text-sm md:text-base mb-6 font-primary"
+    initial={{ opacity: 0, y: 15 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 0.25 }}
+    viewport={{ once: true }}
+  >
+    Planning a shoot? Check availability or schedule a recce.
+  </motion.p>
 
-    <p className="text-gray-600 text-sm md:text-base mb-6 font-primary">
-     
-Planning a shoot? Check availability or schedule a recce.
-    </p>
-
-    <button className="bg-[#1E2A78] text-white text-xs font-primary font-semibold px-5 py-2 rounded">
-      GET A QUOTE
-    </button>
-  </div>
+  <motion.button
+    className="bg-[#1E2A78] text-white text-xs font-primary font-semibold px-5 py-2 rounded"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
+    viewport={{ once: true }}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    GET A QUOTE
+  </motion.button>
+</motion.div>
     </section>
   );
 }

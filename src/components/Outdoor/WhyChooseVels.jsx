@@ -4,6 +4,17 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { motion } from "framer-motion";
+
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    show: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] },
+    }),
+  };
 
 /* ----------  Custom Arrows ---------- */
 const NextArrow = ({ onClick }) => (
@@ -114,15 +125,50 @@ export default function WhyChooseVels() {
     <section className="py-16 bg-[#F5F5F5] relative">
       <div className="max-w-6xl mx-auto px-6">
         {/* ---------- Heading ---------- */}
-        <div className="text-left mb-10">
-          <h2 className="text-3xl font-semibold text-black font-secondary">
-            Why Choose Vels Film City?
-          </h2>
-          <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"></div>
-          <p className="text-gray-600 mt-2 text-sm md:text-base font-primary">
-          Where imagination meets infrastructure, and every frame finds its canvas. VELS Film City brings together scale, skill, and sophistication, designed for filmmakers who dream beyond limits. 
-          </p>
-        </div>
+          <motion.div
+      className="text-left mb-10"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={{
+        hidden: {},
+        show: { transition: { staggerChildren: 0.15 } },
+      }}
+    >
+      {/* Heading */}
+      <motion.h2
+        className="text-3xl font-semibold text-black font-secondary"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        viewport={{ once: true }}
+      >
+        Why Choose Vels Film City?
+      </motion.h2>
+
+      {/* Divider Line */}
+      <motion.div
+        className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"
+        initial={{ scaleX: 0, opacity: 0 }}
+        whileInView={{ scaleX: 1, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+        style={{ transformOrigin: "left" }}
+        viewport={{ once: true }}
+      ></motion.div>
+
+      {/* Paragraph */}
+      <motion.p
+        className="text-gray-600 mt-2 text-sm md:text-base font-primary"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        viewport={{ once: true }}
+      >
+        Where imagination meets infrastructure, and every frame finds its canvas.
+        VELS Film City brings together scale, skill, and sophistication, designed
+        for filmmakers who dream beyond limits.
+      </motion.p>
+    </motion.div>
 
         {/* ---------- Slider ---------- */}
         <div className="relative" ref={wrapRef}>
@@ -185,21 +231,46 @@ export default function WhyChooseVels() {
           </Slider>
         </div>
       </div>
-        <div className="max-w-4xl mx-auto text-center px-4 py-20">
-    <h2 className="text-2xl md:text-3xl font-semibold text-black mb-3 font-secondary">
-      Plan Your Next Outdoor Shoot 
-    </h2>
+        <motion.div
+      className="max-w-4xl mx-auto text-center px-4 py-20"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={{
+        hidden: {},
+        show: { transition: { staggerChildren: 0.15 } },
+      }}
+    >
+      {/* Heading */}
+      <motion.h2
+        className="text-2xl md:text-3xl font-semibold text-black mb-3 font-secondary"
+        variants={fadeUp}
+        custom={0}
+      >
+        Plan Your Next Outdoor Shoot
+      </motion.h2>
 
+      {/* Paragraph */}
+      <motion.p
+        className="text-gray-600 text-sm md:text-base mb-6 font-primary"
+        variants={fadeUp}
+        custom={1}
+      >
+        Schedule your shoot effortlessly, from power and dining to logistics,
+        everything you need is right here.
+      </motion.p>
 
-    <p className="text-gray-600 text-sm md:text-base mb-6 font-primary">
-     
-Schedule your shoot effortlessly, from power and dining to logistics, everything you need is right here. 
-    </p>
-
-    <button className="bg-[#1E2A78] text-white text-xs font-primary font-semibold px-5 py-2 rounded">
-      GET A QUOTE
-    </button>
-  </div>
+      {/* Button */}
+      <motion.button
+        className="bg-[#1E2A78] text-white text-xs font-primary font-semibold px-5 py-2 rounded"
+        variants={fadeUp}
+        custom={2}
+        whileHover={{ scale: 1.08 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
+        GET A QUOTE
+      </motion.button>
+    </motion.div>
     </section>
   );
 }
