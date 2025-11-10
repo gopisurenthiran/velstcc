@@ -3,7 +3,8 @@ import Image from "next/image";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import sustainabilityImg from "@/public/assets/tree.png";
+import sustainabilityImg from "@/public/assets/The Vels Assurance.png";
+import Img from "@/public/assets/Crafted for Comfort.png";
 
 const TABS = [
   {
@@ -20,7 +21,7 @@ const TABS = [
   {
     key: "hss",
     label: "Safety in Every Frame",
-    image: sustainabilityImg,
+    image: Img,
     items: [
       {
         desc:

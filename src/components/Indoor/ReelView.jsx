@@ -51,7 +51,7 @@ export default function ReelView() {
        <div className="text-center">
       {/* Title Animation */}
       <motion.h2
-        className="text-3xl font-semibold mb-2 font-secondary"
+        className="text-3xl  mb-2 font-secondary"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}

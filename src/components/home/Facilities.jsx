@@ -11,27 +11,27 @@ const facilities = [
   {
     title: "Restaurants",
     desc: "On-site and nearby restaurants offering diverse cuisines for cast, crew, and guests.",
-    image: "/assets/facilities.png",
+    image: "/assets/Restaurants.png",
   },
   {
     title: "ATM Facility",
     desc: "On-premises cash withdrawal and banking services.",
-    image: "/assets/facilities.png",
+    image: "/assets/ATM Facility.png",
   },
   {
     title: "Makeup Rooms",
     desc: "Spacious, fully lit rooms with mirrors, dressing stations, and storage.",
-    image: "/assets/facilities.png",
+    image: "/assets/Makeup Rooms.png",
   },
   {
     title: "Cafeterias and Food Court",
     desc: "Dining spaces serving fresh meals, snacks, and beverages.",
-    image: "/assets/facilities.png",
+    image: "/assets/Cafeterias and Food Court.png",
   },
   {
     title: "Lavatories",
     desc: "Clean, well-maintained sanitary blocks for male and female staff.",
-    image: "/assets/facilities.png",
+    image: "/assets/Lavatories.png",
   },
 ];
 
@@ -142,7 +142,7 @@ export default function Facilities() {
                   src={facilities[active].image}
                   alt={facilities[active].title}
                   fill
-                  className="object-cover"
+                  className=""
                   priority
                 />
               </motion.div>

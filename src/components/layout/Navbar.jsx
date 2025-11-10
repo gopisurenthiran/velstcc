@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 /* Icons */
 const MenuIcon = (props) => (
@@ -18,11 +19,12 @@ const CloseIcon = (props) => (
 );
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);             // drawer
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isMegaOpen, setIsMegaOpen] = useState(false);     // desktop megamenu
-  const [mobileDiscoverOpen, setMobileDiscoverOpen] = useState(false);
+  const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState("theatre");
+
   const drawerRef = useRef(null);
   const buttonRef = useRef(null);
   const megaRef = useRef(null);
@@ -36,27 +38,48 @@ export default function Navbar() {
     { href: "/plan-big-day", label: "Plan Your Big Day" },
   ];
 
-  // Megamenu content
-  const theatre = { href: "/theatre", label: "VELS Theatre" };
-  const filmCity = [
-    { href: "indoor", label: "VELS Film City Indoor" },
-    { href: "outdoor", label: "VELS Film City Outdoor" },
-  ];
-
   const quickItems = [
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
   ];
 
+  const discoverItems = [
+    {
+      id: "theatre",
+      label: "VELS Theatre",
+      desc: "Stage-ready venue for premieres, showcases, and talks.",
+      href: "/theatre",
+      image: "/assets/theatre.jpg",
+    },
+    {
+      id: "filmcity",
+      label: "VELS Film City",
+      desc: "Explore Indoor and Outdoor film sets for every scene.",
+      href: "#",
+      children: [
+        {
+          id: "indoor",
+          label: "VELS Film City Indoor",
+          href: "/indoor",
+          image: "/assets/indoor.jpg",
+        },
+        {
+          id: "outdoor",
+          label: "VELS Film City Outdoor",
+          href: "/outdoor",
+          image: "/assets/outdoor.jpg",
+        },
+      ],
+    },
+  ];
+
   const toggleMenu = () => {
     setIsOpen((v) => !v);
-    // ensure megamenu is closed when opening drawer
     setIsMegaOpen(false);
   };
   const closeMenu = () => setIsOpen(false);
 
-  // Track md breakpoint
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767.98px)");
     const update = () => setIsMobile(mq.matches);
@@ -65,264 +88,115 @@ export default function Navbar() {
     return () => mq.removeEventListener?.("change", update);
   }, []);
 
-  // Shadow on scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 6);
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Drawer: close + scroll lock
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && closeMenu();
-    const onClickOutside = (e) => {
-      if (!isOpen) return;
-      const overlay = document.getElementById("drawer-overlay");
-      const clickedOverlay = overlay && overlay.contains(e.target);
-      const clickedDrawer = drawerRef.current && drawerRef.current.contains(e.target);
-      const clickedButton = buttonRef.current && buttonRef.current.contains(e.target);
-      if (clickedOverlay || (!clickedDrawer && !clickedButton)) closeMenu();
-    };
-
-    if (isOpen) {
-      document.body.classList.add("overflow-hidden");
-      document.addEventListener("keydown", onKey);
-      document.addEventListener("mousedown", onClickOutside);
-    } else {
-      document.body.classList.remove("overflow-hidden");
-      document.removeEventListener("keydown", onKey);
-      document.removeEventListener("mousedown", onClickOutside);
-    }
-
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-      document.removeEventListener("keydown", onKey);
-      document.removeEventListener("mousedown", onClickOutside);
-    };
-  }, [isOpen]);
-
-  // Desktop megamenu: outside click + esc
   useEffect(() => {
     if (!isMegaOpen) return;
-    const onDocClick = (e) => {
-      const insideMega = megaRef.current && megaRef.current.contains(e.target);
-      const insideBtn  = discoverBtnRef.current && discoverBtnRef.current.contains(e.target);
-      if (!insideMega && !insideBtn) setIsMegaOpen(false);
+    const handleClick = (e) => {
+      if (megaRef.current && !megaRef.current.contains(e.target) && !discoverBtnRef.current.contains(e.target)) {
+        setIsMegaOpen(false);
+      }
     };
-    const onKey = (e) => e.key === "Escape" && setIsMegaOpen(false);
-    document.addEventListener("mousedown", onDocClick);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onDocClick);
-      document.removeEventListener("keydown", onKey);
-    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, [isMegaOpen]);
 
   return (
-    <header
-      className={[
-        "sticky top-0 z-50 w-full",
-        "bg-white/95 supports-[backdrop-filter]:bg-white/80 backdrop-blur",
-        scrolled ? "shadow-sm border-b border-black/5" : "",
-        "relative", // for absolute megamenu
-      ].join(" ")}
-    >
+    <header className={`sticky top-0 z-50 w-full bg-white/95 backdrop-blur ${scrolled ? "shadow-sm border-b border-black/5" : ""}`}>
       <div className="max-w-8xl mx-auto relative flex items-center justify-center py-4 px-6">
-        {/* Desktop Nav (Discover opens megamenu) */}
-        <nav className="hidden md:flex justify-between w-full max-w-8xl text-sm md:text-[16px] font-primary text-black/70 text-center">
-          {navItems.map((item, i) => {
-            if (item.hasSubmenu) {
-              return (
-                <button
-                  key={i}
-                  ref={discoverBtnRef}
-                  onClick={() => setIsMegaOpen((v) => !v)}
-                  aria-expanded={isMegaOpen}
-                  className="flex-1 hover:text-[#2A1C79] transition-colors duration-200"
-                >
-                  {item.label}
-                </button>
-              );
-            }
-            return (
-              <Link
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex justify-between w-full text-[16px] font-primary text-black/70 text-center">
+          {navItems.map((item, i) =>
+            item.hasSubmenu ? (
+              <button
                 key={i}
-                href={item.href}
-                className="flex-1 hover:text-[#2A1C79] transition-colors duration-200"
+                ref={discoverBtnRef}
+                onClick={() => setIsMegaOpen((v) => !v)}
+                className="flex-1 hover:text-[#2A1C79] transition-colors"
               >
                 {item.label}
+              </button>
+            ) : (
+              <Link key={i} href={item.href} className="flex-1 hover:text-[#2A1C79] transition-colors">
+                {item.label}
               </Link>
-            );
-          })}
+            )
+          )}
         </nav>
 
-        {/* Hamburger button (hidden when drawer open) */}
+        {/* Hamburger Button */}
         <div className="absolute right-6 top-1/2 -translate-y-1/2 z-[60]">
           {!isOpen && (
-            <button
-              ref={buttonRef}
-              onClick={toggleMenu}
-              aria-label="Open menu"
-              aria-expanded={false}
-              className="flex items-center justify-center w-9 h-9  transition"
-            >
+            <button ref={buttonRef} onClick={toggleMenu} className="flex items-center justify-center w-9 h-9">
               <MenuIcon className="text-[#2A1C79]" />
             </button>
           )}
         </div>
       </div>
 
-      {/* DESKTOP: Full-width megamenu (Discover) */}
+      {/* Desktop MegaMenu */}
       {!isMobile && isMegaOpen && (
-        <div
-          ref={megaRef}
-          className="absolute left-0 right-0 top-full z-40 bg-white border-b border-black/10 shadow-md"
-        >
-          <div className="max-w-8xl mx-auto px-6 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {/* Big primary card: VELS Theatre */}
-              <Link
-                href={theatre.href}
-                className="md:col-span-2  border border-black/10 hover:border-black/20 hover:shadow-sm transition p-6 bg-white"
-                onClick={() => setIsMegaOpen(false)}
-              >
-                <div className="text-xs uppercase tracking-wide text-black/50 mb-2">Primary</div>
-                <div className="text-xl font-semibold text-[#2A1C79]">{theatre.label}</div>
-                <p className="mt-2 text-sm text-black/70">
-                  Stage-ready venue for premieres, showcases, talks, and more.
-                </p>
-              </Link>
+        <div ref={megaRef} className="absolute left-0 right-0 top-full z-40 bg-white border-t border-black/10 shadow-md">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
+            {/* Left column: Main items */}
+            <div className="p-8 space-y-6 border-r border-black/10">
+              {discoverItems.map((item) => (
+                <div
+                  key={item.id}
+                  onMouseEnter={() => setHoveredItem(item.id)}
+                  className={`cursor-pointer ${hoveredItem === item.id ? "text-[#2A1C79]" : ""}`}
+                >
+                  <Link href={item.href} className="text-lg font-semibold hover:underline" onClick={() => setIsMegaOpen(false)}>
+                    {item.label}
+                  </Link>
+                  <p className="text-sm text-black/70 mt-1">{item.desc}</p>
+                </div>
+              ))}
+            </div>
 
-              {/* Submenu column: Film City Indoor/Outdoor */}
-              <div className=" border border-black/10 p-2 bg-white">
-                <div className="text-xs uppercase tracking-wide text-black/50 px-3 pt-2 pb-1">Submenu</div>
-                <ul className="mt-1">
-                  {filmCity.map((s, idx) => (
-                    <li key={idx}>
-                      <Link
-                        href={s.href}
-                        className="block px-3 py-3 hover:bg-black/5 text-[15px] text-black/80"
-                        onClick={() => setIsMegaOpen(false)}
-                      >
-                        {s.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* Middle column: Always visible subitems */}
+            <div className="p-8 border-r border-black/10">
+              <ul className="space-y-3">
+                {discoverItems[1].children.map((child) => (
+                  <li
+                    key={child.id}
+                    onMouseEnter={() => setHoveredItem(child.id)}
+                    className={`cursor-pointer ${hoveredItem === child.id ? "text-[#2A1C79]" : "text-black/80"}`}
+                  >
+                    <Link
+                      href={child.href}
+                      className="block text-[16px] hover:text-[#2A1C79]"
+                      onClick={() => setIsMegaOpen(false)}
+                    >
+                      {child.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right column: Dynamic image */}
+            <div className="relative h-[420px] w-full overflow-hidden">
+              {discoverItems
+                .flatMap((i) => [i, ...(i.children || [])])
+                .map((item) => (
+                  <Image
+                    key={item.id}
+                    src={item.image}
+                    alt={item.label}
+                    fill
+                    className={`object-cover transition-all duration-500 ${
+                      hoveredItem === item.id ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
+                    }`}
+                  />
+                ))}
             </div>
           </div>
         </div>
-      )}
-
-      {/* DRAWER: Top dropdown (half height, rounded bottom) */}
-      {isOpen && (
-        <>
-          <div id="drawer-overlay" aria-hidden="true" className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[1px]" />
-          <aside
-            ref={drawerRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Site Menu"
-            className={[
-              "fixed top-0 right-0 z-50",
-              "w-[86%] max-w-[360px] md:w-[360px]",
-              "h-[50vh]  overflow-hidden",
-              "bg-white shadow-2xl border-b border-l border-black/10",
-              "transition-transform duration-300 ease-out flex flex-col",
-              "animate-[menuDrop_200ms_ease-out]",
-            ].join(" ")}
-            style={{ animation: "menuDrop 0.25s ease-out" }}
-          >
-            <div className="flex items-center justify-between px-4 py-3 border-b border-black/10">
-              <span className="text-sm font-medium text-black/70">Menu</span>
-              <button onClick={closeMenu} aria-label="Close menu" className="w-9 h-9 flex items-center justify-center  hover:bg-black/5">
-                <CloseIcon />
-              </button>
-            </div>
-
-            <div className="p-3 space-y-6 overflow-y-auto">
-              {/* Mobile nav with Discover accordion */}
-              {isMobile && (
-                <nav>
-                  <h3 className="px-4 pb-2 text-xs uppercase tracking-wide text-black/50">Navigation</h3>
-                  <ul className="space-y-1 text-[15px] font-foundersgrotesk">
-                    {navItems.map((item, i) => {
-                      if (!item.hasSubmenu) {
-                        return (
-                          <li key={i}>
-                            <Link href={item.href} onClick={closeMenu} className="block px-4 py-3  hover:bg-black/5">
-                              {item.label}
-                            </Link>
-                          </li>
-                        );
-                      }
-                      // Discover accordion (shows same 3 links)
-                      return (
-                        <li key={i}>
-                          <button
-                            onClick={() => setMobileDiscoverOpen((v) => !v)}
-                            aria-expanded={mobileDiscoverOpen}
-                            className="w-full text-left px-4 py-3  hover:bg-black/5"
-                          >
-                            {item.label}
-                          </button>
-                          {mobileDiscoverOpen && (
-                            <ul className="mt-1">
-                              <li>
-                                <Link
-                                  href={theatre.href}
-                                  onClick={closeMenu}
-                                  className="block w-full px-6 py-2 hover:bg-black/5 text-[14px]"
-                                >
-                                  {theatre.label}
-                                </Link>
-                              </li>
-                              {filmCity.map((s, idx) => (
-                                <li key={idx}>
-                                  <Link
-                                    href={s.href}
-                                    onClick={closeMenu}
-                                    className="block w-full px-6 py-2 hover:bg-black/5 text-[14px]"
-                                  >
-                                    {s.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </nav>
-              )}
-
-              {/* Quick Links — always */}
-              <nav>
-                <h3 className="px-4 pb-2 text-xs uppercase tracking-wide text-black/50">Quick Links</h3>
-                <ul className="space-y-1 text-[15px] font-foundersgrotesk">
-                  {quickItems.map((q, i) => (
-                    <li key={i}>
-                      <Link href={q.href} onClick={closeMenu} className="block px-4 py-3  hover:bg-black/5">
-                        {q.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-          </aside>
-
-          {/* Inline animation */}
-          <style jsx>{`
-            @keyframes menuDrop {
-              from { transform: translateY(-16px); opacity: 0.9; }
-              to   { transform: translateY(0);      opacity: 1; }
-            }
-          `}</style>
-        </>
       )}
     </header>
   );

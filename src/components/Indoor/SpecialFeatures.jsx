@@ -3,10 +3,10 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
-import img1 from "@/public/assets/special-1.png";
-import img2 from "@/public/assets/special-2.png";
-import img3 from "@/public/assets/special-3.png";
-import img4 from "@/public/assets/special-4.png";
+import img1 from "@/public/assets/Signature Set Spaces.png";
+import img2 from "@/public/assets/lighting.png";
+import img3 from "@/public/assets/A Legacy in Every Frame.png";
+import img4 from "@/public/assets/Inspired Indoors.png";
 
 const features = [
   {

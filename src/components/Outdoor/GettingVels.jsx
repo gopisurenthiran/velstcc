@@ -73,22 +73,24 @@ export default function GettingVels() {
 
         {/* Two-column layout */}
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* LEFT: Map image with fade-in */}
-          <motion.div
-            className="relative overflow-hidden"
-            variants={fadeUp}
-            custom={2}
+            <motion.div
+            className="relative overflow-hidden rounded-2xl shadow-md aspect-[16/9]"
+            initial={{ opacity: 0, scale: 1.03 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
-            <motion.div variants={fadeImage} initial="hidden" whileInView="show">
-              <Image
-                src="/assets/location.png"
-                alt="VELS location map"
-                width={920}
-                height={640}
-                className="h-auto w-full object-cover"
-                priority
-              />
-            </motion.div>
+            <iframe
+              title="VELS City Location Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.539198679289!2d80.13619947477107!3d12.870106519162501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525aa50dbb705f%3A0xd9b2b92a8af2706!2sVELS%20University!5e0!3m2!1sen!2sin!4v1708104652131!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 w-full h-full rounded-2xl"
+            ></iframe>
           </motion.div>
 
           {/* RIGHT: Icon list with staggered fade-up */}

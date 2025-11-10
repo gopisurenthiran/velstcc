@@ -4,13 +4,14 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Replace with your real image
-import sustainabilityImg from "@/public/assets/tree.png";
+import sustainabilityImg from "@/public/assets/The Vels Assurance.png";
+import img from "@/public/assets/Crafted for Comfort.png";
 
 const TABS = [
   {
     key: "sustainability",
     label: "Crafted for Comfort ",
-    image: sustainabilityImg,
+    image: img,
     items: [
       {
         title: "Every detail designed around you.",

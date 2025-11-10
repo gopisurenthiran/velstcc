@@ -11,31 +11,32 @@ const facilities = [
     title: "Restaurants",
     desc:
       "Choose from on-site and nearby restaurants serving a diverse range of cuisines — perfect for cast, crew, and guests.",
-    image: "/assets/facilities.png",
+    image: "/assets/Restaurants.png",
   },
   {
     title: "ATM Facility",
     desc:
       "Enjoy on-premises access to cash withdrawal and essential banking services.",
-    image: "/assets/facilities.png",
+    image: "/assets/ATM Facility.png",
+    
   },
   {
     title: "Makeup Rooms",
     desc:
       "Spacious, fully equipped rooms with mirrors, dressing stations, and dedicated storage for costumes and accessories.",
-    image: "/assets/facilities.png",
+    image: "/assets/Makeup Rooms.png",
   },
   {
     title: "Cafeterias and Food Court",
     desc:
       "Relax and recharge at our dining spaces offering freshly prepared meals, snacks, and beverages to suit every palate.",
-    image: "/assets/facilities.png",
+    image: "/assets/Cafeterias and Food Court.png",
   },
   {
     title: "Lavatories",
     desc:
       "Clean, well-maintained sanitary facilities for both male and female staff, ensuring hygiene and comfort throughout your shoot.",
-    image: "/assets/facilities.png",
+    image: "/assets/Lavatories.png",
   },
 ];
 

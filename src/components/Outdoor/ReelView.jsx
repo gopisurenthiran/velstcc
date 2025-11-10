@@ -64,7 +64,7 @@ export default function ReelView() {
         }}
       >
         <motion.h2
-          className="text-3xl font-semibold mb-2 font-secondary"
+          className="text-3xl mb-2 font-secondary"
           variants={fadeUp}
           custom={0}
         >
