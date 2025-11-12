@@ -127,28 +127,29 @@ export default function Facilities() {
         </motion.div>
 
         {/* RIGHT IMAGE WITH SMOOTH FADE + SCALE */}
-        <div className="relative overflow-hidden rounded-lg">
-          <div className="relative aspect-[4/3] w-full">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.04 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={facilities[active].image}
-                  alt={facilities[active].title}
-                  fill
-                  className=""
-                  priority
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
+        {/* RIGHT IMAGE WITH SMOOTH FADE + SCALE */}
+<div className="relative overflow-hidden rounded-lg flex justify-center items-center">
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={active}
+      initial={{ opacity: 0, scale: 1.04 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 1.04 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="relative"
+    >
+      <Image
+        src={facilities[active].image}
+        alt={facilities[active].title}
+        width={800}     // ✅ use your image’s real width
+        height={600}    // ✅ use your image’s real height
+        className="h-auto w-auto object-contain"
+        priority
+      />
+    </motion.div>
+  </AnimatePresence>
+</div>
+
       </div>
     </section>
   );
