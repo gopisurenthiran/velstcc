@@ -14,7 +14,7 @@ export default function TestimonialsCarousel() {
       align: "start",
       skipSnaps: false,
       dragFree: false,
-      containScroll: "trimSnaps", // keep spacing when snapping
+      containScroll: "trimSnaps",
     },
     [Autoplay({ delay: 5000, stopOnInteraction: false })]
   );
@@ -46,7 +46,6 @@ export default function TestimonialsCarousel() {
       name: "Priya",
       role: "CEO, of OMG Event Organizing.",
       image: "/assets/girl.png",
-      color: "bg-[#D64545]",
     },
     {
       id: 2,
@@ -55,9 +54,7 @@ export default function TestimonialsCarousel() {
       name: "Ruban",
       role: "CMO, Producer of Agarwal Movies",
       image: "/assets/boy.png",
-      color: "bg-[#F5B942]",
     },
-
     {
       id: 4,
       quote:
@@ -65,106 +62,102 @@ export default function TestimonialsCarousel() {
       name: "Ramya",
       role: "Corporate Planner",
       image: "/assets/girl.png",
-      color: "bg-[#F5B942]",
     },
     {
       id: 3,
       quote:
-        "An exceptional space with outstanding amenities. The professional team and versatile setup made our product launch truly memorable. ",
+        "An exceptional space with outstanding amenities. The professional team and versatile setup made our product launch truly memorable.",
       name: "Balaji",
       role: "Marketing Director",
       image: "/assets/boy.png",
-      color: "bg-[#D64545]",
     },
   ];
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
-      <div className="container mx-auto px-6 md:px-10">
-        {/* Header */}
-        <div className="mb-8 flex items-start justify-between gap-6">
+    <section className="mx-auto max-w-6xl px-4 py-10 sm:py-14 md:py-16">
+      <div className="container mx-auto px-4 sm:px-6 md:px-10">
+        {/* === Header === */}
+        <div className="mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
           <motion.div
-            className="max-w-2xl"
+            className="max-w-2xl text-center md:text-left"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ once: true }} // animation plays only once when in view
+            viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-4xl text-gray-900 font-secondary">
+            <h2 className="text-3xl sm:text-4xl text-gray-900 font-secondary leading-tight">
               What Our Clients Say
             </h2>
-            <p className="mt-4 text-lg text-gray-600 font-primary">
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600 font-primary">
               Vels Trade & Convention Centre stands in Chennai's vibrant core,
               providing effortless connectivity to the city's premier commercial
               and cultural destinations.
             </p>
           </motion.div>
 
-          {/* Arrow controls (top-right) */}
-          <div className="mt-2 flex items-center gap-2">
+          {/* Arrows */}
+          <div className="flex justify-center md:justify-end mt-4 md:mt-0 gap-2">
             <button
               aria-label="Previous testimonials"
               onClick={scrollPrev}
               disabled={!canPrev}
-              className="rounded-full border border-gray-200 p-2 shadow-sm transition hover:shadow disabled:opacity-30 disabled:cursor-not-allowed"
+              className="rounded-full border border-gray-200 p-2 sm:p-3 shadow-sm transition hover:shadow disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <ArrowLeft className="size-5" />
+              <ArrowLeft className="size-5 sm:size-6" />
             </button>
             <button
               aria-label="Next testimonials"
               onClick={scrollNext}
-              className="rounded-full border border-gray-200 p-2 shadow-sm transition hover:shadow"
+              className="rounded-full border border-gray-200 p-2 sm:p-3 shadow-sm transition hover:shadow"
             >
-              <ArrowRight className="size-5" />
+              <ArrowRight className="size-5 sm:size-6" />
             </button>
           </div>
         </div>
 
-        {/* Embla viewport */}
+        {/* === Embla Carousel === */}
         <div className="embla">
           <div className="embla__viewport overflow-hidden" ref={emblaRef}>
-            {/* Track: remove gap, use slide padding for gutters */}
-            <div className="embla__container flex -ml-6 pr-6">
+            <div className="embla__container flex -ml-4 sm:-ml-6 pr-4 sm:pr-6">
               {testimonials.map((t) => (
                 <div
                   key={t.id}
                   className="
                     embla__slide
-                    pl-6
-                    basis-[88%] sm:basis-[80%] md:basis-[50%]
+                    pl-4 sm:pl-6
+                    basis-[95%] sm:basis-[80%] md:basis-[50%]
                     shrink-0
                   "
                 >
-                  <article className="group flex h-full flex-col items-stretch overflow-hidden  border border-gray-200 bg-white shadow-sm transition hover:shadow-md md:flex-row-reverse">
-                    {/* Right: Image on accent color (kept simple; add t.color if desired) */}
-                    {/* Right: Image on accent color */}
-                    <div className="grid w-full place-items-center md:w-1/3 bg-white">
-                      <div className="relative w-full h-[240px] md:h-[100%] flex items-center justify-center">
+                  <article className="group flex flex-col md:flex-row-reverse h-full border border-gray-200 bg-white shadow-sm overflow-hidden transition hover:shadow-md">
+                    {/* === Image === */}
+                    <div className="grid w-full md:w-1/3 bg-white place-items-center">
+                      <div className="relative w-full h-[200px] sm:h-[240px] md:h-[100%] flex items-center justify-center">
                         <Image
                           src={t.image}
                           alt={t.name}
                           width={320}
                           height={320}
-                          className="object-contain  w-auto h-full max-h-[320px]"
+                          className="object-contain w-auto h-full max-h-[300px]"
                           priority={t.id === 1}
                         />
                       </div>
                     </div>
 
-                    {/* Left: Text */}
-                    <div className="w-full p-6 md:w-2/3 flex flex-col justify-between">
-                      <p className="text-xl text-gray-700 font-primary">
+                    {/* === Text === */}
+                    <div className="w-full md:w-2/3 p-5 sm:p-6 flex flex-col justify-between text-center md:text-left">
+                      <p className="text-base sm:text-lg text-gray-700 font-primary leading-relaxed">
                         {t.quote}
                       </p>
-                      <div className="mt-6">
-                        <h4 className="font-secondary font-medium text-gray-900">
+                      <div className="mt-5 sm:mt-6">
+                        <h4 className="font-secondary font-medium text-gray-900 text-lg sm:text-xl">
                           {t.name}
                         </h4>
-                        <p className="text-lg font-primary font-semibold text-black">
+                        <p className="text-sm sm:text-base font-primary font-semibold text-black mt-1">
                           {t.role}
                         </p>
                         <span
-                          className="mb-5 block h-px w-24 bg-primary"
+                          className="mt-4 mx-auto md:mx-0 block h-px w-24 bg-primary"
                           aria-hidden
                         />
                       </div>

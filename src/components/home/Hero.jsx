@@ -44,17 +44,16 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full min-h-[400px] flex items-center justify-center text-white overflow-hidden">
+    <section className="relative w-full h-[600px] flex items-center justify-center text-white overflow-hidden">
       {/* ✅ Slider Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 h-[600px]">
         <Slider {...settings}>
           {slides.map((slide, index) => (
-            <div key={index} className="relative min-h-screen w-full">
-              {/* ✅ Normal image tag instead of next/image */}
+            <div key={index} className="relative w-full h-[600px]">
               <img
                 src={slide.img}
                 alt={slide.alt}
-                className="w-full h-screen object-cover object-center"
+                className="w-full h-[600px] object-center"
                 loading={index === 0 ? "eager" : "lazy"}
               />
             </div>
@@ -81,7 +80,7 @@ const Hero = () => {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="6 9 12 15 18 9"></polyline>
+          <polyline points="6 9 12 15 18 9" />
         </svg>
       </motion.button>
     </section>
