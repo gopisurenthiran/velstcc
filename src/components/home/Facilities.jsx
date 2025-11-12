@@ -11,34 +11,38 @@ const facilities = [
   {
     title: "Restaurants",
     desc: "Indulge in a range of cuisines at our on-site and nearby restaurants, perfect for guests, performers, and crew seeking comfort and flavour between events.",
-    image: "/assets/Restaurants.png",
+    image: "/assets/restaurants.webp",
   },
   {
     title: "ATM Facility",
     desc: "Convenient on-premises banking and cash withdrawal services to keep transactions smooth and stress-free.",
-    image: "/assets/ATM Facility.png",
+    image: "/assets/atm_facility.webp",
   },
   {
     title: "Makeup Rooms",
     desc: "Spacious, well-lit rooms with mirrors, dressing areas, and ample storage, ideal for artists, performers, and wedding preparations.",
-    image: "/assets/Makeup Rooms.png",
+    image: "/assets/makeup_rooms.webp",
   },
   {
     title: "Cafeterias and Food Court",
     desc: "Freshly prepared meals, snacks, and beverages catering to diverse palates and dietary preferences, because every break deserves great taste.",
-    image: "/assets/Cafeterias and Food Court.png",
+    image: "/assets/cafeterias_and_food_court.webp",
   },
   {
     title: "Lavatories",
     desc: "Clean, well-maintained, and fully equipped restrooms designed for both male and female guests, ensuring comfort throughout the event.",
-    image: "/assets/Lavatories.png",
+    image: "/assets/lavatories.webp",
   },
 ];
 
 // Animations
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 const listParent = {
@@ -92,7 +96,6 @@ export default function Facilities() {
 
       {/* Layout */}
       <div className="grid items-start gap-10 md:grid-cols-2">
-
         {/* LEFT LIST (Animated Stagger) */}
         <motion.div
           variants={listParent}
@@ -126,30 +129,30 @@ export default function Facilities() {
           })}
         </motion.div>
 
-        {/* RIGHT IMAGE WITH SMOOTH FADE + SCALE */}
-        {/* RIGHT IMAGE WITH SMOOTH FADE + SCALE */}
-<div className="relative overflow-hidden rounded-lg flex justify-center items-center">
-  <AnimatePresence mode="wait">
-    <motion.div
-      key={active}
-      initial={{ opacity: 0, scale: 1.04 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 1.04 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="relative"
-    >
-      <Image
-        src={facilities[active].image}
-        alt={facilities[active].title}
-        width={800}     // ✅ use your image’s real width
-        height={600}    // ✅ use your image’s real height
-        className="h-auto w-auto object-contain"
-        priority
-      />
-    </motion.div>
-  </AnimatePresence>
-</div>
-
+        {/* RIGHT IMAGE WITH TRUE ASPECT + FADE */}
+        <div className="relative w-full flex justify-center items-center overflow-hidden rounded-lg">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.04 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full h-auto flex justify-center items-center"
+            >
+              <div className="relative w-full max-w-[600px]">
+                <Image
+                  src={facilities[active].image}
+                  alt={facilities[active].title}
+                  width={1200} // real image resolution width
+                  height={800} // real image resolution height
+                  className="w-full h-auto object-contain rounded-lg"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );

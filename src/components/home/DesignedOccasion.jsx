@@ -35,7 +35,7 @@ const tabData = [
   {
     id: "weddings",
     title: "Weddings & Receptions",
-    imageSrc: "/assets/wedding.png",
+    imageSrc: "/assets/weddings_receptions.webp",
     content:
       "From intimate ceremonies to grand celebrations, our venue transforms into the perfect setting for unforgettable memories. Elegant décor, premium hospitality, and seamless arrangements for your special day.",
     stats: [
@@ -51,7 +51,7 @@ const tabData = [
   {
     id: "trade",
     title: "Trade Fairs & Exhibitions",
-    imageSrc: "/assets/wedding.png",
+    imageSrc: "/assets/trade_fairs_exhibitions.webp",
     content:
       "Showcase innovation at scale. With expansive halls and modular layouts, our space empowers brands to host large-scale expos, trade fairs, and product launches with global standards of infrastructure.",
     stats: [
@@ -67,7 +67,7 @@ const tabData = [
   {
     id: "corporate",
     title: "Corporate Conferences & Expos",
-    imageSrc: "/assets/wedding.png",
+    imageSrc: "/assets/corporate_conferences_expos.webp",
     content:
       "Make every business moment impactful. Equipped with modern AV systems, acoustic excellence, and flexible seating, it’s the perfect stage for global conferences, leadership summits, and annual meets. ",
     stats: [
@@ -83,7 +83,7 @@ const tabData = [
   {
     id: "public",
     title: "Public Gatherings",
-    imageSrc: "/assets/wedding.png",
+    imageSrc: "/assets/public_gatherings.webp",
     content:
       "From cultural events to large community programs, our convention centre offers spacious layouts, easy access, and advanced crowd management for a safe, enjoyable experience for every attendee.",
     stats: [
@@ -95,7 +95,7 @@ const tabData = [
   {
     id: "political",
     title: "Political Gatherings",
-    imageSrc: "/assets/wedding.png",
+    imageSrc: "/assets/political_gatherings.webp",
     content:
       "Designed for presence and impact. Our grand halls and expansive outdoor arenas are ideal for political rallies, conventions, and public addresses with secure access and large audience capacity. ",
     stats: [
@@ -207,12 +207,13 @@ const DesignedOccasion = () => {
         {/* Content Card */}
         {activeContent && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
-            <div className="relative h-[320px] sm:h-[420px] lg:h-[520px]">
+            <div className="flex bg-white">
               <Image
                 src={activeContent.imageSrc}
                 alt={activeContent.title}
-                fill
-                className="object-cover"
+                width={556} // actual image resolution width
+                height={450} // actual image resolution height
+                className="w-auto h-auto max-w-full max-h-[520px] object-contain rounded-none"
                 priority
               />
             </div>
@@ -234,19 +235,21 @@ const DesignedOccasion = () => {
                 <button className="bg-primary text-white px-6 py-3 font-medium">
                   KNOW MORE
                 </button>
-                <button className="border border-primary text-primary px-6 py-3 font-medium">
-                  DOWNLOAD FACT SHEET
-                </button>
+               <a
+  href="/assets/pdf/area.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="border border-primary text-primary px-6 py-3 font-medium inline-block text-center"
+>
+  DOWNLOAD FACT SHEET
+</a>
+
               </div>
             </div>
           </div>
         )}
 
-        <div className="text-center mt-10 md:mt-12">
-          <button className="bg-primary border border-primary text-white px-8 py-3 font-medium">
-            VIEW ALL
-          </button>
-        </div>
+        
       </div>
 
       {/* FOOTER CTA */}
@@ -258,7 +261,8 @@ const DesignedOccasion = () => {
         viewport={{ once: true, amount: 0.35 }}
       >
         <motion.h2
-          className="font-secondary text-[28px] md:text-[40px] text-black" id="talk"
+          className="font-secondary text-[28px] md:text-[40px] text-black"
+          id="talk"
           variants={item}
         >
           Let’s Talk About Your Next Big Event {" "}

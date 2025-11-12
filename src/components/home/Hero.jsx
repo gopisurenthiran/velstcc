@@ -45,20 +45,30 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-[600px] flex items-center justify-center text-white overflow-hidden">
-      {/* ✅ Slider Background */}
-      <div className="absolute inset-0 z-0 h-[600px]">
+      {/* ✅ Desktop / Large Screens Slider */}
+      <div className="absolute inset-0 z-0 h-[600px] hidden md:block">
         <Slider {...settings}>
           {slides.map((slide, index) => (
             <div key={index} className="relative w-full h-[600px]">
               <img
                 src={slide.img}
                 alt={slide.alt}
-                className="w-full h-[600px] object-center"
+                className="w-full h-[600px] object-cover object-center"
                 loading={index === 0 ? "eager" : "lazy"}
               />
             </div>
           ))}
         </Slider>
+      </div>
+
+      {/* ✅ Mobile — Static Image Only */}
+      <div className="absolute inset-0 z-0 h-[600px] md:hidden">
+        <img
+          src="/assets/banner/mobile-banner-home.webp"
+          alt={slides[0].alt}
+          className="w-full h-[600px] object-cover object-center"
+          loading="eager"
+        />
       </div>
 
       {/* ✅ Scroll Button */}

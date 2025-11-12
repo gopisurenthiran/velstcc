@@ -45,7 +45,7 @@ export default function TestimonialsCarousel() {
         "A remarkable venue featuring premier facilities. The size and adaptability ensured our event ran flawlessly.",
       name: "Priya",
       role: "CEO, of OMG Event Organizing.",
-      image: "/assets/girl.png",
+      image: "/assets/testimonial-1.webp",
     },
     {
       id: 2,
@@ -53,7 +53,7 @@ export default function TestimonialsCarousel() {
         "The atmosphere, layout, and support surpassed our expectations. Our attendees were extremely satisfied.",
       name: "Ruban",
       role: "CMO, Producer of Agarwal Movies",
-      image: "/assets/boy.png",
+      image: "/assets/testimonial.webp",
     },
     {
       id: 4,

@@ -7,12 +7,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const img = [
-  "/assets/slider-1.png",
-  "/assets/slider-2.png",
-  "/assets/slider-3.png",
-  "/assets/slider-4.png",
-  "/assets/slider-5.png",
-  "/assets/slider-6.png",
+  "/assets/slider_1.webp",
+  "/assets/slider_2.webp",
+  "/assets/slider_3.webp",
+  "/assets/slider_4.webp",
+  "/assets/slider_5.webp",
+  "/assets/slider_6.webp",
 
 ];
 

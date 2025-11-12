@@ -22,21 +22,19 @@ const Feature = () => {
       <div className="flex flex-col md:flex-row max-w-7xl mx-auto gap-10 items-center">
         {/* ✅ IMAGE BLOCK WITH ANIMATION */}
         <motion.div
-          className="flex-1 rounded-lg overflow-hidden"
+          className="flex-1 rounded-lg overflow-hidden flex justify-center items-center"
           initial={{ opacity: 0, x: -80 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <div className="relative w-full h-[320px] md:h-[420px]">
-            {/* ✅ Normal img tag (not Next/Image) */}
-            <img
-              src="/assets/trade-convention-centre.png"
-              alt="Vels Trade and Convention Centre"
-              className="w-full h-full object-cover rounded-lg"
-              loading="lazy"
-            />
-          </div>
+          {/* ✅ Actual size image (no cropping, responsive) */}
+          <img
+            src="/assets/trade_convention_centre.webp"
+            alt="Vels Trade and Convention Centre"
+            className="w-auto h-auto max-w-full max-h-[500px] rounded-lg object-contain"
+            loading="lazy"
+          />
         </motion.div>
 
         {/* ✅ TEXT BLOCK WITH ANIMATION */}
@@ -60,7 +58,7 @@ const Feature = () => {
             experienced, and remembered.
           </p>
 
-          <h3 className="text-2xl md:text-2xl font-secondary text-black mb-3">
+          <h3 className="text-2xl md:text-2xl font-primary text-black mb-3">
             Think Bigger. Experience Better. Create Beyond.
           </h3>
 
