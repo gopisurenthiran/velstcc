@@ -37,11 +37,15 @@ const tabData = [
     title: "Weddings & Receptions",
     imageSrc: "/assets/wedding.png",
     content:
-      "From intimate ceremonies to grand celebrations, our venue transforms into the perfect setting for unforgettable memories. Expect décor, premium hospitality, and seamless arrangements for your special day.",
+      "From intimate ceremonies to grand celebrations, our venue transforms into the perfect setting for unforgettable memories. Elegant décor, premium hospitality, and seamless arrangements for your special day.",
     stats: [
       { iconSrc: "/assets/icon-1.svg", value: "5", label: "Grand Halls" },
       { iconSrc: "/assets/icon-2.svg", value: "25,000 sq", label: "Space" },
-      { iconSrc: "/assets/icon-3.svg", value: "20,000", label: "Guests" },
+      {
+        iconSrc: "/assets/icon-3.svg",
+        value: "20,000+",
+        label: "Guests Capacity",
+      },
     ],
   },
   {
@@ -49,11 +53,15 @@ const tabData = [
     title: "Trade Fairs & Exhibitions",
     imageSrc: "/assets/wedding.png",
     content:
-      "Host regional and international trade shows with ease. Our expansive, pillar-free space is designed for high foot traffic and massive installations, offering full logistics support and custom booth arrangements.",
+      "Showcase innovation at scale. With expansive halls and modular layouts, our space empowers brands to host large-scale expos, trade fairs, and product launches with global standards of infrastructure.",
     stats: [
       { iconSrc: "/assets/icon-1.svg", value: "5", label: "Grand Halls" },
       { iconSrc: "/assets/icon-2.svg", value: "25,000 sq", label: "Space" },
-      { iconSrc: "/assets/icon-3.svg", value: "20,000", label: "Guests" },
+      {
+        iconSrc: "/assets/icon-3.svg",
+        value: "100%",
+        label: " Dedicated Exhibition Utilities",
+      },
     ],
   },
   {
@@ -61,11 +69,15 @@ const tabData = [
     title: "Corporate Conferences & Expos",
     imageSrc: "/assets/wedding.png",
     content:
-      "Dedicated spaces for large-scale corporate events and product launches...",
+      "Make every business moment impactful. Equipped with modern AV systems, acoustic excellence, and flexible seating, it’s the perfect stage for global conferences, leadership summits, and annual meets. ",
     stats: [
       { iconSrc: "/assets/icon-1.svg", value: "5", label: "Grand Halls" },
       { iconSrc: "/assets/icon-2.svg", value: "25,000 sq", label: "Space" },
-      { iconSrc: "/assets/icon-3.svg", value: "20,000", label: "Guests" },
+      {
+        iconSrc: "/assets/icon-3.svg",
+        value: "100%",
+        label: " Integrated AV & Acoustic System",
+      },
     ],
   },
   {
@@ -73,11 +85,27 @@ const tabData = [
     title: "Public Gatherings",
     imageSrc: "/assets/wedding.png",
     content:
-      "Ideal for political rallies, concerts, and community events with massive capacity...",
+      "From cultural events to large community programs, our convention centre offers spacious layouts, easy access, and advanced crowd management for a safe, enjoyable experience for every attendee.",
     stats: [
       { iconSrc: "/assets/icon-1.svg", value: "5", label: "Grand Halls" },
       { iconSrc: "/assets/icon-2.svg", value: "25,000 sq", label: "Space" },
-      { iconSrc: "/assets/icon-3.svg", value: "20,000", label: "Guests" },
+      { iconSrc: "/assets/icon-3.svg", value: "6000+", label: "Ample Parking" },
+    ],
+  },
+  {
+    id: "political",
+    title: "Political Gatherings",
+    imageSrc: "/assets/wedding.png",
+    content:
+      "Designed for presence and impact. Our grand halls and expansive outdoor arenas are ideal for political rallies, conventions, and public addresses with secure access and large audience capacity. ",
+    stats: [
+      { iconSrc: "/assets/icon-1.svg", value: "5", label: "Grand Halls" },
+      { iconSrc: "/assets/icon-2.svg", value: "25,000 sq", label: "Space" },
+      {
+        iconSrc: "/assets/icon-3.svg",
+        value: "100%",
+        label: "Security & Access Management",
+      },
     ],
   },
 ];
@@ -142,7 +170,7 @@ const DesignedOccasion = () => {
     : statsData;
 
   return (
-    <section className="py-16 md:py-14 bg-[#f5f5f5]">
+    <section className="py-16 md:py-14 bg-[#f5f5f5]" id="crafted">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -151,7 +179,7 @@ const DesignedOccasion = () => {
           viewport={{ once: true, amount: 0.4 }}
           className="text-4xl md:text-5xl font-secondary text-center mb-12 md:mb-16"
         >
-          Designed For Every Occasion
+          Crafted to Host Every Milestone 
         </motion.h2>
 
         {/* Tabs */}
@@ -230,10 +258,10 @@ const DesignedOccasion = () => {
         viewport={{ once: true, amount: 0.35 }}
       >
         <motion.h2
-          className="font-secondary text-[28px] md:text-[40px] text-black"
+          className="font-secondary text-[28px] md:text-[40px] text-black" id="talk"
           variants={item}
         >
-          Let’s Talk About Your Events
+          Let’s Talk About Your Next Big Event {" "}
         </motion.h2>
 
         <div className="mt-5 space-y-2">
@@ -241,13 +269,15 @@ const DesignedOccasion = () => {
             className="font-founders text-[14px] md:text-[16px] text-black/70"
             variants={item}
           >
-            Let there be no confusion in finding the best place for your event.
+            No matter the scale, your vision deserves the right stage, and we’re
+            here to make it happen. 
           </motion.p>
           <motion.p
             className="font-founders text-[14px] md:text-[16px] text-black/70"
             variants={item}
           >
-            Reach out to us and we will help you with quality and clarity.
+            From the first conversation to the final spotlight, our team ensures
+            your event unfolds with precision, polish, and perfection. 
           </motion.p>
         </div>
 

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
@@ -9,15 +8,15 @@ import "slick-carousel/slick/slick-theme.css";
 // ✅ Hero Slides Data
 const slides = [
   {
-    image: "/assets/trade-convention-centre-1.jpg",
+    img: "/assets/trade-convention-centre-1.jpg",
     alt: "Vels Trade and Convention Center Grand Entrance",
   },
   {
-    image: "/assets/trade-convention-centre-2.jpg",
+    img: "/assets/trade-convention-centre-2.jpg",
     alt: "Indoor Studio",
   },
   {
-    image: "/assets/trade-convention-centre-3.jpg",
+    img: "/assets/trade-convention-centre-3.jpg",
     alt: "Outdoor Filming Area",
   },
 ];
@@ -45,24 +44,19 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center text-white overflow-hidden">
+    <section className="relative w-full min-h-[400px] flex items-center justify-center text-white overflow-hidden">
       {/* ✅ Slider Background */}
       <div className="absolute inset-0 z-0">
         <Slider {...settings}>
           {slides.map((slide, index) => (
             <div key={index} className="relative min-h-screen w-full">
-              {/* Background Image */}
-              <Image
-                src={slide.image}
+              {/* ✅ Normal image tag instead of next/image */}
+              <img
+                src={slide.img}
                 alt={slide.alt}
-                fill
-                priority={index === 0}
-                quality={100}
-                className="object-cover object-center"
+                className="w-full h-screen object-cover object-center"
+                loading={index === 0 ? "eager" : "lazy"}
               />
-
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
             </div>
           ))}
         </Slider>

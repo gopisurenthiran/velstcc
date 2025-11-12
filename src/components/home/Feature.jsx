@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const Feature = () => {
@@ -30,12 +29,12 @@ const Feature = () => {
           viewport={{ once: true }}
         >
           <div className="relative w-full h-[320px] md:h-[420px]">
-            <Image
+            {/* ✅ Normal img tag (not Next/Image) */}
+            <img
               src="/assets/trade-convention-centre.png"
               alt="Vels Trade and Convention Centre"
-              fill
-              priority
-              className="object-cover rounded-lg"
+              className="w-full h-full object-cover rounded-lg"
+              loading="lazy"
             />
           </div>
         </motion.div>
@@ -48,26 +47,33 @@ const Feature = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-secondary font-semibold text-black mb-3">
-            The Landmark of Unmatched <br /> Scale & Excellence
+          <h2 className="text-3xl md:text-4xl leading-[56px] font-secondary font-medium text-black mb-3">
+            The Landmark Where Scale <br /> Meets Splendour 
           </h2>
-
+          <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"></div>
           <p className="text-gray-700 font-primary leading-relaxed mb-5">
-            Welcome to Vels Trade & Convention Centre – South India’s only
-            3.5 lakh sq. ft. private trade hub.
+            Step into Vels Trade & Convention Centre, South India’s premier 3.5
+            lakh sq. ft. privately owned trade hub, designed to inspire awe and
+            redefine ambition. A masterpiece of architecture, acoustics, and
+            aesthetics, it stands as Tamil Nadu’s first privately owned trade
+            centre, setting new benchmarks for how events are imagined,
+            experienced, and remembered.
           </p>
 
-          <h3 className="text-2xl md:text-3xl font-secondary text-black mb-3">
-            Bigger. Better. Beyond Compare.
+          <h3 className="text-2xl md:text-2xl font-secondary text-black mb-3">
+            Think Bigger. Experience Better. Create Beyond.
           </h3>
 
-          <p className="text-gray-700 font-primary leading-relaxed mb-4">
-            While the Chennai Trade & Convention Centre offers 95,000 sq. ft.,
-            Vels Trade & Convention Centre boasts nearly 4X the space.
+          <p className="text-gray-700 font-primary leading-[30px] font-light mb-4">
+            When others measure in square feet, we measure in possibilities. At
+            nearly four times the size of the Chennai Trade & Convention Centre,
+            VELS offers an expansive canvas for every vision, from boutique
+            gatherings to world-class exhibitions, from corporate milestones to
+            cultural grandeur. 
           </p>
 
           <p className="text-gray-700 font-primary leading-relaxed">
-            VELS – where scale meets sophistication.
+            VELS is where scale transforms into sophistication. 
           </p>
         </motion.div>
       </div>

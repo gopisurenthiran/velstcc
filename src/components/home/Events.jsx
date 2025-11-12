@@ -59,7 +59,7 @@ export default function EventsExact() {
   const prev = useCallback(() => embla && embla.scrollPrev(), [embla]);
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
+    <section className="mx-auto max-w-6xl px-4 py-16" id="events">
       <h2 className="mb-10 text-center text-4xl tracking-tight font-secondary">Events</h2>
 
       <div className="relative">

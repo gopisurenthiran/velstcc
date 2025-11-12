@@ -10,27 +10,27 @@ const ROTATE_MS = 4000;
 const facilities = [
   {
     title: "Restaurants",
-    desc: "On-site and nearby restaurants offering diverse cuisines for cast, crew, and guests.",
+    desc: "Indulge in a range of cuisines at our on-site and nearby restaurants, perfect for guests, performers, and crew seeking comfort and flavour between events.",
     image: "/assets/Restaurants.png",
   },
   {
     title: "ATM Facility",
-    desc: "On-premises cash withdrawal and banking services.",
+    desc: "Convenient on-premises banking and cash withdrawal services to keep transactions smooth and stress-free.",
     image: "/assets/ATM Facility.png",
   },
   {
     title: "Makeup Rooms",
-    desc: "Spacious, fully lit rooms with mirrors, dressing stations, and storage.",
+    desc: "Spacious, well-lit rooms with mirrors, dressing areas, and ample storage, ideal for artists, performers, and wedding preparations.",
     image: "/assets/Makeup Rooms.png",
   },
   {
     title: "Cafeterias and Food Court",
-    desc: "Dining spaces serving fresh meals, snacks, and beverages.",
+    desc: "Freshly prepared meals, snacks, and beverages catering to diverse palates and dietary preferences, because every break deserves great taste.",
     image: "/assets/Cafeterias and Food Court.png",
   },
   {
     title: "Lavatories",
-    desc: "Clean, well-maintained sanitary blocks for male and female staff.",
+    desc: "Clean, well-maintained, and fully equipped restrooms designed for both male and female guests, ensuring comfort throughout the event.",
     image: "/assets/Lavatories.png",
   },
 ];
@@ -82,11 +82,11 @@ export default function Facilities() {
         viewport={{ once: true, margin: "-100px" }}
         className="mb-10"
       >
-        <h2 className="text-5xl tracking-tight text-black font-secondary">
-          All About Vel Conventional
+        <h2 className="text-4xl tracking-tight text-black font-secondary font-medium">
+          All About Vel Conventional Centre
         </h2>
-        <p className="mt-5 text-black/70 font-primary text-2xl">
-          Everything our guests need.
+        <p className="mt-5 text-black/70 font-primary text-xl">
+          Everything your guests could need thoughtfully within reach. 
         </p>
       </motion.div>
 

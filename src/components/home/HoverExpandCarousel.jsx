@@ -40,13 +40,11 @@ export default function HoverExpandCarousel() {
         viewport={{ once: true }}
         className="mb-8 max-w-2xl"
       >
-        <h2 className="text-[28px] sm:text-[34px] font-semibold tracking-tight font-secondary">
+        <h2 className="text-[28px] sm:text-[34px]  tracking-tight font-secondary font-medium mb-5">
           Discover Singara Chennai
         </h2>
         <p className="mt-2 text-lg text-black/70 font-primary">
-          A city where tradition meets innovation. A vibrant mosaic of culture,
-          commerce, and creativity. Forever the heartbeat of South India’s pride
-          and progress.
+        A metropolis where heritage blends with modernity. A dynamic fusion of tradition, trade, and innovation. Eternally the cornerstone of South India's character and advancement.
         </p>
       </motion.div>
 

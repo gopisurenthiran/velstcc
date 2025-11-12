@@ -6,7 +6,7 @@ import { motion } from "framer-motion"; // ✅ Added for animation
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const images = [
+const img = [
   "/assets/slider-1.png",
   "/assets/slider-2.png",
   "/assets/slider-3.png",
@@ -75,14 +75,14 @@ export default function ReelView() {
         viewport={{ once: true }}
       >
         <Slider {...settings}>
-          {images.map((src, index) => (
+          {img.map((src, index) => (
             <div key={index} className="px-2">
               <motion.div
                 className="overflow-hidden hover:scale-[1.02] transition-transform duration-300 ease-in-out"
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 200 }}
               >
-                <Image
+                <img
                   src={src}
                   alt={`Reel view ${index + 1}`}
                   width={100}

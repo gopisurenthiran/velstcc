@@ -30,7 +30,7 @@ const listItem = {
 
 export default function GettingToVels() {
   return (
-    <section className="bg-white">
+    <section className="bg-white" id="getting">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
 
         {/* Heading */}
@@ -52,8 +52,7 @@ export default function GettingToVels() {
           viewport={{ once: true, margin: "-100px" }}
           className="mt-3 max-w-3xl text-[15px] md:text-lg text-black/70 font-primary"
         >
-          Vels Trade & Convention Centre is located in the heart of Chennai, offering<br />
-          seamless accessibility from the city’s key business and cultural hubs.
+         Strategically set in the heart of Chennai, VELS offers effortless access from key business, cultural, and transport hubs, making every arrival as seamless as every event. 
         </motion.p>
 
         {/* Layout */}

@@ -1,100 +1,97 @@
 "use client";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // ✅ Added for animation
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactTabs() {
   const [activeTab, setActiveTab] = useState("trade");
 
-  const renderForm = () => {
-    return (
-      <motion.form
-        className="space-y-6"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-md font-secondary font-medium mb-2">
-              Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter Your Name"
-              className="w-full border font-secondary border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400"
-            />
-          </div>
+  const renderForm = () => (
+    <motion.form
+      className="space-y-6"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label className="block text-md font-secondary font-medium mb-2">
+            Name <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            className="w-full border font-secondary border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400"
+          />
+        </div>
 
-          <div>
-            <label className="block font-secondary text-md font-medium mb-2">
-              Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="email"
-              placeholder="Enter Your Email"
-              className="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400"
-            />
-          </div>
-
-          <div>
-            <label className="block text-md font-secondary font-medium mb-2">
-              Phone <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="tel"
-              placeholder="Enter Your Phone No"
-              className="w-full border border-gray-300 font-secondary px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400"
-            />
-          </div>
-
-          <div>
-            <label className="block text-md font-secondary font-medium mb-2">
-              Select Space <span className="text-red-500">*</span>
-            </label>
-            <select className="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400">
-              <option value="">Enter Your Space</option>
-              <option>Auditorium</option>
-              <option>Banquet Hall</option>
-              <option>Outdoor Area</option>
-            </select>
-          </div>
+        <div>
+          <label className="block font-secondary text-md font-medium mb-2">
+            Email <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            placeholder="Enter Your Email"
+            className="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400"
+          />
         </div>
 
         <div>
           <label className="block text-md font-secondary font-medium mb-2">
-            Share Your Question Here And We’ll Reach Out Shortly.
+            Phone <span className="text-red-500">*</span>
           </label>
-          <textarea
-            rows="4"
-            placeholder="Enter Your Name"
-            className="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400"
-          ></textarea>
+          <input
+            type="tel"
+            placeholder="Enter Your Phone No"
+            className="w-full border border-gray-300 font-secondary px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400"
+          />
         </div>
 
-        <button
-          type="submit"
-          className="px-6 py-2 bg-primary font-primary text-white text-sm uppercase tracking-wide"
-        >
-          Submit
-        </button>
-      </motion.form>
-    );
-  };
+        <div>
+          <label className="block text-md font-secondary font-medium mb-2">
+            Select Space <span className="text-red-500">*</span>
+          </label>
+          <select className="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400">
+            <option value="">Enter Your Space</option>
+            <option>Auditorium</option>
+            <option>Banquet Hall</option>
+            <option>Outdoor Area</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-md font-secondary font-medium mb-2">
+          Share Your Question Here And We’ll Reach Out Shortly.
+        </label>
+        <textarea
+          rows="4"
+          placeholder="Enter Your Message"
+          className="w-full font-secondary border border-gray-300 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        className="px-6 py-2 bg-primary font-primary text-white text-sm uppercase tracking-wide"
+      >
+        Submit
+      </button>
+    </motion.form>
+  );
 
   return (
     <motion.div
-      className="min-h-screen bg-white text-[#1a1a1a] font-serif overflow-x-hidden"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      viewport={{ once: true }}
+      className="min-h-screen bg-white text-[#1a1a1a] font-serif"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       {/* ---------- Tabs Navigation ---------- */}
       <motion.nav
-        className="flex justify-center overflow-x-auto flex-wrap md:flex-nowrap gap-4 md:gap-10 px-4 py-4 no-scrollbar"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        className="flex justify-center overflow-x-auto flex-wrap md:flex-nowrap gap-4 md:gap-10 px-4 py-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
       >
         {[
           { id: "trade", label: "Trade & Convention Centre" },
@@ -186,10 +183,9 @@ export default function ContactTabs() {
       {/* ---------- Event Enquiry Section ---------- */}
       <motion.section
         className="max-w-3xl mx-auto px-4 pb-10"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
       >
         <h2 className="text-2xl font-semibold font-secondary mb-2">
           Event Enquiry

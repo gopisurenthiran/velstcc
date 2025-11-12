@@ -8,18 +8,18 @@ const accent = "text-[#2A1C79]";
 
 const faqs = [
   {
-    q: "What types of events can be hosted at the Trade & Convention Centre?",
-    a: "Our venue accommodates a diverse range of events including trade shows, corporate conferences, product launches, exhibitions, seminars, cultural programs, wedding receptions, and large-scale social gatherings. The flexible spaces can be customized to suit your specific requirements.",
+    q: "How can I book tickets at Vels Theatres?",
+    a: "You can easily book your tickets online through our website or via authorized ticketing partners. On-site booking counters are also available for walk-ins, subject to seat availability.",
   },
-  { q: "What is the maximum capacity of the venue?", a: "Our convention center can accommodate up to 5,000 guests in theatre-style seating and 3,000 guests for banquet-style events. We also offer smaller breakout rooms for intimate meetings ranging from 50 to 500 attendees." },
-  { q: "Do you offer film production facilities?", a: "Yes, we provide comprehensive film production facilities including high ceilings, professional lighting infrastructure, ample power supply, and versatile spaces that can be transformed into shooting locations for films, commercials, and corporate videos." },
-  { q: "How can I book a venue?", a: "You can book a venue by contacting our events team via phone, email, or by filling out the inquiry form on our website. Our team will discuss your requirements, provide a site visit, and guide you through the booking process with transparent pricing." },
-  { q: "Is parking and accommodation available nearby?", a: "Yes, we offer extensive on-site parking for over 1,000 vehicles. Additionally, there are several premium hotels and accommodations within a 2-5 kilometer radius, with special rates available for event attendees through our partner network." },
-  {q:"What audio-visual and technical equipment is included?", a:"Our venue is equipped with state-of-the-art audio systems, LED screens, projectors, wireless microphones, stage lighting, and high-speed Wi-Fi. Additional technical support and equipment can be arranged based on your event needs." },
-  {q:"Do you provide catering services?", a:"Yes, we have an in-house catering team offering customizable menus ranging from traditional South Indian cuisine to international delicacies. We can accommodate various dietary requirements and preferences, with options for buffet, plated service, or cocktail-style catering"}
+  { q: "Does Vels Theatres offer Dolby Atmos or 4K projection?", a: "Yes. All our auditoriums are equipped with 4K Ultra HD projection and Dolby Atmos surround sound, ensuring an immersive movie experience that’s larger than life." },
+  { q: "Is parking available at the theatre?", a: "Absolutely. We offer secure, well-marked parking spaces with dedicated areas for cars, two-wheelers, and VIP access. Valet services are also available during prime hours." },
+  { q: "Are food and beverages allowed inside the auditorium?", a: "Outside food and drinks are not permitted. However, our in-house concessions and lounge serve a curated menu of popcorn, nachos, beverages, and gourmet theatre snacks." },
+  { q: "Does the theatre support private screenings or events?", a: "Yes. Vels Theatres offers private screening packages for premieres, brand events, and special occasions. Our team can help customize the setup to suit your event theme. " },
+  {q:"Is the theatre accessible for people with disabilities?", a:"Yes. Vels Theatres is fully wheelchair accessible with dedicated seating, ramps, elevators, and restrooms designed for guest convenience and comfort." },
+  {q:"What safety measures are in place?", a:"We follow strict hygiene and safety protocols, including daily sanitization, air filtration, and trained emergency staff on site. Your comfort and safety remain our top priority."}
 ];
 
-export default function Faqs() {
+export default function FaqTheatre() {
   const [open, setOpen] = useState(0);
 
   return (
@@ -32,7 +32,7 @@ export default function Faqs() {
     >
       {/* Title */}
       <h2 className="text-center font-secondary text-4xl tracking-tight">
-        FAQs
+        FAQ's
       </h2>
 
       <div className="mt-8 divide-y divide-black/10">

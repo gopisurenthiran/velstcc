@@ -64,7 +64,7 @@ export default function ReelView() {
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         viewport={{ once: true }}
       >
-        A polished look at what happens between action and cut.
+       More than a theatre, it’s where design, acoustics, and drama perform in harmony.
       </motion.p>
 
       {/* Slider */}

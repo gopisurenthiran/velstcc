@@ -9,17 +9,17 @@ const ROTATE_MS = 4000; // autoplay speed (ms)
 const facilities = [
   {
     title: "Popcorn",
-    desc: "On-site and nearby restaurants offering diverse cuisines for cast, crew, and guests.",
+    desc: "Freshly popped, perfectly seasoned, and endlessly comforting, our popcorn isn’t just a snack; it’s a scene-stealer.",
     image: "/assets/facilities.png",
   },
   {
     title: "Nachos",
-    desc: "On-premises cash withdrawal and banking services.",
+    desc: "Crisp, cheesy, and loaded with flavour, the go-to bite for when the reel gets real.",
     image: "/assets/facilities.png",
   },
   {
     title: "Beverages",
-    desc: "Spacious, fully lit rooms with mirrors, dressing stations, and storage for costumes and accessories.",
+    desc: "From artisanal coffees to chilled mocktails, our lounge keeps every guest refreshed and ready for the next act.",
     image: "/assets/facilities.png",
   },
 ];
@@ -65,7 +65,7 @@ export default function Concession() {
           Concessions & Lounge
         </h2>
         <p className="mt-5 text-black/70 font-primary text-xl">
-          Everything our guests need.
+          Where stories meet savours
         </p>
       </motion.div>
 

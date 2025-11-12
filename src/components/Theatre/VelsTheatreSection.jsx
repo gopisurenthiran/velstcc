@@ -26,15 +26,12 @@ export default function VelsTheatreSection() {
           <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"></div>
 
           <h3 className="text-2xl md:text-4xl font-primary mt-10 text-gray-900 leading-snug mb-6">
-            BiggerScreen.<span className="text-gray-800">BiggerSound.</span>{" "}
-            Bigger Experience.
+            Bigger Screen.<span className="text-gray-800">Deeper Sound.</span>{" "}
+            Greater Emotion.
           </h3>
 
           <p className="text-gray-600 text-md font-primary md:text-md leading-relaxed mb-8">
-            Vels Theatres redefines movie magic with a full-height screen from
-            floor to roof, delivering breathtaking visuals through 4K ultra
-            high-definition projection and Dolby Atmos surround sound. Every
-            scene feels larger than life; every note resonates around you.
+           Vels Theatres redefines the movie-going experience with immersive 4K ultra-high-definition projection and Dolby Atmos sound that envelops every seat. From the floor-to-roof screen to acoustically perfected architecture, every element is designed to pull you into the story.<br />Here, cinema isn’t just watched, it’s felt.
           </p>
 
           <motion.button
