@@ -8,15 +8,15 @@ import "slick-carousel/slick/slick-theme.css";
 // ✅ Hero Slides Data
 const slides = [
   {
-    img: "/assets/trade-convention-centre-1.jpg",
+    img: "/assets/banner/trade_convention_centre_1.webp",
     alt: "Vels Trade and Convention Center Grand Entrance",
   },
   {
-    img: "/assets/trade-convention-centre-2.jpg",
+    img: "/assets/banner/trade_convention_centre_2.webp",
     alt: "Indoor Studio",
   },
   {
-    img: "/assets/trade-convention-centre-3.jpg",
+    img: "/assets/banner/trade_convention_centre_3.webp",
     alt: "Outdoor Filming Area",
   },
 ];
