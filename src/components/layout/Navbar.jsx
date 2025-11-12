@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 /* === Icons === */
 const MenuIcon = (props) => (
@@ -58,6 +59,8 @@ const ChevronDown = (props) => (
 );
 
 export default function Navbar() {
+  const router = useRouter();
+
   const [isMegaOpen, setIsMegaOpen] = useState(false); // desktop mega
   const [hoveredItem, setHoveredItem] = useState("theatre");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); // mobile/desktop drawer
@@ -88,21 +91,21 @@ export default function Navbar() {
       label: "Vel’s Theatre",
       desc: "Stage-ready venue for premieres, showcases, and talks.",
       href: "/theatre",
-      image: "/assets/theatre.jpg",
+      image: "/assets/theare.webp",
     },
     {
       id: "indoor",
       label: "Vel’s Film City – Indoor",
       desc: "Perfectly crafted indoor film sets.",
       href: "/indoor",
-      image: "/assets/indoor.jpg",
+      image: "/assets/filim.webp",
     },
     {
       id: "outdoor",
       label: "Vel’s Film City – Outdoor",
       desc: "Expansive outdoor sets for every scene.",
       href: "/outdoor",
-      image: "/assets/outdoor.jpg",
+      image: "/assets/trade.webp",
     },
   ];
 
@@ -214,7 +217,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* === DESKTOP: Discover Mega Menu (restored) === */}
+      {/* === DESKTOP: Discover Mega Menu === */}
       {isMegaOpen && (
         <div
           ref={megaRef}
@@ -228,7 +231,7 @@ export default function Navbar() {
                   onMouseEnter={() => setHoveredItem("theatre")}
                   onClick={() => {
                     handleMegaLinkClick();
-                    window.location.href = "/theatre";
+                    router.push("/theatre");
                   }}
                   className={`block text-left font-primary text-lg ${
                     hoveredItem === "theatre"
@@ -249,7 +252,7 @@ export default function Navbar() {
                     onMouseEnter={() => setHoveredItem("indoor")}
                     onClick={() => {
                       handleMegaLinkClick();
-                      window.location.href = "/indoor";
+                      router.push("/indoor");
                     }}
                     className={`block text-left font-primary text-lg ${
                       hoveredItem === "indoor"
@@ -263,7 +266,7 @@ export default function Navbar() {
                     onMouseEnter={() => setHoveredItem("outdoor")}
                     onClick={() => {
                       handleMegaLinkClick();
-                      window.location.href = "/outdoor";
+                      router.push("/outdoor");
                     }}
                     className={`block text-left font-primary text-lg ${
                       hoveredItem === "outdoor"
@@ -278,16 +281,16 @@ export default function Navbar() {
             </div>
 
             {/* Center: image swap */}
-            <div className="relative h-[320px] w-full overflow-hidden rounded-lg shadow-md">
+            <div className="relative w-full  shadow-md overflow-hidden">
               {discoverItems.map((item) => (
                 <img
                   key={item.id}
                   src={item.image}
                   alt={item.label}
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${
+                  className={`w-full h-auto transition-all duration-500 ${
                     hoveredItem === item.id
                       ? "opacity-100 scale-100"
-                      : "opacity-0 scale-105"
+                      : "opacity-0 scale-105 absolute inset-0"
                   }`}
                 />
               ))}
@@ -331,7 +334,7 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* === Drawer (mobile: full menu; desktop: quick links if you want) === */}
+      {/* === Drawer (mobile: full menu; desktop: quick links) === */}
       <div
         className={`fixed top-0 h-full bg-[#F4F5FA] shadow-2xl z-50 transform transition-transform duration-300 ease-out
     border-black/10
@@ -364,13 +367,15 @@ export default function Navbar() {
 
             {/* Root items */}
             <nav className="space-y-3 mb-3">
-              <Link
-                href="/theatre"
-                onClick={() => setIsDrawerOpen(false)}
-                className="block text-[16px] font-semibold text-black"
+              <button
+                onClick={() => {
+                  setIsDrawerOpen(false);
+                  router.push("/theatre");
+                }}
+                className="block text-left text-[16px] font-semibold text-black"
               >
                 Vel’s Theatre
-              </Link>
+              </button>
 
               {/* Toggleable group */}
               <button
@@ -389,20 +394,24 @@ export default function Navbar() {
               {/* Children */}
               {!sectionsOpen && (
                 <div className="ml-3 mt-1 space-y-2">
-                  <Link
-                    href="/indoor"
-                    onClick={() => setIsDrawerOpen(false)}
-                    className="block text-[15px] text-black/70"
+                  <button
+                    onClick={() => {
+                      setIsDrawerOpen(false);
+                      router.push("/indoor");
+                    }}
+                    className="block text-left text-[15px] text-black/70"
                   >
                     Vel’s Film City - Indoor
-                  </Link>
-                  <Link
-                    href="/outdoor"
-                    onClick={() => setIsDrawerOpen(false)}
-                    className="block text-[15px] text-black/70"
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsDrawerOpen(false);
+                      router.push("/outdoor");
+                    }}
+                    className="block text-left text-[15px] text-black/70"
                   >
                     Vel’s Film City - Outdoor
-                  </Link>
+                  </button>
                 </div>
               )}
             </nav>
@@ -410,67 +419,67 @@ export default function Navbar() {
             {/* Sections dropdown list (when open) */}
             {sectionsOpen && (
               <div className="space-y-3">
-                <Link
+                <a
                   href="#crafted"
                   onClick={() => setIsDrawerOpen(false)}
                   className="block text-[15px] text-black/80"
                 >
                   Designed For Every Occasion
-                </Link>
-                <Link
+                </a>
+                <a
                   href="#talk"
                   onClick={() => setIsDrawerOpen(false)}
                   className="block text-[15px] text-black/80"
                 >
                   Let’s Talk About Your Events
-                </Link>
-                <Link
+                </a>
+                <a
                   href="#getting"
                   onClick={() => setIsDrawerOpen(false)}
                   className="block text-[15px] text-black/80"
                 >
                   Getting to VELS
-                </Link>
-                <Link
+                </a>
+                <a
                   href="#events"
                   onClick={() => setIsDrawerOpen(false)}
                   className="block text-[15px] text-black/80"
                 >
                   Event Spotlight
-                </Link>
+                </a>
               </div>
             )}
 
             {/* Other top-level anchors (optional) */}
             <div className="mt-6 space-y-3">
-              <Link
+              <a
                 href="#crafted"
                 onClick={() => setIsDrawerOpen(false)}
                 className="block text-[16px] text-black/80"
               >
                 Crafted to Host Every Milestone
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#talk"
                 onClick={() => setIsDrawerOpen(false)}
                 className="block text-[16px] text-black/80"
               >
                 Let’s Talk About Your Events
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#getting"
                 onClick={() => setIsDrawerOpen(false)}
                 className="block text-[16px] text-black/80"
               >
                 Getting to VELS
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#events"
                 onClick={() => setIsDrawerOpen(false)}
                 className="block text-[16px] text-black/80"
               >
                 Plan Your Big Day
-              </Link>
+              </a>
             </div>
 
             {/* Quick Links */}
