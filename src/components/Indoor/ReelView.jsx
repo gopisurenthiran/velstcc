@@ -91,8 +91,8 @@ export default function ReelView() {
                 <Image
                   src={src}
                   alt={`Reel view ${index + 1}`}
-                  width={100}
-                  height={100}
+                  width={234}
+                  height={300}
                   className=" w-full h-full"
                 />
               </div>

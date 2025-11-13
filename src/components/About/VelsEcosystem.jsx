@@ -99,14 +99,17 @@ export default function VelsEcosystem() {
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="relative w-full"
               >
-                <Image
-                  src={current?.image || "/assets/placeholder.webp"}
-                  alt={current?.title || "VELS"}
-                  width={640}
-                  height={480}
-                  className="h-auto w-full object-cover"
-                  priority
-                />
+<Image
+  src={current?.image}
+  alt={current?.title}
+  width={0}
+  height={0}
+  sizes="100vw"
+  className="w-auto h-auto"
+  priority
+/>
+
+
               </motion.div>
             </AnimatePresence>
           </div>
