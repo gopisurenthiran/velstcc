@@ -64,7 +64,7 @@ const ChevronDown = (props) => (
 
 export default function Navbar() {
   const router = useRouter();
-  const pathname = usePathname(); // to show desktop hamburger only on "/"
+  const pathname = usePathname(); // current route
 
   const [isMegaOpen, setIsMegaOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState("theatre");
@@ -151,6 +151,22 @@ export default function Navbar() {
 
   const handleMegaLinkClick = () => setIsMegaOpen(false);
 
+  // helper for normal link highlight
+  const linkClasses = (href) => {
+    const isActive = pathname === href;
+    return [
+      "transition-colors",
+      isActive ? "text-[#2A1C79] font-semibold" : "text-black/70 hover:text-[#2A1C79]",
+    ].join(" ");
+  };
+
+  // highlight Discover when mega open or on its pages
+  const isDiscoverActive =
+    isMegaOpen ||
+    pathname.startsWith("/theatre") ||
+    pathname.startsWith("/indoor") ||
+    pathname.startsWith("/outdoor");
+
   return (
     <header
       className={`sticky top-0 z-50 w-full bg-white transition-all ${
@@ -159,44 +175,61 @@ export default function Navbar() {
     >
       <div className="max-w-8xl mx-auto relative flex items-center justify-center py-4 px-6">
         {/* === Desktop Nav – 4 equal columns, Discover centered === */}
-        <nav className="hidden md:grid grid-cols-4 w-full max-w-7xl mx-auto text-[16px] font-primary text-black/70">
-          {/* ABOUT */}
-          <div className="flex justify-center">
-            <Link href="/about" className="hover:text-[#2A1C79] transition-colors">
-              About Us
-            </Link>
-          </div>
+       <nav className="hidden md:grid grid-cols-5 w-full max-w-7xl mx-auto text-[16px] font-primary">
 
-          {/* DISCOVER + arrow (normal weight) */}
-          <div className="flex justify-center">
-            <button
-              onClick={() => setIsMegaOpen((v) => !v)}
-              aria-expanded={isMegaOpen}
-              className="hover:text-[#2A1C79] transition-colors flex items-center gap-1 font-normal"
-            >
-              <span>Discover Your World</span>
-              <ChevronDown
-                className={`w-4 h-4 transition-transform ${
-                  isMegaOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-          </div>
+  {/* HOME */}
+  <div className="flex justify-center">
+    <Link href="/" className={linkClasses("/")}>
+      Home
+    </Link>
+  </div>
 
-          {/* FAQ */}
-          <div className="flex justify-center">
-            <Link href="/faq" className="hover:text-[#2A1C79] transition-colors">
-              FAQ&apos;S
-            </Link>
-          </div>
+  {/* ABOUT */}
+  <div className="flex justify-center">
+    <Link href="/about" className={linkClasses("/about")}>
+      About Us
+    </Link>
+  </div>
 
-          {/* CONTACT */}
-          <div className="flex justify-center">
-            <Link href="/contact" className="hover:text-[#2A1C79] transition-colors">
-              Contact Us
-            </Link>
-          </div>
-        </nav>
+  {/* DISCOVER + arrow */}
+  <div className="flex justify-center">
+    <button
+      onClick={() => setIsMegaOpen((v) => !v)}
+      aria-expanded={isMegaOpen}
+      className={[
+        "flex items-center gap-1 transition-colors",
+        isDiscoverActive
+          ? "text-[#2A1C79] font-semibold"
+          : "text-black/70 hover:text-[#2A1C79]",
+      ].join(" ")}
+    >
+      <span>Discover Your World</span>
+      <span className="inline-flex items-center">
+        <ChevronDown
+          className={`w-4 h-4 transition-transform ${
+            isMegaOpen ? "rotate-180" : ""
+          }`}
+        />
+      </span>
+    </button>
+  </div>
+
+  {/* FAQ */}
+  <div className="flex justify-center">
+    <Link href="/faq" className={linkClasses("/faq")}>
+      FAQ&apos;S
+    </Link>
+  </div>
+
+  {/* CONTACT */}
+  <div className="flex justify-center">
+    <Link href="/contact" className={linkClasses("/contact")}>
+      Contact Us
+    </Link>
+  </div>
+
+</nav>
+
 
         {/* === MOBILE top bar === */}
         <div className="flex md:hidden w-full items-center justify-between">
