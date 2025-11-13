@@ -116,7 +116,7 @@ export default function EventsExact() {
                       >
                         {ev.tag}
                       </p>
-
+                        <div className={`mt-1 mb-4 h-px w-32 ${isActive ? "bg-primary" : "bg-primary"}`} />
                       <h3
                         className={[
                           "mt-1 text-lg leading-6 font-primary",
@@ -125,28 +125,14 @@ export default function EventsExact() {
                       >
                         {ev.title}
                       </h3>
-
+                       
                       <p className={isActive ? "text-lg text-black font-primary" : "text-lg text-black/40 font-primary"}>
                         {ev.date}
                       </p>
 
-                      <div className={`mt-2 h-px w-32 ${isActive ? "bg-primary" : "bg-primary"}`} />
+                     
 
-                      <div className="mt-5 flex items-center">
-                        <a
-                          href={ev.href}
-                          aria-disabled={isActive ? "false" : "true"}
-                          className={[
-                            "inline-flex items-center px-4 py-2 text-sm font-primary shadow-sm transition-all duration-300",
-                            PURPLE,
-                            isActive
-                              ? "text-white hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-black/20"
-                              : "text-white/60 opacity-50 pointer-events-none"
-                          ].join(" ")}
-                        >
-                          EXPLORE MORE
-                        </a>
-                      </div>
+                     
                     </div>
                   </div>
                 </article>

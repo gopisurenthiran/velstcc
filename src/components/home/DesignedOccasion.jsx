@@ -232,9 +232,7 @@ const DesignedOccasion = () => {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <button className="bg-primary text-white px-6 py-3 font-medium">
-                  KNOW MORE
-                </button>
+               
                <a
   href="/assets/pdf/area.pdf"
   target="_blank"
@@ -287,7 +285,7 @@ const DesignedOccasion = () => {
 
         <motion.div className="mt-8" variants={item}>
           <motion.a
-            href="tel:+917708922599"
+            href="/contact"
             className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}

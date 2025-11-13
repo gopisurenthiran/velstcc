@@ -9,21 +9,21 @@ import "slick-carousel/slick/slick-theme.css";
 // ✅ Hero Slides Data
 const slides = [
   {
-    image: "/assets/theatre-banner-1.jpg",
+    image: "/assets/banner/theatre-banner-1.webp",
     alt: "Vels Trade and Convenience Center Grand Entrance",
     title: "Where Cinema Comes Alive",
     subtitle:
       "Experience cinema the way it’s meant to be Grand, Immersive, Unforgettable.",
   },
   {
-    image: "/assets/theatre-banner-2.jpg",
+    image: "/assets/banner/theatre-banner-2.webp",
     alt: "Indoor Studio",
     title: "Where Cinema Comes Alive",
     subtitle:
       "Experience cinema the way it’s meant to be Grand, Immersive, Unforgettable.",
   },
   {
-    image: "/assets/theatre-banner-3.jpg",
+    image: "/assets/banner/theatre-banner-3.webp",
     alt: "Outdoor Filming Area",
    title: "Where Cinema Comes Alive",
     subtitle:
