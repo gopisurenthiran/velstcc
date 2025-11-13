@@ -18,15 +18,15 @@ export default function Theatre360() {
   };
 
   const slides = [
-    { image: "/assets/enthiran_1.webp" },
-    { image: "/assets/enthiran_2.webp" },
-    { image: "/assets/enthiran_3.webp" },
-    { image: "/assets/indian_1.webp" },
-    { image: "/assets/indian_2.webp" },
-    { image: "/assets/indian_3.webp" },
-    { image: "/assets/kaala_1.webp" },
-    { image: "/assets/kaala_2.webp" },
-    { image: "/assets/kaala_3.webp" },
+    { image: "/assets/showcase-1.webp" },
+    { image: "/assets/showcase-2.webp" },
+    { image: "/assets/showcase-3.webp" },
+    { image: "/assets/showcase-4.webp" },
+    { image: "/assets/showcase-5.webp" },
+    { image: "/assets/showcase-6.webp" },
+    { image: "/assets/showcase-1.webp" },
+    { image: "/assets/showcase-2.webp" },
+    { image: "/assets/showcase-3.webp" },
   ];
 
   return (

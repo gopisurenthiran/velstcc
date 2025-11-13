@@ -69,7 +69,7 @@ export default function IndoorFliming() {
           viewport={{ once: true }}
         >
           <Image
-            src="/assets/featurted_image.png"
+            src="/assets/vels_indoor.webp"
             alt="Vels Theatres"
             width={600}
             height={400}

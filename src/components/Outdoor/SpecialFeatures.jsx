@@ -3,10 +3,10 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
-import img1 from "@/public/assets/special-1.png";
-import img2 from "@/public/assets/special-2.png";
-import img3 from "@/public/assets/special-3.png";
-import img4 from "@/public/assets/special-4.png";
+import img1 from "@/public/assets/expansive_parking_for_6_000_cars.webp";
+import img2 from "@/public/assets/architectural_grandeur_indoors_out.webp";
+import img3 from "@/public/assets/scenic_sets_customizable_spaces.webp";
+import img4 from "@/public/assets/uninterrupted_power_acoustic_precision.webp";
 
 const features = [
   {
@@ -26,8 +26,8 @@ const features = [
   },
   {
     img: img4,
-    title: "Scenic Sets & Customizable Spaces",
-    desc: "Be it a grand ballroom, a cozy café, or a floral courtyard, our pre-designed sets and adaptable backdrops give directors and DOPs endless creative possibilities.",
+    title: "Uninterrupted Power & Acoustic Precision ",
+    desc: "Our state-of-the-art power backup and acoustic engineering ensure that every spotlight, dialogue, and decibel performs flawlessly. From corporate summits to cinematic shoots, we deliver an ambiance where silence, sound, and spotlight co-exist in perfect rhythm.",
   },
 ];
 

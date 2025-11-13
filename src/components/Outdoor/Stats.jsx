@@ -3,10 +3,10 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import icon1 from "@/public/assets/icons/block.svg";
-import icon2 from "@/public/assets/icons/arrow.svg";
-import icon3 from "@/public/assets/icons/location.svg";
-import icon4 from "@/public/assets/icons/car.svg";
+import icon1 from "@/public/assets/outdoor.svg";
+import icon2 from "@/public/assets/on-site.svg";
+import icon3 from "@/public/assets/zap.svg";
+import icon4 from "@/public/assets/only.svg";
 
 // ✅ Stat data
 const statsData = [

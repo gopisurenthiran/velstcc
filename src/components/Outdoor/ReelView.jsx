@@ -7,13 +7,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const images = [
-  "/assets/7.png",
-  "/assets/8.png",
-  "/assets/9.png",
-  "/assets/10.png",
-  "/assets/8.png",
-  "/assets/7.png",
-  "/assets/9.png",
+  "/assets/1.webp",
+  "/assets/2.webp",
+  "/assets/3.webp",
+  "/assets/4.webp",
+  "/assets/5.webp",
+  "/assets/6.webp",
+  "/assets/7.webp",
+  "/assets/8.webp",
 ];
 
 export default function ReelView() {
@@ -115,9 +116,9 @@ export default function ReelView() {
                 <Image
                   src={src}
                   alt={`Reel view ${index + 1}`}
-                  width={100}
-                  height={100}
-                  className="w-full h-full object-cover"
+                  width={234}
+                  height={300}
+                  className="w-full h-full"
                   priority={index === 0}
                 />
               </motion.div>

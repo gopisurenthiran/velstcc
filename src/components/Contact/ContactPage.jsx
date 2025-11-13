@@ -188,11 +188,11 @@ export default function ContactTabs() {
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-2xl font-semibold font-secondary mb-2">
-          Event Enquiry
+          Plan Your Event 
         </h2>
         <div className="h-[1px] bg-primary w-[120px] mt-6 mb-2"></div>
         <p className="text-lg text-gray-700 font-primary mb-4">
-          Interested in exhibitor services or venue <br /> specifications?
+         Interested in exhibitor services or venue details? <br/> Let's discuss your requirements
         </p>
         <button className="px-6 py-2 bg-primary font-primary text-white text-sm uppercase tracking-wide">
           Enquire Now

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion"; // ✅ Added for animation
-import imgSrc from "@/public/assets/featurted_image.png";
+import imgSrc from "@/public/assets/values.webp";
 
 export default function ValuesSection() {
   const values = [
@@ -48,8 +48,8 @@ export default function ValuesSection() {
                 <Image
                   src={imgSrc}
                   alt="Values image"
-                  width={900}
-                  height={600}
+                  width={590}
+                  height={546}
                   className="w-full h-auto"
                 />
               </div>

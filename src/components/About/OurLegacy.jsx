@@ -2,7 +2,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import featuredbanner from "@/public/assets/featurted_image.png";
+import featuredbanner from "@/public/assets/trade_convention_centre.webp";
 import { motion } from "framer-motion"; // ✅ Add this
 
 const OurLegacy = () => {
@@ -57,13 +57,7 @@ const OurLegacy = () => {
             </h2>
             <span className="block w-24 h-px bg-primary mt-5 mb-2" aria-hidden />
             <p className="text-gray-700 font-primary leading-loose text-lg">
-              Alongside our film city,{" "}
-              <span className="font-semibold underline text-primary font-primary text-lg">
-                Vels Trade & Convention Centre
-              </span>{" "}
-              serves as a versatile venue for exhibitions, conferences, and
-              cultural events, attracting business and creative communities
-              alike.
+             Beyond the silver screen, Vels Trade & Convention Centre stands as Chennai's most advanced event ecosystem, hosting world-class conventions, international trade expos, and landmark cultural celebrations that unite innovation, business, and creativity under one iconic roof.
             </p>
           </div>
         </motion.div>

@@ -62,7 +62,7 @@ export default function Find() {
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* LEFT: Google Map Embed */}
           <motion.div
-            className="relative overflow-hidden rounded-2xl shadow-md aspect-[16/9]"
+            className="relative overflow-hidden shadow-md aspect-[16/9]"
             initial={{ opacity: 0, scale: 1.03 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -77,7 +77,7 @@ export default function Find() {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 w-full h-full rounded-2xl"
+              className="absolute inset-0 w-full h-full"
             ></iframe>
           </motion.div>
 

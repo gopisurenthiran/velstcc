@@ -86,7 +86,7 @@ export default function OutdoorFliming() {
           viewport={{ once: true }}
         >
           <Image
-            src="/assets/featurted_image.png"
+            src="/assets/vels_outdoor.webp"
             alt="Vels Theatres"
             width={600}
             height={400}

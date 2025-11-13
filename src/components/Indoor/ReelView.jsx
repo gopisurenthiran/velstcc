@@ -8,13 +8,14 @@ import { motion } from "framer-motion";
 
 
 const images = [
-  "/assets/7.png",
-  "/assets/8.png",
-  "/assets/9.png",
-  "/assets/10.png",
-  "/assets/8.png",
-  "/assets/7.png",
-   "/assets/9.png",
+  "/assets/reelview-1.webp",
+  "/assets/reelview-2.webp",
+  "/assets/reelview-3.webp",
+  "/assets/reelview-4.webp",
+  "/assets/reelview-5.webp",
+  "/assets/reelview-6.webp",
+  "/assets/reelview-7.webp",
+  "/assets/reelview-8.webp",
 ];
 
 export default function ReelView() {

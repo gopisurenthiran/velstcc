@@ -3,15 +3,15 @@ import Image from "next/image";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Replace with your real image
-import sustainabilityImg from "@/public/assets/The Vels Assurance.png";
-import img from "@/public/assets/Crafted for Comfort.png";
+// Images
+import sustainabilityImg from "@/public/assets/the_vels_assurance.webp";
+import craftedImg from "@/public/assets/crafted_for_comfort.webp";
 
 const TABS = [
   {
-    key: "sustainability",
-    label: "Crafted for Comfort ",
-    image: img,
+    key: "comfort",
+    label: "Crafted for Comfort",
+    image: craftedImg,
     items: [
       {
         title: "Every detail designed around you.",
@@ -21,8 +21,8 @@ const TABS = [
     ],
   },
   {
-    key: "hss",
-    label: "The Vels Assurance ",
+    key: "assurance",
+    label: "The Vels Assurance",
     image: sustainabilityImg,
     items: [
       {
@@ -38,7 +38,6 @@ export default function IndoorTabs() {
   const [active, setActive] = React.useState(TABS[0].key);
   const current = TABS.find((t) => t.key === active);
 
-  /* ---------- Animation Variants ---------- */
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
@@ -47,22 +46,17 @@ export default function IndoorTabs() {
   return (
     <section className="bg-white py-16">
       <motion.div
-        className="max-w-6xl mx-auto px-4 grid gap-10 md:grid-cols-2 items-start"
+        className="max-w-6xl mx-auto px-4 grid gap-12 md:grid-cols-2 items-start"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={{
           hidden: {},
-          show: {
-            transition: { staggerChildren: 0.2 },
-          },
+          show: { transition: { staggerChildren: 0.2 } },
         }}
       >
-        {/* LEFT IMAGE */}
-        <motion.div
-          className="relative aspect-[4/5] overflow-hidden"
-          variants={fadeInUp}
-        >
+        {/* ---------------- LEFT IMAGE (Actual Size) ---------------- */}
+        <motion.div variants={fadeInUp} className="w-full flex justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -70,25 +64,22 @@ export default function IndoorTabs() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="absolute inset-0"
+              className="w-full"
             >
               <Image
                 src={current.image}
                 alt={current.label}
-                fill
-                sizes="(min-width: 1024px) 540px, 100vw"
-                className="object-cover"
+                width={600}        // actual width
+                height={500}       // actual height
+                className="w-full h-auto "
                 priority
               />
             </motion.div>
           </AnimatePresence>
         </motion.div>
 
-        {/* RIGHT CONTENT */}
-        <motion.div
-          className="w-full"
-          variants={fadeInUp}
-        >
+        {/* ---------------- RIGHT CONTENT ---------------- */}
+        <motion.div variants={fadeInUp}>
           {/* Tabs */}
           <div role="tablist" className="flex gap-10 pb-3">
             {TABS.map((tab) => {
@@ -97,19 +88,22 @@ export default function IndoorTabs() {
                 <button
                   key={tab.key}
                   onClick={() => setActive(tab.key)}
-                  className={`relative pb-2 text-[13px] md:text-sm tracking-wide font-secondary uppercase transition-colors ${
-                    isActive ? "text-gray-900" : "text-gray-500 hover:text-gray-800"
+                  className={`relative pb-2 text-xs md:text-sm uppercase tracking-wide font-secondary transition-colors ${
+                    isActive ? "text-black" : "text-gray-500 hover:text-black"
                   }`}
                 >
+                  {/* Dot */}
                   {isActive && (
                     <motion.span
                       layoutId="dot"
-                      className="inline-block font-secondary align-middle mr-2 h-1.5 w-1.5 rounded-full bg-primary"
+                      className="inline-block h-1.5 w-1.5 rounded-full bg-primary mr-2"
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
                     />
                   )}
+
                   {tab.label}
 
+                  {/* Underline */}
                   <motion.span
                     layoutId={`underline-${tab.key}`}
                     className="pointer-events-none absolute left-0 -bottom-[1px] h-[1px] w-full bg-primary"
@@ -122,23 +116,23 @@ export default function IndoorTabs() {
             })}
           </div>
 
-          {/* Panel */}
+          {/* Panel Content */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.5 }}
               className="mt-8 space-y-6"
             >
               {current.items.map((it, idx) => (
-                <div key={idx} className="max-w-2xl">
+                <div key={idx} className="max-w-xl">
                   <motion.h3
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-sm md:text-base font-secondary text-gray-800"
+                    className="text-base md:text-lg font-secondary text-gray-800"
                   >
                     {it.title}
                   </motion.h3>
@@ -147,7 +141,7 @@ export default function IndoorTabs() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className="text-xs md:text-sm font-primary text-gray-500 mt-1 leading-relaxed"
+                    className="text-sm md:text-[15px] font-primary text-gray-600 mt-2 leading-relaxed"
                   >
                     {it.desc}
                   </motion.p>

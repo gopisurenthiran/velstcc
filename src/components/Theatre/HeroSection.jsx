@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
@@ -9,29 +8,20 @@ import "slick-carousel/slick/slick-theme.css";
 // ✅ Hero Slides Data
 const slides = [
   {
-    image: "/assets/banner/theatre-banner-1.webp",
-    alt: "Vels Trade and Convenience Center Grand Entrance",
-    title: "Where Cinema Comes Alive",
-    subtitle:
-      "Experience cinema the way it’s meant to be Grand, Immersive, Unforgettable.",
+    img: "/assets/banner/theatre-banner-1.webp",
+    alt: "Vels Trade and Convention Center Grand Entrance",
   },
   {
-    image: "/assets/banner/theatre-banner-2.webp",
+    img: "/assets/banner/theatre-banner-2.webp",
     alt: "Indoor Studio",
-    title: "Where Cinema Comes Alive",
-    subtitle:
-      "Experience cinema the way it’s meant to be Grand, Immersive, Unforgettable.",
   },
   {
-    image: "/assets/banner/theatre-banner-3.webp",
+    img: "/assets/banner/theatre-banner-3.webp",
     alt: "Outdoor Filming Area",
-   title: "Where Cinema Comes Alive",
-    subtitle:
-      "Experience cinema the way it’s meant to be Grand, Immersive, Unforgettable.",
   },
 ];
 
-const HeroSection = () => {
+const Hero = () => {
   const handleClick = (e) => {
     e.preventDefault();
     const targetElement = document.getElementById("target-section");
@@ -54,47 +44,31 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center text-white overflow-hidden">
-      {/* ✅ Slider Background */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full h-[600px] flex items-center justify-center text-white overflow-hidden">
+      {/* ✅ Desktop / Large Screens Slider */}
+      <div className="absolute inset-0 z-0 h-[600px] hidden md:block">
         <Slider {...settings}>
           {slides.map((slide, index) => (
-            <div key={index} className="relative min-h-screen w-full">
-              {/* Background Image */}
-              <Image
-                src={slide.image}
+            <div key={index} className="relative w-full h-[600px]">
+              <img
+                src={slide.img}
                 alt={slide.alt}
-                fill
-                priority={index === 0}
-                quality={100}
-                className="object-cover object-center"
+                className="w-full h-[600px] object-cover object-center"
+                loading={index === 0 ? "eager" : "lazy"}
               />
-
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-
-              {/* ✅ Text Overlay */}
-              <div className="absolute bottom-24 left-6 md:left-16 z-20 max-w-2xl">
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-2xl md:text-5xl font-secondary font-semibold text-white"
-                >
-                  {slide.title}
-                </motion.h2>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.9, delay: 0.5 }}
-                  className="mt-4 text-sm md:text-lg text-white/90 font-primary leading-relaxed"
-                >
-                  {slide.subtitle}
-                </motion.p>
-              </div>
             </div>
           ))}
         </Slider>
+      </div>
+
+      {/* ✅ Mobile — Static Image Only */}
+      <div className="absolute inset-0 z-0 h-[600px] md:hidden">
+        <img
+          src="/assets/banner/mobile-theatre.webp"
+          alt={slides[0].alt}
+          className="w-full h-[600px] object-cover object-center"
+          loading="eager"
+        />
       </div>
 
       {/* ✅ Scroll Button */}
@@ -116,11 +90,11 @@ const HeroSection = () => {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="6 9 12 15 18 9"></polyline>
+          <polyline points="6 9 12 15 18 9" />
         </svg>
       </motion.button>
     </section>
   );
 };
 
-export default HeroSection;
+export default Hero;

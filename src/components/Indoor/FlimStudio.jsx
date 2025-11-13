@@ -29,11 +29,11 @@ const PrevArrow = ({ onClick }) => (
 
 // Studio logos
 const studios = [
-  { img: "/assets/biggboss-1.png", alt: "Bhavana Studios" },
-  { img: "/assets/biggboss-2.png", alt: "Lyca Productions" },
-  { img: "/assets/biggboss-3.png", alt: "Z Studios" },
-  { img: "/assets/biggboss-2.png", alt: "Sun Pictures" },
-  { img: "/assets/biggboss-1.png", alt: "Rajkamal Films" },
+  { img: "/assets/frame-1.webp", alt: "Bhavana Studios" },
+  { img: "/assets/frame-2.webp", alt: "Lyca Productions" },
+  { img: "/assets/frame-3.webp", alt: "Z Studios" },
+  { img: "/assets/frame-1.webp", alt: "Sun Pictures" },
+  { img: "/assets/frame-2.webp", alt: "Rajkamal Films" },
 ];
 
 export default function FilmStudio() {

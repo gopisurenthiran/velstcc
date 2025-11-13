@@ -1,5 +1,5 @@
 import BasicsEssential from "../../components/Faq/BasicEssential";
-import Hero from "../../components/home/Hero";
+import Hero from "../../components/Outdoor/Hero";
 import AboutFlim from "../../components/Outdoor/AboutFlim";
 import Faq from "../../components/Outdoor/Faq";
 import FilmStudio from "../../components/Outdoor/FlimStudio";

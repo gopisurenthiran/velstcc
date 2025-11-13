@@ -10,17 +10,17 @@ const facilities = [
   {
     title: "Popcorn",
     desc: "Freshly popped, perfectly seasoned, and endlessly comforting, our popcorn isn’t just a snack; it’s a scene-stealer.",
-    image: "/assets/facilities.png",
+    image: "/assets/popcorn.webp",
   },
   {
     title: "Nachos",
     desc: "Crisp, cheesy, and loaded with flavour, the go-to bite for when the reel gets real.",
-    image: "/assets/facilities.png",
+    image: "/assets/nachos.webp",
   },
   {
     title: "Beverages",
     desc: "From artisanal coffees to chilled mocktails, our lounge keeps every guest refreshed and ready for the next act.",
-    image: "/assets/facilities.png",
+    image: "/assets/beverages.webp",
   },
 ];
 
@@ -128,14 +128,14 @@ export default function Concession() {
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                   className="absolute inset-0"
                 >
-                  <Image
-                    src={facilities[active].image || "/assets/facilities.png"}
-                    alt={facilities[active].title}
-                    fill
-                    className="object-cover w-full h-full"
-                    priority
-                    onLoadingComplete={() => setImgReady(true)}
-                  />
+                   <Image
+                src={facilities[active].image || "/assets/facilities.png"}
+                alt={facilities[active].title}
+                width={520}   // use your real image width
+                height={600}   // use your real image height
+                className="w-full h-auto object-contain"
+                priority
+              />
                 </motion.div>
               </AnimatePresence>
             </div>

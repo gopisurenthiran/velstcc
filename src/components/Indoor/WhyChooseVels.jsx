@@ -36,25 +36,25 @@ const slides = [
     title: "Soundproofed for Storytelling",
     description:
       "Our state-of-the-art soundproof studios let directors capture emotion without interruption, where silence enhances every shot.",
-    image: "/assets/why-1.png",
+    image: "/assets/soundproofed.webp",
   },
   {
     title: "Lighting that Paints Emotions",
     description:
       "Equipped with adjustable grid lighting and cinematic illumination setups, our indoor spaces bring every frame to life with unmatched visual clarity.",
-    image: "/assets/why-2.png",
+    image: "/assets/lighting.webp",
   },
   {
     title: "Scalable Sets. Seamless Transitions. ",
     description:
       "From courtroom dramas to cosmic adventures, transform any space within hours. Flexible architecture enables quick set builds and smooth production flow.",
-    image: "/assets/why-3.png",
+    image: "/assets/scalable.webp",
   },
   {
     title: "Controlled Climate. Continuous Creativity.",
     description:
       "Advanced temperature control and ventilation systems ensure comfort for long shooting hours, so creativity never breaks a sweat.",
-    image: "/assets/indian-2.png",
+    image: "/assets/controlled.webp",
   },
 ];
 

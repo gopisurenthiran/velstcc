@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion"; // ✅ added
-import missionImg from "@/public/assets/featurted_image.png";
-import visionImg from "@/public/assets/featurted_image.png";
+import missionImg from "@/public/assets/mission.webp";
+import visionImg from "@/public/assets/vission.webp";
 
 export default function VisionMission() {
   const [activeTab, setActiveTab] = useState("vision");
@@ -100,20 +100,19 @@ export default function VisionMission() {
         viewport={{ once: true }}
       >
         <div className="max-w-8xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-secondary text-black mb-4">
-            Lorem ipsum dolor sit amet
+          <h2 className="text-2xl md:text-3xl font-secondary text-black mb-4">
+            FOUNDERS MESSAGE 
           </h2>
+          
           <div className="w-48 h-[1px] bg-primary mb-5" />
+          <h4 className="text-xl mb-4 font-secondary">WELCOME MESSAGE FROM CHAIRMAN </h4>
           <p className="text-gray-600 leading-relaxed font-primary text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua.
+            Welcome to Vels Film City, <br/> Trade & Convention Centre & Theatres <br/>		- where vision meets execution. <br/>
+            When we embarked on this journey, our ambition was both clear and bold, to build a singular destination where innovation, craftsmanship, and collaboration thrive in seamless unity. Today, we stand as the premier film city in Tamil Nadu, offering infrastructure that rivals the world's finest. <br/>
+Whether you're crafting a cinematic masterpiece, orchestrating a global trade summit, or unveiling your brand's next chapter, our ecosystem is purpose-built to elevate your vision at every turn. 
+On behalf of our entire team, I invite you to discover our state-of-the-art facilities, witness our relentless pursuit of excellence, and bring your aspirations to life right here in Chennai. 
           </p>
+          <p className="text-gray-600 leading-relaxed font-primary font-semibold text-lg mt-10">DR. ISHARI K. GANESH <br/>Founder & Chancellor of Vels University <br/>Chairman, Vels Group of Institutions & Companies </p>
         </div>
       </motion.div>
     </>

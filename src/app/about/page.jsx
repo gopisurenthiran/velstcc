@@ -3,7 +3,8 @@ import Feature from "../../components/home/Feature";
 import OurLegacy from "../../components/About/OurLegacy";
 import VisionMission from "../../components/About/VisionMission";
 import Values from "../../components/About/Values";
-import AwardsSection from "../../components/About/AwardSection";
+import VelsEcosystem from "../../components/About/VelsEcosystem";
+
 
 export default function about() {
   return (
@@ -12,7 +13,7 @@ export default function about() {
         <OurLegacy />
         <VisionMission />
         <Values />
-        <AwardsSection />
+        <VelsEcosystem />
     </>
     
   );

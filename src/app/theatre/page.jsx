@@ -1,4 +1,3 @@
-import Hero from "../../components/home/Hero";
 import ReelView from "../../components/Theatre/ReelView";
 import Stats from "../../components/Theatre/Stats";
 import Theatre360 from "../../components/Theatre/Theatre360";

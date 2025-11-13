@@ -144,8 +144,8 @@ export default function Facilities() {
                 <Image
                   src={facilities[active].image}
                   alt={facilities[active].title}
-                  width={1200} // real image resolution width
-                  height={800} // real image resolution height
+                  width={590} // real image resolution width
+                  height={726} // real image resolution height
                   className="w-full h-auto object-contain rounded-lg"
                   priority
                 />

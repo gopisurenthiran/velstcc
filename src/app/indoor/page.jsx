@@ -1,5 +1,4 @@
 import BasicsEssential from "../../components/Faq/BasicEssential";
-import Hero from "../../components/home/Hero";
 import AboutFlim from "../../components/Indoor/AboutFlim";
 import Faq from "../../components/Outdoor/Faq";
 import FilmStudio from "../../components/Indoor/FlimStudio";
@@ -11,12 +10,13 @@ import SpecialFeatures from "../../components/Indoor/SpecialFeatures";
 import Stats from "../../components/Indoor/Stats";
 import IndoorTabs from "../../components/Indoor/IndoorTabs";
 import WhyChooseVels from "../../components/Indoor/WhyChooseVels";
+import HeroSection from "../../components/Indoor/HeroSection";
 
 
 export default function outdoor() {
   return (
     <>
-        <Hero />
+         <HeroSection />
         <OutdoorFliming />
         <Stats />
         <FilmStudio />

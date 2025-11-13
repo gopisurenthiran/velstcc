@@ -4,10 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion"; // ✅ added for animation
 
 // ✅ Import your icons
-import icon1 from "@/public/assets/icons/block.svg";
-import icon2 from "@/public/assets/icons/arrow.svg";
-import icon3 from "@/public/assets/icons/location.svg";
-import icon4 from "@/public/assets/icons/car.svg";
+import icon1 from "@/public/assets/acres.svg";
+import icon2 from "@/public/assets/major.svg";
+import icon3 from "@/public/assets/tv.svg";
+import icon4 from "@/public/assets/bigg.svg";
 
 // ✅ Stat data
 const statsData = [

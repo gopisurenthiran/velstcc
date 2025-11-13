@@ -45,25 +45,25 @@ const slides = [
     title: "Expansive & Adaptable Spaces ",
     description:
       "From grand outdoor sets to versatile indoor studios, our 75-acre campus offers endless possibilities for film, television, and commercial shoots.",
-    image: "/assets/why-1.png",
+    image: "/assets/expansive_adaptable_spaces.webp",
   },
   {
     title: "World-Class Production Infrastructure ",
     description:
       "Equipped with advanced lighting, acoustics, and soundproof studios, VELS Film City ensures a seamless filmmaking experience, from script to screen. ",
-    image: "/assets/why-2.png",
+    image: "/assets/world_class_production_infrastructure.webp",
   },
   {
     title: "Skilled Technical & Creative Talent",
     description:
       "Backed by VELS University’s media and film departments, our trained professionals provide expertise in cinematography, set design, editing, and post-production. ",
-    image: "/assets/why-3.png",
+    image: "/assets/skilled_technical_creative_talent.webp",
   },
   {
     title: "Seamless Connectivity & Support ",
     description:
       "Strategically located with easy access to airports, highways, and luxury accommodations, VELS Film City ensures convenience and continuity at every stage of production. ",
-    image: "/assets/why-2.png",
+    image: "/assets/seamless_connectivity_support.webp",
   },
 ];
 

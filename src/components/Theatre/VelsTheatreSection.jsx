@@ -53,7 +53,7 @@ export default function VelsTheatreSection() {
           viewport={{ once: true }}
         >
           <Image
-            src="/assets/vels-theatres.png"
+            src="/assets/vels_theatres.webp"
             alt="Vels Theatres"
             width={600}
             height={400}
