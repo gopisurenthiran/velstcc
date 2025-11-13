@@ -1,9 +1,13 @@
 "use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import Image from "next/image";
 
-/* === Icons === */
+import velsLogo from "@/public/assets/vels-logo.png";
+
+/* === Icons (JS, no types) === */
 const MenuIcon = (props) => (
   <svg
     {...props}
@@ -60,29 +64,30 @@ const ChevronDown = (props) => (
 
 export default function Navbar() {
   const router = useRouter();
+  const pathname = usePathname(); // to show desktop hamburger only on "/"
 
-  const [isMegaOpen, setIsMegaOpen] = useState(false); // desktop mega
+  const [isMegaOpen, setIsMegaOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState("theatre");
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // mobile/desktop drawer
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [sectionsOpen, setSectionsOpen] = useState(false); // mobile dropdown inside drawer
+  const [sectionsOpen, setSectionsOpen] = useState(false);
 
   const megaRef = useRef(null);
   const drawerRef = useRef(null);
   const buttonRef = useRef(null);
 
   const navItems = [
-    { href: "#crafted", label: "Crafted to Host Every Milestone" },
-    { href: "#talk", label: "Let’s Talk About Your Events" },
+    { href: "/about", label: "About Us" },
+    { href: "/faq", label: "FAQ'S" },
     { label: "Discover Your World", hasSubmenu: true },
-    { href: "#getting", label: "Getting to VELS" },
-    { href: "#events", label: "Plan Your Big Day" },
+    { href: "/contact", label: "Contact Us" },
   ];
 
   const quickItems = [
-    { href: "/about", label: "About" },
-    { href: "/faq", label: "FAQ" },
-    { href: "/contact", label: "Contact" },
+    { href: "#crafted", label: "Crafted to Host Every Milestone" },
+    { href: "#talk", label: "Let’s Talk About Your Events" },
+    { href: "#getting", label: "Getting to VELS" },
+    { href: "#events", label: "Plan Your Big Day" },
   ];
 
   const discoverItems = [
@@ -136,8 +141,9 @@ export default function Navbar() {
   useEffect(() => {
     if (!isMegaOpen) return;
     const handleClick = (e) => {
-      if (megaRef.current && !megaRef.current.contains(e.target))
+      if (megaRef.current && !megaRef.current.contains(e.target)) {
         setIsMegaOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
@@ -152,32 +158,47 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-8xl mx-auto relative flex items-center justify-center py-4 px-6">
-        {/* === Desktop Nav === */}
-        <nav className="hidden md:flex justify-between w-full max-w-8xl text-[16px] font-primary text-black/70 text-center">
-          {navItems.map((item, i) =>
-            item.hasSubmenu ? (
-              <button
-                key={i}
-                onClick={() => setIsMegaOpen((v) => !v)}
-                aria-expanded={isMegaOpen}
-                className="flex-1 hover:text-[#2A1C79] transition-colors"
-              >
-                {item.label}
-              </button>
-            ) : (
-              <Link
-                key={i}
-                href={item.href}
-                className="flex-1 hover:text-[#2A1C79] transition-colors"
-                onClick={() => setIsMegaOpen(false)}
-              >
-                {item.label}
-              </Link>
-            )
-          )}
+        {/* === Desktop Nav – 4 equal columns, Discover centered === */}
+        <nav className="hidden md:grid grid-cols-4 w-full max-w-7xl mx-auto text-[16px] font-primary text-black/70">
+          {/* ABOUT */}
+          <div className="flex justify-center">
+            <Link href="/about" className="hover:text-[#2A1C79] transition-colors">
+              About Us
+            </Link>
+          </div>
+
+          {/* DISCOVER + arrow (normal weight) */}
+          <div className="flex justify-center">
+            <button
+              onClick={() => setIsMegaOpen((v) => !v)}
+              aria-expanded={isMegaOpen}
+              className="hover:text-[#2A1C79] transition-colors flex items-center gap-1 font-normal"
+            >
+              <span>Discover Your World</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${
+                  isMegaOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+          </div>
+
+          {/* FAQ */}
+          <div className="flex justify-center">
+            <Link href="/faq" className="hover:text-[#2A1C79] transition-colors">
+              FAQ&apos;S
+            </Link>
+          </div>
+
+          {/* CONTACT */}
+          <div className="flex justify-center">
+            <Link href="/contact" className="hover:text-[#2A1C79] transition-colors">
+              Contact Us
+            </Link>
+          </div>
         </nav>
 
-        {/* === MOBILE top bar (hamburger LEFT, logo CENTER) — no menu shown by default === */}
+        {/* === MOBILE top bar === */}
         <div className="flex md:hidden w-full items-center justify-between">
           {/* Left: hamburger that morphs to close */}
           <button
@@ -188,7 +209,6 @@ export default function Navbar() {
             className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-black/5 transition"
           >
             <span className="relative block w-6 h-6">
-              {/* Hamburger */}
               <MenuIcon
                 className={`absolute inset-0 transition-all duration-200 ease-out ${
                   isDrawerOpen
@@ -196,7 +216,6 @@ export default function Navbar() {
                     : "opacity-100 scale-100 rotate-0"
                 }`}
               />
-              {/* Close */}
               <CloseIcon
                 className={`absolute inset-0 transition-all duration-200 ease-out ${
                   isDrawerOpen
@@ -207,7 +226,7 @@ export default function Navbar() {
             </span>
           </button>
 
-          {/* Center: logo */}
+          {/* Center: logo text */}
           <div className="text-sm font-semibold text-[#2A1C79] select-none">
             VELS
           </div>
@@ -281,7 +300,7 @@ export default function Navbar() {
             </div>
 
             {/* Center: image swap */}
-            <div className="relative w-full  shadow-md overflow-hidden">
+            <div className="relative w-full shadow-md overflow-hidden">
               {discoverItems.map((item) => (
                 <img
                   key={item.id}
@@ -320,8 +339,8 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* === DESKTOP hamburger (opens same drawer) === */}
-      {!isDrawerOpen && (
+      {/* === DESKTOP hamburger — ONLY on home page === */}
+      {!isDrawerOpen && pathname === "/" && (
         <div className="hidden md:block absolute right-6 top-1/2 -translate-y-1/2 z-40">
           <button
             ref={buttonRef}
@@ -334,20 +353,30 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* === Drawer (mobile: full menu; desktop: quick links) === */}
+      {/* === Drawer (mobile + desktop quick links) === */}
       <div
-        className={`fixed top-0 h-full bg-[#F4F5FA] shadow-2xl z-50 transform transition-transform duration-300 ease-out
-    border-black/10
-    md:right-0 md:w-[380px] md:border-l
-    left-0 w-full border-r md:left-auto
-    ${
-      isDrawerOpen ? "translate-x-0" : "-translate-x-full md:translate-x-full"
-    }`}
         ref={drawerRef}
+        className={`fixed top-0 h-full bg-[#F4F5FA] shadow-2xl z-50 transform transition-transform duration-300 ease-out border-black/10
+          left-0 w-full border-r
+          md:right-0 md:left-auto md:w-[380px] md:border-l
+          ${
+            isDrawerOpen
+              ? "translate-x-0"
+              : "-translate-x-full md:translate-x-full"
+          }`}
       >
         {/* Drawer header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-black/10 bg-white">
-          <h3 className="text-lg font-semibold text-primary">Menu</h3>
+          <Link href="/" className="mb-3">
+            <Image
+              src={velsLogo}
+              alt="VELS Logo"
+              width={120}
+              height={80}
+              priority
+              className="object-contain"
+            />
+          </Link>
           <button
             onClick={() => setIsDrawerOpen(false)}
             aria-label="Close drawer"
@@ -359,133 +388,88 @@ export default function Navbar() {
 
         {/* Drawer content */}
         <div className="p-6 space-y-8 overflow-y-auto h-[calc(100%-64px)]">
-          {/* MOBILE: full site menu */}
-          <div className="md:hidden">
-            <h4 className="text-[18px] font-semibold text-black mb-3">
-              Discover your world
-            </h4>
-
-            {/* Root items */}
-            <nav className="space-y-3 mb-3">
-              <button
-                onClick={() => {
-                  setIsDrawerOpen(false);
-                  router.push("/theatre");
-                }}
-                className="block text-left text-[16px] font-semibold text-black"
-              >
-                Vel’s Theatre
-              </button>
-
-              {/* Toggleable group */}
-              <button
-                onClick={() => setSectionsOpen((v) => !v)}
-                className="w-full text-left flex items-center justify-between text-[16px] font-semibold text-black"
-                aria-expanded={sectionsOpen}
-              >
-                <span>Vel’s Film City</span>
-                <ChevronDown
-                  className={`transition-transform ${
-                    sectionsOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {/* Children */}
-              {!sectionsOpen && (
-                <div className="ml-3 mt-1 space-y-2">
-                  <button
-                    onClick={() => {
-                      setIsDrawerOpen(false);
-                      router.push("/indoor");
-                    }}
-                    className="block text-left text-[15px] text-black/70"
-                  >
-                    Vel’s Film City - Indoor
-                  </button>
-                  <button
-                    onClick={() => {
-                      setIsDrawerOpen(false);
-                      router.push("/outdoor");
-                    }}
-                    className="block text-left text-[15px] text-black/70"
-                  >
-                    Vel’s Film City - Outdoor
-                  </button>
-                </div>
-              )}
-            </nav>
-
-            {/* Sections dropdown list (when open) */}
-            {sectionsOpen && (
-              <div className="space-y-3">
-                <a
-                  href="#crafted"
-                  onClick={() => setIsDrawerOpen(false)}
-                  className="block text-[15px] text-black/80"
-                >
-                  Designed For Every Occasion
-                </a>
-                <a
-                  href="#talk"
-                  onClick={() => setIsDrawerOpen(false)}
-                  className="block text-[15px] text-black/80"
-                >
-                  Let’s Talk About Your Events
-                </a>
-                <a
-                  href="#getting"
-                  onClick={() => setIsDrawerOpen(false)}
-                  className="block text-[15px] text-black/80"
-                >
-                  Getting to VELS
-                </a>
-                <a
-                  href="#events"
-                  onClick={() => setIsDrawerOpen(false)}
-                  className="block text-[15px] text-black/80"
-                >
-                  Event Spotlight
-                </a>
-              </div>
-            )}
-
-            {/* Other top-level anchors (optional) */}
-            <div className="mt-6 space-y-3">
-              <a
-                href="#crafted"
-                onClick={() => setIsDrawerOpen(false)}
-                className="block text-[16px] text-black/80"
-              >
-                Crafted to Host Every Milestone
-              </a>
-              <a
-                href="#talk"
-                onClick={() => setIsDrawerOpen(false)}
-                className="block text-[16px] text-black/80"
-              >
-                Let’s Talk About Your Events
-              </a>
-              <a
-                href="#getting"
-                onClick={() => setIsDrawerOpen(false)}
-                className="block text-[16px] text-black/80"
-              >
-                Getting to VELS
-              </a>
-              <a
-                href="#events"
-                onClick={() => setIsDrawerOpen(false)}
-                className="block text-[16px] text-black/80"
-              >
-                Plan Your Big Day
-              </a>
+          {/* MOBILE: full menu */}
+          <div className="md:hidden space-y-8">
+            {/* Main Menu */}
+            <div>
+              <h4 className="text-[18px] font-semibold text-black mb-3">
+                Main Menu
+              </h4>
+              <nav className="space-y-3">
+                {navItems
+                  .filter((item) => !item.hasSubmenu)
+                  .map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setIsDrawerOpen(false)}
+                      className="block text-[16px] text-black/80"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+              </nav>
             </div>
 
-            {/* Quick Links */}
-            <div className="mt-8">
-              <h4 className="text-[16px] font-semibold text-black mb-2">
-                Quick Links
+            {/* Discover your world */}
+            <div>
+              <h4 className="text-[18px] font-semibold text-black mb-3">
+                Discover your world
+              </h4>
+
+              <nav className="space-y-3 mb-3">
+                <button
+                  onClick={() => {
+                    setIsDrawerOpen(false);
+                    router.push("/theatre");
+                  }}
+                  className="block text-left text-[16px] font-semibold text-black"
+                >
+                  Vel’s Theatre
+                </button>
+
+                <button
+                  onClick={() => setSectionsOpen((v) => !v)}
+                  className="w-full text-left flex items-center justify-between text-[16px] font-semibold text-black"
+                  aria-expanded={sectionsOpen}
+                >
+                  <span>Vel’s Film City</span>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${
+                      sectionsOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {sectionsOpen && (
+                  <div className="ml-3 mt-1 space-y-2">
+                    <button
+                      onClick={() => {
+                        setIsDrawerOpen(false);
+                        router.push("/indoor");
+                      }}
+                      className="block text-left text-[15px] text-black/70"
+                    >
+                      Vel’s Film City - Indoor
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsDrawerOpen(false);
+                        router.push("/outdoor");
+                      }}
+                      className="block text-left text-[15px] text-black/70"
+                    >
+                      Vel’s Film City - Outdoor
+                    </button>
+                  </div>
+                )}
+              </nav>
+            </div>
+
+            {/* Section anchors */}
+            <div>
+              <h4 className="text-[18px] font-semibold text-black mb-3">
+                Explore Sections
               </h4>
               <div className="space-y-3">
                 {quickItems.map((item) => (
@@ -502,18 +486,15 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* DESKTOP (optional): show only Quick Links in drawer */}
+          {/* DESKTOP: only quick links in drawer */}
           <div className="hidden md:block">
-            <h4 className="text-[16px] font-semibold text-black mb-2">
-              Quick Links
-            </h4>
             <div className="space-y-3">
               {quickItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsDrawerOpen(false)}
-                  className="block text-[16px] text-black/80"
+                  className="block text-lg text-black/80 font-primary"
                 >
                   {item.label}
                 </Link>
@@ -523,7 +504,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Overlay to close drawer */}
+      {/* Overlay */}
       {isDrawerOpen && (
         <div
           className="fixed inset-0 bg-black/30 z-40"

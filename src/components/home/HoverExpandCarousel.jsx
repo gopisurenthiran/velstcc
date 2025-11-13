@@ -5,16 +5,36 @@ import { motion } from "framer-motion";
 
 /* ------------ slides ------------ */
 const slides = [
-  { title: "Marina Beach",  description: "The world’s second-longest urban beach stretching along Chennai’s coastline. A broad blend of golden sands, lively waves, and vibrant local life—the city’s spirit and serenity.", src: "/assets/dis-img-1.png" },
-  { title: "Central",       description: "Iconic red-brick landmark—gateway to the city’s journeys and daily rhythm.", src: "/assets/dis-img-2.png" },
-  { title: "LIC",           description: "A mid-century modern silhouette anchoring Chennai’s skyline with timeless poise.", src: "/assets/dis-img-3.png" },
-  { title: "Parrys Corner", description: "Historic trading hub blending colonial charm with Chennai’s commercial pulse.", src: "/assets/dis-img-2.png" },
+  {
+    title: "Marina Beach",
+    description:
+      "The world’s second-longest urban beach stretching along Chennai’s coastline. A broad blend of golden sands, lively waves, and vibrant local life—the city’s spirit and serenity.",
+    src: "/assets/dis-img-1.png",
+  },
+  {
+    title: "Central",
+    description:
+      "Iconic red-brick landmark—gateway to the city’s journeys and daily rhythm.",
+    src: "/assets/dis-img-2.png",
+  },
+  {
+    title: "LIC",
+    description:
+      "A mid-century modern silhouette anchoring Chennai’s skyline with timeless poise.",
+    src: "/assets/dis-img-3.png",
+  },
+  {
+    title: "Parrys Corner",
+    description:
+      "Historic trading hub blending colonial charm with Chennai’s commercial pulse.",
+    src: "/assets/dis-img-2.png",
+  },
 ];
 
 export default function HoverExpandCarousel() {
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState(null);      // ✅ only once, no <number | null>
   const [isMobile, setIsMobile] = useState(false);
-  const carouselRef = useRef(null);
+  const carouselRef = useRef(null);                // ✅ no <HTMLDivElement | null>
 
   /* detect mobile */
   useEffect(() => {
@@ -24,59 +44,62 @@ export default function HoverExpandCarousel() {
     return () => window.removeEventListener("resize", recheck);
   }, []);
 
-  /* tap toggle (mobile) */
   const toggle = (i) => {
     if (!isMobile) return;
     setActive((prev) => (prev === i ? null : i));
   };
 
   return (
-    <section className="py-16 mx-auto max-w-6xl container mx-auto px-6 md:px-10 bg-white overflow-x-hidden">
+    <section className="py-12 md:py-16 max-w-6xl container mx-auto px-5 sm:px-6 md:px-10 bg-white overflow-x-hidden">
       {/* heading */}
-         <motion.div
+      <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
         viewport={{ once: true }}
         className="mb-8 max-w-2xl"
       >
-        <h2 className="text-[28px] sm:text-[34px]  tracking-tight font-secondary font-medium mb-5">
+        <h2 className="text-[24px] sm:text-[28px] md:text-[34px] tracking-tight font-secondary font-medium mb-4">
           Discover Singara Chennai
         </h2>
-        <p className="mt-2 text-lg text-black/70 font-primary">
-        A metropolis where heritage blends with modernity. A dynamic fusion of tradition, trade, and innovation. Eternally the cornerstone of South India's character and advancement.
+        <p className="mt-1 text-base sm:text-lg text-black/70 font-primary leading-relaxed">
+          A metropolis where heritage blends with modernity. A dynamic fusion of
+          tradition, trade, and innovation. Eternally the cornerstone of South
+          India&apos;s character and advancement.
         </p>
       </motion.div>
 
       {/* carousel */}
       <div
         ref={carouselRef}
-        className="carousel flex gap-5 overflow-x-auto md:overflow-hidden scroll-smooth"
+        className="carousel flex gap-4 md:gap-5 overflow-x-auto md:overflow-hidden scroll-smooth pb-2"
         role="list"
       >
         {slides.map((s, i) => (
           <div
             key={i}
             onClick={() => toggle(i)}
-            className={`relative group flex-shrink-0 basis-[60%] md:basis-[250px] overflow-hidden transition-all duration-500 cursor-pointer ${active === i ? "active" : ""}`}
+            className={`relative group flex-shrink-0 w-[85%] sm:w-[70%] md:w-auto overflow-hidden transition-all duration-500 cursor-pointer ${
+              active === i ? "active" : ""
+            }`}
           >
-            <div className="relative h-[400px] w-[250px] md:w-full overflow-hidden shadow-md">
+            <div className="relative h-[280px] sm:h-[320px] md:h-[400px] w-full overflow-hidden shadow-md">
               <Image
                 src={s.src}
                 alt={s.title}
                 fill
-                sizes="(max-width: 768px) 60vw, 500px"
+                sizes="(max-width: 768px) 85vw, (max-width: 1024px) 70vw, 500px"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                 priority={i < 2}
               />
 
               {/* title */}
-              <div className="absolute left-4 top-3 z-20 text-white text-xl font-semibold font-secondary mt-4">
+              <div className="absolute left-4 top-3 z-20 text-white text-lg sm:text-xl font-semibold font-secondary drop-shadow-md">
                 {s.title}
               </div>
 
               {/* gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* text overlay */}
               <div
@@ -86,8 +109,9 @@ export default function HoverExpandCarousel() {
                     : "opacity-0 translate-y-3 md:group-hover:opacity-100 md:group-hover:translate-y-0"
                 }`}
               >
-                <p className="text-lg leading-relaxed font-primary">{s.description}</p>
-               
+                <p className="text-sm sm:text-base leading-relaxed font-primary">
+                  {s.description}
+                </p>
               </div>
             </div>
           </div>
@@ -100,7 +124,7 @@ export default function HoverExpandCarousel() {
           .carousel {
             display: flex;
           }
-          /* default card size */
+          /* default card size (desktop / tab) */
           .carousel > div {
             flex: 0 0 250px;
           }
