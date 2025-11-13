@@ -1,79 +1,102 @@
 // app/components/Footer.jsx
 "use client";
+
+import Link from "next/link";
 import { Linkedin, Facebook, Instagram, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="mt-20 border-t border-black/10 bg-white font-primary">
-      <div className="w-full">
-        {/* Top links */}
-        <div className="flex flex-wrap justify-center gap-6 md:gap-[6.5rem] text-md sm:text-md text-black/80 px-4 py-6">
-          <a href="#" className="hover:text-primary transition-colors">
-            Vels Trade Convention Centre
-          </a>
-          <a href="#" className="hover:text-primary transition-colors">
-            Media Room
-          </a>
-          <a href="#" className="hover:text-primary transition-colors">
-            Events
-          </a>
-          <a href="#" className="hover:text-primary transition-colors">
-            Wedding Halls
-          </a>
-          <a href="#" className="hover:text-primary transition-colors">
-            Party Hall
-          </a>
-        </div>
-
-        {/* Bottom section */}
-        <div className="mt-4 flex flex-col items-center justify-between gap-6 bg-gray-100 text-sm text-black/70 md:flex-row px-6 py-6 mx-auto max-w-7xl">
-          {/* Social icons */}
-          <div className="flex items-center gap-3 order-1 md:order-3">
-            <a
-              href="#"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition"
+      {/* TOP LINK AREA */}
+      <div className="w-full max-w-7xl mx-auto px-6 pt-8 pb-4">
+        <div className="space-y-4 text-center text-xs sm:text-sm text-black/80">
+          {/* Row 1 – 4 items, evenly spaced */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-2">
+            <Link
+              href="/theatre"
+              className="hover:text-[#2A1C79] transition-colors"
             >
-              <Linkedin size={16} />
-            </a>
-            <a
-              href="#"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition"
+              Vel&apos;s Theatre
+            </Link>
+            <Link
+              href="/indoor"
+              className="hover:text-[#2A1C79] transition-colors"
             >
-              <Facebook size={16} />
-            </a>
-            <a
-              href="#"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition"
+              Vel&apos;s Film City - Indoor
+            </Link>
+            <Link
+              href="/outdoor"
+              className="hover:text-[#2A1C79] transition-colors"
             >
-              <Instagram size={16} />
-            </a>
-            <a
-              href="#"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition"
+              Vel&apos;s Film City - Outdoor
+            </Link>
+            <Link
+              href="#getting"
+              className="hover:text-[#2A1C79] transition-colors"
             >
-              <Youtube size={16} />
-            </a>
+              Getting to VELS
+            </Link>
           </div>
 
-          {/* Copyright */}
-          <p className="order-2 md:order-1 text-center md:text-left text-base sm:text-lg">
+          {/* Row 2 – 3 items, centered */}
+          <div className="grid grid-cols-3 gap-y-2 max-w-xs mx-auto pt-10 pb-5">
+            <Link
+              href="/about"
+              className="hover:text-[#2A1C79] transition-colors"
+            >
+              About
+            </Link>
+            <Link
+              href="/faq"
+              className="hover:text-[#2A1C79] transition-colors"
+            >
+              FAQ
+            </Link>
+            <Link
+              href="/contact"
+              className="hover:text-[#2A1C79] transition-colors"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* BOTTOM BAR */}
+      <div className="border-t  border-black/10 bg-[#F5F5F5]">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-xs sm:text-sm text-black/70">
+          {/* Left: Copyright */}
+          <p className="md:basis-1/3 text-center md:text-left">
             © Copyright Vels Trade Convention Centre 2025
           </p>
 
-          {/* Privacy / Terms */}
-          <div className="flex items-center gap-6 order-3 md:order-2 text-base sm:text-lg">
-            <a
+          {/* Center: Privacy / Terms */}
+          <div className="md:basis-1/3 flex justify-center gap-6">
+            <Link
               href="#"
-              className="hover:text-primary transition-colors"
+              className="hover:text-[#2A1C79] transition-colors"
             >
               Privacy
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
-              className="hover:text-primary transition-colors"
+              className="hover:text-[#2A1C79] transition-colors"
             >
               Terms of Use
-            </a>
+            </Link>
+          </div>
+
+          {/* Right: Social icons */}
+          <div className="md:basis-1/3 flex justify-center md:justify-end items-center gap-3">
+            {[Linkedin, Facebook, Instagram, Youtube].map((Icon, i) => (
+              <Link
+                key={i}
+                href="#"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#2A1C79] text-[#2A1C79] hover:bg-[#2A1C79] hover:text-white transition"
+              >
+                <Icon size={14} />
+              </Link>
+            ))}
           </div>
         </div>
       </div>
