@@ -18,9 +18,9 @@ export default function ContactTabs() {
   /* --- MAP SRC PER TAB (PUT YOUR REAL EMBED URLS HERE) --- */
   const MAP_SRC = {
     trade:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin", // 🔁 replace with real Trade & Convention embed
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.98047056669!2d80.0456360738114!3d13.036915013445475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b475a4ddbaf%3A0xbf23d710d8e78aaa!2sVELS%20Trade%20%26%20Convention%20Centre!5e0!3m2!1sen!2sin!4v1763122190448!5m2!1sen!2sin%22", // 🔁 replace with real Trade & Convention embed
     film:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin", // 🔁 replace with real Film City embed
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1990136.8360316637!2d77.74080859375!3d13.036562500000011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b31c8a9acb9%3A0x6f6093af61250de5!2sVELS%20Film%20City!5e0!3m2!1sen!2sin!4v1763122075154!5m2!1sen!2sin%22", // 🔁 replace with real Film City embed
     theatre:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin", // 🔁 replace with real Theatre embed
   };

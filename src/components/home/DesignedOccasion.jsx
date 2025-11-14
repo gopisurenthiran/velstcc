@@ -128,7 +128,7 @@ function InlineStats({ items = [] }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-16"
+      className="grid grid-cols-2 sm:grid-cols-2 gap-10 md:gap-16"
     >
       {items.map((stat, i) => (
         <motion.div
