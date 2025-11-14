@@ -7,13 +7,25 @@ import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-/* ----------  Custom Arrows ---------- */
+/* ---------- Arrows (used for both) ---------- */
 const NextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute right-[-40px] top-1/2 -translate-y-1/2 text-black hover:text-gray-600 z-10 text-2xl"
-    aria-label="Next"
+    className="
+      absolute 
+      top-1/2 -translate-y-1/2 
+      right-3 md:right-[-20px]
+      z-20
+      flex items-center justify-center
+      w-8 h-8 md:w-auto md:h-auto
+      rounded-full md:rounded-none
+      bg-white/90 md:bg-transparent
+      shadow-md md:shadow-none
+      text-xl md:text-3xl
+      text-black hover:text-gray-600
+    "
     type="button"
+    aria-label="Next"
   >
     →
   </button>
@@ -22,20 +34,32 @@ const NextArrow = ({ onClick }) => (
 const PrevArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute left-[-40px] top-1/2 -translate-y-1/2 text-black hover:text-gray-600 z-10 text-2xl"
-    aria-label="Previous"
+    className="
+      absolute 
+      top-1/2 -translate-y-1/2 
+      left-3 md:left-[-20px]
+      z-20
+      flex items-center justify-center
+      w-8 h-8 md:w-auto md:h-auto
+      rounded-full md:rounded-none
+      bg-white/90 md:bg-transparent
+      shadow-md md:shadow-none
+      text-xl md:text-3xl
+      text-black hover:text-gray-600
+    "
     type="button"
+    aria-label="Previous"
   >
     ←
   </button>
 );
 
-/* ----------  Slide Data ---------- */
+/* ---------- Slide Data ---------- */
 const slides = [
   {
     title: "Soundproofed for Storytelling",
     description:
-      "Our state-of-the-art soundproof studios let directors capture emotion without interruption, where silence enhances every shot.",
+      "Our state-of-the-art soundproof studios let directors capture emotion without interruption, where silence enhances every shot.",
     image: "/assets/soundproofed.webp",
   },
   {
@@ -45,7 +69,7 @@ const slides = [
     image: "/assets/lighting.webp",
   },
   {
-    title: "Scalable Sets. Seamless Transitions. ",
+    title: "Scalable Sets. Seamless Transitions.",
     description:
       "From courtroom dramas to cosmic adventures, transform any space within hours. Flexible architecture enables quick set builds and smooth production flow.",
     image: "/assets/scalable.webp",
@@ -53,162 +77,122 @@ const slides = [
   {
     title: "Controlled Climate. Continuous Creativity.",
     description:
-      "Advanced temperature control and ventilation systems ensure comfort for long shooting hours, so creativity never breaks a sweat.",
+      "Advanced temperature control ensures comfort for long shooting hours, so creativity never breaks a sweat.",
     image: "/assets/controlled.webp",
   },
 ];
 
-/* ----------  Component ---------- */
 export default function WhyChooseVels() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [wrapWidth, setWrapWidth] = useState(0);
   const wrapRef = useRef(null);
 
-  // Measure container width to compute 50% / 25% / 25% in px
+  /* ---------- Track container width (desktop only) ---------- */
   useEffect(() => {
     if (!wrapRef.current) return;
-
-    const ro = new ResizeObserver((entries) => {
-      const w = entries[0]?.contentRect?.width || 0;
-      setWrapWidth(w);
+    const obs = new ResizeObserver((entries) => {
+      setWrapWidth(entries[0].contentRect.width);
     });
-    ro.observe(wrapRef.current);
-    return () => ro.disconnect();
+    obs.observe(wrapRef.current);
+    return () => obs.disconnect();
   }, []);
 
-  // Guard for first render
-  const safeWidth = Math.max(wrapWidth, 320);
-  const sideW = Math.round(safeWidth * 0.25); // col-3
-  const activeW = Math.round(safeWidth * 0.5); // col-6
+  const safeWidth = Math.max(wrapWidth, 350);
+  const sideWidth = Math.round(safeWidth * 0.25);
+  const activeWidth = Math.round(safeWidth * 0.5);
 
-  const settings = {
+  /* ---------- Slider Settings ---------- */
+  const desktopSettings = {
     dots: false,
     infinite: true,
-    speed: 800,
+    speed: 700,
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-
-    // Keep your existing behavior
     centerMode: true,
     centerPadding: "0px",
     variableWidth: true,
     slidesToScroll: 1,
     focusOnSelect: true,
-
     beforeChange: (_, next) => setActiveIndex(next),
+  };
 
-    // Mobile: fall back to single full-width slide
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          variableWidth: false,
-          centerMode: false,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+  const mobileSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: false,
+    variableWidth: false,
   };
 
   return (
     <section className="py-16 bg-[#F5F5F5] relative">
       <div className="max-w-6xl mx-auto px-6">
-        {/* ---------- Heading ---------- */}
-
+        {/* Heading */}
         <motion.div
           className="text-left mb-10"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <motion.h2
-            className="text-3xl font-semibold text-black font-secondary"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            viewport={{ once: true }}
-          >
+          <h2 className="text-3xl font-secondary font-semibold text-black">
             Spaces that Bring Scripts to Life
-          </motion.h2>
+          </h2>
 
-          <motion.div
-            className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            viewport={{ once: true }}
-            style={{ transformOrigin: "left" }}
-          ></motion.div>
+          <div className="w-40 h-[1px] bg-[#2D3091] my-4"></div>
 
-          <motion.p
-            className="text-gray-600 mt-2 text-sm md:text-base font-primary"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            At Vels Film City, every indoor set is crafted to capture
-            imagination and deliver perfection. Designed for scale, precision,
-            and storytelling excellence, these are the spaces where cinema finds
-            its rhythm.
-          </motion.p>
+          <p className="text-gray-600 text-sm md:text-base font-primary">
+            At Vels Film City, every indoor set is crafted for scale, precision,
+            and storytelling excellence.
+          </p>
         </motion.div>
 
-        {/* ---------- Slider ---------- */}
-        <div className="relative" ref={wrapRef}>
-          <Slider {...settings}>
+        {/* ---------- Desktop Slider (md and up) ---------- */}
+        <div ref={wrapRef} className="relative hidden md:block">
+          <Slider {...desktopSettings}>
             {slides.map((slide, index) => {
               const isActive = index === activeIndex;
-
-              // Width per slide (px) for variableWidth mode
-              const widthPx = isActive ? activeW : sideW;
+              const widthPx = isActive ? activeWidth : sideWidth;
 
               return (
-                // Important: width must be on the *outer slide item* for variableWidth
                 <div key={index} style={{ width: widthPx }}>
                   <div
-                    className={`mx-3 border border-indigo-200 bg-white transition-all duration-500 overflow-hidden h-[380px] flex ${
-                      isActive ? "flex-row" : "flex-col"
-                    } ${isActive ? "scale-[1.0]" : "scale-[0.96] opacity-90"}`}
+                    className={`mx-3 bg-white border border-indigo-200 h-[380px] flex overflow-hidden transition-all duration-500 ${
+                      isActive
+                        ? "flex-row scale-100"
+                        : "flex-col scale-95 opacity-90"
+                    }`}
                   >
                     {/* Image */}
                     <div
                       className={`relative ${
-                        isActive ? "w-1/2 h-full" : "w-full h-full"
-                      }`}
+                        isActive ? "w-1/2" : "w-full"
+                      } h-full`}
                     >
                       <Image
                         src={slide.image}
                         alt={slide.title}
-                        width={800}
-                        height={600}
-                        className="w-full h-full object-cover"
-                        priority={index === 0}
+                        fill
+                        className="object-cover"
                       />
                     </div>
 
                     {/* Description (only for active slide) */}
                     {isActive && (
-                      <div
-                        className="
-                          w-1/2 p-6 flex flex-col justify-center
-                          border-l border-primary
-                          bg-[#F7F9FF]  /* light tinted background like screenshot */
-                        "
-                      >
-                        <h3 className="text-lg md:text-xl font-secondary font-medium text-black mb-3">
+                      <div className="w-1/2 p-6 bg-[#F7F9FF] border-l border-primary flex flex-col justify-center">
+                        <h3 className="text-lg font-secondary mb-3">
                           {slide.title}
                         </h3>
-
-                        <p className="text-gray-700 text-sm font-primary leading-relaxed">
+                        <p className="text-gray-700 text-sm">
                           {slide.description}
                         </p>
-
-                        {/* thin accent line at bottom */}
-                        <span className="mt-4 inline-block h-[1px] w-24 bg-primary"></span>
+                        <span className="mt-4 block w-20 h-[1px] bg-primary"></span>
                       </div>
                     )}
                   </div>
@@ -217,46 +201,53 @@ export default function WhyChooseVels() {
             })}
           </Slider>
         </div>
+
+        {/* ---------- Mobile Slider (below md) ---------- */}
+        <div className="relative md:hidden">
+          <Slider {...mobileSettings}>
+            {slides.map((slide, index) => (
+              <div key={index}>
+                <div className="mx-1 bg-white border border-indigo-200 rounded-md overflow-hidden">
+                  {/* Image */}
+                  <div className="relative w-full h-56 sm:h-64">
+                    <Image
+                      src={slide.image}
+                      alt={slide.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* Text (always visible on mobile) */}
+                  <div className="p-4 bg-[#F7F9FF]">
+                    <h3 className="text-base font-secondary mb-2">
+                      {slide.title}
+                    </h3>
+                    <p className="text-gray-700 text-xs sm:text-sm font-primary">
+                      {slide.description}
+                    </p>
+                    <span className="mt-3 block w-16 h-[1px] bg-primary"></span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-20">
+          <h2 className="text-2xl font-secondary font-semibold">
+            Plan Your Indoor Shoot
+          </h2>
+          <p className="text-gray-600 mt-2 font-primary text-sm md:text-base">
+            Planning a shoot? Check availability or schedule a recce.
+          </p>
+
+          <button className="mt-4 bg-[#1E2A78] text-white text-xs font-primary px-5 py-2 rounded hover:scale-105 transition">
+            GET A QUOTE
+          </button>
+        </div>
       </div>
-      <motion.div
-  className="max-w-4xl mx-auto text-center px-4 py-20"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  viewport={{ once: true }}
->
-  <motion.h2
-    className="text-2xl md:text-3xl font-semibold text-black mb-3 font-secondary"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-    viewport={{ once: true }}
-  >
-    Plan Your Indoor Shoot
-  </motion.h2>
-
-  <motion.p
-    className="text-gray-600 text-sm md:text-base mb-6 font-primary"
-    initial={{ opacity: 0, y: 15 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: "easeOut", delay: 0.25 }}
-    viewport={{ once: true }}
-  >
-    Planning a shoot? Check availability or schedule a recce.
-  </motion.p>
-
-  <motion.button
-    className="bg-[#1E2A78] text-white text-xs font-primary font-semibold px-5 py-2 rounded"
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
-    viewport={{ once: true }}
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    GET A QUOTE
-  </motion.button>
-</motion.div>
     </section>
   );
 }

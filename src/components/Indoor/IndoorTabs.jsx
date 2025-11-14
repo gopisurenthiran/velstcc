@@ -16,7 +16,7 @@ const TABS = [
       {
         title: "Every detail designed around you.",
         desc:
-          "Behind the scenes, we take as much care of people as we do the production. From spacious makeup rooms and climate-controlled lounges to on-site dining and rest zones, every space is built to support long hours and large crews. ATM access, clean amenities, and a variety of cuisines nearby make your shoot days smoother and more enjoyable. At Vels, comfort isn’t an afterthought, it’s part of the creative experience.",
+          "Behind the scenes, we take as much care of people as we do the production. From spacious makeup rooms and climate-controlled lounges to on-site dining...",
       },
     ],
   },
@@ -28,7 +28,7 @@ const TABS = [
       {
         title: "Safety, sustainability, and sophistication under one roof.",
         desc:
-          "Our commitment to excellence goes beyond the lens. Each indoor facility operates with eco-friendly practices, energy-efficient systems, water reuse, and ozone-safe cooling, ensuring a responsible footprint. Layered with advanced CCTV surveillance, professional housekeeping, and round-the-clock security, every production here unfolds in a space that’s as safe as it is stunning. Because every frame deserves a foundation of trust.",
+          "Our commitment to excellence goes beyond the lens. Each indoor facility operates with eco-friendly practices...",
       },
     ],
   },
@@ -40,7 +40,11 @@ export default function IndoorTabs() {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    },
   };
 
   return (
@@ -55,31 +59,12 @@ export default function IndoorTabs() {
           show: { transition: { staggerChildren: 0.2 } },
         }}
       >
-        {/* ---------------- LEFT IMAGE (Actual Size) ---------------- */}
-        <motion.div variants={fadeInUp} className="w-full flex justify-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="w-full"
-            >
-              <Image
-                src={current.image}
-                alt={current.label}
-                width={600}        // actual width
-                height={500}       // actual height
-                className="w-full h-auto "
-                priority
-              />
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
 
-        {/* ---------------- RIGHT CONTENT ---------------- */}
-        <motion.div variants={fadeInUp}>
+        {/* ---------- RIGHT CONTENT (mobile first) ---------- */}
+        <motion.div
+          variants={fadeInUp}
+          className="order-1 md:order-none"
+        >
           {/* Tabs */}
           <div role="tablist" className="flex gap-10 pb-3">
             {TABS.map((tab) => {
@@ -116,7 +101,7 @@ export default function IndoorTabs() {
             })}
           </div>
 
-          {/* Panel Content */}
+          {/* Content */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -150,6 +135,33 @@ export default function IndoorTabs() {
             </motion.div>
           </AnimatePresence>
         </motion.div>
+
+        {/* ---------- LEFT IMAGE (mobile second) ---------- */}
+        <motion.div
+          variants={fadeInUp}
+          className="w-full flex justify-center order-2 md:order-none"
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="w-full"
+            >
+              <Image
+                src={current.image}
+                alt={current.label}
+                width={600}
+                height={500}
+                className="w-full h-auto"
+                priority
+              />
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
+
       </motion.div>
     </section>
   );

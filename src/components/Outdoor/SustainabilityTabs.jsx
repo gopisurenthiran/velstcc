@@ -13,8 +13,7 @@ const TABS = [
     image: sustainabilityImg,
     items: [
       {
-        desc:
-          "A vision where creativity coexists with conservation. At Vel Film City, we believe great stories deserve a greener stage. Every aspect of our campus reflects a thoughtful, eco-responsible design...",
+        desc: "A vision where creativity coexists with conservation. At Vel Film City, we believe great stories deserve a greener stage. Every aspect of our campus reflects a thoughtful, eco-responsible design...",
       },
     ],
   },
@@ -24,8 +23,7 @@ const TABS = [
     image: Img,
     items: [
       {
-        desc:
-          "Where wellbeing takes center stage. Vel Film City is built on a foundation of care, for people, property, and peace of mind...",
+        desc: "Where wellbeing takes center stage. Vel Film City is built on a foundation of care, for people, property, and peace of mind...",
       },
     ],
   },
@@ -33,7 +31,7 @@ const TABS = [
 
 export default function SustainabilityTabs() {
   const [active, setActive] = React.useState(TABS[0].key);
-  const current = TABS.find((t) => t.key === active);
+  const current = TABS.find((t) => t.key === active) || TABS[0];
 
   const fadeUp = {
     hidden: { opacity: 0, y: 25 },
@@ -58,33 +56,11 @@ export default function SustainabilityTabs() {
           show: { transition: { staggerChildren: 0.2 } },
         }}
       >
-        {/* LEFT IMAGE — ACTUAL SIZE, NO CROP */}
-        <motion.div className="w-full flex justify-center" variants={fadeUp}>
-          <div className="relative w-full max-w-[520px] mx-auto">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                variants={fadeImage}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-              >
-                <Image
-                  src={current.image}
-                  alt={current.label}
-                  width={600}   // Actual width
-                  height={500} // Actual height or suitable ratio
-                  className="w-full h-auto object-contain"
-                  priority
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </motion.div>
-
-        {/* RIGHT CONTENT */}
-        <motion.div className="w-full" variants={fadeUp}>
-          {/* Tabs */}
+        {/* CONTENT → mobile first, desktop right */}
+        <motion.div
+          className="w-full order-1 md:order-2"
+          variants={fadeUp}
+        >
           <div className="flex gap-10 pb-3">
             {TABS.map((tab) => {
               const isActive = tab.key === active;
@@ -106,19 +82,19 @@ export default function SustainabilityTabs() {
                   )}
                   {tab.label}
 
-                  <motion.span
-                    layoutId={`underline-${tab.key}`}
-                    className={`absolute left-0 -bottom-[1px] h-[1px] w-full bg-primary ${
-                      isActive ? "opacity-100" : "opacity-0"
-                    }`}
-                    transition={{ duration: 0.3 }}
-                  />
+                  {isActive && (
+                    <motion.span
+                      layoutId="underline"
+                      className="absolute left-0 -bottom-[1px] h-[1px] bg-primary"
+                      style={{ width: "100%" }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
                 </button>
               );
             })}
           </div>
 
-          {/* Right Panel */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -133,6 +109,33 @@ export default function SustainabilityTabs() {
               </p>
             </motion.div>
           </AnimatePresence>
+        </motion.div>
+
+        {/* IMAGE → mobile second, desktop left */}
+        <motion.div
+          className="w-full flex justify-center order-2 md:order-1"
+          variants={fadeUp}
+        >
+          <div className="relative w-full max-w-[520px] mx-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                variants={fadeImage}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              >
+                <Image
+                  src={current.image}
+                  alt={current.label}
+                  width={600}
+                  height={500}
+                  className="w-full h-auto object-contain"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </motion.div>
       </motion.div>
     </section>

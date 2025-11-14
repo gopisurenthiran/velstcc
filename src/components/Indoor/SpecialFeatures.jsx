@@ -11,23 +11,23 @@ import img4 from "@/public/assets/inspired_indoors.webp";
 const features = [
   {
     img: img1,
-    title: "Signature Set Spaces ",
-    desc: "Custom-built soundproof studios equipped for feature films, TV shows, and OTT productions. From large-scale sets to intimate frames, our stages adapt seamlessly to your vision, rain, shine, or starlight. ",
+    title: "Signature Set Spaces",
+    desc: "Custom-built soundproof studios equipped for feature films, TV shows, and OTT productions. From large-scale sets to intimate frames, our stages adapt seamlessly to your vision, rain, shine, or starlight.",
   },
   {
     img: img2,
-    title: "Lighting. Acoustics. Perfection. ",
-    desc: "Each studio is engineered with high-grade lighting grids, acoustic walls, and climate-controlled environments that make retakes effortless and production timelines smooth. ",
+    title: "Lighting. Acoustics. Perfection.",
+    desc: "Each studio is engineered with high-grade lighting grids, acoustic walls, and climate-controlled environments that make retakes effortless and production timelines smooth.",
   },
   {
     img: img3,
-    title: "A Legacy in Every Frame  ",
-    desc: "From Bigg Boss Tamil to grand television premieres, Vels Film City has been the creative home to India’s most-watched productions, where excellence isn’t rented, it’s built into the walls. ",
+    title: "A Legacy in Every Frame",
+    desc: "From Bigg Boss Tamil to grand television premieres, Vels Film City has been the creative home to India’s most-watched productions, where excellence isn’t rented, it’s built into the walls.",
   },
   {
     img: img4,
-    title: "Inspired Indoors ",
-    desc: "At Vels Film City, our indoor studios are crafted to give creators absolute control, from acoustically engineered sets to daylight-balanced lighting. Every soundstage is designed for flexibility, privacy, and performance, allowing productions to flow effortlessly from setup to shoot.  ",
+    title: "Inspired Indoors",
+    desc: "Our indoor studios are crafted to give creators absolute control, from acoustically engineered sets to daylight-balanced lighting. Every soundstage is designed for flexibility, privacy, and performance.",
   },
 ];
 
@@ -46,32 +46,36 @@ export default function SpecialFeatures() {
     <section className="py-16 bg-white">
       {/* HEADER */}
       <motion.div
-        className="max-w-6xl mx-auto mb-10"
+        className="max-w-6xl mx-auto mb-10 px-6"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
       >
         <motion.h2
-          className="text-2xl md:text-4xl font-secondary text-gray-900 px-10"
+          className="text-2xl md:text-4xl font-secondary text-gray-900"
           variants={fadeUp}
           custom={0}
         >
-          The Vels Signature 
+          The Vels Signature
         </motion.h2>
 
         <motion.div
-          className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4 ml-10"
+          className="w-32 md:w-40 h-[1px] bg-[#2D3091] mb-6 mt-4"
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           style={{ transformOrigin: "left" }}
           viewport={{ once: true }}
-        ></motion.div>
+        />
       </motion.div>
 
       {/* GRID */}
       <motion.div
-        className="max-w-6xl mx-auto px-4 grid gap-4 md:grid-cols-3 md:grid-rows-[repeat(2,250px)]"
+        className="
+          max-w-6xl mx-auto px-4 
+          grid gap-4 
+          md:grid-cols-3 md:grid-rows-[repeat(2,250px)]
+        "
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
@@ -82,66 +86,116 @@ export default function SpecialFeatures() {
           },
         }}
       >
-        {/* Left Tall Image */}
+        {/* LEFT TALL IMAGE */}
         <motion.div
           variants={fadeUp}
           custom={0}
-          className="relative group overflow-hidden md:row-span-2 h-[520px]"
+          className="
+            relative group overflow-hidden 
+            h-[260px] md:h-[520px] 
+            md:row-span-2
+          "
         >
           <Image
             src={features[0].img}
             alt={features[0].title}
             fill
-            sizes="100%"
+            sizes="(min-width: 768px) 33vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-4 text-white transition-all">
-            <h3 className="text-lg font-semibold font-secondary">{features[0].title}</h3>
-            <div className="w-40 h-[0.5px] bg-white mb-6 mt-4"></div>
-            <p className="text-sm mt-1 font-primary">{features[0].desc}</p>
+
+          {/* Overlay - hidden by default, shows on hover/tap */}
+          <div
+            className="
+              absolute inset-0 bg-black/60 
+              opacity-0 group-hover:opacity-100 
+              flex flex-col justify-end 
+              p-4 text-white transition-all duration-300
+            "
+          >
+            <h3 className="text-lg font-semibold font-secondary">
+              {features[0].title}
+            </h3>
+            <div className="w-32 h-[0.5px] bg-white mb-4 mt-3" />
+            <p className="text-sm font-primary">
+              {features[0].desc}
+            </p>
           </div>
         </motion.div>
 
-        {/* Top Right 2 Images */}
+        {/* TOP RIGHT 2 IMAGES */}
         {features.slice(1, 3).map((feature, index) => (
           <motion.div
-            key={index}
+            key={feature.title}
             variants={fadeUp}
             custom={index + 1}
-            className="relative group overflow-hidden h-[250px]"
+            className="
+              relative group overflow-hidden 
+              h-[220px] md:h-[250px]
+            "
           >
             <Image
               src={feature.img}
               alt={feature.title}
               fill
-              sizes="100%"
+              sizes="(min-width: 768px) 33vw, 100vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-3 text-white transition-all">
-              <h3 className="text-sm font-semibold font-secondary">{feature.title}</h3>
-              <div className="w-40 h-[0.5px] bg-white mb-6 mt-4"></div>
-              <p className="text-xs mt-1 font-primary">{feature.desc}</p>
+
+            {/* Overlay */}
+            <div
+              className="
+                absolute inset-0 bg-black/60 
+                opacity-0 group-hover:opacity-100 
+                flex flex-col justify-end 
+                p-3 text-white transition-all duration-300
+              "
+            >
+              <h3 className="text-sm md:text-sm font-semibold font-secondary">
+                {feature.title}
+              </h3>
+              <div className="w-28 h-[0.5px] bg-white mb-3 mt-2" />
+              <p className="text-xs font-primary">
+                {feature.desc}
+              </p>
             </div>
           </motion.div>
         ))}
 
-        {/* Bottom Full Width */}
+        {/* BOTTOM FULL-WIDTH IMAGE */}
         <motion.div
           variants={fadeUp}
           custom={3}
-          className="relative group overflow-hidden col-span-2 h-[250px]"
+          className="
+            relative group overflow-hidden 
+            h-[220px] md:h-[250px] 
+            md:col-span-2
+          "
         >
           <Image
             src={features[3].img}
             alt={features[3].title}
             fill
-            sizes="100%"
+            sizes="(min-width: 768px) 66vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-3 text-white transition-all">
-            <h3 className="text-sm font-semibold font-secondary">{features[3].title}</h3>
-            <div className="w-40 h-[0.5px] bg-white mb-6 mt-4"></div>
-            <p className="text-xs mt-1 font-primary">{features[3].desc}</p>
+
+          {/* Overlay */}
+          <div
+            className="
+              absolute inset-0 bg-black/60 
+              opacity-0 group-hover:opacity-100 
+              flex flex-col justify-end 
+              p-3 text-white transition-all duration-300
+            "
+          >
+            <h3 className="text-sm md:text-sm font-semibold font-secondary">
+              {features[3].title}
+            </h3>
+            <div className="w-28 h-[0.5px] bg-white mb-3 mt-2" />
+            <p className="text-xs font-primary">
+              {features[3].desc}
+            </p>
           </div>
         </motion.div>
       </motion.div>

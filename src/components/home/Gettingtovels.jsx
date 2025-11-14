@@ -68,7 +68,7 @@ export default function GettingToVels() {
 
             <iframe
               title="VELS City Location Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.539198679289!2d80.13619947477107!3d12.870106519162501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525aa50dbb705f%3A0xd9b2b92a8af2706!2sVELS%20University!5e0!3m2!1sen!2sin!4v1708104652131!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}

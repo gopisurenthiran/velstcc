@@ -32,7 +32,7 @@ export default function FullBanner() {
     <section className="relative w-full min-h-screen overflow-hidden text-center justify-center">
        {/* Heading */}
       <motion.h2
-        className="text-3xl  mb-2 font-secondary"
+        className="text-3xl  mb-2 font-secondary mt-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}

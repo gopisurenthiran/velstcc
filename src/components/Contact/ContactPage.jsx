@@ -15,6 +15,16 @@ export default function ContactTabs() {
     theatre: "Vels Theatres",
   };
 
+  /* --- MAP SRC PER TAB (PUT YOUR REAL EMBED URLS HERE) --- */
+  const MAP_SRC = {
+    trade:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin", // 🔁 replace with real Trade & Convention embed
+    film:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin", // 🔁 replace with real Film City embed
+    theatre:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin", // 🔁 replace with real Theatre embed
+  };
+
   /* --- FORM HOOKS OUTSIDE --- */
   const formRef = useRef();
 
@@ -63,8 +73,7 @@ export default function ContactTabs() {
         readOnly
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6"       
->
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name */}
         <div>
           <label className="block text-md font-secondary font-medium mb-2">
@@ -90,7 +99,10 @@ export default function ContactTabs() {
             type="email"
             {...register("email", {
               required: "Email is required",
-              pattern: { value: /\S+@\S+\.\S+/, message: "Invalid email format" },
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Invalid email format",
+              },
             })}
             placeholder="Enter Your Email"
             className="w-full border font-secondary border-gray-300 px-3 py-2"
@@ -145,7 +157,7 @@ export default function ContactTabs() {
           Share Your Question Here And We’ll Reach Out Shortly.
         </label>
         <textarea
-          rows="4"
+          rows={4}
           {...register("message", { required: "Message is required" })}
           placeholder="Enter Your Message"
           className="w-full font-secondary border border-gray-300 px-3 py-2"
@@ -177,7 +189,10 @@ export default function ContactTabs() {
       <Toaster position="top-right" />
 
       {/* Tabs */}
-      <motion.nav className="flex justify-center overflow-x-auto gap-4 md:gap-10 px-4 py-4" id="target-section">
+      <motion.nav
+        className="flex justify-center overflow-x-auto gap-4 md:gap-10 px-4 py-4"
+        id="target-section"
+      >
         {[
           { id: "trade", label: "Trade & Convention Centre" },
           { id: "film", label: "Vels Film City" },
@@ -201,7 +216,13 @@ export default function ContactTabs() {
         <AnimatePresence mode="wait">
           {/* TRADE TAB */}
           {activeTab === "trade" && (
-            <motion.div key="trade">
+            <motion.div
+              key="trade"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.4 }}
+            >
               <h1 className="text-2xl font-secondary font-semibold mb-6">
                 Trade & Convention Centre
               </h1>
@@ -219,7 +240,13 @@ export default function ContactTabs() {
 
           {/* FILM TAB */}
           {activeTab === "film" && (
-            <motion.div key="film">
+            <motion.div
+              key="film"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.4 }}
+            >
               <h1 className="text-2xl font-secondary font-semibold mb-6">
                 Vels Film City
               </h1>
@@ -236,7 +263,13 @@ export default function ContactTabs() {
 
           {/* THEATRE TAB – ONLY ADDRESS */}
           {activeTab === "theatre" && (
-            <motion.div key="theatre">
+            <motion.div
+              key="theatre"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.4 }}
+            >
               <h1 className="text-2xl font-secondary font-semibold mb-6">
                 Vels Theatres
               </h1>
@@ -250,6 +283,24 @@ export default function ContactTabs() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* ---------- MAP SECTION (updates per TAB) ---------- */}
+        {MAP_SRC[activeTab] && (
+          <div className="mt-10 w-full h-64 md:h-80 relative rounded-lg overflow-hidden shadow-md">
+            <iframe
+              key={activeTab}
+              title={`${tabLabels[activeTab]} Map`}
+              src={MAP_SRC[activeTab]}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 w-full h-full"
+            ></iframe>
+          </div>
+        )}
       </section>
     </motion.div>
   );

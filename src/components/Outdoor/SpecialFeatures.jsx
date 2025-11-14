@@ -32,7 +32,6 @@ const features = [
 ];
 
 export default function SpecialFeatures() {
-  /* ---------- Animation Variants ---------- */
   const fadeUp = {
     hidden: { opacity: 0, y: 25 },
     show: (i = 0) => ({
@@ -56,7 +55,7 @@ export default function SpecialFeatures() {
         }}
       >
         <motion.h2
-          className="text-2xl md:text-4xl font-secondary text-gray-900 px-10"
+          className="text-2xl md:text-4xl font-secondary text-gray-900 px-6 md:px-10"
           variants={fadeUp}
           custom={0}
         >
@@ -64,7 +63,7 @@ export default function SpecialFeatures() {
         </motion.h2>
 
         <motion.div
-          className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4 ml-10"
+          className="w-32 md:w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4 ml-6 md:ml-10"
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -91,7 +90,7 @@ export default function SpecialFeatures() {
       >
         {/* Left Tall Image */}
         <motion.div
-          className="relative group overflow-hidden md:row-span-2 h-[520px]"
+          className="relative group overflow-hidden h-[260px] sm:h-[320px] md:h-[520px] md:row-span-2"
           variants={fadeUp}
           custom={0}
         >
@@ -99,21 +98,25 @@ export default function SpecialFeatures() {
             src={features[0].img}
             alt={features[0].title}
             fill
-            sizes="100%"
+            sizes="(min-width: 768px) 33vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-4 text-white transition-all">
-            <h3 className="text-lg font-semibold font-secondary">{features[0].title}</h3>
-            <div className="w-40 h-[0.5px] bg-white mb-6 mt-4"></div>
-            <p className="text-sm mt-1 font-primary">{features[0].desc}</p>
+            <h3 className="text-base md:text-lg font-semibold font-secondary">
+              {features[0].title}
+            </h3>
+            <div className="w-28 md:w-40 h-[0.5px] bg-white mb-4 md:mb-6 mt-3 md:mt-4"></div>
+            <p className="text-xs md:text-sm mt-1 font-primary">
+              {features[0].desc}
+            </p>
           </div>
         </motion.div>
 
         {/* Top Right 2 Images */}
         {features.slice(1, 3).map((feature, index) => (
           <motion.div
-            key={index}
-            className="relative group overflow-hidden"
+            key={feature.title}
+            className="relative group overflow-hidden h-[220px] sm:h-[260px] md:h-full"
             variants={fadeUp}
             custom={index + 1}
           >
@@ -121,20 +124,24 @@ export default function SpecialFeatures() {
               src={feature.img}
               alt={feature.title}
               fill
-              sizes="100%"
+              sizes="(min-width: 768px) 33vw, 100vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-3 text-white transition-all">
-              <h3 className="text-sm font-semibold font-secondary">{feature.title}</h3>
-              <div className="w-40 h-[0.5px] bg-white mb-6 mt-4"></div>
-              <p className="text-xs mt-1 font-primary">{feature.desc}</p>
+              <h3 className="text-sm md:text-base font-semibold font-secondary">
+                {feature.title}
+              </h3>
+              <div className="w-28 md:w-40 h-[0.5px] bg-white mb-4 md:mb-6 mt-3 md:mt-4"></div>
+              <p className="text-[11px] md:text-xs mt-1 font-primary">
+                {feature.desc}
+              </p>
             </div>
           </motion.div>
         ))}
 
         {/* Bottom Full Width */}
         <motion.div
-          className="relative group overflow-hidden col-span-2 h-[250px]"
+          className="relative group overflow-hidden h-[220px] sm:h-[260px] md:h-[250px] md:col-span-2"
           variants={fadeUp}
           custom={4}
         >
@@ -142,13 +149,17 @@ export default function SpecialFeatures() {
             src={features[3].img}
             alt={features[3].title}
             fill
-            sizes="100%"
+            sizes="(min-width: 768px) 66vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-3 text-white transition-all">
-            <h3 className="text-sm font-semibold font-secondary">{features[3].title}</h3>
-            <div className="w-40 h-[0.5px] bg-white mb-6 mt-4"></div>
-            <p className="text-xs mt-1 font-primary">{features[3].desc}</p>
+            <h3 className="text-sm md:text-base font-semibold font-secondary">
+              {features[3].title}
+            </h3>
+            <div className="w-28 md:w-40 h-[0.5px] bg-white mb-4 md:mb-6 mt-3 md:mt-4"></div>
+            <p className="text-[11px] md:text-xs mt-1 font-primary">
+              {features[3].desc}
+            </p>
           </div>
         </motion.div>
       </motion.div>
