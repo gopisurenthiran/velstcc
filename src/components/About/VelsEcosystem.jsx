@@ -16,7 +16,7 @@ trade expos, corporate conferences, product launches, and grand celebrations.
 With temperature-controlled halls, advanced AV systems, modular layouts
 accommodating up to 5,000 guests, and seamless logistics support, we deliver
 events that leave lasting impressions.`,
-    url: "/trade-convention-centre",
+    url: "/",
   },
   {
     key: "film",
@@ -24,7 +24,7 @@ events that leave lasting impressions.`,
     image: "/assets/ecosystem-2.webp",
     title: "Film City",
     body: `A filmmaker's paradise featuring state-of-the-art indoor studios with advanced acoustics, green screen technology, and customizable sets ranging from contemporary offices to traditional village streets. Our expansive outdoor backlots offer pre-built environments including beaches, heritage structures, and urban landscapes, all supported by world-class production facilities, makeup rooms, and post-production suites.`,
-    url: "/film-city",
+    url: "/indoor",
   },
   {
     key: "theatres",
@@ -32,7 +32,7 @@ events that leave lasting impressions.`,
     image: "/assets/ecosystem-3.webp",
     title: "VELS Theatres",
     body: `An ultimate cinema experience featuring five premium screens with Super Screen, Laser projection, and Dolby Atmos sound. Designed for comfort and immersion, our multiplex brings world-class entertainment technology to Chennai's heart, where every frame comes alive with stunning clarity. From production to premiere, from concept to convention, VELS is where excellence happens. At VELS, we believe that progress and responsibility go hand in hand. Our commitment extends beyond business; we're building a legacy that respects our environment and uplifts our community.`,
-    url: "/vels-theatres",
+    url: "/theatre",
   },
 ];
 
