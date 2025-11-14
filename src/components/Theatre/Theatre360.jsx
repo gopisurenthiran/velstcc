@@ -20,12 +20,12 @@ export default function Theatre360() {
   };
 
   const slides = [
-    { image: "/assets/Showcaase_1.webp" },
-    { image: "/assets/Showcaase_2.webp" },
-    { image: "/assets/Showcaase_3.webp" },
-    { image: "/assets/Showcaase_4.webp" },
-    { image: "/assets/Showcaase_5.webp" },
-    { image: "/assets/Showcaase_6.webp" },
+    { image: "/assets/showcaase_1.webp" },
+    { image: "/assets/showcaase_2.webp" },
+    { image: "/assets/showcaase_3.webp" },
+    { image: "/assets/showcaase_4.webp" },
+    { image: "/assets/showcaase_5.webp" },
+    { image: "/assets/showcaase_6.webp" },
   ];
 
   return (

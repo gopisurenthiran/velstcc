@@ -90,7 +90,7 @@ function TradeConventionContent() {
   return (
     <div>
       <motion.h1
-        className="text-[32px] font-secondary mb-4"
+        className="text-[32px] font-secondary mb-4" id="target-section"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -230,7 +230,7 @@ function TheatreContent() {
   return (
     <div>
       <motion.h1
-        className="text-[32px] font-secondary mb-4"
+        className="text-[32px] font-secondary mb-4" 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -239,7 +239,7 @@ function TheatreContent() {
       </motion.h1>
       <div className="h-[1px] bg-[#2D3091] w-[120px] mb-6"></div>
 
-      <div className="max-w-3xl">
+      <div className="max-w-3xl" >
         {faqs.map((faq, i) => (
           <motion.div
             key={i}
@@ -261,7 +261,7 @@ function TheatreContent() {
             <AnimatePresence>
               {openIndex === i && (
                 <motion.p
-                  className="mt-3 text-md font-primary text-gray-600 leading-relaxed"
+                  className="mt-3 text-md font-primary text-gray-600 leading-relaxed" 
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}

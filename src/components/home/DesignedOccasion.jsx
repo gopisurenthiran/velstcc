@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
+
+const MotionLink = motion(Link);
 
 const easing = [0.22, 1, 0.36, 1];
 
@@ -283,16 +286,17 @@ const DesignedOccasion = () => {
           </motion.p>
         </div>
 
-        <motion.div className="mt-8" variants={item}>
-          <motion.a
-            href="/contact"
-            className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            ENQUIRE NOW
-          </motion.a>
-        </motion.div>
+       <motion.div className="mt-8" variants={item}>
+  <MotionLink
+    href="/contact"
+    className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium"
+    whileHover={{ scale: 1.03 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    ENQUIRE NOW
+  </MotionLink>
+</motion.div>
+
       </motion.div>
     </section>
   );

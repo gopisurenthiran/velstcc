@@ -9,7 +9,7 @@ const mobileBanner = "/assets/banner/vels-film-city.webp";
 const Hero = () => {
   const handleClick = (e) => {
     e.preventDefault();
-    const targetElement = document.getElementById("target-section");
+    const targetElement = document.getElementById("indoor");
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }

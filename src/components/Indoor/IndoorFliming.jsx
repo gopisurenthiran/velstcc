@@ -5,7 +5,7 @@ import { motion } from "framer-motion"; // ✅ added for animation
 export default function IndoorFliming() {
   return (
     <motion.section
-      className="relative bg-white py-20 px-6 md:px-16 lg:px-24"
+      className="relative bg-white py-20 px-6 md:px-16 lg:px-24" id="indoor"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}

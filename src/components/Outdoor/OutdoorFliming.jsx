@@ -14,7 +14,7 @@ export default function OutdoorFliming() {
   };
 
   return (
-    <section className="relative bg-white py-20 px-6 md:px-16 lg:px-24">
+    <section className="relative bg-white py-20 px-6 md:px-16 lg:px-24" id="outdoor">
       <motion.div
         className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center"
         initial="hidden"

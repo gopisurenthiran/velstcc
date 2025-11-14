@@ -24,7 +24,7 @@ const slides = [
 const Hero = () => {
   const handleClick = (e) => {
     e.preventDefault();
-    const targetElement = document.getElementById("target-section");
+    const targetElement = document.getElementById("theartre");
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }

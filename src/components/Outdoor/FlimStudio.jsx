@@ -12,7 +12,9 @@ import "slick-carousel/slick/slick-theme.css";
 const NextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute right-[-30px] top-1/2 -translate-y-1/2 text-black hover:text-gray-500"
+    className="absolute right-[-35px] top-1/2 -translate-y-1/2
+               text-black hover:text-gray-500 text-3xl font-bold
+               w-10 h-10 flex items-center justify-center"
   >
     →
   </button>
@@ -21,11 +23,15 @@ const NextArrow = ({ onClick }) => (
 const PrevArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute left-[-30px] top-1/2 -translate-y-1/2 text-black hover:text-gray-500"
+    className="absolute left-[-35px] top-1/2 -translate-y-1/2
+               text-black hover:text-gray-500 text-3xl font-bold
+               w-10 h-10 flex items-center justify-center"
   >
     ←
   </button>
 );
+
+
 
 // Studio logos
 const studios = [

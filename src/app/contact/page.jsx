@@ -1,12 +1,11 @@
-import ContactPage from "../../components/Contact/ContactPage";
 import Hero from "../../components/home/Hero";
-
+import ContactTabs from "../../components/Contact/ContactPage.jsx";
 
 export default function contact() {
   return (
     <>
         <Hero />
-        <ContactPage />
+        <ContactTabs />
        
     </>
   );

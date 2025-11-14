@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="w-full max-w-7xl mx-auto px-6 pt-8 pb-4">
         <div className="space-y-4 text-center text-xs sm:text-sm text-black/80">
           {/* Row 1 – 4 items, evenly spaced */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-2">
+          <div className="grid grid-cols-2 text-md sm:grid-cols-4 gap-y-2">
             <Link
               href="/theatre"
               className="hover:text-[#2A1C79] transition-colors"
@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
 
           {/* Row 2 – 3 items, centered */}
-          <div className="grid grid-cols-3 gap-y-2 max-w-xs mx-auto pt-10 pb-5">
+          <div className="grid grid-cols-3 gap-y-2 max-w-xs text-md mx-auto pt-10 pb-5">
             <Link
               href="/about"
               className="hover:text-[#2A1C79] transition-colors"
@@ -50,7 +50,7 @@ export default function Footer() {
               href="/faq"
               className="hover:text-[#2A1C79] transition-colors"
             >
-              FAQ
+              FAQ'S
             </Link>
             <Link
               href="/contact"
