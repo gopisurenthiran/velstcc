@@ -7,14 +7,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const images = [
-  "/assets/1.webp",
-  "/assets/2.webp",
-  "/assets/3.webp",
-  "/assets/4.webp",
-  "/assets/5.webp",
-  "/assets/6.webp",
-  "/assets/7.webp",
-  "/assets/8.webp",
+  "/assets/outdoor-1.webp",
+  "/assets/outdoor-2.webp",
+  "/assets/outdoor-3.webp",
+  "/assets/outdoor-4.webp",
+  "/assets/outdoor-5.webp",
+  "/assets/outdoor-6.webp",
+  "/assets/outdoor-7.webp",
+  "/assets/outdoor-8.webp",
 ];
 
 export default function ReelView() {

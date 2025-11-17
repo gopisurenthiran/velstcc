@@ -9,11 +9,11 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 const PURPLE = "bg-[#2A1C79]";
 
 const events = [
-  { id: 1, tag: "Exhibition", title: "Manufacturer Meeting", date: "16th July 2025", image: "/assets/event.png", href: "#" },
-  { id: 2, tag: "Exhibition", title: "2020–2025 Traders Meeting", date: "14th May 2025", image: "/assets/event.png", href: "#" },
-  { id: 3, tag: "Convention", title: "Creative Awards (South Zone)", date: "12th June 2025", image: "/assets/event.png", href: "#" },
-  { id: 4, tag: "Convention", title: "Creative Awards (National)", date: "12th June 2025", image: "/assets/event.png", href: "#" },
-  { id: 5, tag: "Summit", title: "Design & Innovation Summit", date: "22nd Aug 2025", image: "/assets/event.png", href: "#" },
+  { id: 1, tag: "Exhibition", title: "Manufacturer Meeting", date: "16th July 2025", image: "/assets/event-1.webp", href: "#" },
+  { id: 2, tag: "Exhibition", title: "2020–2025 Traders Meeting", date: "14th May 2025", image: "/assets/event-2.webp", href: "#" },
+  { id: 3, tag: "Convention", title: "Creative Awards (South Zone)", date: "12th June 2025", image: "/assets/event-3.webp", href: "#" },
+  { id: 4, tag: "Convention", title: "Creative Awards (National)", date: "12th June 2025", image: "/assets/event-1.webp", href: "#" },
+  { id: 5, tag: "Summit", title: "Design & Innovation Summit", date: "22nd Aug 2025", image: "/assets/event-2.webp", href: "#" },
 ];
 
 export default function EventsExact() {

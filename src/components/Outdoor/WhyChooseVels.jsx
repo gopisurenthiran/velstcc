@@ -4,7 +4,10 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 import { motion } from "framer-motion";
+
+const MotionLink = motion(Link);
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,7 +18,7 @@ const fadeUp = {
   }),
 };
 
-/* ----------  Custom Arrows (shared) ---------- */
+/* ----------  Custom Arrows ---------- */
 const NextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
@@ -62,41 +65,40 @@ const PrevArrow = ({ onClick }) => (
   </button>
 );
 
-/* ----------  Slide Data ---------- */
+/* ---------- Slides ---------- */
 const slides = [
   {
-    title: "Expansive & Adaptable Spaces ",
+    title: "Expansive & Adaptable Spaces",
     description:
       "From grand outdoor sets to versatile indoor studios, our 75-acre campus offers endless possibilities for film, television, and commercial shoots.",
     image: "/assets/expansive_adaptable_spaces.webp",
   },
   {
-    title: "World-Class Production Infrastructure ",
+    title: "World-Class Production Infrastructure",
     description:
-      "Equipped with advanced lighting, acoustics, and soundproof studios, VELS Film City ensures a seamless filmmaking experience, from script to screen. ",
+      "Equipped with advanced lighting, acoustics, and soundproof studios, VELS Film City ensures a seamless filmmaking experience, from script to screen.",
     image: "/assets/world_class_production_infrastructure.webp",
   },
   {
     title: "Skilled Technical & Creative Talent",
     description:
-      "Backed by VELS University’s media and film departments, our trained professionals provide expertise in cinematography, set design, editing, and post-production. ",
+      "Backed by VELS University’s media and film departments, our trained professionals provide expertise in cinematography, set design, editing, and post-production.",
     image: "/assets/skilled_technical_creative_talent.webp",
   },
   {
-    title: "Seamless Connectivity & Support ",
+    title: "Seamless Connectivity & Support",
     description:
-      "Strategically located with easy access to airports, highways, and luxury accommodations, VELS Film City ensures convenience and continuity at every stage of production. ",
+      "Strategically located with easy access to airports, highways, and luxury accommodations, VELS Film City ensures convenience and continuity at every stage of production.",
     image: "/assets/seamless_connectivity_support.webp",
   },
 ];
 
-/* ----------  Component ---------- */
+/* ---------- Component ---------- */
 export default function WhyChooseVels() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [wrapWidth, setWrapWidth] = useState(0);
   const wrapRef = useRef(null);
 
-  // Measure container width for desktop 25/50/25 logic
   useEffect(() => {
     if (!wrapRef.current) return;
 
@@ -109,8 +111,8 @@ export default function WhyChooseVels() {
   }, []);
 
   const safeWidth = Math.max(wrapWidth, 320);
-  const sideW = Math.round(safeWidth * 0.25); // col-3
-  const activeW = Math.round(safeWidth * 0.5); // col-6
+  const sideW = Math.round(safeWidth * 0.25);
+  const activeW = Math.round(safeWidth * 0.5);
 
   const desktopSettings = {
     dots: false,
@@ -143,7 +145,7 @@ export default function WhyChooseVels() {
   return (
     <section className="py-16 bg-[#F5F5F5] relative">
       <div className="max-w-6xl mx-auto px-6">
-        {/* ---------- Heading ---------- */}
+        {/* Heading */}
         <motion.div
           className="text-left mb-10"
           initial="hidden"
@@ -158,8 +160,7 @@ export default function WhyChooseVels() {
             className="text-3xl font-semibold text-black font-secondary"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
           >
             Why Choose Vels Film City?
           </motion.h2>
@@ -168,25 +169,19 @@ export default function WhyChooseVels() {
             className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4"
             initial={{ scaleX: 0, opacity: 0 }}
             whileInView={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             style={{ transformOrigin: "left" }}
-            viewport={{ once: true }}
-          ></motion.div>
+          />
 
           <motion.p
             className="text-gray-600 mt-2 text-sm md:text-base font-primary"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
+            variants={fadeUp}
           >
-            Where imagination meets infrastructure, and every frame finds its
-            canvas. VELS Film City brings together scale, skill, and
-            sophistication, designed for filmmakers who dream beyond limits.
+            Where imagination meets infrastructure, and every frame finds its canvas.
           </motion.p>
         </motion.div>
 
-        {/* ---------- Desktop Slider (md and up) ---------- */}
+        {/* Desktop Slider */}
         <div ref={wrapRef} className="relative hidden md:block">
           <Slider {...desktopSettings}>
             {slides.map((slide, index) => {
@@ -201,38 +196,25 @@ export default function WhyChooseVels() {
                     }`}
                   >
                     {/* Image */}
-                    <div
-                      className={`relative ${
-                        isActive ? "w-1/2 h-full" : "w-full h-full"
-                      }`}
-                    >
+                    <div className={isActive ? "w-1/2 h-full relative" : "w-full h-full relative"}>
                       <Image
                         src={slide.image}
                         alt={slide.title}
                         width={800}
                         height={600}
                         className="w-full h-full object-cover"
-                        priority={index === 0}
                       />
                     </div>
 
-                    {/* Description (only for active slide) */}
+                    {/* Text (only active) */}
                     {isActive && (
-                      <div
-                        className="
-                          w-1/2 p-6 flex flex-col justify-center
-                          border-l border-primary
-                          bg-[#F7F9FF]
-                        "
-                      >
+                      <div className="w-1/2 p-6 flex flex-col justify-center bg-[#F7F9FF] border-l">
                         <h3 className="text-lg md:text-xl font-secondary font-medium text-black mb-3">
                           {slide.title}
                         </h3>
-
                         <p className="text-gray-700 text-sm font-primary leading-relaxed">
                           {slide.description}
                         </p>
-
                         <span className="mt-4 inline-block h-[1px] w-24 bg-primary"></span>
                       </div>
                     )}
@@ -243,24 +225,21 @@ export default function WhyChooseVels() {
           </Slider>
         </div>
 
-        {/* ---------- Mobile Slider (below md) ---------- */}
+        {/* Mobile Slider */}
         <div className="relative md:hidden">
           <Slider {...mobileSettings}>
             {slides.map((slide, index) => (
               <div key={index}>
                 <div className="mx-1 border border-indigo-200 bg-white rounded-md overflow-hidden">
-                  {/* Image */}
                   <div className="relative w-full h-56 sm:h-64">
                     <Image
                       src={slide.image}
                       alt={slide.title}
                       fill
-                      className="object-cover"
-                      priority={index === 0}
+                      className=""
                     />
                   </div>
 
-                  {/* Text – always visible on mobile */}
                   <div className="p-4 bg-[#F7F9FF]">
                     <h3 className="text-base font-secondary font-medium text-black mb-2">
                       {slide.title}
@@ -277,7 +256,7 @@ export default function WhyChooseVels() {
         </div>
       </div>
 
-      {/* ---------- CTA Section ---------- */}
+      {/* CTA Section */}
       <motion.div
         className="max-w-4xl mx-auto text-center px-4 py-20"
         initial="hidden"
@@ -291,7 +270,6 @@ export default function WhyChooseVels() {
         <motion.h2
           className="text-2xl md:text-3xl font-semibold text-black mb-3 font-secondary"
           variants={fadeUp}
-          custom={0}
         >
           Plan Your Next Outdoor Shoot
         </motion.h2>
@@ -299,21 +277,18 @@ export default function WhyChooseVels() {
         <motion.p
           className="text-gray-600 text-sm md:text-base mb-6 font-primary"
           variants={fadeUp}
-          custom={1}
         >
-          Schedule your shoot effortlessly, from power and dining to logistics,
-          everything you need is right here.
+          Schedule your shoot effortlessly — from power and dining to logistics, everything you need is right here.
         </motion.p>
 
-        <motion.button
-          className="bg-[#1E2A78] text-white text-xs font-primary font-semibold px-5 py-2 rounded"
-          variants={fadeUp}
-          custom={2}
-          whileHover={{ scale: 1.08 }}
-          transition={{ type: "spring", stiffness: 300 }}
+        <MotionLink
+          href="/contact"
+          className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium "
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
         >
           GET A QUOTE
-        </motion.button>
+        </MotionLink>
       </motion.div>
     </section>
   );

@@ -2,19 +2,19 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // ✅ Added for animation
+import { motion, AnimatePresence } from "framer-motion";
 
-const ROTATE_MS = 4000; // autoplay speed (ms)
+const ROTATE_MS = 4000;
 
 const facilities = [
   {
     title: "Popcorn",
-    desc: "Freshly popped, perfectly seasoned, and endlessly comforting, our popcorn isn’t just a snack; it’s a scene-stealer.",
+    desc: "Freshly popped, perfectly seasoned, and endlessly comforting, our popcorn isn’t just a snack; it’s a scene-stealer.",
     image: "/assets/popcorn.webp",
   },
   {
     title: "Nachos",
-    desc: "Crisp, cheesy, and loaded with flavour, the go-to bite for when the reel gets real.",
+    desc: "Crisp, cheesy, and loaded with flavour, the go-to bite for when the reel gets real.",
     image: "/assets/nachos.webp",
   },
   {
@@ -26,7 +26,6 @@ const facilities = [
 
 export default function Concession() {
   const [active, setActive] = useState(0);
-  const [imgReady, setImgReady] = useState(true);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
 
@@ -34,13 +33,12 @@ export default function Concession() {
   useEffect(() => {
     if (paused) return;
     if (timerRef.current) clearInterval(timerRef.current);
+
     timerRef.current = setInterval(() => {
       setActive((i) => (i + 1) % facilities.length);
-      setImgReady(false);
     }, ROTATE_MS);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
+
+    return () => clearInterval(timerRef.current);
   }, [paused]);
 
   return (
@@ -65,12 +63,13 @@ export default function Concession() {
           Concessions & Lounge
         </h2>
         <p className="mt-5 text-black/70 font-primary text-xl">
-          Where stories meet savours
+          Where stories meet savours
         </p>
       </motion.div>
 
       {/* ---------- Grid Layout ---------- */}
       <div className="grid items-start gap-10 md:grid-cols-2">
+        
         {/* LEFT LIST */}
         <motion.div
           className="flex flex-col gap-4"
@@ -84,10 +83,7 @@ export default function Concession() {
             return (
               <motion.button
                 key={item.title}
-                onClick={() => {
-                  setActive(i);
-                  setImgReady(false);
-                }}
+                onClick={() => setActive(i)}
                 className={[
                   "text-left rounded-md p-5 transition",
                   isActive
@@ -109,7 +105,7 @@ export default function Concession() {
           })}
         </motion.div>
 
-        {/* RIGHT IMAGE */}
+        {/* ---------- RIGHT IMAGE (FIXED) ---------- */}
         <motion.div
           className="relative"
           initial={{ opacity: 0, x: 40 }}
@@ -118,7 +114,8 @@ export default function Concession() {
           viewport={{ once: true }}
         >
           <div className="relative overflow-hidden">
-            <div className="relative aspect-[4/3] w-full">
+            <div className="relative w-full">
+              
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
@@ -126,21 +123,22 @@ export default function Concession() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="absolute inset-0"
                 >
-                   <Image
-                src={facilities[active].image || "/assets/facilities.png"}
-                alt={facilities[active].title}
-                width={520}   // use your real image width
-                height={600}   // use your real image height
-                className="w-full h-auto object-contain"
-                priority
-              />
+                  <Image
+                    src={facilities[active].image}
+                    alt={facilities[active].title}
+                    width={520}
+                    height={600}
+                    className="w-full h-auto object-contain"
+                    priority
+                  />
                 </motion.div>
               </AnimatePresence>
+
             </div>
           </div>
         </motion.div>
+
       </div>
     </motion.section>
   );

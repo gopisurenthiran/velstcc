@@ -8,14 +8,14 @@ import { motion } from "framer-motion";
 
 
 const images = [
-  "/assets/reelview-1.webp",
-  "/assets/reelview-2.webp",
-  "/assets/reelview-3.webp",
-  "/assets/reelview-4.webp",
-  "/assets/reelview-5.webp",
-  "/assets/reelview-6.webp",
-  "/assets/reelview-7.webp",
-  "/assets/reelview-8.webp",
+  "/assets/indoor-1.webp",
+  "/assets/indoor-2.webp",
+  "/assets/indoor-3.webp",
+  "/assets/indoor-4.webp",
+  "/assets/indoor-5.webp",
+  "/assets/indoor-6.webp",
+  "/assets/indoor-7.webp",
+  "/assets/indoor-8.webp",
 ];
 
 export default function ReelView() {

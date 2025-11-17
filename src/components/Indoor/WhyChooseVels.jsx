@@ -3,6 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
+import Link from "next/link";
+
+const MotionLink = motion(Link);
+
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -179,13 +183,13 @@ export default function WhyChooseVels() {
                         src={slide.image}
                         alt={slide.title}
                         fill
-                        className="object-cover"
+                        className=""
                       />
                     </div>
 
                     {/* Description (only for active slide) */}
                     {isActive && (
-                      <div className="w-1/2 p-6 bg-[#F7F9FF] border-l border-primary flex flex-col justify-center">
+                      <div className="w-1/2 p-6 bg-white border-l border-primary flex flex-col justify-center">
                         <h3 className="text-lg font-secondary mb-3">
                           {slide.title}
                         </h3>
@@ -219,7 +223,7 @@ export default function WhyChooseVels() {
                   </div>
 
                   {/* Text (always visible on mobile) */}
-                  <div className="p-4 bg-[#F7F9FF]">
+                  <div className="p-4 bg-white">
                     <h3 className="text-base font-secondary mb-2">
                       {slide.title}
                     </h3>
@@ -239,13 +243,18 @@ export default function WhyChooseVels() {
           <h2 className="text-2xl font-secondary font-semibold">
             Plan Your Indoor Shoot
           </h2>
-          <p className="text-gray-600 mt-2 font-primary text-sm md:text-base">
+          <p className="text-gray-600 mt-2 font-primary text-sm md:text-xl">
             Planning a shoot? Check availability or schedule a recce.
           </p>
 
-          <button className="mt-4 bg-[#1E2A78] text-white text-xs font-primary px-5 py-2 rounded hover:scale-105 transition">
-            GET A QUOTE
-          </button>
+         <MotionLink
+          href="/contact"
+          className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium mt-5"
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+        >
+          GET A QUOTE
+        </MotionLink>
         </div>
       </div>
     </section>

@@ -216,7 +216,7 @@ const DesignedOccasion = () => {
                 alt={activeContent.title}
                 width={556} // actual image resolution width
                 height={450} // actual image resolution height
-                className="w-auto h-auto max-w-full max-h-[520px] object-contain rounded-none"
+                className="w-auto h-auto max-w-full max-h-[520px] rounded-none"
                 priority
               />
             </div>
@@ -235,22 +235,18 @@ const DesignedOccasion = () => {
               </div>
 
               <div className="flex flex-wrap gap-3">
-               
-               <a
-  href="/assets/pdf/area.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="border border-primary text-primary px-6 py-3 font-medium inline-block text-center"
->
-  DOWNLOAD FACT SHEET
-</a>
-
+                <a
+                  href="/assets/pdf/area.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-primary text-primary px-6 py-3 font-medium inline-block text-center"
+                >
+                  DOWNLOAD FACT SHEET
+                </a>
               </div>
             </div>
           </div>
         )}
-
-        
       </div>
 
       {/* FOOTER CTA */}
@@ -286,17 +282,16 @@ const DesignedOccasion = () => {
           </motion.p>
         </div>
 
-       <motion.div className="mt-8" variants={item}>
-  <MotionLink
-    href="/contact"
-    className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium"
-    whileHover={{ scale: 1.03 }}
-    whileTap={{ scale: 0.98 }}
-  >
-    ENQUIRE NOW
-  </MotionLink>
-</motion.div>
-
+        <motion.div className="mt-8" variants={item}>
+          <MotionLink
+            href="/contact"
+            className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            ENQUIRE NOW
+          </MotionLink>
+        </motion.div>
       </motion.div>
     </section>
   );

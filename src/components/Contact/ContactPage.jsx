@@ -286,7 +286,7 @@ export default function ContactTabs() {
 
         {/* ---------- MAP SECTION (updates per TAB) ---------- */}
         {MAP_SRC[activeTab] && (
-          <div className="mt-10 w-full h-64 md:h-80 relative rounded-lg overflow-hidden shadow-md">
+          <div className="mt-10 w-full h-64 md:h-80 relative overflow-hidden shadow-md">
             <iframe
               key={activeTab}
               title={`${tabLabels[activeTab]} Map`}
