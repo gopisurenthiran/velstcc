@@ -85,10 +85,10 @@ export default function TestimonialsCarousel() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl text-gray-900 font-secondary leading-tight">
+            <h2 className="text-3xl sm:text-4xl text-gray-900 primary-title leading-tight">
               What Our Clients Say
             </h2>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600 font-primary">
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600 secondary-description">
               Vels Trade & Convention Centre stands in Chennai's vibrant core,
               providing effortless connectivity to the city's premier commercial
               and cultural destinations.
@@ -146,14 +146,14 @@ export default function TestimonialsCarousel() {
 
                     {/* === Text === */}
                     <div className="w-full md:w-2/3 p-5 sm:p-6 flex flex-col justify-between text-center md:text-left">
-                      <p className="text-base sm:text-lg text-gray-700 font-primary leading-relaxed">
+                      <p className="text-base sm:text-lg text-gray-700 secondary-description leading-relaxed">
                         {t.quote}
                       </p>
                       <div className="mt-5 sm:mt-6">
-                        <h4 className="font-secondary font-medium text-gray-900 text-lg sm:text-xl">
+                        <h4 className="primary-subtitle font-medium text-gray-900 text-lg sm:text-xl">
                           {t.name}
                         </h4>
-                        <p className="text-sm sm:text-base font-primary font-semibold text-black mt-1">
+                        <p className=" secondary-subtitle font-bold text-black mt-1">
                           {t.role}
                         </p>
                         <span

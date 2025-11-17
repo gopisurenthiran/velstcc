@@ -59,10 +59,10 @@ export default function HoverExpandCarousel() {
         viewport={{ once: true }}
         className="mb-8 max-w-2xl"
       >
-        <h2 className="text-[24px] sm:text-[28px] md:text-[34px] tracking-tight font-secondary font-medium mb-4">
+        <h2 className="primary-title mb-4">
           Discover Singara Chennai
         </h2>
-        <p className="mt-1 text-base sm:text-lg text-black/70 font-primary leading-relaxed">
+        <p className="mt-1 text-base sm:text-lg text-black/70 secondary-description leading-relaxed">
           A metropolis where heritage blends with modernity. A dynamic fusion of
           tradition, trade, and innovation. Eternally the cornerstone of South
           India&apos;s character and advancement.
@@ -94,7 +94,7 @@ export default function HoverExpandCarousel() {
               />
 
               {/* title */}
-              <div className="absolute left-4 top-3 z-20 text-white text-lg sm:text-xl font-semibold font-secondary drop-shadow-md">
+              <div className="absolute left-4 top-3 z-20 text-white primary-subtitle drop-shadow-md">
                 {s.title}
               </div>
 
@@ -109,7 +109,7 @@ export default function HoverExpandCarousel() {
                     : "opacity-0 translate-y-3 md:group-hover:opacity-100 md:group-hover:translate-y-0"
                 }`}
               >
-                <p className="text-sm sm:text-base leading-relaxed font-primary">
+                <p className="secondary-description">
                   {s.description}
                 </p>
               </div>

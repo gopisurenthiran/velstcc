@@ -175,7 +175,7 @@ export default function Navbar() {
     >
       <div className="max-w-8xl mx-auto relative flex items-center justify-center py-4 px-6">
         {/* === Desktop Nav – 4 equal columns, Discover centered === */}
-       <nav className="hidden md:grid grid-cols-5 w-full max-w-7xl mx-auto text-[16px] font-primary">
+       <nav className="hidden md:grid grid-cols-5 w-full max-w-7xl mx-auto text-[16px] secondary-subtitle">
 
   {/* HOME */}
   <div className="flex justify-center">

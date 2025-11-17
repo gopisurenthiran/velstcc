@@ -64,7 +64,7 @@ const StatItem = ({ value, label, icon }) => (
 
       {/* Label area */}
       <div className="w-full">
-        <p className="mt-2 text-sm md:text-base text-black/70 font-medium font-primary min-h-[40px] flex items-center justify-center">
+        <p className="mt-2 text-sm md:text-base text-black/70 secondary-subtitle min-h-[40px] flex items-center justify-center">
           {label}
         </p>
       </div>

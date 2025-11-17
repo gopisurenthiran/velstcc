@@ -86,10 +86,10 @@ export default function Facilities() {
         viewport={{ once: true, margin: "-100px" }}
         className="mb-10"
       >
-        <h2 className="text-4xl tracking-tight text-black font-secondary font-medium">
+        <h2 className="text-4xl tracking-tight text-black primary-title">
           All About Vel Conventional Centre
         </h2>
-        <p className="mt-5 text-black/70 font-primary text-xl">
+        <p className="mt-5 text-black/70 secondary-description text-xl">
           Everything your guests could need thoughtfully within reach. 
         </p>
       </motion.div>
@@ -118,10 +118,10 @@ export default function Facilities() {
                     : "hover:bg-black/[0.03]",
                 ].join(" ")}
               >
-                <h3 className="font-secondary text-xl text-black">
+                <h3 className="primary-subtitle text-xl text-black">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-md leading-relaxed text-black/70 font-primary">
+                <p className="mt-2 text-md leading-relaxed text-black/70 secondary-description">
                   {item.desc}
                 </p>
               </motion.button>

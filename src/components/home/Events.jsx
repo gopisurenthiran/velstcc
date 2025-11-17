@@ -60,7 +60,7 @@ export default function EventsExact() {
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-16" id="events">
-      <h2 className="mb-10 text-center text-4xl tracking-tight font-secondary">Events</h2>
+      <h2 className="mb-10 text-center text-4xl tracking-tight primary-title">Events</h2>
 
       <div className="relative">
         <div
@@ -110,7 +110,7 @@ export default function EventsExact() {
                     <div className="mt-5">
                       <p
                         className={[
-                          "text-sm uppercase tracking-wide font-primary",
+                          "text-sm uppercase tracking-wide secondary-description",
                           isActive ? "text-[#2A1C79]" : "text-black/40"
                         ].join(" ")}
                       >
@@ -119,20 +119,16 @@ export default function EventsExact() {
                         <div className={`mt-1 mb-4 h-px w-32 ${isActive ? "bg-primary" : "bg-primary"}`} />
                       <h3
                         className={[
-                          "mt-1 text-lg leading-6 font-primary",
+                          "mt-1 text-lg leading-6 secondary-subtitle font-semibold",
                           isActive ? "text-black" : "text-black/40"
                         ].join(" ")}
                       >
                         {ev.title}
                       </h3>
                        
-                      <p className={isActive ? "text-lg text-black font-primary" : "text-lg text-black/40 font-primary"}>
+                      <p className={isActive ? "text-lg text-black secondary-subtitle" : "text-lg text-black/40 secondary-subtitle"}>
                         {ev.date}
                       </p>
-
-                     
-
-                     
                     </div>
                   </div>
                 </article>

@@ -150,10 +150,10 @@ function InlineStats({ items = [] }) {
           />
 
           <div className="leading-tight">
-            <div className="font-founders font-bold text-[15px] sm:text-[17px] text-black">
+            <div className="secondary-subtitle font-bold text-[15px] sm:text-[17px] text-black">
               {stat.value}
             </div>
-            <div className="font-founders text-[12px] sm:text-[14px] text-black/70">
+            <div className="secondary-description text-[12px] sm:text-[14px] text-black/70">
               {stat.label}
             </div>
           </div>
@@ -178,7 +178,7 @@ export default function DesignedOccasion() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easing }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl md:text-5xl font-secondary text-center mb-12 md:mb-16"
+          className="text-3xl sm:text-4xl md:text-5xl primary-subtitle text-center mb-12 md:mb-16"
         >
           Crafted to Host Every Milestone
         </motion.h2>
@@ -189,7 +189,7 @@ export default function DesignedOccasion() {
             flex overflow-x-auto whitespace-nowrap no-scrollbar
             justify-start md:justify-center
             gap-3 md:gap-4 
-            mb-10 md:mb-12 font-secondary
+            mb-10 md:mb-12 primary-subtitle
           "
         >
           {tabData.map((tab) => (
@@ -244,13 +244,13 @@ export default function DesignedOccasion() {
             {/* TEXT SECTION */}
             <div className="p-6 sm:p-8 flex flex-col justify-center gap-8">
               <div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-secondary font-bold mb-4">
+                <h3 className="text-xl sm:text-2xl md:text-3xl primary-subtitle mb-4">
                   {activeContent.title}
                 </h3>
 
                 <span className="block w-20 h-px bg-primary mb-5"></span>
 
-                <p className="text-gray-600 font-founders leading-relaxed mb-8 text-sm sm:text-base">
+                <p className="text-gray-600 secondary-description mb-8 text-sm sm:text-base">
                   {activeContent.content}
                 </p>
 
@@ -261,7 +261,7 @@ export default function DesignedOccasion() {
                   href="/assets/pdf/area.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border border-primary text-primary px-6 py-3 font-medium inline-block text-center"
+                  className="border border-primary text-primary px-6 py-3 secondary-subtitle inline-block text-center"
                 >
                   DOWNLOAD FACT SHEET
                 </a>
@@ -280,14 +280,14 @@ export default function DesignedOccasion() {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="font-secondary text-2xl sm:text-3xl md:text-4xl text-black"
+          className="primary-title text-2xl sm:text-3xl md:text-4xl text-black"
           variants={item}
         >
           Let’s Talk About Your Next Big Event
         </motion.h2>
 
         <motion.p
-          className="font-founders text-sm sm:text-base text-black/70 mt-4"
+          className="secondary-description text-sm sm:text-base text-black/70 mt-4"
           variants={item}
         >
           Your vision deserves the right stage — and we’re here to shape it.
@@ -296,7 +296,7 @@ export default function DesignedOccasion() {
         <motion.div className="mt-8" variants={item}>
           <MotionLink
             href="/contact"
-            className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium"
+            className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white secondary-subtitle"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
