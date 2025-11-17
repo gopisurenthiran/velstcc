@@ -1,10 +1,7 @@
 "use client";
-import React from "react";
-import Slider from "react-slick";
-import Image from "next/image";
-import { motion } from "framer-motion"; // ✅ Added for animation
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const img = [
   "/assets/slider_1.webp",
@@ -13,28 +10,44 @@ const img = [
   "/assets/slider_4.webp",
   "/assets/slider_5.webp",
   "/assets/slider_6.webp",
-
 ];
 
 export default function ReelView() {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
-    swipeToSlide: true,
-    arrows: true,
-    cssEase: "linear",
-    responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 3 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
-    ],
-  };
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(1); // 1 on mobile, 4 on desktop
+
+  // Detect screen size and set slidesToShow
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      if (window.innerWidth >= 1024) {
+        setSlidesToShow(4); // desktop
+      } else {
+        setSlidesToShow(1); // mobile / tablet
+      }
+    };
+
+    updateSlidesToShow();
+    window.addEventListener("resize", updateSlidesToShow);
+    return () => window.removeEventListener("resize", updateSlidesToShow);
+  }, []);
+
+  const maxIndex = Math.max(0, img.length - slidesToShow);
+
+  // Auto-slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [maxIndex]);
+
+  // Clamp index when slidesToShow changes
+  useEffect(() => {
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(maxIndex);
+    }
+  }, [slidesToShow, maxIndex, currentIndex]);
 
   return (
     <motion.section
@@ -44,55 +57,55 @@ export default function ReelView() {
       transition={{ duration: 0.7, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      {/* Heading */}
       <motion.h2
-        className="text-3xl  mb-2 font-secondary"
+        className="text-3xl mb-2 font-secondary"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-        viewport={{ once: true }}
       >
         The Reel View
       </motion.h2>
 
-      {/* Subtext */}
       <motion.p
         className="text-gray-600 mb-8"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-        viewport={{ once: true }}
       >
         A polished look at what happens between action and cut.
       </motion.p>
 
-      {/* Slider */}
       <motion.div
-        className="max-w-7xl mx-auto overflow-hidden"
+        className="max-w-6xl mx-auto overflow-hidden rounded-xl"
         initial={{ opacity: 0, scale: 0.97 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-        viewport={{ once: true }}
       >
-        <Slider {...settings}>
-          {img.map((src, index) => (
-            <div key={index} className="px-2">
-              <motion.div
-                className="overflow-hidden hover:scale-[1.02] transition-transform duration-300 ease-in-out"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 200 }}
-              >
+        {/* Slider track */}
+        <motion.div
+          className="flex"
+          animate={{
+            x: `-${currentIndex * (100 / slidesToShow)}%`,
+          }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          {img.map((src, i) => (
+            <div
+              key={i}
+              style={{ flex: `0 0 ${100 / slidesToShow}%` }}
+              className="p-2"
+            >
+              <div className="h-64 sm:h-80 md:h-96 sm:w-80 overflow-hidden">
                 <img
                   src={src}
-                  alt={`Reel view ${index + 1}`}
-                  width={100}
-                  height={100}
+                  alt={`Reel View ${i + 1}`}
                   className="w-full h-full"
                 />
-              </motion.div>
+              </div>
             </div>
           ))}
-        </Slider>
+        </motion.div>
+
       </motion.div>
     </motion.section>
   );

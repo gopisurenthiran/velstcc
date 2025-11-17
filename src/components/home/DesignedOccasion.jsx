@@ -63,7 +63,7 @@ const tabData = [
       {
         iconSrc: "/assets/icon-3.svg",
         value: "100%",
-        label: " Dedicated Exhibition Utilities",
+        label: "Dedicated Exhibition Utilities",
       },
     ],
   },
@@ -72,14 +72,14 @@ const tabData = [
     title: "Corporate Conferences & Expos",
     imageSrc: "/assets/corporate_conferences_expos.webp",
     content:
-      "Make every business moment impactful. Equipped with modern AV systems, acoustic excellence, and flexible seating, it’s the perfect stage for global conferences, leadership summits, and annual meets. ",
+      "Make every business moment impactful. Equipped with modern AV systems, acoustic excellence, and flexible seating, it’s the perfect stage for global conferences, leadership summits, and annual meets.",
     stats: [
       { iconSrc: "/assets/icon-1.svg", value: "5", label: "Grand Halls" },
       { iconSrc: "/assets/icon-2.svg", value: "25,000 sq", label: "Space" },
       {
         iconSrc: "/assets/icon-3.svg",
         value: "100%",
-        label: " Integrated AV & Acoustic System",
+        label: "Integrated AV & Acoustic System",
       },
     ],
   },
@@ -100,7 +100,7 @@ const tabData = [
     title: "Political Gatherings",
     imageSrc: "/assets/political_gatherings.webp",
     content:
-      "Designed for presence and impact. Our grand halls and expansive outdoor arenas are ideal for political rallies, conventions, and public addresses with secure access and large audience capacity. ",
+      "Designed for presence and impact. Our grand halls and expansive outdoor arenas are ideal for political rallies, conventions, and public addresses with secure access and large audience capacity.",
     stats: [
       { iconSrc: "/assets/icon-1.svg", value: "5", label: "Grand Halls" },
       { iconSrc: "/assets/icon-2.svg", value: "25,000 sq", label: "Space" },
@@ -113,7 +113,7 @@ const tabData = [
   },
 ];
 
-/* ================== INLINE STATS WITH ANIMATION ================== */
+/* ================== INLINE STATS ================== */
 function InlineStats({ items = [] }) {
   return (
     <motion.div
@@ -128,7 +128,7 @@ function InlineStats({ items = [] }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="grid grid-cols-2 sm:grid-cols-2 gap-10 md:gap-16"
+      className="grid grid-cols-2 gap-8 sm:gap-10 md:gap-16"
     >
       {items.map((stat, i) => (
         <motion.div
@@ -141,20 +141,19 @@ function InlineStats({ items = [] }) {
               transition: { duration: 0.55, ease: easing },
             },
           }}
-          className="flex items-start gap-4"
+          className="flex items-start gap-3"
         >
           <img
-            src={stat.icon || stat.iconSrc}
+            src={stat.iconSrc || stat.icon}
             alt={stat.label}
-            className="shrink-0 inline-block"
-            loading="lazy"
+            className="w-7 h-7 sm:w-9 sm:h-9 object-contain"
           />
 
           <div className="leading-tight">
-            <div className="font-founders font-bold text-md md:text-md text-black">
+            <div className="font-founders font-bold text-[15px] sm:text-[17px] text-black">
               {stat.value}
             </div>
-            <div className="font-founders text-[13px] md:text-[14px] text-gray-600">
+            <div className="font-founders text-[12px] sm:text-[14px] text-black/70">
               {stat.label}
             </div>
           </div>
@@ -164,76 +163,99 @@ function InlineStats({ items = [] }) {
   );
 }
 
-/* ================== MAIN ================== */
-const DesignedOccasion = () => {
+/* ================== MAIN COMPONENT ================== */
+export default function DesignedOccasion() {
   const [activeTab, setActiveTab] = useState(tabData[0].id);
   const activeContent = tabData.find((t) => t.id === activeTab);
-  const visibleStats = activeContent?.stats?.length
-    ? activeContent.stats
-    : statsData;
+  const visibleStats = activeContent.stats ?? statsData;
 
   return (
     <section className="py-16 md:py-14 bg-[#f5f5f5]" id="crafted">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easing }}
-          viewport={{ once: true, amount: 0.4 }}
-          className="text-4xl md:text-5xl font-secondary text-center mb-12 md:mb-16"
+          viewport={{ once: true }}
+          className="text-3xl sm:text-4xl md:text-5xl font-secondary text-center mb-12 md:mb-16"
         >
-          Crafted to Host Every Milestone 
+          Crafted to Host Every Milestone
         </motion.h2>
 
-        {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 md:mb-12 font-secondary">
+        {/* TABS — single line scrollable on mobile */}
+        <div
+          className="
+            flex overflow-x-auto whitespace-nowrap no-scrollbar
+            justify-start md:justify-center
+            gap-3 md:gap-4 
+            mb-10 md:mb-12 font-secondary
+          "
+        >
           {tabData.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`relative px-4 py-3 text-base md:text-lg font-medium transition-all duration-300 ${
-                activeTab === tab.id
-                  ? "text-primary"
-                  : "text-secondary hover:text-primary"
-              }`}
+              className={`
+                relative px-4 py-2 
+                text-sm sm:text-base md:text-lg 
+                inline-flex items-center whitespace-nowrap 
+                transition-all duration-300
+                ${
+                  activeTab === tab.id
+                    ? "text-primary"
+                    : "text-secondary hover:text-primary"
+                }
+              `}
             >
               {tab.title}
               <span
-                className={`absolute left-1/2 -translate-x-1/2 bottom-[6px] h-[1px] bg-primary transition-all duration-300 ${
-                  activeTab === tab.id ? "w-1/2 opacity-100" : "w-0 opacity-0"
-                }`}
+                className={`
+                  absolute left-1/2 -translate-x-1/2 bottom-[4px] 
+                  h-[2px] bg-primary transition-all duration-300
+                  ${
+                    activeTab === tab.id ? "w-1/2 opacity-100" : "w-0 opacity-0"
+                  }
+                `}
               />
             </button>
           ))}
         </div>
 
-        {/* Content Card */}
+        {/* CONTENT CARD */}
         {activeContent && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
-            <div className="flex bg-white">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
+            {/* IMAGE — FIXED FOR MOBILE */}
+            <div className="w-full">
               <Image
                 src={activeContent.imageSrc}
                 alt={activeContent.title}
-                width={556} // actual image resolution width
-                height={450} // actual image resolution height
-                className="w-auto h-auto max-w-full max-h-[520px] rounded-none"
+                width={800}
+                height={600}
+                className="
+                  w-full h-[260px] sm:h-[340px] md:h-full 
+                  
+                  max-h-[500px]
+                "
                 priority
               />
             </div>
 
-            <div className="flex flex-col justify-center gap-8 p-6 sm:p-8">
+            {/* TEXT SECTION */}
+            <div className="p-6 sm:p-8 flex flex-col justify-center gap-8">
               <div>
-                <h3 className="text-2xl md:text-3xl font-secondary font-bold mb-4">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-secondary font-bold mb-4">
                   {activeContent.title}
                 </h3>
-                <span className="block w-24 h-px bg-primary mb-5" />
-                <p className="text-gray-600 font-founders leading-relaxed mb-8">
+
+                <span className="block w-20 h-px bg-primary mb-5"></span>
+
+                <p className="text-gray-600 font-founders leading-relaxed mb-8 text-sm sm:text-base">
                   {activeContent.content}
                 </p>
 
                 <InlineStats items={visibleStats} />
               </div>
-
               <div className="flex flex-wrap gap-3">
                 <a
                   href="/assets/pdf/area.pdf"
@@ -255,32 +277,21 @@ const DesignedOccasion = () => {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
+        viewport={{ once: true }}
       >
         <motion.h2
-          className="font-secondary text-[28px] md:text-[40px] text-black"
-          id="talk"
+          className="font-secondary text-2xl sm:text-3xl md:text-4xl text-black"
           variants={item}
         >
-          Let’s Talk About Your Next Big Event {" "}
+          Let’s Talk About Your Next Big Event
         </motion.h2>
 
-        <div className="mt-5 space-y-2">
-          <motion.p
-            className="font-founders text-[14px] md:text-[16px] text-black/70"
-            variants={item}
-          >
-            No matter the scale, your vision deserves the right stage, and we’re
-            here to make it happen. 
-          </motion.p>
-          <motion.p
-            className="font-founders text-[14px] md:text-[16px] text-black/70"
-            variants={item}
-          >
-            From the first conversation to the final spotlight, our team ensures
-            your event unfolds with precision, polish, and perfection. 
-          </motion.p>
-        </div>
+        <motion.p
+          className="font-founders text-sm sm:text-base text-black/70 mt-4"
+          variants={item}
+        >
+          Your vision deserves the right stage — and we’re here to shape it.
+        </motion.p>
 
         <motion.div className="mt-8" variants={item}>
           <MotionLink
@@ -295,6 +306,4 @@ const DesignedOccasion = () => {
       </motion.div>
     </section>
   );
-};
-
-export default DesignedOccasion;
+}
