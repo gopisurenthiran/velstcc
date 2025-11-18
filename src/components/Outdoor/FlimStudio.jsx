@@ -44,7 +44,7 @@ export default function FilmStudio() {
         }}
       >
         <motion.h2
-          className="text-2xl md:text-3xl font-semibold font-secondary text-black"
+          className="primary-title text-black"
           variants={fadeUp}
         >
           India’s Premier Destination for Filmmakers
@@ -59,7 +59,7 @@ export default function FilmStudio() {
         />
 
         <motion.p
-          className="text-gray-600 text-sm md:text-base font-primary mt-2"
+          className="secondary-description text-gray-600 mt-2"
           variants={fadeUp}
         >
           Every frame finds its moment, from serials to reality shows and Grand Premiers

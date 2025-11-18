@@ -156,7 +156,9 @@ export default function Navbar() {
     const isActive = pathname === href;
     return [
       "transition-colors",
-      isActive ? "text-[#2A1C79] font-semibold" : "text-black/70 hover:text-[#2A1C79]",
+      isActive
+        ? "text-[#2A1C79] font-semibold"
+        : "text-black/70 hover:text-[#2A1C79]",
     ].join(" ");
   };
 
@@ -175,61 +177,58 @@ export default function Navbar() {
     >
       <div className="max-w-8xl mx-auto relative flex items-center justify-center py-4 px-6">
         {/* === Desktop Nav – 4 equal columns, Discover centered === */}
-       <nav className="hidden md:grid grid-cols-5 w-full max-w-7xl mx-auto text-[16px] secondary-subtitle">
+        <nav className="hidden md:grid grid-cols-5 w-full max-w-7xl mx-auto text-[16px] secondary-subtitle">
+          {/* HOME */}
+          <div className="flex justify-center">
+            <Link href="/" className={linkClasses("/")}>
+              Home
+            </Link>
+          </div>
 
-  {/* HOME */}
-  <div className="flex justify-center">
-    <Link href="/" className={linkClasses("/")}>
-      Home
-    </Link>
-  </div>
+          {/* ABOUT */}
+          <div className="flex justify-center">
+            <Link href="/about" className={linkClasses("/about")}>
+              About Us
+            </Link>
+          </div>
 
-  {/* ABOUT */}
-  <div className="flex justify-center">
-    <Link href="/about" className={linkClasses("/about")}>
-      About Us
-    </Link>
-  </div>
+          {/* DISCOVER + arrow */}
+          <div className="flex justify-center">
+            <button
+              onClick={() => setIsMegaOpen((v) => !v)}
+              aria-expanded={isMegaOpen}
+              className={[
+                "flex items-center gap-1 transition-colors",
+                isDiscoverActive
+                  ? "text-[#2A1C79] font-semibold"
+                  : "text-black/70 hover:text-[#2A1C79]",
+              ].join(" ")}
+            >
+              <span>Discover Your World</span>
+              <span className="inline-flex items-center">
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform ${
+                    isMegaOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </span>
+            </button>
+          </div>
 
-  {/* DISCOVER + arrow */}
-  <div className="flex justify-center">
-    <button
-      onClick={() => setIsMegaOpen((v) => !v)}
-      aria-expanded={isMegaOpen}
-      className={[
-        "flex items-center gap-1 transition-colors",
-        isDiscoverActive
-          ? "text-[#2A1C79] font-semibold"
-          : "text-black/70 hover:text-[#2A1C79]",
-      ].join(" ")}
-    >
-      <span>Discover Your World</span>
-      <span className="inline-flex items-center">
-        <ChevronDown
-          className={`w-4 h-4 transition-transform ${
-            isMegaOpen ? "rotate-180" : ""
-          }`}
-        />
-      </span>
-    </button>
-  </div>
+          {/* FAQ */}
+          <div className="flex justify-center">
+            <Link href="/faq" className={linkClasses("/faq")}>
+              FAQ&apos;S
+            </Link>
+          </div>
 
-  {/* FAQ */}
-  <div className="flex justify-center">
-    <Link href="/faq" className={linkClasses("/faq")}>
-      FAQ&apos;S
-    </Link>
-  </div>
-
-  {/* CONTACT */}
-  <div className="flex justify-center">
-    <Link href="/contact" className={linkClasses("/contact")}>
-      Contact Us
-    </Link>
-  </div>
-
-</nav>
-
+          {/* CONTACT */}
+          <div className="flex justify-center">
+            <Link href="/contact" className={linkClasses("/contact")}>
+              Contact Us
+            </Link>
+          </div>
+        </nav>
 
         {/* === MOBILE top bar === */}
         <div className="flex md:hidden w-full items-center justify-between">
@@ -273,7 +272,7 @@ export default function Navbar() {
       {isMegaOpen && (
         <div
           ref={megaRef}
-          className="absolute left-0 right-0 top-full z-40 bg-white border-t border-black/10 shadow-lg"
+          className="absolute left-0 right-0 top-full z-40 bg-white border-t border-black/10 shadow-lg secondary-subtitle"
         >
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-8 py-10 items-start">
             {/* Left Column: links */}
@@ -285,7 +284,7 @@ export default function Navbar() {
                     handleMegaLinkClick();
                     router.push("/theatre");
                   }}
-                  className={`block text-left font-primary text-lg ${
+                  className={`block text-left secondary-subtitle text-lg ${
                     hoveredItem === "theatre"
                       ? "text-black font-medium"
                       : "text-black/70 hover:text-[#2A1C79]"
@@ -296,7 +295,7 @@ export default function Navbar() {
               </div>
 
               <div>
-                <h4 className="text-black font-primary text-lg font-medium mb-3">
+                <h4 className="text-black secondary-subtitle text-lg font-medium mb-3">
                   Vel’s Film City
                 </h4>
                 <div className="ml-3 space-y-2">
@@ -306,7 +305,7 @@ export default function Navbar() {
                       handleMegaLinkClick();
                       router.push("/indoor");
                     }}
-                    className={`block text-left font-primary text-lg ${
+                    className={`block text-left secondary-subtitle text-lg ${
                       hoveredItem === "indoor"
                         ? "text-[#A3A3A3]"
                         : "text-black/70 hover:text-[#2A1C79]"
@@ -320,7 +319,7 @@ export default function Navbar() {
                       handleMegaLinkClick();
                       router.push("/outdoor");
                     }}
-                    className={`block text-left font-primary text-lg ${
+                    className={`block text-left secondary-subtitle text-lg ${
                       hoveredItem === "outdoor"
                         ? "text-[#A3A3A3]"
                         : "text-black/70 hover:text-[#2A1C79]"
@@ -359,10 +358,10 @@ export default function Navbar() {
                       : "opacity-0 translate-y-3 hidden"
                   }`}
                 >
-                  <h3 className="text-2xl text-black font-secondary font-medium">
+                  <h3 className="text-2xl text-black secondary-subtitle font-medium">
                     {item.label}
                   </h3>
-                  <p className="text-black/70 mt-4 leading-relaxed font-primary font-light text-lg">
+                  <p className="text-black/70 mt-4 leading-relaxed secondary-description font-light text-lg">
                     {item.desc}
                   </p>
                 </div>

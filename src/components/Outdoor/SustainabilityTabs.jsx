@@ -13,7 +13,7 @@ const TABS = [
     image: sustainabilityImg,
     items: [
       {
-        desc: "A vision where creativity coexists with conservation. At Vel Film City, we believe great stories deserve a greener stage. Every aspect of our campus reflects a thoughtful, eco-responsible design...",
+        desc: "A vision where creativity coexists with conservation. At Vel Film City, we believe great stories deserve a greener stage. Every aspect of our campus reflects a thoughtful, eco-responsible design, from preserving natural contours to powering up with solar energy. Rainwater harvesting, wastewater recycling, and energy-efficient lighting form the backbone of our commitment to sustainability. With ozone-friendly air systems, daylight-optimized halls, and self-reliant power and water generation, we ensure that every production here flows seamlessly, in harmony with nature, and in tune with tomorrow.",
       },
     ],
   },
@@ -23,7 +23,7 @@ const TABS = [
     image: Img,
     items: [
       {
-        desc: "Where wellbeing takes center stage. Vel Film City is built on a foundation of care, for people, property, and peace of mind...",
+        desc: "Where wellbeing takes center stage.Vel Film City is built on a foundation of care, for people, property, and peace of mind. Our professional housekeeping team ensures spotless, hygienic environments using advanced, eco-friendly cleaning systems. A network of trained security personnel, robust access controls, and 24/7 CCTV surveillance keeps every corner under safe watch. We work closely with local law enforcement and fire safety departments, ensuring preparedness and precision in every protocol. Because at Vel Film City, your focus should stay on the story, while we take care of the rest.",
       },
     ],
   },
@@ -68,7 +68,7 @@ export default function SustainabilityTabs() {
                 <button
                   key={tab.key}
                   onClick={() => setActive(tab.key)}
-                  className={`relative pb-2 text-[13px] md:text-sm tracking-wide font-secondary uppercase transition-colors ${
+                  className={`relative pb-2 text-[13px] md:text-sm tracking-wide primary-title uppercase transition-colors ${
                     isActive
                       ? "text-gray-900"
                       : "text-gray-500 hover:text-gray-800"
@@ -104,7 +104,7 @@ export default function SustainabilityTabs() {
               transition={{ duration: 0.6 }}
               className="mt-8 max-w-2xl"
             >
-              <p className="text-xs md:text-sm font-primary text-gray-500 leading-relaxed">
+              <p className="secondary-description text-gray-500 leading-relaxed">
                 {current.items[0].desc}
               </p>
             </motion.div>

@@ -45,7 +45,7 @@ export default function AwardsSection() {
         {/* Title & Arrows */}
         <div className="flex justify-between items-center mb-12">
           <div>
-            <h2 className="text-3xl font-secondary text-gray-900">Awards</h2>
+            <h2 className="primary-title text-gray-900">Awards</h2>
             <div className="w-24 h-[1px] bg-primary mt-3" />
           </div>
 
@@ -111,11 +111,11 @@ export default function AwardsSection() {
 
                 {/* Text block */}
                 <div className="ml-4">
-                  <h3 className="text-[18px] font-medium text-gray-900 mb-2 font-secondary">
+                  <h3 className="primary-subtitle text-gray-900 mb-2">
                     {item.title}
                   </h3>
                   <div className="w-24 h-[1px] bg-[#CAA04C] mb-3" />
-                  <p className="text-md font-primary text-gray-600 leading-relaxed max-w-[520px]">
+                  <p className="secondary-description text-gray-600 leading-relaxed max-w-[520px]">
                     {item.desc}
                   </p>
                 </div>

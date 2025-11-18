@@ -52,11 +52,11 @@ const OurLegacy = () => {
           viewport={{ once: true }}
         >
           <div>
-            <h2 className="text-3xl font-secondary font-semibold text-black mb-2">
+            <h2 className="text-3xl primary-title text-black mb-2">
               Our Legacy
             </h2>
             <span className="block w-24 h-px bg-primary mt-5 mb-2" aria-hidden />
-            <p className="text-gray-700 font-primary leading-loose text-lg">
+            <p className="text-gray-700  secondary-subtitle mt-4">
              Beyond the silver screen, Vels Trade & Convention Centre stands as Chennai's most advanced event ecosystem, hosting world-class conventions, international trade expos, and landmark cultural celebrations that unite innovation, business, and creativity under one iconic roof.
             </p>
           </div>

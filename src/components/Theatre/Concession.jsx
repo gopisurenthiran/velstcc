@@ -59,10 +59,10 @@ export default function Concession() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h2 className="text-5xl tracking-tight text-black font-secondary">
+        <h2 className="primary-title text-black">
           Concessions & Lounge
         </h2>
-        <p className="mt-5 text-black/70 font-primary text-xl">
+        <p className="mt-5 text-black/70 secondary-description">
           Where stories meet savours
         </p>
       </motion.div>
@@ -94,10 +94,10 @@ export default function Concession() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 200 }}
               >
-                <h3 className="font-secondary text-xl text-black">
+                <h3 className="primary-subtitle text-black">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-md leading-relaxed text-black/70 font-primary">
+                <p className="mt-2 text-md leading-relaxed text-black/70 secondary-description">
                   {item.desc}
                 </p>
               </motion.button>

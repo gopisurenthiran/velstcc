@@ -70,7 +70,7 @@ export default function AboutFlim() {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl tracking-tight text-black font-secondary">
+        <h2 className="primary-subtitle text-black">
           Vels Film City: Where Vision Finds Space
         </h2>
 
@@ -84,7 +84,7 @@ export default function AboutFlim() {
         />
 
         <motion.p
-          className="mt-5 text-black/70 font-primary text-2xl"
+          className="mt-5 text-black/70 secondary-description"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -127,8 +127,8 @@ export default function AboutFlim() {
                     : "hover:bg-black/[0.03]",
                 ].join(" ")}
               >
-                <h3 className="font-secondary text-xl text-black">{item.title}</h3>
-                <p className="mt-2 text-md leading-relaxed text-black/70 font-primary">
+                <h3 className="primary-subtitle text-xl text-black">{item.title}</h3>
+                <p className="mt-2 text-md leading-relaxed text-black/70 secondary-description">
                   {item.desc}
                 </p>
               </motion.button>

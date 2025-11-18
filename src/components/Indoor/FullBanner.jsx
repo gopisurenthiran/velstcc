@@ -32,7 +32,7 @@ export default function FullBanner() {
     <section className="relative w-full min-h-screen overflow-hidden text-center justify-center">
        {/* Heading */}
       <motion.h2
-        className="text-3xl  mb-2 font-secondary mt-4"
+        className="primary-title mb-2 mt-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
@@ -43,7 +43,7 @@ export default function FullBanner() {
         <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4 mx-auto text-center"></div>
       {/* Subtext */}
       <motion.p
-        className="text-gray-600 mb-8"
+        className="text-gray-600 mb-8 secondary-description"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
@@ -57,7 +57,7 @@ export default function FullBanner() {
             <img
               src={slide.image}
               alt={`Theatre slide ${i + 1}`}
-              className="object-cover w-full h-screen"
+              className=" w-full h-screen"
               loading="lazy"
             />
           </div>

@@ -73,7 +73,7 @@ export default function IndoorTabs() {
                 <button
                   key={tab.key}
                   onClick={() => setActive(tab.key)}
-                  className={`relative pb-2 text-xs md:text-sm uppercase tracking-wide font-secondary transition-colors ${
+                  className={`relative pb-2 text-xs md:text-sm uppercase tracking-wide primary-subtitle transition-colors ${
                     isActive ? "text-black" : "text-gray-500 hover:text-black"
                   }`}
                 >
@@ -117,7 +117,7 @@ export default function IndoorTabs() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-base md:text-lg font-secondary text-gray-800"
+                    className="primary-subtitle text-gray-800"
                   >
                     {it.title}
                   </motion.h3>
@@ -126,7 +126,7 @@ export default function IndoorTabs() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className="text-sm md:text-[15px] font-primary text-gray-600 mt-2 leading-relaxed"
+                    className="secondary-description text-gray-600 mt-2 leading-relaxed"
                   >
                     {it.desc}
                   </motion.p>

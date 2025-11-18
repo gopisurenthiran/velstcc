@@ -55,7 +55,7 @@ export default function SpecialFeatures() {
         }}
       >
         <motion.h2
-          className="text-2xl md:text-4xl font-secondary text-gray-900 px-6 md:px-10"
+          className="primary-title text-gray-900 px-6 md:px-10"
           variants={fadeUp}
           custom={0}
         >
@@ -99,14 +99,14 @@ export default function SpecialFeatures() {
             alt={features[0].title}
             fill
             sizes="(min-width: 768px) 33vw, 100vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className=" transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-4 text-white transition-all">
-            <h3 className="text-base md:text-lg font-semibold font-secondary">
+            <h3 className="primary-subtitle">
               {features[0].title}
             </h3>
             <div className="w-28 md:w-40 h-[0.5px] bg-white mb-4 md:mb-6 mt-3 md:mt-4"></div>
-            <p className="text-xs md:text-sm mt-1 font-primary">
+            <p className="secondary-description mt-1">
               {features[0].desc}
             </p>
           </div>
@@ -125,14 +125,14 @@ export default function SpecialFeatures() {
               alt={feature.title}
               fill
               sizes="(min-width: 768px) 33vw, 100vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className=" transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-3 text-white transition-all">
-              <h3 className="text-sm md:text-base font-semibold font-secondary">
+              <h3 className="primary-subtitle">
                 {feature.title}
               </h3>
               <div className="w-28 md:w-40 h-[0.5px] bg-white mb-4 md:mb-6 mt-3 md:mt-4"></div>
-              <p className="text-[11px] md:text-xs mt-1 font-primary">
+              <p className="secondary-description mt-1">
                 {feature.desc}
               </p>
             </div>
@@ -150,14 +150,14 @@ export default function SpecialFeatures() {
             alt={features[3].title}
             fill
             sizes="(min-width: 768px) 66vw, 100vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-3 text-white transition-all">
-            <h3 className="text-sm md:text-base font-semibold font-secondary">
+            <h3 className="primary-subtitle">
               {features[3].title}
             </h3>
             <div className="w-28 md:w-40 h-[0.5px] bg-white mb-4 md:mb-6 mt-3 md:mt-4"></div>
-            <p className="text-[11px] md:text-xs mt-1 font-primary">
+            <p className="secondary-description mt-1">
               {features[3].desc}
             </p>
           </div>

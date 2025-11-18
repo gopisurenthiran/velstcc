@@ -52,7 +52,7 @@ export default function ReelView() {
        <div className="text-center">
       {/* Title Animation */}
       <motion.h2
-        className="text-3xl  mb-2 font-secondary"
+        className="primary-title mb-2"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -73,7 +73,7 @@ export default function ReelView() {
 
       {/* Paragraph Animation */}
       <motion.p
-        className="text-gray-600 mb-8 font-primary"
+        className="text-gray-600 mb-8 secondary-description"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}

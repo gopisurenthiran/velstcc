@@ -26,7 +26,7 @@ export default function ValuesSection() {
           viewport={{ once: true }}
           className="mb-10"
         >
-          <h2 className="text-3xl lg:text-4xl font-secondary text-gray-900 inline-block">
+          <h2 className="primary-title inline-block">
             Values
           </h2>
           <div className="w-24 h-[1px] bg-primary mt-3" />
@@ -95,11 +95,11 @@ export default function ValuesSection() {
                   {/* title + description */}
                   <div className="flex-1 flex flex-col md:flex-row md:items-start md:gap-6">
                     <div className="min-w-[160px]">
-                      <h3 className="text-xl md:text-base font-secondary text-gray-900">
+                      <h3 className="primary-subtitle text-gray-900">
                         {v.title}
                       </h3>
                     </div>
-                    <p className="text-md text-gray-500 font-primary leading-relaxed max-w-xl">
+                    <p className="text-md text-gray-500 secondary-description leading-relaxed max-w-xl">
                       {v.desc}
                     </p>
                   </div>

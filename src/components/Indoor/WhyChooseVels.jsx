@@ -145,13 +145,13 @@ export default function WhyChooseVels() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-secondary font-semibold text-black">
+          <h2 className="primary-title font-semibold text-black">
             Spaces that Bring Scripts to Life
           </h2>
 
           <div className="w-40 h-[1px] bg-[#2D3091] my-4"></div>
 
-          <p className="text-gray-600 text-sm md:text-base font-primary">
+          <p className="text-gray-600 secondary-description">
             At Vels Film City, every indoor set is crafted for scale, precision,
             and storytelling excellence.
           </p>
@@ -190,10 +190,10 @@ export default function WhyChooseVels() {
                     {/* Description (only for active slide) */}
                     {isActive && (
                       <div className="w-1/2 p-6 bg-white border-l border-primary flex flex-col justify-center">
-                        <h3 className="text-lg font-secondary mb-3">
+                        <h3 className="primary-subtitle mb-3">
                           {slide.title}
                         </h3>
-                        <p className="text-gray-700 text-sm">
+                        <p className="secondary-description text-gray-700">
                           {slide.description}
                         </p>
                         <span className="mt-4 block w-20 h-[1px] bg-primary"></span>
@@ -224,10 +224,10 @@ export default function WhyChooseVels() {
 
                   {/* Text (always visible on mobile) */}
                   <div className="p-4 bg-white">
-                    <h3 className="text-base font-secondary mb-2">
+                    <h3 className="primary-subtitle mb-2">
                       {slide.title}
                     </h3>
-                    <p className="text-gray-700 text-xs sm:text-sm font-primary">
+                    <p className="secondary-description text-gray-700">
                       {slide.description}
                     </p>
                     <span className="mt-3 block w-16 h-[1px] bg-primary"></span>
@@ -240,16 +240,16 @@ export default function WhyChooseVels() {
 
         {/* CTA */}
         <div className="text-center mt-20">
-          <h2 className="text-2xl font-secondary font-semibold">
+          <h2 className="primary-title font-semibold">
             Plan Your Indoor Shoot
           </h2>
-          <p className="text-gray-600 mt-2 font-primary text-sm md:text-xl">
+          <p className="secondary-description text-gray-600 mt-2">
             Planning a shoot? Check availability or schedule a recce.
           </p>
 
          <MotionLink
           href="/contact"
-          className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium mt-5"
+          className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white secondary-subtitle mt-5"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
         >

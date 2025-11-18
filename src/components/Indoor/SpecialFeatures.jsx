@@ -52,7 +52,7 @@ export default function SpecialFeatures() {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="text-2xl md:text-4xl font-secondary text-gray-900"
+          className="primary-title text-gray-900"
           variants={fadeUp}
           custom={0}
         >
@@ -113,11 +113,11 @@ export default function SpecialFeatures() {
               p-4 text-white transition-all duration-300
             "
           >
-            <h3 className="text-lg font-semibold font-secondary">
+            <h3 className="primary-subtitle font-semibold">
               {features[0].title}
             </h3>
             <div className="w-32 h-[0.5px] bg-white mb-4 mt-3" />
-            <p className="text-sm font-primary">
+            <p className=" secondary-description">
               {features[0].desc}
             </p>
           </div>
@@ -151,11 +151,11 @@ export default function SpecialFeatures() {
                 p-3 text-white transition-all duration-300
               "
             >
-              <h3 className="text-sm md:text-sm font-semibold font-secondary">
+              <h3 className="primary-subtitle font-semibold">
                 {feature.title}
               </h3>
               <div className="w-28 h-[0.5px] bg-white mb-3 mt-2" />
-              <p className="text-xs font-primary">
+              <p className="secondary-description">
                 {feature.desc}
               </p>
             </div>
@@ -189,11 +189,11 @@ export default function SpecialFeatures() {
               p-3 text-white transition-all duration-300
             "
           >
-            <h3 className="text-sm md:text-sm font-semibold font-secondary">
+            <h3 className=" primary-subtitle">
               {features[3].title}
             </h3>
             <div className="w-28 h-[0.5px] bg-white mb-3 mt-2" />
-            <p className="text-xs font-primary">
+            <p className="secondary-description">
               {features[3].desc}
             </p>
           </div>

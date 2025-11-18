@@ -45,12 +45,12 @@ const StatItem = ({ value, label, icon, index }) => (
     </div>
 
     {/* Value */}
-    <div className="text-xl md:text-2xl font-semibold text-black leading-snug">
+    <div className="secondary-title font-bold text-black">
       {value}
     </div>
 
     {/* Label */}
-    <p className="mt-4 text-base md:text-md text-black/80 font-light font-primary min-h-[48px] flex items-center justify-center">
+    <p className="mt-4 secondary-description min-h-[48px] flex items-center justify-center">
       {label}
     </p>
   </motion.div>

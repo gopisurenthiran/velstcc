@@ -41,7 +41,7 @@ export default function GettingToVels() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="font-secondary text-[28px] md:text-[40px] leading-tight text-black"
+          className="primary-title text-black"
         >
          Plan. Connect. Create.
 
@@ -53,7 +53,7 @@ export default function GettingToVels() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-3 max-w-3xl text-[15px] md:text-lg text-black/70 font-primary"
+          className="mt-3 max-w-3xl secondary-descriptiontext-black/70"
         >
         Whether you’re envisioning a grand production, a cultural showcase, or a business convention,
           we’re here to make it seamless. Reach out to our team to explore bookings, availability,
@@ -100,10 +100,10 @@ export default function GettingToVels() {
               >
                 <img src={it.icon} alt="" className="shrink-0 mt-0.5" loading="lazy" />
                 <div className="leading-tight">
-                  <div className="font-primary font-semibold text-[16px] md:text-[18px] text-black">
+                  <div className="secondary-subtitle font-bold text-black">
                     {it.title}
                   </div>
-                  <div className="font-primary text-[12.5px] md:text-lg text-black/70">
+                  <div className="secondary-description text-black/70">
                     {it.sub}
                   </div>
                 </div>

@@ -25,7 +25,7 @@ export default function TabsSection() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`relative pb-2 text-lg font-secondary transition-colors duration-200 ${
+            className={`relative pb-2 primary-subtitle transition-colors duration-200 ${
               activeTab === tab.id
                 ? "text-[#2D3091] font-medium"
                 : "text-[#1a1a1a] hover:text-[#2D3091]"
@@ -90,7 +90,7 @@ function TradeConventionContent() {
   return (
     <div>
       <motion.h1
-        className="text-[32px] font-secondary mb-4" id="target-section"
+        className="primary-title mb-4" id="target-section"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -111,7 +111,7 @@ function TradeConventionContent() {
           >
             <button
               onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-              className={`w-full text-left text-lg font-primary mb-5 leading-snug ${
+              className={`w-full text-left text-lg secondary-subtitle mb-5 leading-snug ${
                 openIndex === i ? "text-[#2D3091]" : "text-[#1a1a1a]"
               }`}
             >
@@ -121,7 +121,7 @@ function TradeConventionContent() {
             <AnimatePresence>
               {openIndex === i && (
                 <motion.p
-                  className="mt-3 text-md font-primary text-gray-600 leading-relaxed"
+                  className="mt-3 text-md secondary-description text-gray-600 leading-relaxed"
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -160,7 +160,7 @@ function FilmCityContent() {
   return (
     <div>
       <motion.h1
-        className="text-[32px] font-secondary mb-4"
+        className="primary-title mb-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -181,7 +181,7 @@ function FilmCityContent() {
           >
             <button
               onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-              className={`w-full text-left text-lg font-primary mb-5 leading-snug ${
+              className={`w-full text-left secondary-subtitle mb-5 leading-snug ${
                 openIndex === i ? "text-[#2D3091]" : "text-[#1a1a1a]"
               }`}
             >
@@ -191,7 +191,7 @@ function FilmCityContent() {
             <AnimatePresence>
               {openIndex === i && (
                 <motion.p
-                  className="mt-3 text-md font-primary text-gray-600 leading-relaxed"
+                  className="mt-3 secondary-description text-gray-600 leading-relaxed"
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
@@ -230,7 +230,7 @@ function TheatreContent() {
   return (
     <div>
       <motion.h1
-        className="text-[32px] font-secondary mb-4" 
+        className="primary-title mb-4" 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -251,7 +251,7 @@ function TheatreContent() {
           >
             <button
               onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-              className={`w-full text-left text-lg font-primary mb-5 leading-snug ${
+              className={`w-full text-left secondary-subtitle mb-5 leading-snug ${
                 openIndex === i ? "text-[#2D3091]" : "text-[#1a1a1a]"
               }`}
             >
@@ -261,7 +261,7 @@ function TheatreContent() {
             <AnimatePresence>
               {openIndex === i && (
                 <motion.p
-                  className="mt-3 text-md font-primary text-gray-600 leading-relaxed" 
+                  className="mt-3 secondary-description text-gray-600 leading-relaxed" 
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}

@@ -29,37 +29,39 @@ const ITEMS = [
   },
 ];
 
-
 /* Animation presets */
 const fadeUp = {
   hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 const listParent = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.15 } }
+  show: { transition: { staggerChildren: 0.15 } },
 };
 
 const listItem = {
   hidden: { opacity: 0, x: -25 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.45 } }
+  show: { opacity: 1, x: 0, transition: { duration: 0.45 } },
 };
 
 export default function Find() {
   return (
     <section className="bg-white" id="getting">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-
         {/* Heading */}
         <motion.h2
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="font-secondary text-[28px] md:text-[40px] leading-tight text-black"
+          className="primary-title text-black"
         >
-           Finding your way to the spotlight – Vels Theatres
+          Finding your way to the spotlight
         </motion.h2>
 
         {/* Paragraph */}
@@ -68,23 +70,21 @@ export default function Find() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-3 max-w-3xl text-[15px] md:text-lg text-black/70 font-primary"
+          className="mt-3 max-w-3xl secondary-description text-black/70"
         >
-         Reaching Vels Theatres is as seamless as watching the opening credits
+          Reaching Vels Theatres is as seamless as watching the opening credits
           roll.
         </motion.p>
 
         {/* Layout */}
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
-
           <motion.div
-  className="relative overflow-hidden shadow-md aspect-square "
-  initial={{ opacity: 0, scale: 1.03 }}
-  whileInView={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  viewport={{ once: true }}
->
-
+            className="relative overflow-hidden shadow-md aspect-square "
+            initial={{ opacity: 0, scale: 1.03 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             <iframe
               title="VELS City Location Map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin"
@@ -112,12 +112,17 @@ export default function Find() {
                 variants={listItem}
                 className="flex items-start gap-4"
               >
-                <img src={it.icon} alt="" className="shrink-0 mt-0.5" loading="lazy" />
+                <img
+                  src={it.icon}
+                  alt=""
+                  className="shrink-0 mt-0.5"
+                  loading="lazy"
+                />
                 <div className="leading-tight">
-                  <div className="font-primary font-semibold text-[16px] md:text-[18px] text-black">
+                  <div className="secondary-subtitle font-bold text-black">
                     {it.title}
                   </div>
-                  <div className="font-primary text-[12.5px] md:text-lg text-black/70">
+                  <div className="secondary-description text-[12.5px] md:text-lg text-black/70">
                     {it.sub}
                   </div>
                 </div>

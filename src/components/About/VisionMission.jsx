@@ -41,7 +41,7 @@ export default function VisionMission() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`relative text-lg font-secondary transition-all ${
+                  className={`relative text-lg primary-subtitle transition-all ${
                     activeTab === tab ? "text-black" : "text-black"
                   }`}
                 >
@@ -63,9 +63,9 @@ export default function VisionMission() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <h2 className="text-4xl font-secondary mb-4">{title}</h2>
+              <h2 className="text-4xl secondary-title mb-4">{title}</h2>
               <hr className="border-t border-primary w-14 mb-6" />
-              <p className="text-gray-700 leading-relaxed max-w-md text-lg font-primary">
+              <p className="text-gray-700 leading-relaxed max-w-md text-lg secondary-description">
                 {desc}
               </p>
             </motion.div>
@@ -104,17 +104,17 @@ export default function VisionMission() {
 
         {/* LEFT CONTENT */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-secondary text-black mb-4">
+          <h2 className="primary-title text-black mb-4">
             FOUNDERS MESSAGE
           </h2>
 
           <div className="w-48 h-[1px] bg-primary mb-5" />
 
-          <h4 className="text-xl mb-4 font-secondary">
+          <h4 className="text-xl mb-4 primary-subtitle">
             WELCOME MESSAGE FROM CHAIRMAN
           </h4>
 
-          <p className="text-gray-600 leading-relaxed font-primary text-lg">
+          <p className="text-gray-600 secondary-description">
             Welcome to Vels Film City, <br /> Trade & Convention Centre &
             Theatres <br />- where vision meets execution.
             <br />
@@ -134,7 +134,7 @@ export default function VisionMission() {
             Chennai.
           </p>
 
-          <p className="text-gray-600 leading-relaxed font-primary font-semibold text-lg mt-10">
+          <p className="text-black secondary-description font-bold mt-10">
             DR. ISHARI K. GANESH <br />
             Founder & Chancellor of Vels University <br />
             Chairman, Vels Group of Institutions & Companies

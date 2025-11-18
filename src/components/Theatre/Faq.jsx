@@ -31,7 +31,7 @@ export default function FaqTheatre() {
       viewport={{ once: true }} // play animation only once
     >
       {/* Title */}
-      <h2 className="text-center font-secondary text-4xl tracking-tight">
+      <h2 className="text-center primary-title mb-6">
         FAQ's
       </h2>
 
@@ -61,7 +61,7 @@ export default function FaqTheatre() {
                   isOpen ? `${accent}` : "text-black hover:text-black/70",
                 ].join(" ")}
               >
-                <span className="text-xl leading-7 font-primary">
+                <span className="text-xl leading-7 secondary-subtitle">
                   {item.q}
                 </span>
               </button>
@@ -77,7 +77,7 @@ export default function FaqTheatre() {
                 ].join(" ")}
               >
                 <div className="min-h-0">
-                  <p className="pb-5 text-lg leading-6 text-black/70 font-primary">
+                  <p className="pb-5 secondary-description text-black/70">
                     {item.a}
                   </p>
                 </div>

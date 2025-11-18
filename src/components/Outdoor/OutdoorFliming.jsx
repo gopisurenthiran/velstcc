@@ -30,7 +30,7 @@ export default function OutdoorFliming() {
         {/* Left Content */}
         <motion.div className="relative" variants={fadeUp}>
           <motion.h2
-            className="text-3xl md:text-4xl font-secondary text-gray-900 mb-2"
+            className="primary-title text-gray-900 mb-2"
             variants={fadeUp}
             custom={0}
           >
@@ -47,7 +47,7 @@ export default function OutdoorFliming() {
           ></motion.div>
 
           <motion.p
-            className="text-gray-600 text-md font-primary md:text-md leading-relaxed mb-8"
+            className="text-gray-600 secondary-description mb-8"
             variants={fadeUp}
             custom={1}
           >
@@ -59,7 +59,7 @@ export default function OutdoorFliming() {
           </motion.p>
 
           <motion.h3
-            className="text-2xl md:text-4xl font-primary mt-10 text-gray-900 leading-snug mb-6"
+            className="secondary-highlight mt-10 text-gray-900 mb-6"
             variants={fadeUp}
             custom={2}
           >
@@ -67,7 +67,7 @@ export default function OutdoorFliming() {
           </motion.h3>
 
           <motion.p
-            className="text-gray-600 text-md font-primary md:text-md leading-relaxed mb-8"
+            className="text-gray-600 secondary-description mb-8"
             variants={fadeUp}
             custom={3}
           >

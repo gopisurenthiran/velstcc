@@ -76,14 +76,14 @@ export default function ContactTabs() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name */}
         <div>
-          <label className="block text-md font-secondary font-medium mb-2">
+          <label className="block primary font-semibold mb-2">
             Name <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
             {...register("name", { required: "Name is required" })}
             placeholder="Enter Your Name"
-            className="w-full border font-secondary border-gray-300 px-3 py-2"
+            className="w-full border secondary-description border-gray-300 px-3 py-2"
           />
           {errors.name && (
             <p className="text-red-500 text-xs">{errors.name.message}</p>
@@ -92,7 +92,7 @@ export default function ContactTabs() {
 
         {/* Email */}
         <div>
-          <label className="block text-md font-secondary font-medium mb-2">
+          <label className="block primary font-semibold mb-2">
             Email <span className="text-red-500">*</span>
           </label>
           <input
@@ -105,7 +105,7 @@ export default function ContactTabs() {
               },
             })}
             placeholder="Enter Your Email"
-            className="w-full border font-secondary border-gray-300 px-3 py-2"
+            className="w-full border secondary-description border-gray-300 px-3 py-2"
           />
           {errors.email && (
             <p className="text-red-500 text-xs">{errors.email.message}</p>
@@ -114,7 +114,7 @@ export default function ContactTabs() {
 
         {/* Phone */}
         <div>
-          <label className="block text-md font-secondary font-medium mb-2">
+          <label className="block primary font-semibold mb-2">
             Phone <span className="text-red-500">*</span>
           </label>
           <input
@@ -124,7 +124,7 @@ export default function ContactTabs() {
               minLength: { value: 10, message: "Enter a valid number" },
             })}
             placeholder="Enter Your Phone No"
-            className="w-full border border-gray-300 font-secondary px-3 py-2"
+            className="w-full border secondary-description border-gray-300 px-3 py-2"
           />
           {errors.phone && (
             <p className="text-red-500 text-xs">{errors.phone.message}</p>
@@ -133,12 +133,12 @@ export default function ContactTabs() {
 
         {/* Space */}
         <div>
-          <label className="block text-md font-secondary font-medium mb-2">
+          <label className="block primary font-semibold mb-2">
             Select Space <span className="text-red-500">*</span>
           </label>
           <select
             {...register("space", { required: "Please select a space" })}
-            className="w-full font-secondary border border-gray-300 px-3 py-2"
+            className="w-full secondary-description border border-gray-300 px-3 py-2"
           >
             <option value="">Enter Your Space</option>
             <option>Auditorium</option>
@@ -153,14 +153,14 @@ export default function ContactTabs() {
 
       {/* Message */}
       <div>
-        <label className="block text-md font-secondary font-medium mb-2">
+        <label className="block primary font-semibold mb-2">
           Share Your Question Here And We’ll Reach Out Shortly.
         </label>
         <textarea
           rows={4}
           {...register("message", { required: "Message is required" })}
           placeholder="Enter Your Message"
-          className="w-full font-secondary border border-gray-300 px-3 py-2"
+          className="w-full secondary-description border border-gray-300 px-3 py-2"
         ></textarea>
         {errors.message && (
           <p className="text-red-500 text-xs">{errors.message.message}</p>
@@ -170,7 +170,7 @@ export default function ContactTabs() {
       {/* Submit Button */}
       <button
         type="submit"
-        className="px-6 py-2 bg-primary font-primary text-white text-sm uppercase tracking-wide"
+        className="px-6 py-2 bg-primary secondary-description text-white uppercase tracking-wide"
       >
         Submit
       </button>
@@ -201,7 +201,7 @@ export default function ContactTabs() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`text-sm sm:text-md font-secondary px-4 py-2 ${
+            className={`primary-subtitle px-4 py-2 ${
               activeTab === tab.id ? "bg-primary text-white" : "text-gray-600"
             }`}
           >
@@ -223,10 +223,10 @@ export default function ContactTabs() {
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.4 }}
             >
-              <h1 className="text-2xl font-secondary font-semibold mb-6">
+              <h1 className="primary-title font-bold mb-6">
                 Trade & Convention Centre
               </h1>
-              <div className="text-lg font-primary leading-relaxed mb-8">
+              <div className=" secondary-description leading-relaxed mb-8">
                 <p>Survey No.167/4A & 3A</p>
                 <p>Santhosha Nagar</p>
                 <p>Chennai - Bangalore National Highway</p>
@@ -247,10 +247,10 @@ export default function ContactTabs() {
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.4 }}
             >
-              <h1 className="text-2xl font-secondary font-semibold mb-6">
+              <h1 className=" primary-title font-bold mb-6">
                 Vels Film City
               </h1>
-              <div className="text-lg font-primary leading-relaxed mb-8">
+              <div className=" secondary-description leading-relaxed mb-8">
                 <p>22PX+J5X, EVP Santhosha Nagar</p>
                 <p>Chennai-Bangalore National Highway</p>
                 <p>Chembarambakkam</p>
@@ -270,10 +270,10 @@ export default function ContactTabs() {
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.4 }}
             >
-              <h1 className="text-2xl font-secondary font-semibold mb-6">
+              <h1 className="primary-title font-bold mb-6">
                 Vels Theatres
               </h1>
-              <div className="text-lg font-primary leading-relaxed mb-8">
+              <div className=" secondary-description leading-relaxed mb-8">
                 <p>Survey no 167/4A & 3A</p>
                 <p>Santhosha Nagar</p>
                 <p>Chennai - Bangalore National Highway</p>

@@ -6,7 +6,7 @@ import { Linkedin, Facebook, Instagram, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-black/10 bg-white font-primary">
+    <footer className="mt-20 border-t border-black/10 bg-white secondary-subtitle">
       {/* TOP LINK AREA */}
       <div className="w-full max-w-7xl mx-auto px-6 pt-8 pb-4">
         <div className="space-y-4 text-center text-xs sm:text-sm text-black/80">

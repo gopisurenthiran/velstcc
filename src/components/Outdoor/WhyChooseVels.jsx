@@ -157,7 +157,7 @@ export default function WhyChooseVels() {
           }}
         >
           <motion.h2
-            className="text-3xl font-semibold text-black font-secondary"
+            className="primary-title text-black"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -174,7 +174,7 @@ export default function WhyChooseVels() {
           />
 
           <motion.p
-            className="text-gray-600 mt-2 text-sm md:text-base font-primary"
+            className="text-gray-600 mt-2 secondary-description"
             variants={fadeUp}
           >
             Where imagination meets infrastructure, and every frame finds its canvas.
@@ -209,10 +209,10 @@ export default function WhyChooseVels() {
                     {/* Text (only active) */}
                     {isActive && (
                       <div className="w-1/2 p-6 flex flex-col justify-center bg-[#F7F9FF] border-l">
-                        <h3 className="text-lg md:text-xl font-secondary font-medium text-black mb-3">
+                        <h3 className="primary-subtitle text-black mb-3">
                           {slide.title}
                         </h3>
-                        <p className="text-gray-700 text-sm font-primary leading-relaxed">
+                        <p className="secondary-description text-gray-700 leading-relaxed">
                           {slide.description}
                         </p>
                         <span className="mt-4 inline-block h-[1px] w-24 bg-primary"></span>
@@ -241,10 +241,10 @@ export default function WhyChooseVels() {
                   </div>
 
                   <div className="p-4 bg-[#F7F9FF]">
-                    <h3 className="text-base font-secondary font-medium text-black mb-2">
+                    <h3 className="primary-subtitle text-black mb-2">
                       {slide.title}
                     </h3>
-                    <p className="text-gray-700 text-xs sm:text-sm font-primary leading-relaxed">
+                    <p className="secondary-description text-gray-700 leading-relaxed">
                       {slide.description}
                     </p>
                     <span className="mt-3 inline-block h-[1px] w-16 bg-primary"></span>
@@ -268,14 +268,14 @@ export default function WhyChooseVels() {
         }}
       >
         <motion.h2
-          className="text-2xl md:text-3xl font-semibold text-black mb-3 font-secondary"
+          className="primary-title text-black mb-3"
           variants={fadeUp}
         >
           Plan Your Next Outdoor Shoot
         </motion.h2>
 
         <motion.p
-          className="text-gray-600 text-sm md:text-base mb-6 font-primary"
+          className="text-gray-600 secondary-description mb-6"
           variants={fadeUp}
         >
           Schedule your shoot effortlessly — from power and dining to logistics, everything you need is right here.
@@ -283,7 +283,7 @@ export default function WhyChooseVels() {
 
         <MotionLink
           href="/contact"
-          className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white font-medium "
+          className="inline-flex items-center justify-center bg-primary px-8 py-3 text-white secondary-subtitle"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
         >

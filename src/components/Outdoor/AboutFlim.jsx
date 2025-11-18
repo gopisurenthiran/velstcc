@@ -88,7 +88,7 @@ export default function AboutFlim() {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="text-3xl text-black font-secondary"
+          className="primary-title text-black"
           variants={fadeUp}
         >
           Vels Film City: Where Vision Finds Space
@@ -103,7 +103,7 @@ export default function AboutFlim() {
         />
 
         <motion.p
-          className="text-black/70 text-xl font-primary"
+          className="text-black/70 secondary-description"
           variants={fadeUp}
           custom={1}
         >
@@ -137,8 +137,8 @@ export default function AboutFlim() {
                     : "hover:bg-black/[0.03]"
                 }`}
               >
-                <h3 className="font-secondary text-xl text-black">{item.title}</h3>
-                <p className="mt-2 text-md text-black/70 font-primary leading-relaxed">
+                <h3 className="primary-subtitle text-black">{item.title}</h3>
+                <p className="mt-2 secondary-description text-black/70 leading-relaxed">
                   {item.desc}
                 </p>
               </motion.button>

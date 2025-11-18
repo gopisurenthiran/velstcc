@@ -20,13 +20,15 @@ export default function FilmStudio() {
     >
       {/* Title */}
       <motion.h2
-        className="text-xl md:text-3xl font-semibold font-secondary text-black px-4"
+        className="primary-title text-black px-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
       >
         Frames that Captivate Millions
       </motion.h2>
+
+      <p className="secondary-description text-gray-600 mb-8">From captivating dramas to reality sensations, our stages have set the scene for stories that resonate nationwide. </p>
 
       <motion.div
         className="w-28 md:w-40 h-[1px] bg-[#2D3091] mb-6 mt-4 mx-auto"

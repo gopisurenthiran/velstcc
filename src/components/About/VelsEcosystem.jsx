@@ -45,19 +45,17 @@ export default function VelsEcosystem() {
       <div className="mx-auto max-w-6xl px-4">
         {/* Heading */}
         <div className="text-center">
-          <h2 className="font-secondary text-3xl md:text-4xl tracking-tight text-black">
-            The VELS Ecosystem
-          </h2>
+          <h2 className="primary-title text-black">The VELS Ecosystem</h2>
           <div className="mx-auto mt-4 h-[1px] w-24 bg-[#2D3091]" />
-          <p className="mt-4 font-primary text-xs md:text-lg leading-relaxed text-black/70 max-w-xl mx-auto">
-            VELS is more than a venue, it&apos;s a complete creative and commercial
-            ecosystem designed to bring any vision to life.
+          <p className="mt-4 secondary-description text-black/70 max-w-xl mx-auto">
+            VELS is more than a venue, it&apos;s a complete creative and
+            commercial ecosystem designed to bring any vision to life.
           </p>
         </div>
 
         {/* Tabs */}
         <div className="mt-10">
-          <div className="flex justify-center gap-10 text-[11px] md:text-xs font-secondary uppercase">
+          <div className="flex justify-center gap-10  primary-subtitle uppercase">
             {TABS.map((tab) => {
               const isActive = tab.key === active;
               return (
@@ -65,7 +63,7 @@ export default function VelsEcosystem() {
                   key={tab.key}
                   onClick={() => setActive(tab.key)}
                   className={[
-                    "relative pb-3 transition-colors text-xl font-secondary",
+                    "relative pb-3 transition-colors primary-subtitle",
                     isActive
                       ? "text-primary"
                       : "text-black/60 hover:text-black",
@@ -77,7 +75,11 @@ export default function VelsEcosystem() {
                     <motion.span
                       layoutId="ecosystem-underline"
                       className="pointer-events-none absolute left-0 bottom-0 h-[1px] w-full bg-black"
-                      transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 24,
+                      }}
                     />
                   )}
                 </button>
@@ -99,27 +101,25 @@ export default function VelsEcosystem() {
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="relative w-full"
               >
-<Image
-  src={current?.image}
-  alt={current?.title}
-  width={0}
-  height={0}
-  sizes="100vw"
-  className="w-auto h-auto"
-  priority
-/>
-
-
+                <Image
+                  src={current?.image}
+                  alt={current?.title}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="w-auto h-auto"
+                  priority
+                />
               </motion.div>
             </AnimatePresence>
           </div>
 
           {/* RIGHT: text + button */}
           <div className="flex flex-col justify-center">
-            <h3 className="font-secondary text-2xl md:text-3xl text-black mb-4">
+            <h3 className="primary-subtitle text-2xl md:text-3xl text-black mb-4">
               {current?.title}
             </h3>
-            <p className="font-primary text-sm md:text-base leading-relaxed text-black/70 whitespace-pre-line">
+            <p className="secondary-description text-sm md:text-base leading-relaxed text-black/70 whitespace-pre-line">
               {current?.body}
             </p>
 
@@ -128,7 +128,7 @@ export default function VelsEcosystem() {
               href={current?.url}
               className="mt-6 inline-flex items-center justify-center
                          bg-[#2D3091] text-white
-                         text-[11px] font-secondary font-semibold tracking-[0.18em] uppercase
+                         secondary-description pt-2 uppercase
                          w-[120px] h-[32px]
                          hover:bg-[#222566] transition-colors"
             >

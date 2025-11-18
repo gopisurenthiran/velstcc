@@ -41,7 +41,7 @@ export default function Faq() {
     <section className="mx-auto max-w-4xl px-4 py-4">
       {/* Heading */}
       <motion.h2
-        className="text-center font-secondary text-4xl tracking-tight"
+        className="text-center primary-title"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
@@ -87,7 +87,7 @@ export default function Faq() {
                   isOpen ? `${accent}` : "text-black hover:text-black/70",
                 ].join(" ")}
               >
-                <span className="text-xl leading-7 font-primary">{item.q}</span>
+                <span className="text-xl secondary-subtitle">{item.q}</span>
               </button>
 
               {/* Animated Answer */}
@@ -106,7 +106,7 @@ export default function Faq() {
                     }}
                   >
                     <div className="min-h-0">
-                      <p className="pb-5 text-lg leading-6 text-black/70 font-primary">
+                      <p className="pb-5 text-lg leading-6 text-black/70 secondary-description">
                         {item.a}
                       </p>
                     </div>

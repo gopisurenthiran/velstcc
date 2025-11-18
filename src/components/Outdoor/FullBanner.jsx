@@ -37,7 +37,7 @@ export default function Theatre360() {
             <img
               src={slide.image}
               alt={`Theatre slide ${i + 1}`}
-              className="object-cover w-full h-screen"
+              className=" w-full h-screen"
               loading="lazy"
             />
           </div>

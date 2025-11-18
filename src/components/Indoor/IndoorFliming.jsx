@@ -20,7 +20,7 @@ export default function IndoorFliming() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-secondary text-gray-900 mb-2">
+          <h2 className="primary-title text-gray-900 mb-2">
             Where Vision Meets the Spotlight
           </h2>
           <motion.div
@@ -32,7 +32,7 @@ export default function IndoorFliming() {
             style={{ transformOrigin: "left" }}
           ></motion.div>
 
-          <p className="text-gray-600 text-md font-primary md:text-md leading-relaxed mb-8">
+          <p className="secondary-description text-gray-600 mb-8">
             Every frame begins here — in spaces where artistry and architecture
             converge. From epic sets to intimate scenes, Vels Film City’s indoor
             studios have powered India’s most iconic stories for over a
@@ -44,7 +44,7 @@ export default function IndoorFliming() {
           </p>
 
           <motion.h3
-            className="text-2xl md:text-4xl font-primary mt-10 text-gray-900 leading-snug mb-6"
+            className="text-2xl md:text-4xl secondary-highlight mt-10 text-gray-900 leading-snug mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
@@ -53,7 +53,7 @@ export default function IndoorFliming() {
             Precision in Every Frame. Passion in Every Shot. 
           </motion.h3>
 
-          <p className="text-gray-600 text-md font-primary md:text-md leading-relaxed mb-8">
+          <p className="text-gray-600 text-md secondary-description md:text-md leading-relaxed mb-8">
             Behind every flawless take is an ecosystem engineered for
             excellence. Our indoor spaces merge technology, talent, and timing
             to turn creative vision into cinematic mastery. 
