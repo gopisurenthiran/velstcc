@@ -68,7 +68,7 @@ export default function SustainabilityTabs() {
                 <button
                   key={tab.key}
                   onClick={() => setActive(tab.key)}
-                  className={`relative pb-2 text-[13px] md:text-sm tracking-wide primary-title uppercase transition-colors ${
+                  className={`relative pb-2 text-xs md:text-sm uppercase tracking-wide primary-subtitle transition-colors ${
                     isActive
                       ? "text-gray-900"
                       : "text-gray-500 hover:text-gray-800"
