@@ -30,10 +30,13 @@ export default function ReelView() {
     swipeToSlide: true,
     arrows: true,
     cssEase: "linear",
+
+    // ⭐ EXACT MATCH WITH CUSTOM RESPONSIVE LOGIC
     responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 3 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
+      { breakpoint: 1536, settings: { slidesToShow: 4 } }, // xl screens
+      { breakpoint: 1280, settings: { slidesToShow: 3 } }, // lg screens
+      { breakpoint: 1024, settings: { slidesToShow: 2 } }, // md / tablets
+      { breakpoint: 640, settings: { slidesToShow: 1 } },  // mobile
     ],
   };
 
@@ -49,11 +52,16 @@ export default function ReelView() {
 
   const fadeScale = {
     hidden: { opacity: 0, scale: 0.95 },
-    show: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   return (
     <section className="bg-white py-16 px-4 text-center">
+
       {/* Section Heading */}
       <motion.div
         initial="hidden"
@@ -64,11 +72,7 @@ export default function ReelView() {
           show: { transition: { staggerChildren: 0.15 } },
         }}
       >
-        <motion.h2
-          className="primary-title mb-2"
-          variants={fadeUp}
-          custom={0}
-        >
+        <motion.h2 className="primary-title mb-2" variants={fadeUp}>
           Behind the Lens
         </motion.h2>
 
@@ -110,15 +114,21 @@ export default function ReelView() {
             >
               <motion.div
                 whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="overflow-hidden transition-transform duration-300 ease-in-out"
+                transition={{ type: "spring", stiffness: 280 }}
+                className="overflow-hidden"
               >
                 <Image
                   src={src}
                   alt={`Reel view ${index + 1}`}
-                  width={234}
-                  height={300}
-                  className="w-full h-full"
+                  width={800}
+                  height={600}
+                  className="
+                    w-full 
+                    h-64 
+                    sm:h-80 
+                    md:h-96 
+                    
+                  "
                   priority={index === 0}
                 />
               </motion.div>

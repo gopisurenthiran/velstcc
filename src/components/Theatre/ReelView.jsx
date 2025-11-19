@@ -2,7 +2,7 @@
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
-import { motion } from "framer-motion"; // ✅ Added for animation
+import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -14,7 +14,6 @@ const images = [
   "/assets/reel-view-5.webp",
   "/assets/reel-view-6.webp",
   "/assets/reel-view-7.webp",
-
 ];
 
 export default function ReelView() {
@@ -30,10 +29,13 @@ export default function ReelView() {
     swipeToSlide: true,
     arrows: true,
     cssEase: "linear",
+
+    // ⭐ EXACT SAME RESPONSIVENESS AS YOUR CUSTOM SLIDER
     responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 3 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
+      { breakpoint: 1536, settings: { slidesToShow: 4 } }, // xl
+      { breakpoint: 1280, settings: { slidesToShow: 3 } }, // lg
+      { breakpoint: 1024, settings: { slidesToShow: 2 } }, // md/tablet
+      { breakpoint: 640, settings: { slidesToShow: 1 } },  // mobile
     ],
   };
 
@@ -64,7 +66,8 @@ export default function ReelView() {
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         viewport={{ once: true }}
       >
-       More than a theatre, it’s where design, acoustics, and drama perform in harmony.
+        More than a theatre, it's where design, acoustics, and drama perform in
+        harmony.
       </motion.p>
 
       {/* Slider */}
@@ -79,16 +82,22 @@ export default function ReelView() {
           {images.map((src, index) => (
             <div key={index} className="px-2">
               <motion.div
-                className="overflow-hidden hover:scale-[1.02] transition-transform duration-300 ease-in-out"
                 whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 200 }}
+                transition={{ type: "spring", stiffness: 220 }}
+                className="overflow-hidden"
               >
                 <Image
                   src={src}
                   alt={`Reel view ${index + 1}`}
-                  width={330}
-                  height={445}
-                  className="w-full h-full"
+                  width={800}
+                  height={600}
+                  className="
+                    w-full 
+                    h-64       /* mobile */
+                    sm:h-80    /* small/tablet */
+                    md:h-96    /* desktop */
+                    
+                  "
                 />
               </motion.div>
             </div>
