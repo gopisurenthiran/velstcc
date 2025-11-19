@@ -58,7 +58,7 @@ export default function ReelView() {
       viewport={{ once: true }}
     >
       <motion.h2
-        className="text-3xl mb-2 font-secondary"
+        className="text-3xl mb-2 primary-title"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
@@ -67,7 +67,7 @@ export default function ReelView() {
       </motion.h2>
 
       <motion.p
-        className="text-gray-600 mb-8"
+        className="text-gray-600 mb-8 secondary-description"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}

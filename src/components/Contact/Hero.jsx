@@ -8,15 +8,15 @@ import "slick-carousel/slick/slick-theme.css";
 // ✅ Hero Slides Data
 const slides = [
   {
-    img: "/assets/banner/theatre-banner-1.webp",
+    img: "/assets/banner/trade_convention_centre_1.webp",
     alt: "Vels Trade and Convention Center Grand Entrance",
   },
   {
-    img: "/assets/banner/theatre-banner-2.webp",
+    img: "/assets/banner/trade_convention_centre_2.webp",
     alt: "Indoor Studio",
   },
   {
-    img: "/assets/banner/theatre-banner-3.webp",
+    img: "/assets/banner/trade_convention_centre_3.webp",
     alt: "Outdoor Filming Area",
   },
 ];
@@ -24,13 +24,13 @@ const slides = [
 const Hero = () => {
   const handleClick = (e) => {
     e.preventDefault();
-    const targetElement = document.getElementById("theartre");
+    const targetElement = document.getElementById("target-section");
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
-  // Slider Settings
+  // ✅ Slider Settings
   const settings = {
     dots: false,
     arrows: false,
@@ -46,7 +46,7 @@ const Hero = () => {
   return (
     <section className="relative w-full h-[600px] flex items-center justify-center text-white overflow-hidden">
 
-      {/* Desktop Slider */}
+      {/* ✅ Desktop Slider */}
       <div className="absolute inset-0 z-0 h-[600px] hidden md:block">
         <Slider {...settings}>
           {slides.map((slide, index) => (
@@ -62,27 +62,27 @@ const Hero = () => {
         </Slider>
       </div>
 
-      {/* Mobile Static Banner */}
+      {/* ✅ Mobile Static Banner */}
       <div className="absolute inset-0 z-0 h-[600px] md:hidden">
         <img
-          src="/assets/banner/mobile-theatre.webp"
-          alt="Mobile Banner"
+          src="/assets/banner/mobile-banner-home.webp"
+          alt={slides[0].alt}
           className="w-full h-[600px] object-cover object-center"
           loading="eager"
         />
       </div>
 
-      {/* ⭐ Bottom Title + Breadcrumbs */}
+      {/* ⭐ TITLE + BREADCRUMBS (BOTTOM LEFT) */}
       <div className="absolute bottom-24 md:bottom-20 left-6 md:left-16 z-30 text-white">
 
-        {/* Page Title */}
+        {/* Title */}
         <h1 className="text-4xl md:text-6xl font-primary mb-3">
-          Vels Theatres
+          Contact Us
         </h1>
 
         {/* Breadcrumbs */}
         <div className="flex items-center space-x-2 text-white text-sm md:text-base">
-          {/* Home icon + link */}
+          {/* Home Icon + Link */}
           <span className="flex items-center space-x-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,6 @@ const Hero = () => {
             >
               <path d="M12 3l9 8h-3v9h-12v-9h-3z" />
             </svg>
-
             <a href="/" className="hover:underline">Home</a>
           </span>
 
@@ -109,8 +108,8 @@ const Hero = () => {
             <path d="M9 18l6-6-6-6" />
           </svg>
 
-          {/* Current Page Name */}
-          <span className="opacity-90">Vels Theatres</span>
+          {/* Current Page */}
+          <span className="opacity-90">Contact Us</span>
         </div>
       </div>
 
@@ -136,7 +135,6 @@ const Hero = () => {
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </motion.button>
-
     </section>
   );
 };

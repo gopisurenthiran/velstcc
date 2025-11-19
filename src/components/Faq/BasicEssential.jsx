@@ -25,16 +25,12 @@ export default function TabsSection() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`relative pb-2 primary-subtitle transition-colors duration-200 ${
-              activeTab === tab.id
-                ? "text-[#2D3091] font-medium"
-                : "text-[#1a1a1a] hover:text-[#2D3091]"
+             className={`primary-subtitle px-4 py-2 ${
+              activeTab === tab.id ? "bg-primary text-white" : "text-gray-600"
             }`}
           >
             {tab.label}
-            {activeTab === tab.id && (
-              <span className="absolute left-0 -bottom-[1px] w-full h-[1px] bg-primary" />
-            )}
+            <div className="h-[1px] bg-white w-full mt-2"></div>
           </button>
         ))}
       </div>

@@ -1,6 +1,5 @@
 import BasicsEssential from "../../components/Faq/BasicEssential";
-import Hero from "../../components/home/Hero";
-
+import Hero from "../../components/Faq/Hero";
 
 const siteTitle = "FAQ | Vels Film City Chennai | Media and Entertainment Hub";
 const siteDescription = "Find answers to common questions about Vels Film City in Chennai, your premier media and entertainment hub with state-of-the-art film production facilities.";

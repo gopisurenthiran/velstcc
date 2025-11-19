@@ -45,7 +45,7 @@ export default function SustainabilityTabs() {
   };
 
   return (
-    <section className="bg-white py-16">
+    <section className="container bg-white py-16 px-4">
       <motion.div
         className="max-w-7xl mx-auto grid gap-10 md:grid-cols-2 items-start"
         initial="hidden"

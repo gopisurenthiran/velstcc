@@ -45,7 +45,8 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-[600px] flex items-center justify-center text-white overflow-hidden">
-      {/* ✅ Desktop / Large Screens Slider */}
+
+      {/* ✅ Desktop Slider */}
       <div className="absolute inset-0 z-0 h-[600px] hidden md:block">
         <Slider {...settings}>
           {slides.map((slide, index) => (
@@ -61,7 +62,7 @@ const Hero = () => {
         </Slider>
       </div>
 
-      {/* ✅ Mobile — Static Image Only */}
+      {/* ✅ Mobile Static Banner */}
       <div className="absolute inset-0 z-0 h-[600px] md:hidden">
         <img
           src="/assets/banner/mobile-banner-home.webp"
@@ -71,7 +72,48 @@ const Hero = () => {
         />
       </div>
 
-      {/* ✅ Scroll Button */}
+      {/* ⭐ TITLE + BREADCRUMBS (BOTTOM LEFT) */}
+      <div className="absolute bottom-24 md:bottom-20 left-6 md:left-16 z-30 text-white">
+
+        {/* Title */}
+        <h1 className="text-4xl md:text-6xl font-primary mb-3">
+          Trade Convention Centre
+        </h1>
+
+        {/* Breadcrumbs */}
+        <div className="flex items-center space-x-2 text-white text-sm md:text-base">
+          {/* Home Icon + Link */}
+          <span className="flex items-center space-x-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 3l9 8h-3v9h-12v-9h-3z" />
+            </svg>
+            <a href="/" className="hover:underline">Home</a>
+          </span>
+
+          {/* Arrow */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="12"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            className="opacity-80"
+          >
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+
+          {/* Current Page */}
+          <span className="opacity-90">Trade Convention Centre</span>
+        </div>
+      </div>
+
+      {/* Scroll Button */}
       <motion.button
         onClick={handleClick}
         className="absolute bottom-6 z-30 p-3 rounded-full border-2 border-white text-white hover:bg-white hover:text-black transition duration-300 animate-bounce focus:outline-none"

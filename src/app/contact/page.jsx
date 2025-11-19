@@ -1,4 +1,4 @@
-import Hero from "../../components/home/Hero";
+import Hero from "../../components/Contact/Hero.jsx";
 import ContactTabs from "../../components/Contact/ContactPage.jsx";
 
 

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Slider from "react-slick";
-import { motion } from "framer-motion"; // ✅ Added for animation
+import { motion } from "framer-motion";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,7 +19,7 @@ export default function FullBanner() {
     cssEase: "ease-in-out",
   };
 
-  const slides = [
+  const slidesDesktop = [
     { image: "/assets/vijay_tv_1.webp" },
     { image: "/assets/vijay_tv_2.webp" },
     { image: "/assets/vijay_tv_3.webp" },
@@ -28,9 +28,19 @@ export default function FullBanner() {
     { image: "/assets/bigg_boss_3.webp" },
   ];
 
+  const slidesMobile = [
+    { image: "/assets/vijay_tv_1_mob.webp" },
+    { image: "/assets/vijay_tv_2_mob.webp" },
+    { image: "/assets/vijay_tv_3_mob.webp" },
+    { image: "/assets/bigg_boss_1_mob.webp" },
+    { image: "/assets/bigg_boss_2_mob.webp" },
+    { image: "/assets/bigg_boss_3_mob.webp" },
+  ];
+
   return (
     <section className="relative w-full min-h-screen overflow-hidden text-center justify-center">
-       {/* Heading */}
+
+      {/* Heading */}
       <motion.h2
         className="primary-title mb-2 mt-4"
         initial={{ opacity: 0, y: 20 }}
@@ -40,7 +50,9 @@ export default function FullBanner() {
       >
         Vels Theatres
       </motion.h2>
-        <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4 mx-auto text-center"></div>
+
+      <div className="w-40 h-[0.5px] bg-[#2D3091] mb-6 mt-4 mx-auto"></div>
+
       {/* Subtext */}
       <motion.p
         className="text-gray-600 mb-8 secondary-description"
@@ -51,18 +63,39 @@ export default function FullBanner() {
       >
         A symphony of light, design, and storytelling, where cinema becomes art.
       </motion.p>
-      <Slider {...settings}>
-        {slides.map((slide, i) => (
-          <div key={i} className="relative w-full min-h-screen">
-            <img
-              src={slide.image}
-              alt={`Theatre slide ${i + 1}`}
-              className=" w-full h-screen"
-              loading="lazy"
-            />
-          </div>
-        ))}
-      </Slider>
+
+      {/* Desktop Slider */}
+      <div className="hidden md:block">
+        <Slider {...settings}>
+          {slidesDesktop.map((slide, i) => (
+            <div key={i} className="relative w-full min-h-screen">
+              <img
+                src={slide.image}
+                alt={`Desktop slide ${i + 1}`}
+                className="object-cover w-full h-screen"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+      {/* Mobile Slider */}
+      <div className="block md:hidden">
+        <Slider {...settings}>
+          {slidesMobile.map((slide, i) => (
+            <div key={i} className="relative w-full h-[520px]">
+              <img
+                src={slide.image}
+                alt={`Mobile slide ${i + 1}`}
+                className="object-cover w-full h-[520px]"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+
     </section>
   );
 }

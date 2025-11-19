@@ -17,32 +17,61 @@ export default function Theatre360() {
     cssEase: "ease-in-out",
   };
 
-  const slides = [
+  // Desktop Banners
+  const slidesDesktop = [
     { image: "/assets/showcase-1.webp" },
     { image: "/assets/showcase-2.webp" },
     { image: "/assets/showcase-3.webp" },
     { image: "/assets/showcase-4.webp" },
     { image: "/assets/showcase-5.webp" },
     { image: "/assets/showcase-6.webp" },
-    { image: "/assets/showcase-1.webp" },
-    { image: "/assets/showcase-2.webp" },
-    { image: "/assets/showcase-3.webp" },
+  ];
+
+  // Mobile Banners
+  const slidesMobile = [
+    { image: "/assets/kaala_1_mob.webp" },
+    { image: "/assets/kaala_2_mob.webp" },
+    { image: "/assets/indian_1_mob.webp" },
+    { image: "/assets/indian_3_mob.webp" },
+    { image: "/assets/enthiran_1_mob.webp" },
+    { image: "/assets/enthiran_3_mob.webp" },
   ];
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
-      <Slider {...settings}>
-        {slides.map((slide, i) => (
-          <div key={i} className="relative w-full min-h-screen">
-            <img
-              src={slide.image}
-              alt={`Theatre slide ${i + 1}`}
-              className=" w-full h-screen"
-              loading="lazy"
-            />
-          </div>
-        ))}
-      </Slider>
+
+      {/* Desktop Slider */}
+      <div className="hidden md:block">
+        <Slider {...settings}>
+          {slidesDesktop.map((slide, i) => (
+            <div key={i} className="relative w-full min-h-screen">
+              <img
+                src={slide.image}
+                alt={`Desktop Theatre slide ${i + 1}`}
+                className="object-cover w-full h-screen"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+      {/* Mobile Slider */}
+      <div className="block md:hidden">
+        <Slider {...settings}>
+          {slidesMobile.map((slide, i) => (
+            <div key={i} className="relative w-full h-[520px]">
+              <img
+                src={slide.image}
+                alt={`Mobile Theatre slide ${i + 1}`}
+                className="object-cover w-full h-[520px]"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+
     </section>
   );
 }
