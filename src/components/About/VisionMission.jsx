@@ -134,11 +134,7 @@ export default function VisionMission() {
             Chennai.
           </p>
 
-          <p className="text-black secondary-description font-bold mt-10">
-            DR. ISHARI K. GANESH <br />
-            Founder & Chancellor of Vels University <br />
-            Chairman, Vels Group of Institutions & Companies
-          </p>
+        
         </div>
 
         {/* RIGHT IMAGE */}
@@ -150,7 +146,7 @@ export default function VisionMission() {
           className="flex justify-center md:justify-end"
         >
           <Image
-            src="/assets/chairman.jpg" // 👉 Your chairman photo
+            src="/assets/about.png" // 👉 Your chairman photo
             alt="Chairman"
             width={627}
             height={494}
