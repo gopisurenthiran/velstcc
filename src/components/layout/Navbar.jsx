@@ -151,7 +151,7 @@ export default function Navbar() {
 
   const handleMegaLinkClick = () => setIsMegaOpen(false);
 
-  // helper for normal link highlight
+  // helper for normal link highlight (desktop)
   const linkClasses = (href) => {
     const isActive = pathname === href;
     return [
@@ -162,12 +162,25 @@ export default function Navbar() {
     ].join(" ");
   };
 
+  // helper for mobile link highlight
+  const mobileLinkClasses = (href) => {
+    const isActive = pathname === href;
+    return [
+      "block text-[16px] transition-colors",
+      isActive
+        ? "text-[#2A1C79] font-semibold"
+        : "text-black/80 hover:text-[#2A1C79]",
+    ].join(" ");
+  };
+
   // highlight Discover when mega open or on its pages
   const isDiscoverActive =
     isMegaOpen ||
     pathname.startsWith("/theatre") ||
     pathname.startsWith("/indoor") ||
     pathname.startsWith("/outdoor");
+
+  const isHome = pathname === "/";
 
   return (
     <header
@@ -257,12 +270,6 @@ export default function Navbar() {
               />
             </span>
           </button>
-
-          {/* Center: logo text */}
-          <div className="text-sm font-semibold text-[#2A1C79] select-none">
-            VELS
-          </div>
-
           {/* Right spacer */}
           <div className="w-9 h-9" />
         </div>
@@ -372,7 +379,7 @@ export default function Navbar() {
       )}
 
       {/* === DESKTOP hamburger — ONLY on home page === */}
-      {!isDrawerOpen && pathname === "/" && (
+      {!isDrawerOpen && isHome && (
         <div className="hidden md:block absolute right-6 top-1/2 -translate-y-1/2 z-40">
           <button
             ref={buttonRef}
@@ -399,7 +406,7 @@ export default function Navbar() {
       >
         {/* Drawer header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-black/10 bg-white">
-          <Link href="/" className="mb-3">
+          <Link href="/" className="mb-3" onClick={() => setIsDrawerOpen(false)}>
             <Image
               src={velsLogo}
               alt="VELS Logo"
@@ -424,10 +431,15 @@ export default function Navbar() {
           <div className="md:hidden space-y-8">
             {/* Main Menu */}
             <div>
-              <h4 className="text-[18px] font-semibold text-black mb-3">
-                Main Menu
-              </h4>
               <nav className="space-y-3">
+                {/* Home */}
+                <Link
+                  href="/"
+                  onClick={() => setIsDrawerOpen(false)}
+                  className={mobileLinkClasses("/")}
+                >
+                  Home
+                </Link>
                 {navItems
                   .filter((item) => !item.hasSubmenu)
                   .map((item) => (
@@ -435,7 +447,7 @@ export default function Navbar() {
                       key={item.label}
                       href={item.href}
                       onClick={() => setIsDrawerOpen(false)}
-                      className="block text-[16px] text-black/80"
+                      className={mobileLinkClasses(item.href)}
                     >
                       {item.label}
                     </Link>
@@ -455,7 +467,11 @@ export default function Navbar() {
                     setIsDrawerOpen(false);
                     router.push("/theatre");
                   }}
-                  className="block text-left text-[16px] font-semibold text-black"
+                  className={`block text-left text-[16px] font-semibold transition-colors ${
+                    pathname === "/theatre"
+                      ? "text-[#2A1C79]"
+                      : "text-black hover:text-[#2A1C79]"
+                  }`}
                 >
                   Vel’s Theatre
                 </button>
@@ -480,7 +496,11 @@ export default function Navbar() {
                         setIsDrawerOpen(false);
                         router.push("/indoor");
                       }}
-                      className="block text-left text-[15px] text-black/70"
+                      className={`block text-left text-[15px] transition-colors ${
+                        pathname === "/indoor"
+                          ? "text-[#2A1C79] font-semibold"
+                          : "text-black/70 hover:text-[#2A1C79]"
+                      }`}
                     >
                       Vel’s Film City - Indoor
                     </button>
@@ -489,7 +509,11 @@ export default function Navbar() {
                         setIsDrawerOpen(false);
                         router.push("/outdoor");
                       }}
-                      className="block text-left text-[15px] text-black/70"
+                      className={`block text-left text-[15px] transition-colors ${
+                        pathname === "/outdoor"
+                          ? "text-[#2A1C79] font-semibold"
+                          : "text-black/70 hover:text-[#2A1C79]"
+                      }`}
                     >
                       Vel’s Film City - Outdoor
                     </button>
@@ -498,41 +522,45 @@ export default function Navbar() {
               </nav>
             </div>
 
-            {/* Section anchors */}
-            <div>
-              <h4 className="text-[18px] font-semibold text-black mb-3">
-                Explore Sections
-              </h4>
+            {/* Section anchors – ONLY on Home */}
+            {isHome && (
+              <div>
+                <h4 className="text-[18px] font-semibold text-black mb-3">
+                  Explore Sections
+                </h4>
+                <div className="space-y-3">
+                  {quickItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsDrawerOpen(false)}
+                      className="block text-[16px] text-black/80"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* DESKTOP: quick links drawer – ONLY on Home */}
+          {isHome && (
+            <div className="hidden md:block">
               <div className="space-y-3">
                 {quickItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsDrawerOpen(false)}
-                    className="block text-[16px] text-black/80"
+                    className="block text-lg text-black/80 font-primary"
                   >
                     {item.label}
                   </Link>
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* DESKTOP: only quick links in drawer */}
-          <div className="hidden md:block">
-            <div className="space-y-3">
-              {quickItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsDrawerOpen(false)}
-                  className="block text-lg text-black/80 font-primary"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
+          )}
         </div>
       </div>
 

@@ -9,26 +9,26 @@ export default function Footer() {
     <footer className="mt-20 border-t border-black/10 bg-white secondary-title">
       {/* TOP LINK AREA */}
       <div className="w-full max-w-7xl mx-auto px-6 pt-8 pb-4">
-        <div className="space-y-4 text-center text-xs sm:text-sm text-black/80">
+        <div className="space-y-4 text-center text-lg sm:text-lg text-black/80">
           {/* Row 1 – 4 items, evenly spaced */}
-          <div className="grid grid-cols-2 text-md sm:grid-cols-4 gap-y-2">
+          <div className="grid grid-cols-2 text-lg sm:grid-cols-4 gap-y-2">
             <Link
               href="/theatre"
               className="hover:text-[#2A1C79] transition-colors"
             >
-              Vel&apos;s Theatre
+              Vels Theatre
             </Link>
             <Link
               href="/indoor"
               className="hover:text-[#2A1C79] transition-colors"
             >
-              Vel&apos;s Film City - Indoor
+              Vels Film City - Indoor
             </Link>
             <Link
               href="/outdoor"
               className="hover:text-[#2A1C79] transition-colors"
             >
-              Vel&apos;s Film City - Outdoor
+              Vels Film City - Outdoor
             </Link>
             <Link
               href="#getting"
@@ -64,7 +64,7 @@ export default function Footer() {
 
       {/* BOTTOM BAR */}
       <div className="border-t  border-black/10 bg-[#F5F5F5]">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-xs sm:text-sm text-black/70">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-lg sm:text-lg text-black/70">
           {/* Left: Copyright */}
           <p className="md:basis-1/3 text-center md:text-left">
             © Copyright Vels Trade Convention Centre 2025
