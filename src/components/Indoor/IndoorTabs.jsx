@@ -73,7 +73,7 @@ export default function IndoorTabs() {
                 <button
                   key={tab.key}
                   onClick={() => setActive(tab.key)}
-                  className={`relative pb-2 text-xs md:text-sm uppercase tracking-wide primary-subtitle transition-colors ${
+                  className={`relative pb-2 uppercase tracking-wide primary-subtitle transition-colors ${
                     isActive ? "text-black" : "text-gray-500 hover:text-black"
                   }`}
                 >
