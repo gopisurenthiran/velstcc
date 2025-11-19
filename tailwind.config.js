@@ -61,7 +61,7 @@ module.exports = {
         ".secondary-description": {
           fontFamily: "var(--font-foundersgrotesk)",
           fontWeight: "300",
-          fontSize: "16px",
+          fontSize: "18px",
           lineHeight: "30px",
         },
 
