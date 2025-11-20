@@ -1,3 +1,4 @@
+// app/components/AboutFlim.jsx
 "use client";
 
 import Image from "next/image";
@@ -44,6 +45,8 @@ export default function AboutFlim() {
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
 
+  const activeFacility = facilities[active];
+
   /* AUTOPLAY */
   useEffect(() => {
     if (paused) return;
@@ -55,6 +58,14 @@ export default function AboutFlim() {
 
     return () => clearInterval(timerRef.current);
   }, [paused]);
+
+  const goPrev = () => {
+    setActive((prev) => (prev - 1 + facilities.length) % facilities.length);
+  };
+
+  const goNext = () => {
+    setActive((prev) => (prev + 1) % facilities.length);
+  };
 
   return (
     <section
@@ -94,8 +105,8 @@ export default function AboutFlim() {
         </motion.p>
       </motion.div>
 
-      {/* GRID */}
-      <div className="grid items-start gap-10 md:grid-cols-2">
+      {/* =============== DESKTOP / TABLET (md and up) =============== */}
+      <div className="hidden md:grid items-start gap-10 md:grid-cols-2">
         {/* LEFT LIST */}
         <motion.div
           className="flex flex-col gap-4"
@@ -127,7 +138,9 @@ export default function AboutFlim() {
                     : "hover:bg-black/[0.03]",
                 ].join(" ")}
               >
-                <h3 className="primary-subtitle text-xl text-black">{item.title}</h3>
+                <h3 className="primary-subtitle text-xl text-black">
+                  {item.title}
+                </h3>
                 <p className="mt-2 text-md leading-relaxed text-black/70 secondary-description">
                   {item.desc}
                 </p>
@@ -148,15 +161,67 @@ export default function AboutFlim() {
               className="w-full"
             >
               <Image
-                src={facilities[active].image}
-                alt={facilities[active].title}
-                width={590}       // full real width
-                height={726}      // full real height
+                src={activeFacility.image}
+                alt={activeFacility.title}
+                width={590}
+                height={726}
                 className="w-full h-auto object-contain rounded-md"
                 priority
               />
             </motion.div>
           </AnimatePresence>
+        </div>
+      </div>
+
+      {/* =============== MOBILE (below md) =============== */}
+      <div className="md:hidden">
+        {/* TEXT FIRST */}
+        <div className="mb-5">
+          <h3 className="primary-subtitle text-lg sm:text-xl text-black mb-2">
+            {activeFacility.title}
+          </h3>
+          <p className="secondary-description text-sm leading-relaxed text-black/75">
+            {activeFacility.desc}
+          </p>
+        </div>
+
+        {/* IMAGE SLIDER */}
+        <div className="relative w-full overflow-hidden rounded-lg shadow-sm">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.35 }}
+              className="w-full"
+            >
+              <Image
+                src={activeFacility.image}
+                alt={activeFacility.title}
+                width={590}
+                height={726}
+                className="w-full h-auto object-cover rounded-md"
+                priority
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Arrows */}
+          <button
+            type="button"
+            onClick={goPrev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md"
+          >
+            ❮
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md"
+          >
+            ❯
+          </button>
         </div>
       </div>
     </section>

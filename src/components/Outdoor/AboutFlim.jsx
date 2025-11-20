@@ -1,3 +1,4 @@
+// app/components/AboutFlim.jsx
 "use client";
 
 import Image from "next/image";
@@ -44,15 +45,27 @@ export default function AboutFlim() {
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
 
+  const activeFacility = facilities[active];
+
   // Autoplay logic
   useEffect(() => {
     if (paused) return;
     if (timerRef.current) clearInterval(timerRef.current);
+
     timerRef.current = setInterval(() => {
       setActive((i) => (i + 1) % facilities.length);
     }, ROTATE_MS);
+
     return () => clearInterval(timerRef.current);
   }, [paused]);
+
+  const goPrev = () => {
+    setActive((prev) => (prev - 1 + facilities.length) % facilities.length);
+  };
+
+  const goNext = () => {
+    setActive((prev) => (prev + 1) % facilities.length);
+  };
 
   /* ---------- Animation Variants ---------- */
   const fadeUp = {
@@ -87,10 +100,7 @@ export default function AboutFlim() {
         whileInView="show"
         viewport={{ once: true }}
       >
-        <motion.h2
-          className="primary-title text-black"
-          variants={fadeUp}
-        >
+        <motion.h2 className="primary-subtitle text-black" variants={fadeUp}>
           Vels Film City: Where Vision Finds Space
         </motion.h2>
 
@@ -111,7 +121,8 @@ export default function AboutFlim() {
         </motion.p>
       </motion.div>
 
-      <div className="grid gap-10 md:grid-cols-2 items-start">
+      {/* ============== DESKTOP / TABLET (md and up) ============== */}
+      <div className="hidden md:grid gap-10 md:grid-cols-2 items-start">
         {/* -------- LEFT LIST -------- */}
         <motion.div
           className="flex flex-col gap-4"
@@ -155,18 +166,70 @@ export default function AboutFlim() {
               initial="hidden"
               animate="show"
               exit="exit"
-              className="w-full max-w-[650px]" // MAX IMAGE WIDTH
+              className="w-full max-w-[650px]"
             >
               <Image
-                src={facilities[active].image}
-                alt={facilities[active].title}
-                width={590}   // real width
-                height={726}   // real height
+                src={activeFacility.image}
+                alt={activeFacility.title}
+                width={590} // real width
+                height={726} // real height
                 className="w-full h-auto object-contain rounded-md"
                 priority
               />
             </motion.div>
           </AnimatePresence>
+        </div>
+      </div>
+
+      {/* ============== MOBILE (below md) ============== */}
+      <div className="md:hidden">
+        {/* TEXT FIRST */}
+        <div className="mb-5">
+          <h3 className="primary-subtitle text-lg sm:text-xl text-black mb-2">
+            {activeFacility.title}
+          </h3>
+          <p className="secondary-description text-sm leading-relaxed text-black/75">
+            {activeFacility.desc}
+          </p>
+        </div>
+
+        {/* IMAGE SLIDER */}
+        <div className="relative w-full overflow-hidden rounded-lg shadow-sm">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.35 }}
+              className="w-full"
+            >
+              <Image
+                src={activeFacility.image}
+                alt={activeFacility.title}
+                width={590}
+                height={726}
+                className="w-full h-auto object-cover rounded-md"
+                priority
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Arrows */}
+          <button
+            type="button"
+            onClick={goPrev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md"
+          >
+            ❮
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md"
+          >
+            ❯
+          </button>
         </div>
       </div>
     </section>

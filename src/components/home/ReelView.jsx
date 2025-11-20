@@ -95,7 +95,7 @@ export default function ReelView() {
               style={{ flex: `0 0 ${100 / slidesToShow}%` }}
               className="p-2"
             >
-              <div className="h-64 sm:h-80 md:h-96 sm:w-80 overflow-hidden">
+              <div className="overflow-hidden">
                 <img
                   src={src}
                   alt={`Reel View ${i + 1}`}

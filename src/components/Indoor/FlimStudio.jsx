@@ -20,7 +20,7 @@ export default function FilmStudio() {
     >
       {/* Title */}
       <motion.h2
-        className="primary-title text-black px-4"
+        className="primary-title text-black px-4 mb-5"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}

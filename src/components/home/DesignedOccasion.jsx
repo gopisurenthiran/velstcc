@@ -1,4 +1,6 @@
+// app/components/DesignedOccasion.jsx
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -166,8 +168,21 @@ function InlineStats({ items = [] }) {
 /* ================== MAIN COMPONENT ================== */
 export default function DesignedOccasion() {
   const [activeTab, setActiveTab] = useState(tabData[0].id);
+
   const activeContent = tabData.find((t) => t.id === activeTab);
-  const visibleStats = activeContent.stats ?? statsData;
+  const visibleStats = activeContent?.stats ?? statsData;
+
+  const currentIndex = tabData.findIndex((t) => t.id === activeTab);
+
+  const goPrev = () => {
+    const prevIndex = (currentIndex - 1 + tabData.length) % tabData.length;
+    setActiveTab(tabData[prevIndex].id);
+  };
+
+  const goNext = () => {
+    const nextIndex = (currentIndex + 1) % tabData.length;
+    setActiveTab(tabData[nextIndex].id);
+  };
 
   return (
     <section className="py-16 md:py-14 bg-[#f5f5f5]" id="crafted">
@@ -183,49 +198,94 @@ export default function DesignedOccasion() {
           Crafted to Host Every Milestone
         </motion.h2>
 
-        {/* TABS — single line scrollable on mobile */}
+        {/* ========== MOBILE: ARROWS + SINGLE TAB TITLE + UNDERLINE ========== */}
+        {activeContent && (
+          <div className="md:hidden mb-8 flex items-center justify-center gap-4 w-full">
+            {/* Left arrow */}
+            <button
+              type="button"
+              onClick={goPrev}
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-black/10 shadow-sm text-sm"
+            >
+              ❮
+            </button>
+
+            {/* Active tab title with underline */}
+            <div className="relative flex flex-col items-center pb-2 max-w-[70%]">
+              <span className="text-primary text-[14px] font-medium text-center px-2 leading-snug">
+                {activeContent.title}
+              </span>
+
+              <motion.span
+                layoutId="designed-occasion-underline"
+                className="absolute bottom-0 h-[2px] bg-primary w-full"
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 26,
+                }}
+              />
+            </div>
+
+            {/* Right arrow */}
+            <button
+              type="button"
+              onClick={goNext}
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-black/10 shadow-sm text-sm"
+            >
+              ❯
+            </button>
+          </div>
+        )}
+
+        {/* ========== DESKTOP: CENTERED TABS WITH UNDERLINE ========== */}
         <div
           className="
-            flex overflow-x-auto whitespace-nowrap no-scrollbar
-            justify-start md:justify-center
-            gap-3 md:gap-4 
+            hidden md:flex
+            justify-center gap-4 
             mb-10 md:mb-12 primary-subtitle
           "
         >
-          {tabData.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`
-                relative px-4 py-2 
-                text-sm sm:text-base md:text-lg 
-                inline-flex items-center whitespace-nowrap 
-                transition-all duration-300
-                ${
-                  activeTab === tab.id
+          {tabData.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={[
+                  "relative px-3 pb-2 text-base md:text-lg whitespace-nowrap transition-colors",
+                  isActive
                     ? "text-primary"
-                    : "text-secondary hover:text-primary"
-                }
-              `}
-            >
-              {tab.title}
-              <span
-                className={`
-                  absolute left-1/2 -translate-x-1/2 bottom-[4px] 
-                  h-[2px] bg-primary transition-all duration-300
-                  ${
-                    activeTab === tab.id ? "w-1/2 opacity-100" : "w-0 opacity-0"
-                  }
-                `}
-              />
-            </button>
-          ))}
+                    : "text-secondary hover:text-primary",
+                ].join(" ")}
+              >
+                {tab.title}
+                {isActive && (
+                  <motion.span
+                    layoutId="designed-occasion-underline"
+                    className="absolute left-0 bottom-0 h-[2px] w-full bg-primary"
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 26,
+                    }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {/* CONTENT CARD */}
         {activeContent && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white shadow-sm ring-1 ring-black/5 overflow-hidden">
-            {/* IMAGE — FIXED FOR MOBILE */}
+          <motion.div
+            key={activeContent.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: easing }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white shadow-sm ring-1 ring-black/5 overflow-hidden"
+          >
+            {/* IMAGE */}
             <div className="w-full">
               <Image
                 src={activeContent.imageSrc}
@@ -233,9 +293,10 @@ export default function DesignedOccasion() {
                 width={800}
                 height={600}
                 className="
-                  w-full h-[260px] sm:h-[340px] md:h-full 
-                  
+                  w-full 
+                  h-[260px] sm:h-[340px] md:h-full 
                   max-h-[500px]
+                  object-cover
                 "
                 priority
               />
@@ -256,6 +317,7 @@ export default function DesignedOccasion() {
 
                 <InlineStats items={visibleStats} />
               </div>
+
               <div className="flex flex-wrap gap-3">
                 <a
                   href="/assets/pdf/area.pdf"
@@ -267,7 +329,7 @@ export default function DesignedOccasion() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
 

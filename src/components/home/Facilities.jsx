@@ -60,7 +60,9 @@ export default function Facilities() {
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
 
-  // Autoplay rotation
+  const activeFacility = facilities[active];
+
+  // Autoplay rotation (both desktop and mobile; pause on hover)
   useEffect(() => {
     if (paused) return;
     if (timerRef.current) clearInterval(timerRef.current);
@@ -71,6 +73,14 @@ export default function Facilities() {
 
     return () => clearInterval(timerRef.current);
   }, [paused]);
+
+  const goPrev = () => {
+    setActive((prev) => (prev - 1 + facilities.length) % facilities.length);
+  };
+
+  const goNext = () => {
+    setActive((prev) => (prev + 1) % facilities.length);
+  };
 
   return (
     <section
@@ -86,16 +96,16 @@ export default function Facilities() {
         viewport={{ once: true, margin: "-100px" }}
         className="mb-10"
       >
-        <h2 className="text-4xl tracking-tight text-black primary-title">
+        <h2 className="text-3xl sm:text-4xl tracking-tight text-black primary-title">
           All About Vel Conventional Centre
         </h2>
-        <p className="mt-5 text-black/70 secondary-description text-xl">
-          Everything your guests could need thoughtfully within reach. 
+        <p className="mt-4 sm:mt-5 text-black/70 secondary-description text-base sm:text-lg">
+          Everything your guests could need thoughtfully within reach.
         </p>
       </motion.div>
 
-      {/* Layout */}
-      <div className="grid items-start gap-10 md:grid-cols-2">
+      {/* ================= DESKTOP / TABLET (md and up) ================= */}
+      <div className="hidden md:grid items-start gap-10 md:grid-cols-2">
         {/* LEFT LIST (Animated Stagger) */}
         <motion.div
           variants={listParent}
@@ -142,16 +152,68 @@ export default function Facilities() {
             >
               <div className="relative w-full max-w-[600px]">
                 <Image
-                  src={facilities[active].image}
-                  alt={facilities[active].title}
-                  width={590} // real image resolution width
-                  height={726} // real image resolution height
+                  src={activeFacility.image}
+                  alt={activeFacility.title}
+                  width={590}
+                  height={726}
                   className="w-full h-auto object-contain rounded-lg"
                   priority
                 />
               </div>
             </motion.div>
           </AnimatePresence>
+        </div>
+      </div>
+
+      {/* ================= MOBILE (below md) ================= */}
+      <div className="md:hidden">
+        {/* TEXT CONTENT FIRST */}
+        <div className="mb-5">
+          <h3 className="primary-subtitle text-lg sm:text-xl text-black mb-2">
+            {activeFacility.title}
+          </h3>
+          <p className="secondary-description text-sm leading-relaxed text-black/75">
+            {activeFacility.desc}
+          </p>
+        </div>
+
+        {/* IMAGE SLIDER BELOW CONTENT */}
+        <div className="relative w-full overflow-hidden rounded-lg shadow-sm">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.35 }}
+              className="w-full"
+            >
+              <Image
+                src={activeFacility.image}
+                alt={activeFacility.title}
+                width={590}
+                height={726}
+                className="w-full h-auto object-cover rounded-lg"
+                priority
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Left / Right arrows */}
+          <button
+            type="button"
+            onClick={goPrev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md"
+          >
+            ❮
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md"
+          >
+            ❯
+          </button>
         </div>
       </div>
     </section>

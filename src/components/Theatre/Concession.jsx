@@ -1,3 +1,4 @@
+// app/components/Concession.jsx
 "use client";
 
 import Image from "next/image";
@@ -29,6 +30,8 @@ export default function Concession() {
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
 
+  const activeFacility = facilities[active];
+
   // autoplay
   useEffect(() => {
     if (paused) return;
@@ -40,6 +43,14 @@ export default function Concession() {
 
     return () => clearInterval(timerRef.current);
   }, [paused]);
+
+  const goPrev = () => {
+    setActive((prev) => (prev - 1 + facilities.length) % facilities.length);
+  };
+
+  const goNext = () => {
+    setActive((prev) => (prev + 1) % facilities.length);
+  };
 
   return (
     <motion.section
@@ -59,17 +70,14 @@ export default function Concession() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h2 className="primary-title text-black">
-          Concessions & Lounge
-        </h2>
+        <h2 className="primary-title text-black">Concessions & Lounge</h2>
         <p className="mt-5 text-black/70 secondary-description">
           Where stories meet savours
         </p>
       </motion.div>
 
-      {/* ---------- Grid Layout ---------- */}
-      <div className="grid items-start gap-10 md:grid-cols-2">
-        
+      {/* ================= DESKTOP / TABLET (md and up) ================= */}
+      <div className="hidden md:grid items-start gap-10 md:grid-cols-2">
         {/* LEFT LIST */}
         <motion.div
           className="flex flex-col gap-4"
@@ -94,9 +102,7 @@ export default function Concession() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 200 }}
               >
-                <h3 className="primary-subtitle text-black">
-                  {item.title}
-                </h3>
+                <h3 className="primary-subtitle text-black">{item.title}</h3>
                 <p className="mt-2 text-md leading-relaxed text-black/70 secondary-description">
                   {item.desc}
                 </p>
@@ -105,7 +111,7 @@ export default function Concession() {
           })}
         </motion.div>
 
-        {/* ---------- RIGHT IMAGE (FIXED) ---------- */}
+        {/* ---------- RIGHT IMAGE (FADE) ---------- */}
         <motion.div
           className="relative"
           initial={{ opacity: 0, x: 40 }}
@@ -115,7 +121,6 @@ export default function Concession() {
         >
           <div className="relative overflow-hidden">
             <div className="relative w-full">
-              
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
@@ -125,8 +130,8 @@ export default function Concession() {
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                 >
                   <Image
-                    src={facilities[active].image}
-                    alt={facilities[active].title}
+                    src={activeFacility.image}
+                    alt={activeFacility.title}
                     width={520}
                     height={600}
                     className="w-full h-auto object-contain"
@@ -134,11 +139,63 @@ export default function Concession() {
                   />
                 </motion.div>
               </AnimatePresence>
-
             </div>
           </div>
         </motion.div>
+      </div>
 
+      {/* ================= MOBILE (below md) ================= */}
+      <div className="md:hidden">
+        {/* TEXT CONTENT FIRST */}
+        <div className="mb-5">
+          <h3 className="primary-subtitle text-lg sm:text-xl text-black mb-2">
+            {activeFacility.title}
+          </h3>
+          <p className="secondary-description text-sm leading-relaxed text-black/75">
+            {activeFacility.desc}
+          </p>
+        </div>
+
+        {/* IMAGE SLIDER BELOW CONTENT */}
+        <div className="relative w-full overflow-hidden rounded-lg shadow-sm">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.35 }}
+              className="w-full"
+            >
+              <Image
+                src={activeFacility.image}
+                alt={activeFacility.title}
+                width={520}
+                height={600}
+                className="w-full h-auto object-cover rounded-lg"
+                priority
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Left / Right arrows */}
+          <button
+            type="button"
+            onClick={goPrev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md"
+          >
+            ❮
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md"
+          >
+            ❯
+          </button>
+        </div>
+
+ 
       </div>
     </motion.section>
   );
