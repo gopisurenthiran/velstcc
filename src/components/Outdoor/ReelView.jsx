@@ -100,7 +100,7 @@ export default function ReelView() {
                 <img
                   src={src}
                   alt={`Reel view ${index + 1}`}
-                  className="w-full h-64 sm:h-80 md:h-96 "
+                  className="w-full"
                 />
               </motion.div>
             </div>
