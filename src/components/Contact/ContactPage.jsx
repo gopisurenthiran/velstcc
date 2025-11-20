@@ -5,8 +5,27 @@ import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 
+/* --- TABS CONFIG --- */
+const TABS = [
+  { id: "trade", label: "Trade & Convention Centre" },
+  { id: "film", label: "Vels Film City" },
+  { id: "theatre", label: "Vels Theatres" },
+];
+
 export default function ContactTabs() {
   const [activeTab, setActiveTab] = useState("trade");
+
+  const activeIndex = TABS.findIndex((t) => t.id === activeTab);
+
+  const goPrev = () => {
+    const prevIndex = (activeIndex - 1 + TABS.length) % TABS.length;
+    setActiveTab(TABS[prevIndex].id);
+  };
+
+  const goNext = () => {
+    const nextIndex = (activeIndex + 1) % TABS.length;
+    setActiveTab(TABS[nextIndex].id);
+  };
 
   /* --- FULL TAB LABELS --- */
   const tabLabels = {
@@ -15,14 +34,14 @@ export default function ContactTabs() {
     theatre: "Vels Theatres",
   };
 
-  /* --- MAP SRC PER TAB (PUT YOUR REAL EMBED URLS HERE) --- */
+  /* --- MAP SRC PER TAB --- */
   const MAP_SRC = {
     trade:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.98047056669!2d80.0456360738114!3d13.036915013445475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b475a4ddbaf%3A0xbf23d710d8e78aaa!2sVELS%20Trade%20%26%20Convention%20Centre!5e0!3m2!1sen!2sin!4v1763122190448!5m2!1sen!2sin%22", // 🔁 replace with real Trade & Convention embed
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.98047056669!2d80.0456360738114!3d13.036915013445475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b475a4ddbaf%3A0xbf23d710d8e78aaa!2sVELS%20Trade%20%26%20Convention%20Centre!5e0!3m2!1sen!2sin!4v1763122190448!5m2!1sen!2sin%22",
     film:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1990136.8360316637!2d77.74080859375!3d13.036562500000011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b31c8a9acb9%3A0x6f6093af61250de5!2sVELS%20Film%20City!5e0!3m2!1sen!2sin!4v1763122075154!5m2!1sen!2sin%22", // 🔁 replace with real Film City embed
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1990136.8360316637!2d77.74080859375!3d13.036562500000011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b31c8a9acb9%3A0x6f6093af61250de5!2sVELS%20Film%20City!5e0!3m2!1sen!2sin!4v1763122075154!5m2!1sen!2sin%22",
     theatre:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin", // 🔁 replace with real Theatre embed
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.98701967741!2d80.03668449781337!3d13.035878299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528b2cf6afd315%3A0xc44a2aa4a8ba1b01!2sVELS%20CINEMAS!5e0!3m2!1sen!2sin!4v1763119601552!5m2!1sen!2sin",
   };
 
   /* --- FORM HOOKS OUTSIDE --- */
@@ -185,33 +204,90 @@ export default function ContactTabs() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {/* ⭐ Toast Top Right */}
+      {/* Toast */}
       <Toaster position="top-right" />
 
-      {/* Tabs */}
+      {/* -------- TABS (with mobile design) -------- */}
       <motion.nav
-        className="flex justify-center overflow-x-auto gap-4 md:gap-10 px-4 py-4"
+        className="px-4 pt-6 pb-4"
         id="target-section"
       >
-        {[
-          { id: "trade", label: "Trade & Convention Centre" },
-          { id: "film", label: "Vels Film City" },
-          { id: "theatre", label: "Vels Theatres" },
-        ].map((tab) => (
+        {/* MOBILE: arrows + single active tab centred */}
+        <div className="flex items-center justify-center gap-4 md:hidden">
           <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`primary-subtitle px-4 py-2 ${
-              activeTab === tab.id ? "bg-primary text-white" : "text-gray-600"
-            }`}
+            type="button"
+            onClick={goPrev}
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-black/10 bg-white shadow-sm text-sm"
           >
-            {tab.label}
-            <div className="h-[1px] bg-white w-full mt-2"></div>
+            ◄
           </button>
-        ))}
+
+          <button
+            type="button"
+            className={[
+              "relative pb-2 transition-colors",
+              "text-sm xs:text-base sm:text-lg whitespace-nowrap primary-subtitle",
+              "text-[#2D3091]",
+            ].join(" ")}
+          >
+            <span className="mr-1 align-middle">·</span>
+            <span>{TABS[activeIndex]?.label}</span>
+            <motion.span
+              layoutId="contact-tabs-underline-mobile"
+              className="pointer-events-none absolute left-0 bottom-0 h-[1px] w-full bg-black"
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 24,
+              }}
+            />
+          </button>
+
+          <button
+            type="button"
+            onClick={goNext}
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-black/10 bg-white shadow-sm text-sm"
+          >
+            ►
+          </button>
+        </div>
+
+        {/* DESKTOP: row of tabs with underline */}
+        <div className="hidden md:flex justify-center gap-6 lg:gap-10 mt-4 primary-subtitle">
+          {TABS.map((tab) => {
+            const isActive = tab.id === activeTab;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={[
+                  "relative pb-2 md:pb-3 transition-colors",
+                  "text-sm sm:text-base md:text-lg whitespace-nowrap",
+                  isActive
+                    ? "text-[#2D3091]"
+                    : "text-black/60 hover:text-black",
+                ].join(" ")}
+              >
+                <span className="mr-1 align-middle">·</span>
+                <span>{tab.label}</span>
+                {isActive && (
+                  <motion.span
+                    layoutId="contact-tabs-underline-desktop"
+                    className="pointer-events-none absolute left-0 bottom-0 h-[1px] w-full bg-black"
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 24,
+                    }}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
       </motion.nav>
 
-      {/* Tab Content */}
+      {/* -------- TAB CONTENT -------- */}
       <section className="max-w-3xl mx-auto px-4 py-12">
         <AnimatePresence mode="wait">
           {/* TRADE TAB */}
@@ -226,7 +302,7 @@ export default function ContactTabs() {
               <h1 className="primary-title font-bold mb-6">
                 Trade & Convention Centre
               </h1>
-              <div className=" secondary-description leading-relaxed mb-8">
+              <div className="secondary-description leading-relaxed mb-8">
                 <p>Survey No.167/4A & 3A</p>
                 <p>Santhosha Nagar</p>
                 <p>Chennai - Bangalore National Highway</p>
@@ -247,10 +323,10 @@ export default function ContactTabs() {
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.4 }}
             >
-              <h1 className=" primary-title font-bold mb-6">
+              <h1 className="primary-title font-bold mb-6">
                 Vels Film City
               </h1>
-              <div className=" secondary-description leading-relaxed mb-8">
+              <div className="secondary-description leading-relaxed mb-8">
                 <p>22PX+J5X, EVP Santhosha Nagar</p>
                 <p>Chennai-Bangalore National Highway</p>
                 <p>Chembarambakkam</p>
@@ -261,7 +337,7 @@ export default function ContactTabs() {
             </motion.div>
           )}
 
-          {/* THEATRE TAB – ONLY ADDRESS */}
+          {/* THEATRE TAB */}
           {activeTab === "theatre" && (
             <motion.div
               key="theatre"
@@ -273,7 +349,7 @@ export default function ContactTabs() {
               <h1 className="primary-title font-bold mb-6">
                 Vels Theatres
               </h1>
-              <div className=" secondary-description leading-relaxed mb-8">
+              <div className="secondary-description leading-relaxed mb-8">
                 <p>Survey no 167/4A & 3A</p>
                 <p>Santhosha Nagar</p>
                 <p>Chennai - Bangalore National Highway</p>
@@ -284,7 +360,7 @@ export default function ContactTabs() {
           )}
         </AnimatePresence>
 
-        {/* ---------- MAP SECTION (updates per TAB) ---------- */}
+        {/* MAP SECTION */}
         {MAP_SRC[activeTab] && (
           <div className="mt-10 w-full h-64 md:h-80 relative overflow-hidden shadow-md">
             <iframe
